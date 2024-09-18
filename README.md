@@ -117,9 +117,39 @@
    | ----------------------- | ----------------------------------------------------------------------------------------- |
    | Arithmetic Operators    | Used for mathematical calculations (+, -, \*, /, %, ++, --).                              |
    | Relational Operators    | Used to compare two values (==, !=, >, <, >=, <=, ===, !==).                              |
-   | Bitwise Operators       | Operate on bits and perform bit-by-bit operations (&, \|, ^, ~, <<, >>, >>>).              |
+   | Bitwise Operators       | Operate on bits and perform bit-by-bit operations (&, \|, ^, ~, <<, >>, >>>).             |
    | Logical Operators       | Used to combine multiple boolean expressions (&&, \|\| ,!).                               |
    | Assignment Operators    | Used to assign values to variables (=, +=, -=, \*=, /=, %=, &=, \|=, ^=, <<=, >>=, >>>=). |
    | Miscellaneous Operators | Includes conditional (ternary) operator (`? :`), instanceof operator (`instanceof`).      |
 
 # Control Statements
+
+9. **What are loops? What are the types of loops?**
+
+   Loops are control structures that allow you to execute a block of code multiple times, depending on a specified condition. In Java, there are several types of loops that you can use to handle repetitive tasks:
+
+   1. **while loop**: Repeats a statement or a group of statements while a given condition is true. The condition is evaluated before the execution of the loop body.
+   2. **for loop**: Executes a sequence of statements multiple times and is typically used when the number of iterations is known beforehand. It includes initialization, condition, and increment/decrement in a single line.
+
+   3. **do...while loop**: Similar to the while loop, but it tests the condition at the end of the loop body, ensuring that the loop body is executed at least once.
+
+   4. **Enhanced for loop (for-each loop)**: Introduced in Java 5, this loop is used to iterate over collections and arrays, simplifying the syntax for traversing elements.
+
+10. **What are Loop Control Statements? What are the types of Loop Control Statements?**
+
+      Loop control statements are used to alter the flow of control in loops. They allow you to manage the execution of loop iterations based on certain conditions. The types of loop control statements in Java include:
+
+       1.  **break statement**: Exits the loop immediately, skipping any remaining iterations.
+       2.  **continue statement**: Skips the current iteration and proceeds to the next iteration of the loop.
+       3.  **return statement**: Exits from the current method and returns control to the calling method, which can also affect loop execution if used within a loop.
+
+11. **What is Decision Making? What are the types of Decision Making?**
+
+      Decision making in programming refers to the process of making choices based on certain conditions. It allows the program to execute different paths of code based on the evaluation of these conditions. In Java, decision-making is primarily achieved through control statements.
+
+      | Type of Decision Making | Description                                                                 |
+      |-------------------------|-----------------------------------------------------------------------------|
+      | **if statement**        | Executes a block of code if a specified condition is true.                 |
+      | **if-else statement**   | Executes one block of code if the condition is true, and another block if it is false. |
+      | **else if statement**   | Allows checking multiple conditions sequentially.                           |
+      | **switch statement**    | Selects one of many code blocks to execute based on the value of a variable. |

@@ -154,7 +154,7 @@
 
     Java is not considered to be purely object-oriented because it supports primitive data types (such as int, char, boolean, byte, short, long, float, and double) that are not objects. In a purely object-oriented language, everything is treated as an object, and all data types would be defined as classes. While Java provides wrapper classes for these primitive types (e.g., Integer for int, Character for char, Boolean for boolean, Byte for byte, Short for short, Long for long, Float for float, and Double for double), the existence of primitives means that Java does not fully adhere to the principles of pure object-oriented programming. Additionally, Java allows for static methods and variables, which are not associated with any object instance, further distinguishing it from purely object-oriented languages.
 
-14. **What is Object Oriented Programming?**
+14. **What is OOP?**
 
     Object-oriented programming (OOP) is a programming paradigm based on the concept of "objects", which can contain data in the form of fields (often known as attributes or properties) and code in the form of procedures (often known as methods).
 
@@ -169,7 +169,100 @@
     5. **Polymorphism**: The ability of different classes to be treated as instances of the same class through a common interface, allowing for the implementation of methods in different ways.
     6. **Abstraction**: The concept of hiding the complex implementation details and showing only the necessary features of an object, simplifying the interaction with the object.
 
-16. **What are constructors in Java?**
+16. **What are classes and objects? Why use them in applications?**
+
+    Classes are blueprints for creating objects in object-oriented programming. They define the properties (attributes) and behaviors (methods) that the objects created from the class will have. An object is an instance of a class, representing a specific entity with its own state and behavior.
+
+    Using classes and objects in applications provides several benefits:
+
+    1. **Modularity**: Classes allow developers to break down complex systems into smaller, manageable pieces, making the code easier to understand and maintain.
+
+    2. **Reusability**: Once a class is defined, it can be reused to create multiple objects, reducing code duplication and promoting consistency.
+
+    3. **Encapsulation**: Classes encapsulate data and methods, restricting access to the internal state of the object and exposing only what is necessary through public methods.
+
+    4. **Inheritance**: Classes can inherit properties and methods from other classes, facilitating code reuse and the creation of hierarchical relationships.
+
+    5. **Polymorphism**: Objects of different classes can be treated as objects of a common superclass, allowing for flexible and interchangeable code.
+
+    Overall, classes and objects are fundamental to organizing and structuring code in a way that reflects real-world entities and their interactions.
+
+17. **How to implement classes and objects in Java? What are the members of a class?**
+
+    To implement classes and objects in Java, you need to follow these steps:
+
+    1. **Define a Class**: A class is defined using the `class` keyword followed by the class name. Inside the class, you can declare members, which include attributes (fields), methods (functions), and constructors that define the behavior of the objects created from the class.
+
+    ```java
+    public class Car {
+        // Attributes (Members)
+        private String color;
+        private String model;
+
+        // Constructor (Member)
+        public Car(String color, String model) {
+            this.color = color;
+            this.model = model;
+        }
+
+        // Method (Member)
+        public void displayInfo() {
+            System.out.println("Car Model: " + model + ", Color: " + color);
+        }
+    }
+    ```
+
+    2. **Create Objects**: Once the class is defined, you can create objects (instances) of that class using the `new` keyword.
+
+    ```java
+    public class Main {
+        public static void main(String[] args) {
+            // Creating objects of the Car class
+            Car myCar = new Car("Red", "Toyota");
+            Car yourCar = new Car("Blue", "Honda");
+
+            // Calling methods on the objects
+            myCar.displayInfo(); // Output: Car Model: Toyota, Color: Red
+            yourCar.displayInfo(); // Output: Car Model: Honda, Color: Blue
+        }
+    }
+    ```
+
+    In this example, the `Car` class is defined with members including attributes, a constructor, and a method. Two objects of the `Car` class are created in the `Main` class, demonstrating how to implement classes and objects in Java.
+
+18. **What is the role and benefit of package in Java?**
+
+    In Java, a package is a namespace that organizes a set of related classes and interfaces. The primary role of packages is to group related classes together, which helps in avoiding name conflicts and controlling access.
+
+    The benefits of using packages in Java include:
+
+    1. **Namespace Management**: Packages help to avoid naming conflicts by grouping classes with similar functionality under a unique package name.
+
+    2. **Access Protection**: Packages provide controlled access to classes and members. Classes within the same package can access each other's package-private and protected members, while classes in different packages cannot.
+
+    3. **Code Organization**: Packages help in organizing classes and interfaces in a logical manner, making it easier to locate and manage code.
+
+    4. **Reusability**: By grouping related classes, packages promote code reusability, allowing developers to use existing classes in new applications without modification.
+
+    5. **Modularity**: Packages encourage modular programming, where functionality is divided into separate, manageable components.
+
+    Overall, packages play a crucial role in structuring Java applications, enhancing maintainability, and promoting best practices in software development.
+
+19. **What are access specifiers? What are the types of access specifiers?**
+
+    Access specifiers in Java are keywords that set the accessibility (visibility) of classes, methods, and other members. They control how the members of a class can be accessed from other classes. The main types of access specifiers in Java are:
+
+    1. **Public**: Members declared as public are accessible from any other class in any package. This means there are no restrictions on the visibility of public members.
+
+    2. **Private**: Members declared as private are accessible only within the class they are declared in. This means that private members cannot be accessed from outside the class, providing a way to encapsulate and protect the data.
+
+    3. **Protected**: Members declared as protected are accessible within the same package and by subclasses, even if they are in different packages.
+
+    4. **Default (Package-Private)**: If no access specifier is declared, the member is accessible only within its own package. This is also known as package-private access.
+
+    By using access specifiers, developers can implement encapsulation, which is a fundamental principle of object-oriented programming, ensuring that the internal representation of an object is hidden from the outside.
+
+20. **What are constructors in Java?**
 
     Constructors in Java are special methods that are called when an object is instantiated. They have the same name as the class and do not have a return type, not even void. Constructors are used to initialize the object's attributes and allocate memory for the object. There are two types of constructors in Java:
 
@@ -201,7 +294,7 @@
 
     ```
 
-17. **What is a Singleton class in Java?**
+21. **What is a Singleton class in Java?**
 
     A Singleton class in Java is a design pattern that restricts the instantiation of a class to a single instance. This is useful when exactly one object is needed to coordinate actions across the system. The Singleton pattern ensures that a class has only one instance and provides a global point of access to that instance.
 
@@ -232,7 +325,7 @@
 
     In this example, the `Singleton` class has a private constructor, a static instance variable, and a public static method `getInstance()` that provides access to the single instance of the class. This ensures that no more than one instance of the `Singleton` class can exist at any time.
 
-18. **What are wrapper classes in Java?**
+22. **What are wrapper classes in Java?**
 
     Wrapper classes in Java are used to convert primitive data types into objects. Each primitive type has a corresponding wrapper class that provides a way to use these primitives as objects. This is particularly useful in situations where objects are required, such as in collections like ArrayList. The wrapper classes in Java include:
 
@@ -247,7 +340,7 @@
 
     Wrapper classes also provide utility methods for converting between types, performing operations, and handling null values. For example, the Integer class has methods for parsing strings into integers and vice versa. By using wrapper classes, you can take advantage of the features of object-oriented programming while still working with primitive data types.
 
-19. **What is encapsulation in Java?**
+23. **What is encapsulation in Java?**
 
     Encapsulation is a fundamental concept in object-oriented programming that refers to the practice of enclosing the data (attributes) and methods (functions) that manipulate the data within a single unit, known as a class. In Java, encapsulation is achieved through the use of access modifiers (private, protected, and public), which control the visibility of class members. This mechanism ensures that the internal state of an object is not directly accessible from outside the class, promoting a controlled interface for interaction. By implementing encapsulation, you improve data security, enhance code maintainability, and reduce the likelihood of unintended modifications to an object's state.
 
@@ -276,7 +369,7 @@
     }
     ```
 
-20. **What is inheritance in Java?**
+24. **What is inheritance in Java?**
 
     Inheritance is a fundamental concept in object-oriented programming that allows a class to inherit properties and behaviors from another class. In Java, inheritance is implemented using the extends keyword, which establishes a hierarchical relationship between classes. The subclass (child class) inherits attributes and methods from the superclass (parent class), and can also add its own unique attributes and methods. This mechanism promotes code reuse, simplifies maintenance, and allows for the creation of more specialized classes based on existing ones.
 
@@ -312,7 +405,7 @@
 
     In this example, the `Dog` class inherits the properties and behaviors of the `Animal` class, including the `name` field and the `eat()` and `sleep()` methods. The `Dog` class also adds its own unique behavior, the `bark()` method.
 
-21. **What is polymorphism in Java?**
+25. **What is polymorphism in Java?**
 
     Polymorphism is a core concept in object-oriented programming that allows objects of different classes to be treated as instances of a common superclass. In Java, polymorphism is achieved through method overriding and method overloading. Method overriding allows a subclass to provide a specific implementation of a method that is already defined in its parent class, while method overloading enables multiple methods in the same class to have the same name but different parameters, allowing for different behaviors based on the number and type of arguments passed. This flexibility promotes code reusability and simplifies the design of complex systems by allowing objects to take on multiple forms or behaviors.
 
@@ -350,7 +443,7 @@
     }
     ```
 
-22. **What is the difference between loose coupling and tight coupling?**
+26. **What is the difference between loose coupling and tight coupling?**
 
     Loose coupling refers to a design principle in which components or classes are minimally dependent on each other, allowing for greater flexibility and easier maintenance. In a loosely coupled system, changes in one component have little to no impact on others, making it easier to modify or replace parts of the system without affecting the overall functionality.
 
@@ -420,7 +513,7 @@
     	```
     ````
 
-23. **What is the difference between cohesion and coupling?**
+27. **What is the difference between cohesion and coupling?**
 
     | Aspect     | Cohesion                                                                 | Coupling                                                                              |
     | ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
@@ -473,7 +566,7 @@
     }
     ```
 
-24. **What is the difference between abstract class and interface in Java?**
+28. **What is the difference between abstract class and interface in Java?**
 
     | Aspect                | Abstract Class                                                                       | Interface                                                                                                               |
     | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
@@ -484,14 +577,14 @@
     | Access Modifiers      | Can have access modifiers (public, protected, private).                              | All methods are public by default; cannot have access modifiers.                                                        |
     | Use Case              | Used when classes share a common base and behavior.                                  | Used to define a contract that implementing classes must follow.                                                        |
 
-25. **What is the difference between composition, aggregation, and association?**
+29. **What is the difference between composition, aggregation, and association?**
 
-	| Aspect        | Composition                                                                 | Aggregation                                                                  | Association                                                                  |
-	| ------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-	| Definition    | A strong relationship where the child cannot exist independently of the parent. | A weaker relationship where the child can exist independently of the parent. | A general relationship between two classes, where one class uses or interacts with another. |
-	| Lifespan      | The child's lifespan is tied to the parent's lifespan.                      | The child can outlive the parent.                                          | The lifespan of the associated objects is independent.                       |
-	| Ownership     | The parent owns the child, and the child is part of the parent.            | The parent does not own the child; they can exist separately.              | There is no ownership; it is a loose relationship.                          |
-	| Example       | A car and its engine (the engine cannot exist without the car).            | A university and its students (students can exist without the university). | A teacher and a student (the teacher interacts with the student, but they are independent). |
+    | Aspect     | Composition                                                                     | Aggregation                                                                  | Association                                                                                 |
+    | ---------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+    | Definition | A strong relationship where the child cannot exist independently of the parent. | A weaker relationship where the child can exist independently of the parent. | A general relationship between two classes, where one class uses or interacts with another. |
+    | Lifespan   | The child's lifespan is tied to the parent's lifespan.                          | The child can outlive the parent.                                            | The lifespan of the associated objects is independent.                                      |
+    | Ownership  | The parent owns the child, and the child is part of the parent.                 | The parent does not own the child; they can exist separately.                | There is no ownership; it is a loose relationship.                                          |
+    | Example    | A car and its engine (the engine cannot exist without the car).                 | A university and its students (students can exist without the university).   | A teacher and a student (the teacher interacts with the student, but they are independent). |
 
     Here's a code example demonstrating all three relationships:
 
@@ -499,7 +592,7 @@
     // Composition Example
     class Engine {
         private String type;
-        
+
         public Engine(String type) {
             this.type = type;
         }
@@ -507,18 +600,18 @@
 
     class Car {
         private final Engine engine; // Strong relationship - engine cannot exist without car
-        
+
         public Car() {
             engine = new Engine("V8"); // Engine is created when Car is created
         }
-        
+
         // When Car is destroyed, Engine is also destroyed
     }
 
     // Aggregation Example
     class Student {
         private String name;
-        
+
         public Student(String name) {
             this.name = name;
         }
@@ -526,15 +619,15 @@
 
     class University {
         private List<Student> students; // Weak relationship - students can exist without university
-        
+
         public University() {
             students = new ArrayList<>();
         }
-        
+
         public void addStudent(Student student) {
             students.add(student);
         }
-        
+
         public void removeStudent(Student student) {
             students.remove(student);
         }
@@ -553,94 +646,102 @@
         }
     }
     ```
-26. **What is the difference between method overloading and overriding in Java?**
 
-   - **Method Overloading**: This occurs when multiple methods in the same class have the same name but different parameters (different type, number, or both). It allows methods to perform similar functions with different inputs. Overloading is resolved at compile time.
+30. **What is the difference between method overloading and overriding in Java?**
 
-   - **Method Overriding**: This occurs when a subclass provides a specific implementation of a method that is already defined in its superclass. The method in the subclass must have the same name, return type, and parameters as the method in the superclass. Overriding is resolved at runtime, allowing for dynamic method dispatch.
-   
-		Example of Method Overloading:
-		```java
-		public class MathUtils {
-				public int add(int a, int b) {
-						return a + b;
-				}
+- **Method Overloading**: This occurs when multiple methods in the same class have the same name but different parameters (different type, number, or both). It allows methods to perform similar functions with different inputs. Overloading is resolved at compile time.
 
-				public double add(double a, double b) {
-						return a + b;
-				}
-		}
-		```
+- **Method Overriding**: This occurs when a subclass provides a specific implementation of a method that is already defined in its superclass. The method in the subclass must have the same name, return type, and parameters as the method in the superclass. Overriding is resolved at runtime, allowing for dynamic method dispatch.
 
-		Example of Method Overriding:
-		```java
-		public class Animal {
-				public void sound() {
-						System.out.println("Animal makes a sound");
-				}
-		}
+  Example of Method Overloading:
 
-		public class Dog extends Animal {
-				@Override
-				public void sound() {
-						System.out.println("Dog barks");
-				}
-		}
-		```
-27. **What is the difference between Java Dynamic Binding and Static Binding?**
+  ```java
+  public class MathUtils {
+  		public int add(int a, int b) {
+  				return a + b;
+  		}
 
-   - **Static Binding**: This occurs at compile time and is used for method calls that are resolved based on the reference type. It is typically used with private, static, and final methods. Since the method to be called is determined at compile time, it cannot be changed at runtime.
+  		public double add(double a, double b) {
+  				return a + b;
+  		}
+  }
+  ```
 
-   - **Dynamic Binding**: This occurs at runtime and is used for method calls that are resolved based on the actual object type. It is typically used with overridden methods in inheritance. Dynamic binding allows for polymorphism, where the method that gets executed is determined by the actual object being referred to, rather than the reference type.
+  Example of Method Overriding:
 
-   Example of Static Binding:
-   ```java
-   public class StaticBindingExample {
-       public static void display() {
-           System.out.println("Static Binding");
-       }
-   }
-   ```
+  ```java
+  public class Animal {
+  		public void sound() {
+  				System.out.println("Animal makes a sound");
+  		}
+  }
 
-   Example of Dynamic Binding:
-   ```java
-   public class Shape {
-       public void draw() {
-           System.out.println("Drawing a shape");
-       }
-   }
+  public class Dog extends Animal {
+  		@Override
+  		public void sound() {
+  				System.out.println("Dog barks");
+  		}
+  }
+  ```
 
-   public class Circle extends Shape {
-       @Override
-       public void draw() {
-           System.out.println("Drawing a circle");
-       }
-   }
-   ```
-	
-28. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
+29. **What is the difference between Java Dynamic Binding and Static Binding?**
 
-   An Instance Initializer Block is a block of code that is used to initialize instance variables of a class. It is executed when an instance of the class is created, before the constructor is called.
+- **Static Binding**: This occurs at compile time and is used for method calls that are resolved based on the reference type. It is typically used with private, static, and final methods. Since the method to be called is determined at compile time, it cannot be changed at runtime.
 
-   **Characteristics of Instance Initializer Block:**
-   - It is executed every time an instance of the class is created.
-   - It can access instance variables and methods of the class.
-   - It is useful for common initialization code that is shared among multiple constructors.
-   - It can be used to initialize instance variables that require more complex logic than simple assignment.
-   - It is executed in the order it appears in the class, before the constructor's body.
+- **Dynamic Binding**: This occurs at runtime and is used for method calls that are resolved based on the actual object type. It is typically used with overridden methods in inheritance. Dynamic binding allows for polymorphism, where the method that gets executed is determined by the actual object being referred to, rather than the reference type.
 
-   Example of Instance Initializer Block:
-   ```java
-   public class Example {
-       private int value;
+Example of Static Binding:
 
-       // Instance Initializer Block
-       {
-           value = 10; // Initialization logic
-       }
+```java
+public class StaticBindingExample {
+    public static void display() {
+        System.out.println("Static Binding");
+    }
+}
+```
 
-       public Example() {
-           System.out.println("Constructor called. Value: " + value);
-       }
-   }
-   ```
+Example of Dynamic Binding:
+
+```java
+public class Shape {
+    public void draw() {
+        System.out.println("Drawing a shape");
+    }
+}
+
+public class Circle extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing a circle");
+    }
+}
+```
+
+30. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
+
+An Instance Initializer Block is a block of code that is used to initialize instance variables of a class. It is executed when an instance of the class is created, before the constructor is called.
+
+**Characteristics of Instance Initializer Block:**
+
+- It is executed every time an instance of the class is created.
+- It can access instance variables and methods of the class.
+- It is useful for common initialization code that is shared among multiple constructors.
+- It can be used to initialize instance variables that require more complex logic than simple assignment.
+- It is executed in the order it appears in the class, before the constructor's body.
+
+Example of Instance Initializer Block:
+
+```java
+public class Example {
+    private int value;
+
+    // Instance Initializer Block
+    {
+        value = 10; // Initialization logic
+    }
+
+    public Example() {
+        System.out.println("Constructor called. Value: " + value);
+    }
+}
+```

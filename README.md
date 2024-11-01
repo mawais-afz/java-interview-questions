@@ -4,17 +4,20 @@
 
    Java is a popular, versatile, and object-oriented programming language known for its "write once, run anywhere" capability. It was developed by Sun Microsystems (now owned by Oracle) in 1995. Java is used for developing a wide range of applications, including desktop, web, mobile, and enterprise software.
 
-   Key features of Java include:
+2. **List some important features of Java.**
 
-   - Platform independence
-   - Object-oriented programming
-   - Strong typing
-   - Automatic memory management (garbage collection)
-   - Rich standard library
-   - Extensive ecosystem of frameworks and tools
-   - Multithreaded
+   - **Platform Independence**: Java programs can run on any device that has the Java Virtual Machine (JVM) installed, making them highly portable.
+   - **Object-Oriented**: Java follows the object-oriented programming paradigm, which helps in organizing complex programs into simpler, reusable pieces.
+   - **Robust and Secure**: Java has strong memory management, exception handling, and security features that make it a reliable and secure language.
+   - **Multithreading**: Java supports multithreading, allowing concurrent execution of two or more threads for maximum utilization of CPU.
+   - **Automatic Memory Management**: Java uses garbage collection to automatically manage memory, reducing the risk of memory leaks and other related issues.
+   - **Rich Standard Library**: Java comes with a comprehensive standard library that provides many useful utilities and frameworks for various tasks.
+   - **High Performance**: Java's Just-In-Time (JIT) compiler and efficient runtime environment contribute to its high performance.
+   - **Distributed Computing**: Java supports distributed computing through its networking capabilities, making it suitable for developing large-scale distributed applications.
+   - **Dynamic and Extensible**: Java is designed to adapt to evolving environments, with features like dynamic class loading and reflection.
+   - **Community Support**: Java has a large and active community, providing extensive resources, libraries, and frameworks to support development.
 
-2. **Explain JDK, JRE, and JVM**
+3. **Explain JDK, JRE, and JVM**
 
    | Component | Full Name                | Description                                                                                                                                                                                                                                          |
    | --------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22,7 +25,22 @@
    | JRE       | Java Runtime Environment | Provides the minimum requirements for executing a Java application; it consists of the Java Virtual Machine (JVM), core classes, and supporting files.                                                                                               |
    | JVM       | Java Virtual Machine     | An abstract computing machine that enables a computer to run a Java program. It provides a runtime environment in which Java bytecode can be executed, ensuring platform independence.                                                               |
 
-3. **What is a Java Variable?**
+4. **Name the types of memory allocations in Java.**
+
+   In Java, memory is primarily allocated in two areas:
+
+   - **Stack Memory**: Used for static memory allocation and the execution of a thread. It contains method-specific values that are short-lived and references to objects in the heap that are being referred to from the method.
+   - **Heap Memory**: Used for dynamic memory allocation for Java objects and JRE classes at runtime. New objects are always created in the heap space, and the memory for these objects is managed by the Java Garbage Collector.
+
+   Additionally, there are other memory areas such as:
+
+   - **Method Area**: Stores class structures like metadata, the constant runtime pool, and the code for methods.
+   - **Program Counter (PC) Register**: Contains the address of the Java virtual machine instruction currently being executed.
+   - **Native Method Stack**: Contains all the native method information used in the application.
+
+   These memory areas are part of the Java Memory Model which helps in the efficient execution of Java applications.
+
+5. **What is a Java Variable?**
 
    A Java variable is a named storage location in memory that holds a value of a specific data type. Variables are used to store and manipulate data in a program.
 
@@ -36,7 +54,7 @@
    | Naming Convention | Follows camelCase, starts with a letter, $, or \_                                                                  |
    | Example           | `int age = 25;` or `String name = "John";`                                                                         |
 
-4. **What are variable types?**
+6. **What are variable types?**
 
    | Variable Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
    | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -44,7 +62,7 @@
    | Instance Variables     | - Declared in a class, but outside a method, constructor or any block<br>- Created when an object is created with the 'new' keyword and destroyed when the object is destroyed<br>- Can use access modifiers<br>- Visible for all methods, constructors and blocks in the class<br>- Have default values (0 for numbers, false for boolean, null for object references)<br>- Can be accessed directly by calling the variable name inside the class                                                                                           |
    | Class/Static Variables | - Declared with the static keyword in a class, but outside a method, constructor or block<br>- Only one copy per class, regardless of how many objects are created<br>- Created when the program starts and destroyed when the program stops<br>- Can be declared as public/private, final, and static<br>- Visible for all methods, constructors and blocks in the class<br>- Have default values (0 for numbers, false for boolean, null for object references)<br>- Can be accessed by calling with the class name: ClassName.VariableName |
 
-5. **What are data types?**
+7. **What are data types?**
 
    Data types in Java specify the type of data that can be stored in a variable. Java has two categories of data types:
 
@@ -64,52 +82,33 @@
 
    Primitive types are predefined by the language and named by a keyword. Reference data types are created by the programmer and are not defined by the language (except for String).
 
-6. **What are Data Type?**
-
-   Data types define the type and value range of the data for the different types of variables, constants, method parameters, returns type.
-
-   | Data Type | Default Value | Default Size | Range                |
-   | --------- | ------------- | ------------ | -------------------- |
-   | byte      | 0             | 1 byte       | -128 to 127          |
-   | short     | 0             | 2 bytes      | -32,768 to 32,767    |
-   | int       | 0             | 4 bytes      | -2^31 to 2^31-1      |
-   | long      | 0L            | 8 bytes      | -2^63 to 2^63-1      |
-   | float     | 0.0f          | 4 bytes      | 3.4e−038 to 3.4e+038 |
-   | double    | 0.0d          | 8 bytes      | 1.7e−308 to 1.7e+308 |
-   | boolean   | false         | 1 bit        | true or false        |
-   | char      | '\u0000'      | 2 bytes      | 0 to 65,535          |
-
-   There are two categories of data types in Java:
-
-   1. Primitive Data Types: These include byte, short, int, long, float, double, boolean and char.
-
-   2. Reference/Object Data Types: These include Class objects, Arrays, and Interfaces.
-
-7. **What is Type Casting (Type Conversion)**
+8. **What is Type Casting (Type Conversion)**
 
    Type casting is the process of converting a value from one data type to another in Java. There are two types of type casting:
 
    1. Widening Casting (Implicit) - automatically converting a smaller type to a larger type size
       `byte -> short -> char -> int -> long -> float -> double`
 
-      - **Example**:
+   - **Example**:
 
-      ```java
-      byte byteValue = 10;
-      int intValue = byteValue; // Widening casting from byte to int
-      ```
+   ```java
+   byte byteValue = 10;
+   int intValue = byteValue; // Widening casting from byte to int
+   ```
 
    2. Narrowing Casting (Explicit) - manually converting a larger type to a smaller size type
       `double -> float -> long -> int -> char -> short -> byte`
-      - **Example**:
-      ```java
-      double doubleValue = 9.78;
-      int intValue = (int) doubleValue; // Narrowing casting from double to int
-      ```
+
+   - **Example**:
+
+   ```java
+   double doubleValue = 9.78;
+   int intValue = (int) doubleValue; // Narrowing casting from double to int
+   ```
 
    Widening casting is done automatically when passing a smaller size type to a larger size type. Narrowing casting must be done manually by placing the type in parentheses in front of the value.
 
-8. **What are Operators? What are the types of Operators?**
+9. **What are Operators? What are the types of Operators?**
 
    Java operators are symbols that perform operations on variables and values. They allow us to execute various operations such as addition, subtraction, and comparisons. The different types of operators in Java are as follows:
 
@@ -124,32 +123,40 @@
 
 # Control Statements
 
-9. **What are loops? What are the types of loops?**
+10. **What are loops? What are the types of loops?**
 
-   Loops are control structures that allow you to execute a block of code multiple times, depending on a specified condition. In Java, there are several types of loops that you can use to handle repetitive tasks:
+    Loops are control structures that allow you to execute a block of code multiple times, depending on a specified condition. In Java, there are several types of loops that you can use to handle repetitive tasks:
 
-   1. **while loop**: Repeats a statement or a group of statements while a given condition is true. The condition is evaluated before the execution of the loop body.
-   2. **for loop**: Executes a sequence of statements multiple times and is typically used when the number of iterations is known beforehand. It includes initialization, condition, and increment/decrement in a single line.
+    1. **while loop**: Repeats a statement or a group of statements while a given condition is true. The condition is evaluated before the execution of the loop body.
 
-   3. **do...while loop**: Similar to the while loop, but it tests the condition at the end of the loop body, ensuring that the loop body is executed at least once.
+    2. **for loop**: Executes a sequence of statements multiple times and is typically used when the number of iterations is known beforehand. It includes initialization, condition, and increment/decrement in a single line.
 
-   4. **Enhanced for loop (for-each loop)**: Introduced in Java 5, this loop is used to iterate over collections and arrays, simplifying the syntax for traversing elements.
+    3. **do...while loop**: Similar to the while loop, but it tests the condition at the end of the loop body, ensuring that the loop body is executed at least once.
 
-10. **What are Loop Control Statements? What are the types of Loop Control Statements?**
+    4. **Enhanced for loop (for-each loop)**: Introduced in Java 5, this loop is used to iterate over collections and arrays, simplifying the syntax for traversing elements.
 
-      Loop control statements are used to alter the flow of control in loops. They allow you to manage the execution of loop iterations based on certain conditions. The types of loop control statements in Java include:
+11. **What are Loop Control Statements? What are the types of Loop Control Statements?**
 
-       1.  **break statement**: Exits the loop immediately, skipping any remaining iterations.
-       2.  **continue statement**: Skips the current iteration and proceeds to the next iteration of the loop.
-       3.  **return statement**: Exits from the current method and returns control to the calling method, which can also affect loop execution if used within a loop.
+    Loop control statements are used to alter the flow of control in loops. They allow you to manage the execution of loop iterations based on certain conditions. The types of loop control statements in Java include:
 
-11. **What is Decision Making? What are the types of Decision Making?**
+    1.  **break statement**: Exits the loop immediately, skipping any remaining iterations.
+    2.  **continue statement**: Skips the current iteration and proceeds to the next iteration of the loop.
+    3.  **return statement**: Exits from the current method and returns control to the calling method, which can also affect loop execution if used within a loop.
 
-      Decision making in programming refers to the process of making choices based on certain conditions. It allows the program to execute different paths of code based on the evaluation of these conditions. In Java, decision-making is primarily achieved through control statements.
+12. **What is Decision Making? What are the types of Decision Making?**
 
-      | Type of Decision Making | Description                                                                 |
-      |-------------------------|-----------------------------------------------------------------------------|
-      | **if statement**        | Executes a block of code if a specified condition is true.                 |
-      | **if-else statement**   | Executes one block of code if the condition is true, and another block if it is false. |
-      | **else if statement**   | Allows checking multiple conditions sequentially.                           |
-      | **switch statement**    | Selects one of many code blocks to execute based on the value of a variable. |
+    Decision making in programming refers to the process of making choices based on certain conditions. It allows the program to execute different paths of code based on the evaluation of these conditions. In Java, decision-making is primarily achieved through control statements.
+
+    | Type of Decision Making | Description                                                                            |
+    | ----------------------- | -------------------------------------------------------------------------------------- |
+    | **if statement**        | Executes a block of code if a specified condition is true.                             |
+    | **if-else statement**   | Executes one block of code if the condition is true, and another block if it is false. |
+    | **else if statement**   | Allows checking multiple conditions sequentially.                                      |
+    | **switch statement**    | Selects one of many code blocks to execute based on the value of a variable.           |
+
+# Object Oriented Programming
+
+13. **What is Object Oriented Programming?**
+
+    Object-oriented programming (OOP) is a programming paradigm based on the concept of "objects", which can contain data in the form of fields (often known as attributes or properties) and code in the form of procedures (often known as methods).
+

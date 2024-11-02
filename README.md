@@ -1,6 +1,6 @@
 # Java Interview Questions
 
-## Java Basics
+## Java Basics, JVM Internals & Language Components
 
 1. **What is Java?**
 
@@ -48,27 +48,31 @@
    Java's memory structure consists of several key areas:
 
    1. **Stack Memory**:
+
       - Used for storing method frames and local variables
       - Follows Last-In-First-Out (LIFO) order
       - Automatically allocated and deallocated
       - Thread-specific - each thread has its own stack
       - Stores primitive values and object references
 
-   2. **Heap Memory**: 
+   2. **Heap Memory**:
+
       - Shared runtime memory area
       - Stores all objects and arrays
       - Managed by Garbage Collector
       - Divided into:
-         - Young Generation (Eden Space, Survivor Spaces)
-         - Old Generation
-         - Permanent Generation (Removed in Java 8+)
+        - Young Generation (Eden Space, Survivor Spaces)
+        - Old Generation
+        - Permanent Generation (Removed in Java 8+)
 
    3. **Method Area (Metaspace)**:
+
       - Stores class metadata, methods, and static variables
       - Shared across all threads
       - Part of native memory (not heap) since Java 8
 
    4. **Program Counter (PC) Register**:
+
       - Per-thread register
       - Holds address of current executing instruction
       - Helps with thread execution management
@@ -80,22 +84,22 @@
 
    Each memory area serves a specific purpose in Java's memory management system, contributing to the language's efficiency and reliability.
 
-5. **What are the differences between Heap and Stack Memory in Java?**
+6. **What are the differences between Heap and Stack Memory in Java?**
 
-   | Aspect | Stack Memory | Heap Memory |
-   |--------|--------------|-------------|
-   | Memory Type | Static memory allocation | Dynamic memory allocation |
-   | Access Speed | Faster access | Relatively slower access |
-   | Memory Management | Automatic (LIFO order) | Manual allocation, automatic deallocation by GC |
-   | Size | Smaller, fixed size | Larger, flexible size |
-   | Thread Safety | Each thread has own stack | Shared across all threads |
-   | Storage | Primitive values, method frames, local variables, references | Objects, arrays, class instances |
-   | Lifetime | Short-lived - exists for method duration | Objects persist until no references remain |
-   | Memory Order | Contiguous memory blocks | No specific memory order |
-   | Memory Control | Size controlled by JVM (-Xss) | Initial/Max size controlled by JVM (-Xms/-Xmx) |
-   | Memory Errors | StackOverflowError | OutOfMemoryError |
+   | Aspect            | Stack Memory                                                 | Heap Memory                                     |
+   | ----------------- | ------------------------------------------------------------ | ----------------------------------------------- |
+   | Memory Type       | Static memory allocation                                     | Dynamic memory allocation                       |
+   | Access Speed      | Faster access                                                | Relatively slower access                        |
+   | Memory Management | Automatic (LIFO order)                                       | Manual allocation, automatic deallocation by GC |
+   | Size              | Smaller, fixed size                                          | Larger, flexible size                           |
+   | Thread Safety     | Each thread has own stack                                    | Shared across all threads                       |
+   | Storage           | Primitive values, method frames, local variables, references | Objects, arrays, class instances                |
+   | Lifetime          | Short-lived - exists for method duration                     | Objects persist until no references remain      |
+   | Memory Order      | Contiguous memory blocks                                     | No specific memory order                        |
+   | Memory Control    | Size controlled by JVM (-Xss)                                | Initial/Max size controlled by JVM (-Xms/-Xmx)  |
+   | Memory Errors     | StackOverflowError                                           | OutOfMemoryError                                |
 
-6. **What is a Java Variable?**
+7. **What is a Java Variable?**
 
    A Java variable is a named storage location in memory that holds a value of a specific data type. Variables are used to store and manipulate data in a program.
 
@@ -109,7 +113,7 @@
    | Naming Convention | Follows camelCase, starts with a letter, $, or \_                                                                  |
    | Example           | `int age = 25;` or `String name = "John";`                                                                         |
 
-7. **What are variable types?**
+8. **What are variable types?**
 
    | Variable Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
    | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -117,7 +121,7 @@
    | Instance Variables     | - Declared in a class, but outside a method, constructor or any block<br>- Created when an object is created with the 'new' keyword and destroyed when the object is destroyed<br>- Can use access modifiers<br>- Visible for all methods, constructors and blocks in the class<br>- Have default values (0 for numbers, false for boolean, null for object references)<br>- Can be accessed directly by calling the variable name inside the class                                                                                           |
    | Class/Static Variables | - Declared with the static keyword in a class, but outside a method, constructor or block<br>- Only one copy per class, regardless of how many objects are created<br>- Created when the program starts and destroyed when the program stops<br>- Can be declared as public/private, final, and static<br>- Visible for all methods, constructors and blocks in the class<br>- Have default values (0 for numbers, false for boolean, null for object references)<br>- Can be accessed by calling with the class name: ClassName.VariableName |
 
-8. **What are data types?**
+9. **What are data types?**
 
    Data types in Java specify the type of data that can be stored in a variable. Java has two categories of data types:
 
@@ -137,44 +141,44 @@
 
    Primitive types are predefined by the language and named by a keyword. Reference data types are created by the programmer and are not defined by the language (except for String).
 
-9. **What is Type Casting (Type Conversion)**
+10. **What is Type Casting (Type Conversion)**
 
-   Type casting is the process of converting a value from one data type to another in Java. There are two types of type casting:
+    Type casting is the process of converting a value from one data type to another in Java. There are two types of type casting:
 
-   1. Widening Casting (Implicit) - automatically converting a smaller type to a larger type size
-      `byte -> short -> char -> int -> long -> float -> double`
+    1. Widening Casting (Implicit) - automatically converting a smaller type to a larger type size
+       `byte -> short -> char -> int -> long -> float -> double`
 
-   - **Example**:
+    - **Example**:
 
-   ```java
-   byte byteValue = 10;
-   int intValue = byteValue; // Widening casting from byte to int
-   ```
+    ```java
+    byte byteValue = 10;
+    int intValue = byteValue; // Widening casting from byte to int
+    ```
 
-   1. Narrowing Casting (Explicit) - manually converting a larger type to a smaller size type
-      `double -> float -> long -> int -> char -> short -> byte`
+    1. Narrowing Casting (Explicit) - manually converting a larger type to a smaller size type
+       `double -> float -> long -> int -> char -> short -> byte`
 
-   - **Example**:
+    - **Example**:
 
-   ```java
-   double doubleValue = 9.78;
-   int intValue = (int) doubleValue; // Narrowing casting from double to int
-   ```
+    ```java
+    double doubleValue = 9.78;
+    int intValue = (int) doubleValue; // Narrowing casting from double to int
+    ```
 
-   Widening casting is done automatically when passing a smaller size type to a larger size type. Narrowing casting must be done manually by placing the type in parentheses in front of the value.
+    Widening casting is done automatically when passing a smaller size type to a larger size type. Narrowing casting must be done manually by placing the type in parentheses in front of the value.
 
-10. **What are Operators? What are the types of Operators?**
+11. **What are Operators? What are the types of Operators?**
 
-   Java operators are symbols that perform operations on variables and values. They allow us to execute various operations such as addition, subtraction, and comparisons. The different types of operators in Java are as follows:
+    Java operators are symbols that perform operations on variables and values. They allow us to execute various operations such as addition, subtraction, and comparisons. The different types of operators in Java are as follows:
 
-   | Operator Type           | Description                                                                               |
-   | ----------------------- | ----------------------------------------------------------------------------------------- |
-   | Arithmetic Operators    | Used for mathematical calculations (+, -, \*, /, %, ++, --).                              |
-   | Relational Operators    | Used to compare two values (==, !=, >, <, >=, <=, ===, !==).                              |
-   | Bitwise Operators       | Operate on bits and perform bit-by-bit operations (&, \|, ^, ~, <<, >>, >>>).             |
-   | Logical Operators       | Used to combine multiple boolean expressions (&&, \|\| ,!).                               |
-   | Assignment Operators    | Used to assign values to variables (=, +=, -=, \*=, /=, %=, &=, \|=, ^=, <<=, >>=, >>>=). |
-   | Miscellaneous Operators | Includes conditional (ternary) operator (`? :`), instanceof operator (`instanceof`).      |
+    | Operator Type           | Description                                                                               |
+    | ----------------------- | ----------------------------------------------------------------------------------------- |
+    | Arithmetic Operators    | Used for mathematical calculations (+, -, \*, /, %, ++, --).                              |
+    | Relational Operators    | Used to compare two values (==, !=, >, <, >=, <=, ===, !==).                              |
+    | Bitwise Operators       | Operate on bits and perform bit-by-bit operations (&, \|, ^, ~, <<, >>, >>>).             |
+    | Logical Operators       | Used to combine multiple boolean expressions (&&, \|\| ,!).                               |
+    | Assignment Operators    | Used to assign values to variables (=, +=, -=, \*=, /=, %=, &=, \|=, ^=, <<=, >>=, >>>=). |
+    | Miscellaneous Operators | Includes conditional (ternary) operator (`? :`), instanceof operator (`instanceof`).      |
 
 11. **What are loops? What are the types of loops?**
 
@@ -207,15 +211,134 @@
     | **else if statement**   | Allows checking multiple conditions sequentially.                                      |
     | **switch statement**    | Selects one of many code blocks to execute based on the value of a variable.           |
 
+15. **What are wrapper classes in Java?**
+
+    Wrapper classes in Java are used to convert primitive data types into objects. Each primitive type has a corresponding wrapper class that provides a way to use these primitives as objects. This is particularly useful in situations where objects are required, such as in collections like ArrayList. The wrapper classes in Java include:
+
+    - **Integer**: for int
+    - **Double**: for double
+    - **Character**: for char
+    - **Boolean**: for boolean
+    - **Byte**: for byte
+    - **Short**: for short
+    - **Long**: for long
+    - **Float**: for float
+
+    Wrapper classes also provide utility methods for converting between types, performing operations, and handling null values. For example, the Integer class has methods for parsing strings into integers and vice versa. By using wrapper classes, you can take advantage of the features of object-oriented programming while still working with primitive data types.
+
+16. **What is the difference between final, finally and finalize keywords in Java?**
+
+    Here's a comparison of final, finally, and finalize keywords in Java:
+
+    1. **final**:
+
+       - Used to make variables, methods, or classes unchangeable/non-inheritable
+       - Variables become constants
+       - Methods cannot be overridden
+       - Classes cannot be inherited
+
+         ```java
+         final class FinalExample {
+             final int constant = 100;
+
+             final void cannotOverride() {
+                 System.out.println("This method cannot be overridden");
+             }
+         }
+         ```
+
+    2. **finally**:
+
+       - Used with try-catch blocks
+       - Code in finally block always executes whether exception occurs or not
+       - Used for cleanup operations like closing resources
+
+         ```java
+         try {
+             // Some code that may throw exception
+             FileReader file = new FileReader("file.txt");
+         } catch (Exception e) {
+             // Handle exception
+             System.out.println("Error: " + e.getMessage());
+         } finally {
+             // Always executes
+             System.out.println("Finally block executed");
+             // Close resources here
+         }
+         ```
+
+    3. **finalize**:
+
+       - Method called by garbage collector before destroying object
+       - Used to perform cleanup operations before object is garbage collected
+       - Deprecated since Java 9
+
+         ```java
+         public class FinalizeExample {
+             protected void finalize() throws Throwable {
+                 try {
+                     // Cleanup operations
+                     System.out.println("Finalize method called");
+                 } finally {
+                     super.finalize();
+                 }
+             }
+         }
+         ```
+
+17. **When can you use super keyword?**
+
+    The `super` keyword in Java can be used in the following scenarios:
+
+    1. **Call Parent Class Methods**:
+
+       - When a method is overridden, use `super` to call the parent version
+       - Example: `super.methodName()`
+
+    2. **Access Parent Class Fields**:
+
+       - Access fields from parent class that might be hidden by child class
+       - Example: `super.fieldName`
+
+    3. **Call Parent Class Constructor**:
+       - Must be first statement in constructor
+       - Example: `super()` or `super(parameters)`
+
+    Example:
+
+    ```java
+    class Parent {
+        String name = "Parent";
+        void display() {
+            System.out.println("Parent method");
+        }
+    }
+
+    class Child extends Parent {
+        String name = "Child";
+
+        Child() {
+            super(); // Call parent constructor
+        }
+
+        void display() {
+            super.display(); // Call parent method
+            System.out.println(super.name); // Access parent field
+        }
+    }
+    ```
+
+## Object-Oriented Programming (OOP) Concepts
+
 14. **Why is Java not considered to be purely object-oriented?**
 
     Java is not considered to be purely object-oriented because it supports primitive data types (such as int, char, boolean, byte, short, long, float, and double) that are not objects. In a purely object-oriented language, everything is treated as an object, and all data types would be defined as classes. While Java provides wrapper classes for these primitive types (e.g., Integer for int, Character for char, Boolean for boolean, Byte for byte, Short for short, Long for long, Float for float, and Double for double), the existence of primitives means that Java does not fully adhere to the principles of pure object-oriented programming. Additionally, Java allows for static methods and variables, which are not associated with any object instance, further distinguishing it from purely object-oriented languages.
 
-15. **What is OOP?**
+18. **What is OOP?**
 
     Object-oriented programming (OOP) is a programming paradigm based on the concept of "objects", which can contain data in the form of fields (often known as attributes or properties) and code in the form of procedures (often known as methods).
 
-16. **What are the pillars of OOP?**
+19. **What are the pillars of OOP?**
 
     The four pillars of Object-Oriented Programming (OOP) are:
 
@@ -226,7 +349,7 @@
     5. **Polymorphism**: The ability of different classes to be treated as instances of the same class through a common interface, allowing for the implementation of methods in different ways.
     6. **Abstraction**: The concept of hiding the complex implementation details and showing only the necessary features of an object, simplifying the interaction with the object.
 
-17. **What are classes and objects? Why use them in applications?**
+20. **What are classes and objects? Why use them in applications?**
 
     Classes are blueprints for creating objects in object-oriented programming. They define the properties (attributes) and behaviors (methods) that the objects created from the class will have. An object is an instance of a class, representing a specific entity with its own state and behavior.
 
@@ -244,7 +367,7 @@
 
     Overall, classes and objects are fundamental to organizing and structuring code in a way that reflects real-world entities and their interactions.
 
-18. **How to implement classes and objects in Java? What are the members of a class?**
+21. **How to implement classes and objects in Java? What are the members of a class?**
 
     To implement classes and objects in Java, you need to follow these steps:
 
@@ -287,7 +410,7 @@
 
     In this example, the `Car` class is defined with members including attributes, a constructor, and a method. Two objects of the `Car` class are created in the `Main` class, demonstrating how to implement classes and objects in Java.
 
-19. **What is the role and benefit of package in Java?**
+22. **What is the role and benefit of package in Java?**
 
     In Java, a package is a namespace that organizes a set of related classes and interfaces. The primary role of packages is to group related classes together, which helps in avoiding name conflicts and controlling access.
 
@@ -305,7 +428,7 @@
 
     Overall, packages play a crucial role in structuring Java applications, enhancing maintainability, and promoting best practices in software development.
 
-20. **What are access specifiers? What are the types of access specifiers?**
+23. **What are access specifiers? What are the types of access specifiers?**
 
     Access specifiers in Java are keywords that set the accessibility (visibility) of classes, methods, and other members. They control how the members of a class can be accessed from other classes. The main types of access specifiers in Java are:
 
@@ -319,7 +442,7 @@
 
     By using access specifiers, developers can implement encapsulation, which is a fundamental principle of object-oriented programming, ensuring that the internal representation of an object is hidden from the outside.
 
-21. **What are constructors in Java?**
+24. **What are constructors in Java?**
 
     Constructors in Java are special methods that are called when an object is instantiated. They have the same name as the class and do not have a return type, not even void. Constructors are used to initialize the object's attributes and allocate memory for the object. There are two types of constructors in Java:
 
@@ -351,7 +474,7 @@
 
     ```
 
-22. **What is the difference between constructor and method?**
+25. **What is the difference between constructor and method?**
 
     | Aspect           | Constructor                                                      | Method                                                      |
     | ---------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -380,7 +503,7 @@
     }
     ```
 
-23. **Explain the constructor overloading**
+26. **Explain the constructor overloading**
 
     Constructor overloading is a technique in Java where a class can have multiple constructors with different parameter lists. Each constructor provides a different way to initialize an object of that class. The constructors must differ in their parameter lists (number of parameters, types of parameters, or both).
 
@@ -431,7 +554,7 @@
     Student s4 = new Student("Mike", 21, "A");          // Uses constructor with all parameters
     ```
 
-24. **What is Copy Constructor in Java?**
+27. **What is Copy Constructor in Java?**
 
     A Copy Constructor in Java is a constructor that creates a new object by copying the values from another object of the same class. It takes an object of the same class as a parameter and creates a new object with the same values. Copy constructors are useful when you want to create a new object with the same state as an existing object.
 
@@ -462,7 +585,7 @@
 
     Note that Java does not provide automatic copy constructors like C++. You need to implement them explicitly if needed. Also, when dealing with reference types, be careful to perform a deep copy if required, to avoid sharing references between the original and copied objects.
 
-25. **What is a Singleton class in Java?**
+28. **What is a Singleton class in Java?**
 
     A Singleton class in Java is a design pattern that restricts the instantiation of a class to a single instance. This is useful when exactly one object is needed to coordinate actions across the system. The Singleton pattern ensures that a class has only one instance and provides a global point of access to that instance.
 
@@ -493,22 +616,7 @@
 
     In this example, the `Singleton` class has a private constructor, a static instance variable, and a public static method `getInstance()` that provides access to the single instance of the class. This ensures that no more than one instance of the `Singleton` class can exist at any time.
 
-26. **What are wrapper classes in Java?**
-
-    Wrapper classes in Java are used to convert primitive data types into objects. Each primitive type has a corresponding wrapper class that provides a way to use these primitives as objects. This is particularly useful in situations where objects are required, such as in collections like ArrayList. The wrapper classes in Java include:
-
-    - **Integer**: for int
-    - **Double**: for double
-    - **Character**: for char
-    - **Boolean**: for boolean
-    - **Byte**: for byte
-    - **Short**: for short
-    - **Long**: for long
-    - **Float**: for float
-
-    Wrapper classes also provide utility methods for converting between types, performing operations, and handling null values. For example, the Integer class has methods for parsing strings into integers and vice versa. By using wrapper classes, you can take advantage of the features of object-oriented programming while still working with primitive data types.
-
-27. **What is encapsulation in Java?**
+29. **What is encapsulation in Java?**
 
     Encapsulation is a fundamental concept in object-oriented programming that refers to the practice of enclosing the data (attributes) and methods (functions) that manipulate the data within a single unit, known as a class. In Java, encapsulation is achieved through the use of access modifiers (private, protected, and public), which control the visibility of class members. This mechanism ensures that the internal state of an object is not directly accessible from outside the class, promoting a controlled interface for interaction. By implementing encapsulation, you improve data security, enhance code maintainability, and reduce the likelihood of unintended modifications to an object's state.
 
@@ -537,7 +645,7 @@
     }
     ```
 
-28. **What is inheritance in Java?**
+30. **What is inheritance in Java?**
 
     Inheritance is a fundamental concept in object-oriented programming that allows a class to inherit properties and behaviors from another class. In Java, inheritance is implemented using the extends keyword, which establishes a hierarchical relationship between classes. The subclass (child class) inherits attributes and methods from the superclass (parent class), and can also add its own unique attributes and methods. This mechanism promotes code reuse, simplifies maintenance, and allows for the creation of more specialized classes based on existing ones.
 
@@ -573,7 +681,7 @@
 
     In this example, the `Dog` class inherits the properties and behaviors of the `Animal` class, including the `name` field and the `eat()` and `sleep()` methods. The `Dog` class also adds its own unique behavior, the `bark()` method.
 
-29. **What is polymorphism in Java?**
+31. **What is polymorphism in Java?**
 
     Polymorphism is a core concept in object-oriented programming that allows objects of different classes to be treated as instances of a common superclass. In Java, polymorphism is achieved through method overriding and method overloading. Method overriding allows a subclass to provide a specific implementation of a method that is already defined in its parent class, while method overloading enables multiple methods in the same class to have the same name but different parameters, allowing for different behaviors based on the number and type of arguments passed. This flexibility promotes code reusability and simplifies the design of complex systems by allowing objects to take on multiple forms or behaviors.
 
@@ -611,7 +719,7 @@
     }
     ```
 
-30. **What is the difference between loose coupling and tight coupling?**
+32. **What is the difference between loose coupling and tight coupling?**
 
     Loose coupling refers to a design principle in which components or classes are minimally dependent on each other, allowing for greater flexibility and easier maintenance. In a loosely coupled system, changes in one component have little to no impact on others, making it easier to modify or replace parts of the system without affecting the overall functionality.
 
@@ -681,7 +789,7 @@
     	```
     ````
 
-31. **What is the difference between cohesion and coupling?**
+33. **What is the difference between cohesion and coupling?**
 
     | Aspect     | Cohesion                                                                 | Coupling                                                                              |
     | ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
@@ -734,7 +842,7 @@
     }
     ```
 
-32. **What is a Marker Interface?**
+34. **What is a Marker Interface?**
 
     A Marker Interface in Java is an interface that does not contain any methods. It is used to mark a class that implements it, indicating that the class has a specific property or behavior. Marker interfaces are often used to indicate that a class has a particular characteristic or capability, such as being serializable, cloneable, or thread-safe.
     Here are some examples of commonly used marker interfaces in Java:
@@ -778,7 +886,7 @@
     - `Cloneable`: Marks classes that can be cloned
     - `Remote`: Marks classes that can be used for RMI (Remote Method Invocation)
 
-33. **What is the difference between abstract class and interface in Java?**
+35. **What is the difference between abstract class and interface in Java?**
 
     | Aspect                | Abstract Class                                                                       | Interface                                                                                                               |
     | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
@@ -789,7 +897,7 @@
     | Access Modifiers      | Can have access modifiers (public, protected, private).                              | All methods are public by default; cannot have access modifiers.                                                        |
     | Use Case              | Used when classes share a common base and behavior.                                  | Used to define a contract that implementing classes must follow.                                                        |
 
-34. **What is the difference between composition, aggregation, and association?**
+36. **What is the difference between composition, aggregation, and association?**
 
     | Aspect     | Composition                                                                     | Aggregation                                                                  | Association                                                                                 |
     | ---------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -859,7 +967,7 @@
     }
     ```
 
-35. **What is the difference between method overloading and overriding in Java?**
+37. **What is the difference between method overloading and overriding in Java?**
 
 - **Method Overloading**: This occurs when multiple methods in the same class have the same name but different parameters (different type, number, or both). It allows methods to perform similar functions with different inputs. Overloading is resolved at compile time.
 
@@ -1023,107 +1131,3 @@ public class Circle extends Shape {
     // This would cause compilation error:
     // class ChildClass extends FinalClass { } // Cannot extend final class
     ```
-
-33. **What is the difference between final, finally and finalize keywords in Java?**
-
-    Here's a comparison of final, finally, and finalize keywords in Java:
-
-    1. **final**:
-
-       - Used to make variables, methods, or classes unchangeable/non-inheritable
-       - Variables become constants
-       - Methods cannot be overridden
-       - Classes cannot be inherited
-
-         ```java
-         final class FinalExample {
-             final int constant = 100;
-
-             final void cannotOverride() {
-                 System.out.println("This method cannot be overridden");
-             }
-         }
-         ```
-
-    2. **finally**:
-
-       - Used with try-catch blocks
-       - Code in finally block always executes whether exception occurs or not
-       - Used for cleanup operations like closing resources
-
-         ```java
-         try {
-             // Some code that may throw exception
-             FileReader file = new FileReader("file.txt");
-         } catch (Exception e) {
-             // Handle exception
-             System.out.println("Error: " + e.getMessage());
-         } finally {
-             // Always executes
-             System.out.println("Finally block executed");
-             // Close resources here
-         }
-         ```
-
-    3. **finalize**:
-
-       - Method called by garbage collector before destroying object
-       - Used to perform cleanup operations before object is garbage collected
-       - Deprecated since Java 9
-
-         ```java
-         public class FinalizeExample {
-             protected void finalize() throws Throwable {
-                 try {
-                     // Cleanup operations
-                     System.out.println("Finalize method called");
-                 } finally {
-                     super.finalize();
-                 }
-             }
-         }
-         ```
-
-34. **When can you use super keyword?**
-
-    The `super` keyword in Java can be used in the following scenarios:
-
-    1. **Call Parent Class Methods**:
-
-       - When a method is overridden, use `super` to call the parent version
-       - Example: `super.methodName()`
-
-    2. **Access Parent Class Fields**:
-
-       - Access fields from parent class that might be hidden by child class
-       - Example: `super.fieldName`
-
-    3. **Call Parent Class Constructor**:
-       - Must be first statement in constructor
-       - Example: `super()` or `super(parameters)`
-
-    Example:
-
-    ```java
-    class Parent {
-        String name = "Parent";
-        void display() {
-            System.out.println("Parent method");
-        }
-    }
-
-    class Child extends Parent {
-        String name = "Child";
-
-        Child() {
-            super(); // Call parent constructor
-        }
-
-        void display() {
-            super.display(); // Call parent method
-            System.out.println(super.name); // Access parent field
-        }
-    }
-    ```
-
-

@@ -6,7 +6,7 @@
 6. Java 8 and Newer Features
 7. Java Input/Output (I/O)
 8. Networking in Java
-9.  Java Memory Management
+9. Java Memory Management
 10. Java Annotations
 11. Database Connectivity
 12. Testing in Java

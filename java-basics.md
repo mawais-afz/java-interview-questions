@@ -508,7 +508,35 @@
     | Assignment Operators    | Used to assign values to variables (=, +=, -=, \*=, /=, %=, &=, \|=, ^=, <<=, >>=, >>>=). |
     | Miscellaneous Operators | Includes conditional (ternary) operator (`? :`), instanceof operator (`instanceof`).      |
 
-21. **What are loops? What are the types of loops?**
+21. **What is the difference between ++a and a++ increment operators?**
+
+    The ++a (pre-increment) and a++ (post-increment) operators both increment a variable by 1, but they differ in when the increment occurs and what value is returned:
+
+    **Pre-increment (++a)**:
+
+    - Increments the value first, then returns the incremented value
+    - The increment happens before the value is used in the expression
+
+    **Post-increment (a++)**:
+
+    - Returns the original value first, then increments
+    - The increment happens after the value is used in the expression
+
+    Example:
+
+    ```java
+    int a = 5;
+    int b = ++a;  // a is incremented to 6, then b gets 6
+    // Now a = 6, b = 6
+
+    int x = 5;
+    int y = x++;  // y gets 5, then x is incremented to 6
+    // Now x = 6, y = 5
+    ```
+
+    This difference is particularly important in expressions and method calls where the returned value matters.
+
+22. **What are loops? What are the types of loops?**
 
     Loops are control structures that allow you to execute a block of code multiple times, depending on a specified condition. In Java, there are several types of loops that you can use to handle repetitive tasks:
 
@@ -520,7 +548,32 @@
 
     4. **Enhanced for loop (for-each loop)**: Introduced in Java 5, this loop is used to iterate over collections and arrays, simplifying the syntax for traversing elements.
 
-22. **What are Loop Control Statements? What are the types of Loop Control Statements?**
+23. **What are control statements in Java?**
+
+    Control statements in Java are programming constructs that control the flow of program execution. They determine which parts of code are executed and in what order, based on certain conditions or requirements. The main types of control statements in Java are:
+
+    1. **Selection/Conditional/Decision Making Statements**:
+
+       - if statements
+       - if-else statements
+       - switch statements
+       - nested if statements
+
+    2. **Iterative/Loop Statements**:
+
+       - for loops
+       - while loops
+       - do-while loops
+       - enhanced for loops
+
+    3. **Jump Statements**:
+       - break statement
+       - continue statement
+       - return statement
+
+    These statements allow programmers to create complex program logic and control program flow based on different conditions and requirements.
+
+24. **What are Loop Control Statements? What are the types of Loop Control Statements?**
 
     Loop control statements are used to alter the flow of control in loops. They allow you to manage the execution of loop iterations based on certain conditions. The types of loop control statements in Java include:
 
@@ -528,7 +581,7 @@
     2. **continue statement**: Skips the current iteration and proceeds to the next iteration of the loop.
     3. **return statement**: Exits from the current method and returns control to the calling method, which can also affect loop execution if used within a loop.
 
-23. **What is Decision Making? What are the types of Decision Making?**
+25. **What is Decision Making? What are the types of Decision Making?**
 
     Decision making in programming refers to the process of making choices based on certain conditions. It allows the program to execute different paths of code based on the evaluation of these conditions. In Java, decision-making is primarily achieved through control statements.
 
@@ -539,7 +592,44 @@
     | **else if statement**   | Allows checking multiple conditions sequentially.                                      |
     | **switch statement**    | Selects one of many code blocks to execute based on the value of a variable.           |
 
-24. **What are wrapper classes in Java?**
+26. **What is the difference between a while loop and a do-while loop?**
+
+    | Aspect                 | while loop                                                             | do-while loop                                                |
+    | ---------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------ |
+    | **Condition Check**    | Checks condition before executing the loop body                        | Checks condition after executing the loop body               |
+    | **Minimum Executions** | Zero or more times (may never execute if condition is initially false) | At least once (executes first, then checks condition)        |
+    | **Syntax**             | `while(condition) { statements }`                                      | `do { statements } while(condition);`                        |
+    | **Use Case**           | When you need to check a condition before executing any statements     | When you want to ensure the loop body executes at least once |
+    | **Exit Control**       | Entry controlled loop - may exit before first execution                | Exit controlled loop - can only exit after first execution   |
+
+27. **What is the difference between a for loop and an enhanced for loop?**
+
+    | Aspect            | for loop                                                  | enhanced for loop/for-each loop                            |
+    | ----------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
+    | **Syntax**        | `for(init; condition; increment) { statements }`          | `for(type element : array/collection) { statements }`      |
+    | **Use Case**      | When you need control over loop iteration and index       | When you want to iterate through all elements sequentially |
+    | **Index Access**  | Has direct access to loop counter/index                   | No direct access to index                                  |
+    | **Flexibility**   | More flexible - can iterate in any order or skip elements | Less flexible - must iterate through all elements in order |
+    | **Applicable On** | Arrays, collections, and general counting/iteration       | Only arrays and collections (Iterable objects)             |
+    | **Modification**  | Can modify array/collection elements during iteration     | Modification during iteration not recommended              |
+
+    Example of for loop:
+
+    ```java
+    for(int i = 0; i < array.length; i++) {
+        System.out.println(array[i]);
+    }
+    ```
+
+    Example of enhanced for loop:
+
+    ```java
+    for(int element : array) {
+        System.out.println(element);
+    }
+    ```
+
+28. **What are wrapper classes in Java?**
 
     Wrapper classes in Java are used to convert primitive data types into objects. Each primitive type has a corresponding wrapper class that provides a way to use these primitives as objects. This is particularly useful in situations where objects are required, such as in collections like ArrayList. The wrapper classes in Java include:
 
@@ -554,7 +644,7 @@
 
     Wrapper classes also provide utility methods for converting between types, performing operations, and handling null values. For example, the Integer class has methods for parsing strings into integers and vice versa. By using wrapper classes, you can take advantage of the features of object-oriented programming while still working with primitive data types.
 
-25. **Distinguish between static loading and dynamic class loading?**
+29. **Distinguish between static loading and dynamic class loading?**
 
     Static loading and dynamic class loading are two different approaches to loading classes in Java:
 
@@ -592,7 +682,7 @@
     }
     ```
 
-26. **What is the purpose of the Runtime class and System class?**
+30. **What is the purpose of the Runtime class and System class?**
 
     The Runtime class and System class serve different but important purposes in Java:
 
@@ -617,7 +707,7 @@
       - Current time in milliseconds
       - System exit
 
-27. **What is the super keyword in Java? When can you use the super keyword?**
+31. **What is the super keyword in Java? When can you use the super keyword?**
 
     The `super` keyword in Java is a reference variable used to refer to the immediate parent class object. It allows you to access parent class members that are hidden or overridden by the child class.
 

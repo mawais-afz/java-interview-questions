@@ -235,7 +235,44 @@
 
     ```
 
-11. **What is the difference between constructor and method?**
+11. **What rules that you must follow while creating a constructor in Java?**
+
+    There are several important rules that must be followed when creating a constructor in Java:
+
+    1. **Same Name as Class**: The constructor name must be exactly the same as the class name (including case).
+
+    2. **No Return Type**: Constructors cannot have any return type, not even void.
+
+    3. **Access Modifiers**: Constructors can use any access modifier (public, private, protected, or default).
+
+    4. **Cannot be Static/Final**: Constructors cannot be declared as static or final.
+
+    5. **Cannot be Abstract**: Constructors cannot be declared as abstract.
+
+    6. **Super/This Call**: If using super() or this() to call another constructor, it must be the first statement in the constructor.
+
+    7. **No Inheritance**: Constructors are not inherited by subclasses, though they can be called using super().
+
+    Example of following these rules:
+
+    ```java
+    public class Student {
+        private String name;
+
+        // Correct constructor
+        public Student(String name) {
+            this.name = name;  // Valid initialization
+        }
+
+        // Invalid constructor - wrong name
+        public student() { }  // Compilation error
+
+        // Invalid constructor - has return type
+        public void Student() { }  // Compilation error
+    }
+    ```
+
+12. **What is the difference between constructor and method?**
 
     | Aspect           | Constructor                                                      | Method                                                      |
     | ---------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -264,7 +301,7 @@
     }
     ```
 
-12. **Explain the constructor overloading**
+13. **Explain the constructor overloading**
 
     Constructor overloading is a technique in Java where a class can have multiple constructors with different parameter lists. Each constructor provides a different way to initialize an object of that class. The constructors must differ in their parameter lists (number of parameters, types of parameters, or both).
 
@@ -315,7 +352,7 @@
     Student s4 = new Student("Mike", 21, "A");          // Uses constructor with all parameters
     ```
 
-13. **What is Copy Constructor in Java?**
+14. **What is Copy Constructor in Java?**
 
     A Copy Constructor in Java is a constructor that creates a new object by copying the values from another object of the same class. It takes an object of the same class as a parameter and creates a new object with the same values. Copy constructors are useful when you want to create a new object with the same state as an existing object.
 
@@ -344,9 +381,9 @@
     Student student2 = new Student(student1); // Creates a copy of student1
     ```
 
-    Note that Java does not provide automatic copy constructors like C++. You need to implement them explicitly if needed. Also, when dealing with reference types, be careful to perform a deep copy if required, to avoid sharing references between the original and copied objects.
+    Note: that Java does not provide automatic copy constructors like C++. You need to implement them explicitly if needed. Also, when dealing with reference types, be careful to perform a deep copy if required, to avoid sharing references between the original and copied objects.
 
-14. **What is a singleton class in Java? Describe the singleton pattern with an example.**
+15. **What is a singleton class in Java? Describe the singleton pattern with an example.**
 
     A Singleton class in Java is a design pattern that restricts the instantiation of a class to a single instance. This is useful when exactly one object is needed to coordinate actions across the system, such as managing configuration settings, database connections, or thread pools.
 
@@ -393,7 +430,7 @@
 
     In this example, the `Singleton` class has a private constructor, a static instance variable, and a public static method `getInstance()` that provides access to the single instance of the class. This ensures that no more than one instance of the `Singleton` class can exist at any time.
 
-15. **What is encapsulation? Explain encapsulation with an example.**
+16. **What is encapsulation? Explain encapsulation with an example.**
 
     Encapsulation is one of the four fundamental OOP concepts that involves bundling data and the methods that operate on that data within a single unit (class), while restricting direct access to some of the object's components. This is achieved in Java through:
 
@@ -438,7 +475,7 @@
     4. The implementation details are hidden from the user
     5. We can change the internal implementation without affecting code that uses the class
 
-16. **What is inheritance and what are its types in Java?**
+17. **What is inheritance and what are its types in Java?**
 
     Inheritance is a fundamental object-oriented programming concept where a class (subclass/child class) can inherit attributes and methods from another class (superclass/parent class). In Java, inheritance is implemented using the `extends` keyword. This mechanism promotes code reuse, simplifies maintenance, and allows for the creation of more specialized classes based on existing ones. There are several types of inheritance supported in Java:
 
@@ -488,7 +525,7 @@
 
     In this example, the `Dog` class inherits the properties and behaviors of the `Animal` class, including the `name` field and the `eat()` and `sleep()` methods. The `Dog` class also adds its own unique behavior, the `bark()` method.
 
-17. **What is the difference between extends and implements?**
+18. **What is the difference between extends and implements?**
 
     | Aspect                   | extends                                                 | implements                                             |
     | ------------------------ | ------------------------------------------------------- | ------------------------------------------------------ |
@@ -501,7 +538,7 @@
     | Code Reuse               | Allows reuse of code from parent class                  | Only provides method contracts, no implementation      |
     | Usage Example            | `class Dog extends Animal`                              | `class Bird implements Flyable`                        |
 
-18. **What is polymorphism in Java? Explain with examples of runtime and compile-time polymorphism.**
+19. **What is polymorphism in Java? Explain with examples of runtime and compile-time polymorphism.**
 
     Polymorphism in Java comes in two forms:
 
@@ -558,7 +595,7 @@
        calc.add(2, 3, 4);    // Calls third method
        ```
 
-19. **What is the difference between loose coupling and tight coupling?**
+20. **What is the difference between loose coupling and tight coupling?**
 
     Loose coupling refers to a design principle in which components or classes are minimally dependent on each other, allowing for greater flexibility and easier maintenance. In a loosely coupled system, changes in one component have little to no impact on others, making it easier to modify or replace parts of the system without affecting the overall functionality.
 
@@ -628,7 +665,7 @@
     	```
     ````
 
-20. **What is the difference between cohesion and coupling?**
+21. **What is the difference between cohesion and coupling?**
 
     | Aspect     | Cohesion                                                                 | Coupling                                                                              |
     | ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
@@ -681,7 +718,7 @@
     }
     ```
 
-21. **What is a Marker Interface?**
+22. **What is a Marker Interface?**
 
     A Marker Interface in Java is an interface that does not contain any methods. It is used to mark a class that implements it, indicating that the class has a specific property or behavior. Marker interfaces are often used to indicate that a class has a particular characteristic or capability, such as being serializable, cloneable, or thread-safe.
     Here are some examples of commonly used marker interfaces in Java:
@@ -725,7 +762,7 @@
     - `Cloneable`: Marks classes that can be cloned
     - `Remote`: Marks classes that can be used for RMI (Remote Method Invocation)
 
-22. **What is an abstract class? Explain its purpose and when to use it.**
+23. **What is an abstract class? Explain its purpose and when to use it.**
 
     An abstract class in Java is a class that cannot be instantiated on its own and may contain both abstract and concrete methods. It serves as a blueprint for other classes and is designed to be extended by subclasses.
 
@@ -772,7 +809,7 @@
     - You need to provide a template for a group of related classes
     - Some common behavior can be implemented in the abstract class, while other behavior must be implemented by each subclass
 
-23. **What is the difference between abstract class and interface in Java?**
+24. **What is the difference between abstract class and interface in Java?**
 
     | Aspect                | Abstract Class                                                                       | Interface                                                                                                               |
     | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
@@ -783,7 +820,7 @@
     | Access Modifiers      | Can have access modifiers (public, protected, private).                              | All methods are public by default; cannot have access modifiers.                                                        |
     | Use Case              | Used when classes share a common base and behavior.                                  | Used to define a contract that implementing classes must follow.                                                        |
 
-24. **What is the difference between composition, aggregation, and association?**
+25. **What is the difference between composition, aggregation, and association?**
 
     | Aspect     | Composition                                                                     | Aggregation                                                                  | Association                                                                                 |
     | ---------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -853,7 +890,7 @@
     }
     ```
 
-25. **What is the difference between method overloading and overriding in Java?**
+26. **What is the difference between method overloading and overriding in Java?**
 
 - **Method Overloading**: This occurs when multiple methods in the same class have the same name but different parameters (different type, number, or both). It allows methods to perform similar functions with different inputs. Overloading is resolved at compile time.
 
@@ -1025,3 +1062,21 @@ public class Circle extends Shape {
     // This would cause compilation error:
     // class ChildClass extends FinalClass { } // Cannot extend final class
     ```
+
+33. **What is the significant difference between object-oriented language and object-based language?**
+
+    Object-oriented languages and object-based languages differ in several key aspects:
+
+    | Feature               | Object-Oriented Languages                    | Object-Based Languages                |
+    | --------------------- | -------------------------------------------- | ------------------------------------- |
+    | **Inheritance**       | Supports inheritance and polymorphism        | Does not support inheritance          |
+    | **Class Support**     | Has full class-based abstraction             | May use prototypes instead of classes |
+    | **Examples**          | Java, C++, Python, Ruby                      | JavaScript (pre-ES6), VBScript        |
+    | **Code Organization** | Organized around both classes and objects    | Organized around objects only         |
+    | **Data Abstraction**  | Supports both data and procedure abstraction | Primarily supports data abstraction   |
+
+    Key points:
+
+    - Object-oriented languages provide complete support for OOP principles (inheritance, polymorphism, encapsulation)
+    - Object-based languages support objects but lack inheritance and some other OOP features
+    - Object-based languages often use prototype-based programming instead of class-based inheritance

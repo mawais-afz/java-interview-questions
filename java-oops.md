@@ -235,7 +235,72 @@
 
     ```
 
-11. **What rules that you must follow while creating a constructor in Java?**
+11. **Can you override static methods in Java?**
+
+    No, static methods cannot be overridden in Java. This is because:
+
+    1. **Static Method Binding**: Static methods are bound at compile time, meaning the method to be called is determined by the reference type, not the object type.
+
+    2. **No Polymorphism**: Since static methods belong to the class rather than instances, they do not participate in polymorphism. Therefore, if a subclass defines a static method with the same name as a static method in its superclass, it is not considered an override but rather a method hiding.
+
+    3. **Accessing Static Methods**: When you call a static method, it is resolved based on the reference type, not the actual object type. This means that the static method of the superclass will be called, even if the reference is of the subclass type.
+
+    Example of static method hiding:
+
+    ```java
+    class Parent {
+        static void display() {
+            System.out.println("Static method in Parent");
+        }
+    }
+
+    class Child extends Parent {
+        static void display() {
+            System.out.println("Static method in Child");
+        }
+    }
+
+    public class Test {
+        public static void main(String[] args) {
+            Parent obj = new Child();
+            obj.display(); // Outputs: Static method in Parent
+        }
+    }
+    ```
+
+    In this example, the static method `display()` in the `Child` class hides the static method in the `Parent` class, but it does not override it.
+
+12. **Can you declare a constructor using static?**
+
+    No, constructors cannot be declared as static in Java. This is because:
+
+    1. Constructors are instance-specific methods used to initialize object state
+    2. Static members belong to the class rather than instances
+    3. The purpose of a constructor is to create and initialize new instances
+    4. Static methods cannot access instance members, which would defeat the purpose of constructors
+
+    Example of invalid constructor declaration:
+
+    ```java
+    public class Example {
+        // This would cause a compilation error
+        static Example() {  // Invalid - cannot use static with constructor
+            // initialization code
+        }
+    }
+    ```
+
+    If you need static initialization, use a static initialization block instead:
+
+    ```java
+    public class Example {
+        static {
+            // Static initialization code here
+        }
+    }
+    ```
+
+13. **What rules that you must follow while creating a constructor in Java?**
 
     There are several important rules that must be followed when creating a constructor in Java:
 
@@ -272,7 +337,7 @@
     }
     ```
 
-12. **What is the difference between constructor and method?**
+14. **What is the difference between constructor and method?**
 
     | Aspect           | Constructor                                                      | Method                                                      |
     | ---------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -301,7 +366,7 @@
     }
     ```
 
-13. **Explain the constructor overloading**
+15. **Explain the constructor overloading**
 
     Constructor overloading is a technique in Java where a class can have multiple constructors with different parameter lists. Each constructor provides a different way to initialize an object of that class. The constructors must differ in their parameter lists (number of parameters, types of parameters, or both).
 
@@ -352,7 +417,7 @@
     Student s4 = new Student("Mike", 21, "A");          // Uses constructor with all parameters
     ```
 
-14. **What is Copy Constructor in Java?**
+16. **What is Copy Constructor in Java?**
 
     A Copy Constructor in Java is a constructor that creates a new object by copying the values from another object of the same class. It takes an object of the same class as a parameter and creates a new object with the same values. Copy constructors are useful when you want to create a new object with the same state as an existing object.
 
@@ -383,7 +448,7 @@
 
     Note: that Java does not provide automatic copy constructors like C++. You need to implement them explicitly if needed. Also, when dealing with reference types, be careful to perform a deep copy if required, to avoid sharing references between the original and copied objects.
 
-15. **What is a singleton class in Java? Describe the singleton pattern with an example.**
+17. **What is a singleton class in Java? Describe the singleton pattern with an example.**
 
     A Singleton class in Java is a design pattern that restricts the instantiation of a class to a single instance. This is useful when exactly one object is needed to coordinate actions across the system, such as managing configuration settings, database connections, or thread pools.
 
@@ -430,7 +495,7 @@
 
     In this example, the `Singleton` class has a private constructor, a static instance variable, and a public static method `getInstance()` that provides access to the single instance of the class. This ensures that no more than one instance of the `Singleton` class can exist at any time.
 
-16. **What is encapsulation? Explain encapsulation with an example.**
+18. **What is encapsulation? Explain encapsulation with an example.**
 
     Encapsulation is one of the four fundamental OOP concepts that involves bundling data and the methods that operate on that data within a single unit (class), while restricting direct access to some of the object's components. This is achieved in Java through:
 
@@ -475,7 +540,7 @@
     4. The implementation details are hidden from the user
     5. We can change the internal implementation without affecting code that uses the class
 
-17. **What is inheritance and what are its types in Java?**
+19. **What is inheritance and what are its types in Java?**
 
     Inheritance is a fundamental object-oriented programming concept where a class (subclass/child class) can inherit attributes and methods from another class (superclass/parent class). In Java, inheritance is implemented using the `extends` keyword. This mechanism promotes code reuse, simplifies maintenance, and allows for the creation of more specialized classes based on existing ones. There are several types of inheritance supported in Java:
 
@@ -525,7 +590,7 @@
 
     In this example, the `Dog` class inherits the properties and behaviors of the `Animal` class, including the `name` field and the `eat()` and `sleep()` methods. The `Dog` class also adds its own unique behavior, the `bark()` method.
 
-18. **What is the difference between extends and implements?**
+20. **What is the difference between extends and implements?**
 
     | Aspect                   | extends                                                 | implements                                             |
     | ------------------------ | ------------------------------------------------------- | ------------------------------------------------------ |
@@ -538,7 +603,7 @@
     | Code Reuse               | Allows reuse of code from parent class                  | Only provides method contracts, no implementation      |
     | Usage Example            | `class Dog extends Animal`                              | `class Bird implements Flyable`                        |
 
-19. **What is polymorphism in Java? Explain with examples of runtime and compile-time polymorphism.**
+21. **What is polymorphism in Java? Explain with examples of runtime and compile-time polymorphism.**
 
     Polymorphism in Java comes in two forms:
 
@@ -595,7 +660,7 @@
        calc.add(2, 3, 4);    // Calls third method
        ```
 
-20. **What is the difference between loose coupling and tight coupling?**
+22. **What is the difference between loose coupling and tight coupling?**
 
     Loose coupling refers to a design principle in which components or classes are minimally dependent on each other, allowing for greater flexibility and easier maintenance. In a loosely coupled system, changes in one component have little to no impact on others, making it easier to modify or replace parts of the system without affecting the overall functionality.
 
@@ -665,7 +730,7 @@
     	```
     ````
 
-21. **What is the difference between cohesion and coupling?**
+23. **What is the difference between cohesion and coupling?**
 
     | Aspect     | Cohesion                                                                 | Coupling                                                                              |
     | ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
@@ -718,7 +783,7 @@
     }
     ```
 
-22. **What is a Marker Interface?**
+24. **What is a Marker Interface?**
 
     A Marker Interface in Java is an interface that does not contain any methods. It is used to mark a class that implements it, indicating that the class has a specific property or behavior. Marker interfaces are often used to indicate that a class has a particular characteristic or capability, such as being serializable, cloneable, or thread-safe.
     Here are some examples of commonly used marker interfaces in Java:
@@ -762,7 +827,7 @@
     - `Cloneable`: Marks classes that can be cloned
     - `Remote`: Marks classes that can be used for RMI (Remote Method Invocation)
 
-23. **What is an abstract class? Explain its purpose and when to use it.**
+25. **What is an abstract class? Explain its purpose and when to use it.**
 
     An abstract class in Java is a class that cannot be instantiated on its own and may contain both abstract and concrete methods. It serves as a blueprint for other classes and is designed to be extended by subclasses.
 
@@ -809,7 +874,38 @@
     - You need to provide a template for a group of related classes
     - Some common behavior can be implemented in the abstract class, while other behavior must be implemented by each subclass
 
-24. **What is the difference between abstract class and interface in Java?**
+26. **Can you make abstract methods static in Java?**
+
+    No, abstract methods cannot be static in Java. This is because:
+
+    1. Abstract methods must be overridden by subclasses, but static methods cannot be overridden (they can only be hidden)
+    2. Static methods belong to the class itself rather than instances, while abstract methods are meant to be implemented by subclass instances
+    3. It would be contradictory since static methods have a body/implementation while abstract methods explicitly lack implementation
+
+    Example of invalid code:
+
+    ```java
+    public abstract class Example {
+        // This will cause a compilation error
+        public static abstract void method(); // Cannot combine static and abstract
+    }
+    ```
+
+    If you need static behavior in an abstract class, use a regular static method with implementation instead:
+
+    ```java
+    public abstract class Example {
+        // This is valid
+        public static void staticMethod() {
+            // Implementation here
+        }
+
+        // This is also valid
+        public abstract void abstractMethod();
+    }
+    ```
+
+27. **What is the difference between abstract class and interface in Java?**
 
     | Aspect                | Abstract Class                                                                       | Interface                                                                                                               |
     | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
@@ -820,7 +916,7 @@
     | Access Modifiers      | Can have access modifiers (public, protected, private).                              | All methods are public by default; cannot have access modifiers.                                                        |
     | Use Case              | Used when classes share a common base and behavior.                                  | Used to define a contract that implementing classes must follow.                                                        |
 
-25. **What is the difference between composition, aggregation, and association?**
+28. **What is the difference between composition, aggregation, and association?**
 
     | Aspect     | Composition                                                                     | Aggregation                                                                  | Association                                                                                 |
     | ---------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -890,7 +986,7 @@
     }
     ```
 
-26. **What is the difference between method overloading and overriding in Java?**
+29. **What is the difference between method overloading and overriding in Java?**
 
 - **Method Overloading**: This occurs when multiple methods in the same class have the same name but different parameters (different type, number, or both). It allows methods to perform similar functions with different inputs. Overloading is resolved at compile time.
 
@@ -927,40 +1023,44 @@
   }
   ```
 
-29. **What is the difference between Java Dynamic Binding and Static Binding?**
+29. **Why is method overloading in Java not possible by changing the method's return type?**
 
-- **Static Binding**: This occurs at compile time and is used for method calls that are resolved based on the reference type. It is typically used with private, static, and final methods. Since the method to be called is determined at compile time, it cannot be changed at runtime.
+    Method overloading in Java cannot be achieved solely by changing the return type of the method because the method signature, which is used to identify the method, consists of the method name and the parameter list (types and number of parameters). The return type is not part of the method signature. Therefore, if two methods have the same name and parameter list but different return types, the compiler cannot distinguish between them based on the return type alone, leading to ambiguity.
 
-- **Dynamic Binding**: This occurs at runtime and is used for method calls that are resolved based on the actual object type. It is typically used with overridden methods in inheritance. Dynamic binding allows for polymorphism, where the method that gets executed is determined by the actual object being referred to, rather than the reference type.
+30. **What is the difference between Java Dynamic Binding and Static Binding?**
 
-Example of Static Binding:
+    - **Static Binding**: This occurs at compile time and is used for method calls that are resolved based on the reference type. It is typically used with private, static, and final methods. Since the method to be called is determined at compile time, it cannot be changed at runtime.
 
-```java
-public class StaticBindingExample {
-    public static void display() {
-        System.out.println("Static Binding");
+    - **Dynamic Binding**: This occurs at runtime and is used for method calls that are resolved based on the actual object type. It is typically used with overridden methods in inheritance. Dynamic binding allows for polymorphism, where the method that gets executed is determined by the actual object being referred to, rather than the reference type.
+
+    Example of Static Binding:
+
+    ```java
+    public class StaticBindingExample {
+        public static void display() {
+            System.out.println("Static Binding");
+        }
     }
-}
-```
+    ```
 
-Example of Dynamic Binding:
+    Example of Dynamic Binding:
 
-```java
-public class Shape {
-    public void draw() {
-        System.out.println("Drawing a shape");
+    ```java
+    public class Shape {
+        public void draw() {
+            System.out.println("Drawing a shape");
+        }
     }
-}
 
-public class Circle extends Shape {
-    @Override
-    public void draw() {
-        System.out.println("Drawing a circle");
+    public class Circle extends Shape {
+        @Override
+        public void draw() {
+            System.out.println("Drawing a circle");
+        }
     }
-}
-```
+    ```
 
-30. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
+31. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
 
     An Instance Initializer Block is a block of code that is used to initialize instance variables of a class. It is executed when an instance of the class is created, before the constructor is called.
 
@@ -989,7 +1089,39 @@ public class Circle extends Shape {
     }
     ```
 
-31. **What is the purpose of static members in Java?**
+32. **What is a static block in Java?**
+
+    A static block (also called static initialization block) is a block of code inside a class that is executed only once when the class is first loaded into memory. It is used to initialize static variables or perform one-time setup operations.
+
+    **Characteristics of static blocks:**
+
+    - Executes automatically when the class is loaded
+    - Runs only once, regardless of how many instances are created
+    - Executes before any static methods are called
+    - Multiple static blocks execute in order of appearance
+    - Can access only static members directly
+
+    Example of static block:
+
+    ```java
+    public class Example {
+        static int count;
+
+        // Static block
+        static {
+            count = 0;
+            System.out.println("Static block executed");
+            // Complex initialization logic can go here
+        }
+
+        // Multiple static blocks are allowed
+        static {
+            System.out.println("Second static block");
+        }
+    }
+    ```
+
+33. **What is the purpose of static members in Java?**
 
     Static members in Java (including methods, variables, and nested classes) belong to the class itself rather than any specific instance. They serve several important purposes:
 
@@ -1038,7 +1170,7 @@ public class Circle extends Shape {
     }
     ```
 
-32. **Explain the use of final keyword in variable, method and class**
+34. **Explain the use of final keyword in variable, method and class**
 
     The `final` keyword in Java is used to impose restrictions on variables, methods, and classes:
 
@@ -1063,7 +1195,7 @@ public class Circle extends Shape {
     // class ChildClass extends FinalClass { } // Cannot extend final class
     ```
 
-33. **What is the significant difference between object-oriented language and object-based language?**
+35. **What is the significant difference between object-oriented language and object-based language?**
 
     Object-oriented languages and object-based languages differ in several key aspects:
 

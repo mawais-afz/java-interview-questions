@@ -1451,3 +1451,35 @@
 
 45. **Can an interface extend another interface?**  
     Yes, an interface can extend another interface in Java. When an interface extends another interface, it inherits all the abstract methods of the parent interface. A class that implements the child interface must provide implementations for all the methods declared in both the child and parent interfaces. This allows for a more flexible and modular design in object-oriented programming.
+
+    Here's an example demonstrating interface extension:
+
+    ```java
+    interface Animal {
+        void makeSound();
+    }
+
+    interface Pet extends Animal {
+        void play();
+    }
+
+    class Dog implements Pet {
+        @Override
+        public void makeSound() {
+            System.out.println("Woof!");
+        }
+
+        @Override
+        public void play() {
+            System.out.println("The dog is playing.");
+        }
+    }
+
+    public class Test {
+        public static void main(String[] args) {
+            Dog dog = new Dog();
+            dog.makeSound(); // Outputs: Woof!
+            dog.play();      // Outputs: The dog is playing.
+        }
+    }
+    ```

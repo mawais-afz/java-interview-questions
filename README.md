@@ -3,7 +3,7 @@
 1. [Java Basics](java-basics.md)
 2. [Object-Oriented Programming (OOP) Concepts](java-oops.md)
 3. [Java Collections](java-collections.md)
-4. [Exceptions and Errors](exceptions-and-errors.md)
+4. [Exceptions and Errors](java-exceptions.md)
 5. [Java Strings](java-strings.md)
 6. [Java Threads](java-threads.md)
 7. [Java 8 and Newer Features](java-8-and-newer-features.md)

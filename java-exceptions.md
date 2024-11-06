@@ -8,21 +8,25 @@
 
    In summary, Errors are usually fatal and indicate serious problems, while Exceptions are conditions that can be caught and handled by the application.
 
-2. **Name the base class of all the Java exception classes**
+2. **What is exception handling?**
+
+   Exception handling in Java is a mechanism that allows a program to handle errors and exceptions gracefully, rather than crashing when an error occurs. It involves using try, catch, and finally blocks to catch and handle exceptions, and using throw and throws to throw exceptions.
+
+3. **Name the base class of all the Java exception classes**
 
    The base class of all the Java exception classes is `Throwable`.
 
-3. **What are the different types of exceptions?**
+4. **What is an exception? What are the different types of exceptions?**
 
-   In Java, exceptions are categorized into two main types: checked exceptions and unchecked exceptions.
+   An exception in Java is an event that disrupts the normal flow of the program's execution. It represents an error or unexpected behavior that can occur during runtime. Exceptions can be categorized into two main types: checked exceptions and unchecked exceptions.
 
-   - **Checked Exceptions**: These are exceptions that are checked at compile-time. The Java compiler requires that these exceptions be either caught using a try-catch block or declared in the method signature using the `throws` keyword. This ensures that the programmer is aware of the potential for these exceptions and can handle them appropriately. Examples of checked exceptions include `IOException`, `SQLException`, and `ClassNotFoundException`.
+   - **Checked Exceptions**: These exceptions are checked at compile-time, meaning the Java compiler requires that they be either caught using a try-catch block or declared in the method signature with the `throws` keyword. This ensures that the programmer is aware of these exceptions and can handle them appropriately. Examples of checked exceptions include `IOException`, `SQLException`, and `ClassNotFoundException`.
 
-   - **Unchecked Exceptions**: These exceptions are not checked at compile-time, meaning the compiler does not require them to be handled or declared. Unchecked exceptions typically indicate programming errors, such as logic errors or improper use of an API. They are subclasses of `RuntimeException`. Examples include `NullPointerException`, `ArrayIndexOutOfBoundsException`, and `IllegalArgumentException`.
+   - **Unchecked Exceptions**: These exceptions are not checked at compile-time, so the compiler does not require them to be handled or declared. Unchecked exceptions typically indicate programming errors, such as logic errors or improper use of an API. They are subclasses of `RuntimeException`. Examples include `NullPointerException`, `ArrayIndexOutOfBoundsException`, and `IllegalArgumentException`.
 
-   In summary, checked exceptions must be explicitly handled or declared, while unchecked exceptions do not have this requirement and are generally used to indicate programming errors.
+   In summary, exceptions are events that disrupt program execution, with checked exceptions requiring explicit handling or declaration, while unchecked exceptions do not have this requirement and generally indicate programming errors.
 
-4. **What is NullPointerException in Java?**
+5. **What is NullPointerException in Java?**
 
    A NullPointerException is a runtime exception that occurs in Java when the Java Virtual Machine (JVM) attempts to access an object or call a method on an object that has not been initialized, meaning it is null. This exception indicates that the program is trying to use a reference that points to no location in memory.
 
@@ -35,7 +39,7 @@
 
    To avoid NullPointerExceptions, it is important to ensure that objects are properly initialized before use and to perform null checks where necessary. Additionally, using Java's Optional class can help manage the presence or absence of values more effectively.
 
-5. **What are the types of keywords used in Java exception handling?**
+6. **What are the types of keywords used in Java exception handling?**
 
    In Java, there are several keywords that are essential for handling exceptions effectively. These keywords include:
 
@@ -51,14 +55,16 @@
 
    In summary, the keywords try, catch, finally, throw, and throws are fundamental to Java's exception handling mechanism, allowing developers to manage errors and maintain program stability.
 
-6. **What is the difference between throw and throws?**
+7. **What is the difference between throw and throws?**
 
-    | Feature       | throw                                      | throws                                      |
-    |---------------|-------------------------------------------|--------------------------------------------|
-    | Purpose       | Used to explicitly throw an exception     | Used to declare that a method can throw exceptions |
-    | Usage         | Can be used within any method or block    | Used only in method signatures              |
-    | Exception Type| Can throw both checked and unchecked exceptions | Can declare checked exceptions only         |
-    | Control Flow  | Transfers control to the nearest catch block | Does not transfer control; informs the caller about potential exceptions |
-    | Syntax        | `throw new ExceptionType("message");`    | `public void methodName() throws ExceptionType {}` |
+   | Feature        | throw                                           | throws                                                                   |
+   | -------------- | ----------------------------------------------- | ------------------------------------------------------------------------ |
+   | Purpose        | Used to explicitly throw an exception           | Used to declare that a method can throw exceptions                       |
+   | Usage          | Can be used within any method or block          | Used only in method signatures                                           |
+   | Exception Type | Can throw both checked and unchecked exceptions | Can declare checked exceptions only                                      |
+   | Control Flow   | Transfers control to the nearest catch block    | Does not transfer control; informs the caller about potential exceptions |
+   | Syntax         | `throw new ExceptionType("message");`           | `public void methodName() throws ExceptionType {}`                       |
 
-    In summary, `throw` is used to actually throw an exception, while `throws` is used in a method declaration to indicate that the method may throw exceptions.
+   In summary, `throw` is used to actually throw an exception, while `throws` is used in a method declaration to indicate that the method may throw exceptions.
+
+8. **What are custom exceptions?**

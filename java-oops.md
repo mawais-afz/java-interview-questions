@@ -270,6 +270,34 @@
 
     In this example, the static method `display()` in the `Child` class hides the static method in the `Parent` class, but it does not override it.
 
+12. **What is the use of static variables and methods?**
+
+    | Feature | Static Variables | Static Methods |
+    |---------|-----------------|----------------|
+    | Memory Allocation | Single copy shared across all instances of the class | Belongs to class rather than any instance |
+    | Access | Can be accessed without creating class instance | Can be called without creating class instance |
+    | Usage | Common properties shared by all instances (e.g., counters, constants) | Utility functions that don't need instance data |
+    | Instance Access | Cannot directly access non-static members | Cannot directly access non-static members |
+    | Memory Efficiency | Saves memory by avoiding multiple copies | N/A |
+    | Example Use Cases | - Counter for number of objects created<br>- Configuration constants<br>- Shared resources | - Math utility functions<br>- Factory methods<br>- Helper functions |
+
+    Example:
+    ```java
+    public class Student {
+        private static int studentCount = 0;  // static variable
+        private String name;
+
+        public Student(String name) {
+            this.name = name;
+            studentCount++;  // tracks total number of students
+        }
+
+        public static int getStudentCount() {  // static method
+            return studentCount;
+        }
+    }
+    ```
+
 12. **Can you declare a constructor using static?**
 
     No, constructors cannot be declared as static in Java. This is because:
@@ -556,6 +584,9 @@
     4. **Multiple Inheritance**: Java does not support multiple inheritance through classes (a class cannot extend multiple classes). However, it can be achieved through interfaces.
        Example: Class A implements Interface1, Interface2
 
+    5. **Hybrid Inheritance**: A combination of multiple inheritance and hierarchical inheritance.
+       Example: Class C extends Class A and Class B
+
     Note: Java deliberately does not support multiple inheritance through classes to avoid the "diamond problem" where ambiguity can arise if multiple parent classes have methods with the same name.
 
     Here's an example of inheritance in Java:
@@ -590,7 +621,127 @@
 
     In this example, the `Dog` class inherits the properties and behaviors of the `Animal` class, including the `name` field and the `eat()` and `sleep()` methods. The `Dog` class also adds its own unique behavior, the `bark()` method.
 
-20. **What is the difference between extends and implements?**
+20. **What do you mean by Polymorphism and what are its types?**
+
+    Polymorphism means "many forms" and is one of the core concepts of object-oriented programming. It allows objects to be treated as instances of their parent class rather than their actual class. In Java, there are two main types of polymorphism:
+
+    1. **Runtime Polymorphism (Dynamic Binding)**
+
+       - Also known as method overriding
+       - Determined at runtime
+       - Achieved through inheritance and method overriding
+       - Example: A Dog object being treated as an Animal object
+
+         ```java
+         class Animal {
+             void makeSound() {
+                 System.out.println("Some sound");
+             }
+         }
+
+         class Dog extends Animal {
+             @Override
+             void makeSound() {
+                 System.out.println("Woof!");
+             }
+         }
+
+         // Runtime polymorphism in action
+         Animal animal = new Dog();
+         animal.makeSound(); // Outputs: Woof!
+         ```
+
+    2. **Compile-time Polymorphism (Static Binding)**
+
+       - Also known as method overloading
+       - Determined at compile time
+       - Achieved by defining multiple methods with the same name but different parameters
+       - Example: Having multiple versions of a method like add(int, int) and add(double, double)
+
+         ```java
+         class Calculator {
+             // Method overloading
+             int add(int a, int b) {
+                 return a + b;
+             }
+
+             double add(double a, double b) {
+                 return a + b;
+             }
+
+             int add(int a, int b, int c) {
+                 return a + b + c;
+             }
+         }
+
+         Calculator calc = new Calculator();
+         calc.add(5, 3);       // Calls first method
+         calc.add(4.5, 3.2);   // Calls second method
+         calc.add(2, 3, 4);    // Calls third method
+         ```
+
+    The key difference is that runtime polymorphism is resolved during program execution based on the actual object type, while compile-time polymorphism is resolved during compilation based on method signatures.
+
+21. **What do you mean by abstraction and how it is achieved in Java?**
+
+    Abstraction is the process of hiding implementation details and showing only the functionality to the user. It helps reduce programming complexity and effort by focusing on what an object does rather than how it does it.
+
+    In Java, abstraction can be achieved in two ways:
+
+    1. **Abstract Classes**
+
+       - Declared using the `abstract` keyword
+       - Can have both abstract and concrete methods
+       - Cannot be instantiated
+       - Must be extended by concrete classes
+
+       ```java
+       abstract class Shape {
+           abstract double calculateArea(); // abstract method
+
+           void display() { // concrete method
+               System.out.println("This is a shape");
+           }
+       }
+
+       class Circle extends Shape {
+           double radius;
+
+           @Override
+           double calculateArea() {
+               return Math.PI * radius * radius;
+           }
+       }
+       ```
+
+    2. **Interfaces**
+
+       - Provides 100% abstraction
+       - Contains only abstract methods (before Java 8)
+       - Can be implemented by multiple classes
+
+       ```java
+       interface Drawable {
+           void draw();
+           void resize();
+       }
+
+       class Rectangle implements Drawable {
+           @Override
+           public void draw() {
+               System.out.println("Drawing rectangle");
+           }
+
+           @Override
+           public void resize() {
+               System.out.println("Resizing rectangle");
+           }
+       }
+       ```
+
+    The main benefit of abstraction is that it allows you to focus on what the object does instead of how it does it, reducing complexity and coupling in your code.
+
+22. **What is the difference between extends and implements?**
 
     | Aspect                   | extends                                                 | implements                                             |
     | ------------------------ | ------------------------------------------------------- | ------------------------------------------------------ |
@@ -603,64 +754,7 @@
     | Code Reuse               | Allows reuse of code from parent class                  | Only provides method contracts, no implementation      |
     | Usage Example            | `class Dog extends Animal`                              | `class Bird implements Flyable`                        |
 
-21. **What is polymorphism in Java? Explain with examples of runtime and compile-time polymorphism.**
-
-    Polymorphism in Java comes in two forms:
-
-    1. **Runtime (Dynamic) Polymorphism**:
-
-       - Achieved through method overriding
-       - The method to be executed is determined at runtime
-       - Example:
-
-       ```java
-       class Animal {
-           void makeSound() {
-               System.out.println("Some sound");
-           }
-       }
-
-       class Dog extends Animal {
-           @Override
-           void makeSound() {
-               System.out.println("Woof!");
-           }
-       }
-
-       // Runtime polymorphism in action
-       Animal animal = new Dog();
-       animal.makeSound(); // Outputs: Woof!
-       ```
-
-    2. **Compile-time (Static) Polymorphism**:
-
-       - Achieved through method overloading
-       - The method to be executed is determined at compile time
-       - Example:
-
-       ```java
-       class Calculator {
-           // Method overloading
-           int add(int a, int b) {
-               return a + b;
-           }
-
-           double add(double a, double b) {
-               return a + b;
-           }
-
-           int add(int a, int b, int c) {
-               return a + b + c;
-           }
-       }
-
-       Calculator calc = new Calculator();
-       calc.add(5, 3);       // Calls first method
-       calc.add(4.5, 3.2);   // Calls second method
-       calc.add(2, 3, 4);    // Calls third method
-       ```
-
-22. **What is the difference between loose coupling and tight coupling?**
+23. **What is the difference between loose coupling and tight coupling?**
 
     Loose coupling refers to a design principle in which components or classes are minimally dependent on each other, allowing for greater flexibility and easier maintenance. In a loosely coupled system, changes in one component have little to no impact on others, making it easier to modify or replace parts of the system without affecting the overall functionality.
 
@@ -730,7 +824,7 @@
     	```
     ````
 
-23. **What is the difference between cohesion and coupling?**
+24. **What is the difference between cohesion and coupling?**
 
     | Aspect     | Cohesion                                                                 | Coupling                                                                              |
     | ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
@@ -783,7 +877,7 @@
     }
     ```
 
-24. **What is a Marker Interface?**
+25. **What is a Marker Interface?**
 
     A Marker Interface in Java is an interface that does not contain any methods. It is used to mark a class that implements it, indicating that the class has a specific property or behavior. Marker interfaces are often used to indicate that a class has a particular characteristic or capability, such as being serializable, cloneable, or thread-safe.
     Here are some examples of commonly used marker interfaces in Java:
@@ -827,7 +921,7 @@
     - `Cloneable`: Marks classes that can be cloned
     - `Remote`: Marks classes that can be used for RMI (Remote Method Invocation)
 
-25. **What is an abstract class? Explain its purpose and when to use it.**
+26. **What is an abstract class? Explain its purpose and when to use it.**
 
     An abstract class in Java is a class that cannot be instantiated on its own and may contain both abstract and concrete methods. It serves as a blueprint for other classes and is designed to be extended by subclasses.
 
@@ -874,7 +968,33 @@
     - You need to provide a template for a group of related classes
     - Some common behavior can be implemented in the abstract class, while other behavior must be implemented by each subclass
 
-26. **Can you make abstract methods static in Java?**
+27. **Can we define a class Abstract even if it does not have any abstract methods?**
+
+    Yes, we can define a class as abstract even if it doesn't have any abstract methods. This is perfectly valid in Java. The abstract keyword simply prevents the class from being instantiated directly.
+
+    Here's an example:
+
+    ```java
+    public abstract class Vehicle {
+        private String brand;
+        
+        public Vehicle(String brand) {
+            this.brand = brand;
+        }
+        
+        public void startEngine() {  // concrete method
+            System.out.println("Engine started");
+        }
+    }
+    ```
+
+    While this is possible, it's generally not a common practice unless you have a specific reason to prevent instantiation of the class. Some reasons to do this might be:
+    
+    - You want to force developers to use subclasses instead of the base class
+    - The class is not complete enough to be instantiated meaningfully
+    - You're designing a framework where the base class should never be used directly
+
+27. **Can you make abstract methods static in Java?**
 
     No, abstract methods cannot be static in Java. This is because:
 
@@ -905,7 +1025,7 @@
     }
     ```
 
-27. **What is the difference between abstract class and interface in Java?**
+28. **What is the difference between abstract class and interface in Java?**
 
     | Aspect                | Abstract Class                                                                       | Interface                                                                                                               |
     | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
@@ -916,7 +1036,7 @@
     | Access Modifiers      | Can have access modifiers (public, protected, private).                              | All methods are public by default; cannot have access modifiers.                                                        |
     | Use Case              | Used when classes share a common base and behavior.                                  | Used to define a contract that implementing classes must follow.                                                        |
 
-28. **What is the difference between composition, aggregation, and association?**
+29. **What is the difference between composition, aggregation, and association?**
 
     | Aspect     | Composition                                                                     | Aggregation                                                                  | Association                                                                                 |
     | ---------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -986,48 +1106,70 @@
     }
     ```
 
-29. **What is the difference between method overloading and overriding in Java?**
+30. **What are the differences between method overloading & overriding?**
 
-- **Method Overloading**: This occurs when multiple methods in the same class have the same name but different parameters (different type, number, or both). It allows methods to perform similar functions with different inputs. Overloading is resolved at compile time.
+    | Aspect          | Method Overloading                                                     | Method Overriding                                              |
+    | --------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------- |
+    | Definition      | Multiple methods with same name but different parameters in same class | Subclass provides specific implementation of superclass method |
+    | Parameters      | Must have different parameters (type, number, or both)                 | Must have same parameters as superclass method                 |
+    | Return Type     | Can be different                                                       | Must be same or covariant (subtype)                            |
+    | Access Modifier | Can be different                                                       | Must be same or less restrictive                               |
+    | Binding         | Static/Compile-time binding                                            | Dynamic/Runtime binding                                        |
+    | Inheritance     | Not related to inheritance                                             | Requires inheritance relationship                              |
+    | @Override       | Not required                                                           | Recommended to use                                             |
+    | Purpose         | Provides different ways to call similar method                         | Provides specific implementation of inherited method           |
 
-- **Method Overriding**: This occurs when a subclass provides a specific implementation of a method that is already defined in its superclass. The method in the subclass must have the same name, return type, and parameters as the method in the superclass. Overriding is resolved at runtime, allowing for dynamic method dispatch.
+    Example of Method Overloading:
 
-  Example of Method Overloading:
+    ```java
+    class Calculator {
+        // Method overloading - same name, different parameters
+        public int add(int a, int b) {
+            return a + b;
+        }
 
-  ```java
-  public class MathUtils {
-  		public int add(int a, int b) {
-  				return a + b;
-  		}
+        public double add(double a, double b) {
+            return a + b;
+        }
 
-  		public double add(double a, double b) {
-  				return a + b;
-  		}
-  }
-  ```
+        public int add(int a, int b, int c) {
+            return a + b + c;
+        }
+    }
+    ```
 
-  Example of Method Overriding:
+    Example of Method Overriding:
 
-  ```java
-  public class Animal {
-  		public void sound() {
-  				System.out.println("Animal makes a sound");
-  		}
-  }
+    ```java
+    class Animal {
+        public void makeSound() {
+            System.out.println("Animal makes a sound");
+        }
+    }
 
-  public class Dog extends Animal {
-  		@Override
-  		public void sound() {
-  				System.out.println("Dog barks");
-  		}
-  }
-  ```
+    class Dog extends Animal {
+        @Override
+        public void makeSound() {
+            System.out.println("Dog barks: Woof!");
+        }
+    }
 
-29. **Why is method overloading in Java not possible by changing the method's return type?**
+    class Cat extends Animal {
+        @Override
+        public void makeSound() {
+            System.out.println("Cat meows: Meow!");
+        }
+    }
+    ```
+
+    In the overloading example, the `Calculator` class has multiple `add` methods with different parameter types/counts.
+    In the overriding example, `Dog` and `Cat` classes provide their own specific implementations of the `makeSound()` method inherited from `Animal`.
+
+31. **Why is method overloading in Java not possible by changing the method's return type?**
 
     Method overloading in Java cannot be achieved solely by changing the return type of the method because the method signature, which is used to identify the method, consists of the method name and the parameter list (types and number of parameters). The return type is not part of the method signature. Therefore, if two methods have the same name and parameter list but different return types, the compiler cannot distinguish between them based on the return type alone, leading to ambiguity.
 
-30. **What is the difference between Java Dynamic Binding and Static Binding?**
+32. **What is the difference between Java Dynamic Binding and Static Binding?**
 
     - **Static Binding**: This occurs at compile time and is used for method calls that are resolved based on the reference type. It is typically used with private, static, and final methods. Since the method to be called is determined at compile time, it cannot be changed at runtime.
 
@@ -1060,7 +1202,7 @@
     }
     ```
 
-31. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
+33. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
 
     An Instance Initializer Block is a block of code that is used to initialize instance variables of a class. It is executed when an instance of the class is created, before the constructor is called.
 
@@ -1089,7 +1231,7 @@
     }
     ```
 
-32. **What is a static block in Java?**
+34. **What is a static block in Java?**
 
     A static block (also called static initialization block) is a block of code inside a class that is executed only once when the class is first loaded into memory. It is used to initialize static variables or perform one-time setup operations.
 
@@ -1121,7 +1263,7 @@
     }
     ```
 
-33. **What is the purpose of static members in Java?**
+35. **What is the purpose of static members in Java?**
 
     Static members in Java (including methods, variables, and nested classes) belong to the class itself rather than any specific instance. They serve several important purposes:
 
@@ -1170,7 +1312,7 @@
     }
     ```
 
-34. **Explain the use of final keyword in variable, method and class**
+36. **Explain the use of final keyword in variable, method and class**
 
     The `final` keyword in Java is used to impose restrictions on variables, methods, and classes:
 
@@ -1195,7 +1337,7 @@
     // class ChildClass extends FinalClass { } // Cannot extend final class
     ```
 
-35. **What is the significant difference between object-oriented language and object-based language?**
+37. **What is the significant difference between object-oriented language and object-based language?**
 
     Object-oriented languages and object-based languages differ in several key aspects:
 

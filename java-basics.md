@@ -329,7 +329,32 @@
        }
        ```
 
-14. **What are variable types?**
+14. **Is it possible to use this keyword in Java to refer to the static members?**
+
+    No, the `this` keyword cannot be used to refer to static members in Java. The `this` keyword refers to the current instance of a class, while static members belong to the class itself rather than any specific instance.
+
+    To access static members, you should:
+
+    - Use the class name: `ClassName.staticMember`
+    - Or access directly within the same class: `staticMember`
+
+    Example:
+
+    ```java
+    public class Example {
+        private static int count = 0;
+        private int instanceVar = 0;
+
+        public void method() {
+            this.instanceVar = 1;    // Valid - refers to instance variable
+            this.count = 1;          // Invalid - cannot use this with static
+            Example.count = 1;       // Valid - proper way to access static
+            count = 1;               // Also valid when in same class
+        }
+    }
+    ```
+
+15. **What are variable types?**
 
     | Variable Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
     | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -337,7 +362,7 @@
     | Instance Variables     | - Declared in a class, but outside a method, constructor or any block<br>- Created when an object is created with the 'new' keyword and destroyed when the object is destroyed<br>- Can use access modifiers<br>- Visible for all methods, constructors and blocks in the class<br>- Have default values (0 for numbers, false for boolean, null for object references)<br>- Can be accessed directly by calling the variable name inside the class                                                                                           |
     | Class/Static Variables | - Declared with the static keyword in a class, but outside a method, constructor or block<br>- Only one copy per class, regardless of how many objects are created<br>- Created when the program starts and destroyed when the program stops<br>- Can be declared as public/private, final, and static<br>- Visible for all methods, constructors and blocks in the class<br>- Have default values (0 for numbers, false for boolean, null for object references)<br>- Can be accessed by calling with the class name: ClassName.VariableName |
 
-15. **What is the difference between transient and volatile variable in Java?**
+16. **What is the difference between transient and volatile variable in Java?**
 
     | Feature | Transient                                                  | Volatile                                                   |
     | ------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
@@ -368,7 +393,7 @@
     }
     ```
 
-16. **What are data types?**
+17. **What are data types?**
 
     Data types in Java specify the type of data that can be stored in a variable. Java has two categories of data types:
 
@@ -388,7 +413,7 @@
 
     Primitive types are predefined by the language and named by a keyword. Reference data types are created by the programmer and are not defined by the language (except for String).
 
-17. **What is Type Casting (Type Conversion)**
+18. **What is Type Casting (Type Conversion)**
 
     Type casting is the process of converting a value from one data type to another in Java. There are two types of type casting:
 
@@ -414,7 +439,7 @@
 
     Widening casting is done automatically when passing a smaller size type to a larger size type. Narrowing casting must be done manually by placing the type in parentheses in front of the value.
 
-18. **What are autoboxing and unboxing?**
+19. **What are autoboxing and unboxing?**
 
     Autoboxing and unboxing are automatic conversions between primitive data types and their corresponding wrapper classes in Java:
 
@@ -455,7 +480,7 @@
     - Enables primitives to work with collections
     - Makes code more readable and maintainable
 
-19. **What are Operators? What are the types of Operators?**
+20. **What are Operators? What are the types of Operators?**
 
     Java operators are symbols that perform operations on variables and values. They allow us to execute various operations such as addition, subtraction, and comparisons. The different types of operators in Java are as follows:
 
@@ -468,7 +493,7 @@
     | Assignment Operators    | Used to assign values to variables (=, +=, -=, \*=, /=, %=, &=, \|=, ^=, <<=, >>=, >>>=). |
     | Miscellaneous Operators | Includes conditional (ternary) operator (`? :`), instanceof operator (`instanceof`).      |
 
-20. **What is the difference between ++a and a++ increment operators?**
+21. **What is the difference between ++a and a++ increment operators?**
 
     The ++a (pre-increment) and a++ (post-increment) operators both increment a variable by 1, but they differ in when the increment occurs and what value is returned:
 
@@ -496,7 +521,7 @@
 
     This difference is particularly important in expressions and method calls where the returned value matters.
 
-21. **What are loops? What are the types of loops?**
+22. **What are loops? What are the types of loops?**
 
     Loops are control structures that allow you to execute a block of code multiple times, depending on a specified condition. In Java, there are several types of loops that you can use to handle repetitive tasks:
 
@@ -508,7 +533,7 @@
 
     4. **Enhanced for loop (for-each loop)**: Introduced in Java 5, this loop is used to iterate over collections and arrays, simplifying the syntax for traversing elements.
 
-22. **What are control statements in Java?**
+23. **What are control statements in Java?**
 
     Control statements in Java are programming constructs that control the flow of program execution. They determine which parts of code are executed and in what order, based on certain conditions or requirements. The main types of control statements in Java are:
 
@@ -533,7 +558,7 @@
 
     These statements allow programmers to create complex program logic and control program flow based on different conditions and requirements.
 
-23. **What are Loop Control Statements? What are the types of Loop Control Statements?**
+24. **What are Loop Control Statements? What are the types of Loop Control Statements?**
 
     Loop control statements are used to alter the flow of control in loops. They allow you to manage the execution of loop iterations based on certain conditions. The types of loop control statements in Java include:
 
@@ -541,7 +566,7 @@
     2. **continue statement**: Skips the current iteration and proceeds to the next iteration of the loop.
     3. **return statement**: Exits from the current method and returns control to the calling method, which can also affect loop execution if used within a loop.
 
-24. **What is Decision Making? What are the types of Decision Making?**
+25. **What is Decision Making? What are the types of Decision Making?**
 
     Decision making in programming refers to the process of making choices based on certain conditions. It allows the program to execute different paths of code based on the evaluation of these conditions. In Java, decision-making is primarily achieved through control statements.
 
@@ -552,7 +577,7 @@
     | **else if statement**   | Allows checking multiple conditions sequentially.                                      |
     | **switch statement**    | Selects one of many code blocks to execute based on the value of a variable.           |
 
-25. **What is the difference between a while loop and a do-while loop?**
+26. **What is the difference between a while loop and a do-while loop?**
 
     | Aspect                 | while loop                                                             | do-while loop                                                |
     | ---------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------ |
@@ -562,7 +587,7 @@
     | **Use Case**           | When you need to check a condition before executing any statements     | When you want to ensure the loop body executes at least once |
     | **Exit Control**       | Entry controlled loop - may exit before first execution                | Exit controlled loop - can only exit after first execution   |
 
-26. **What is the difference between a for loop and an enhanced for loop?**
+27. **What is the difference between a for loop and an enhanced for loop?**
 
     | Aspect            | for loop                                                  | enhanced for loop/for-each loop                            |
     | ----------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
@@ -589,7 +614,7 @@
     }
     ```
 
-27. **What are wrapper classes in Java?**
+28. **What are wrapper classes in Java?**
 
     Wrapper classes in Java are used to convert primitive data types into objects. Each primitive type has a corresponding wrapper class that provides a way to use these primitives as objects. This is particularly useful in situations where objects are required, such as in collections like ArrayList. The wrapper classes in Java include:
 
@@ -604,7 +629,7 @@
 
     Wrapper classes also provide utility methods for converting between types, performing operations, and handling null values. For example, the Integer class has methods for parsing strings into integers and vice versa. By using wrapper classes, you can take advantage of the features of object-oriented programming while still working with primitive data types.
 
-28. **Distinguish between static loading and dynamic class loading?**
+29. **Distinguish between static loading and dynamic class loading?**
 
     Static loading and dynamic class loading are two different approaches to loading classes in Java:
 
@@ -642,7 +667,7 @@
     }
     ```
 
-29. **What is the purpose of the Runtime class and System class?**
+30. **What is the purpose of the Runtime class and System class?**
 
     The Runtime class and System class serve different but important purposes in Java:
 
@@ -667,7 +692,7 @@
       - Current time in milliseconds
       - System exit
 
-30. **What is the super keyword in Java? When can you use the super keyword?**
+31. **What is the super keyword in Java? When can you use the super keyword?**
 
     The `super` keyword in Java is a reference variable used to refer to the immediate parent class object. It allows you to access parent class members that are hidden or overridden by the child class.
 
@@ -711,3 +736,14 @@
             System.out.println(super.name); // Access parent field
         }
     ```
+
+32. **What are the differences between super and this keywords in Java?**
+
+    | super keyword                                                           | this keyword                                                    |
+    | ----------------------------------------------------------------------- | --------------------------------------------------------------- |
+    | Used to refer to the immediate parent class object                      | Used to refer to the current class object                       |
+    | Used to access parent class members hidden by child class               | Used to access current class members                            |
+    | Must be first statement in constructor when calling parent constructor  | Can be used anywhere within instance methods and constructors   |
+    | Cannot be used in static context                                        | Cannot be used in static context                                |
+    | Used with inheritance to differentiate between parent and child members | Used to differentiate between instance variables and parameters |
+    | Example: `super.method()`, `super.variable`, `super()`                  | Example: `this.method()`, `this.variable`, `this()`             |

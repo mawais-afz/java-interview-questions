@@ -52,7 +52,40 @@
        └── Deque
    ```
 
-2. **What is the difference between List, Set, and Map in Java?**
+2. **What are the differences between arrays and ArrayList in Java?**
+
+   Here's a comparison of arrays and ArrayList in Java:
+
+   | Feature         | Array                            | ArrayList                                     |
+   | --------------- | -------------------------------- | --------------------------------------------- |
+   | Size            | Fixed length, cannot be modified | Dynamic size, grows automatically as needed   |
+   | Type            | Can store primitives and objects | Can only store objects (uses wrapper classes) |
+   | Syntax          | int[] arr = new int[10];         | ArrayList<Integer> list = new ArrayList<>();  |
+   | Memory          | Less memory overhead             | More memory overhead due to object storage    |
+   | Performance     | Faster for fixed-size operations | Slower due to resizing and object overhead    |
+   | Dimension       | Can be multidimensional          | Single dimensional (can nest ArrayLists)      |
+   | Generics        | Does not work with generics      | Supports generics                             |
+   | Utility Methods | Limited built-in methods         | Many utility methods (add, remove, etc.)      |
+
+   Example usage:
+
+   ```java
+   // Array example
+   int[] array = new int[3];
+   array[0] = 1;
+   array[1] = 2;
+   array[2] = 3;
+   // array[3] = 4; // ArrayIndexOutOfBoundsException
+
+   // ArrayList example
+   ArrayList<Integer> list = new ArrayList<>();
+   list.add(1);
+   list.add(2);
+   list.add(3);
+   list.add(4); // Automatically resizes
+   ```
+
+3. **What is the difference between List, Set, and Map in Java?**
 
    Here's a comparison of List, Set, and Map interfaces in Java:
 
@@ -89,7 +122,7 @@
    map.get("apple");   // key-based access
    ```
 
-3. **What is the difference between fail-safe and fail-fast iterators?**
+4. **What is the difference between fail-safe and fail-fast iterators?**
 
    Fail-fast and fail-safe iterators differ in how they handle concurrent modifications during iteration:
 
@@ -130,7 +163,7 @@
    }
    ```
 
-4. **What is the difference between Vector and an ArrayList?**
+5. **What is the difference between Vector and an ArrayList?**
 
    Vector and ArrayList are both List implementations, but they have several key differences:
 
@@ -158,7 +191,7 @@
    List<String> syncList = Collections.synchronizedList(new ArrayList<>());
    ```
 
-5. **What are the differences between Collection and Collections in Java?**
+6. **What are the differences between Collection and Collections in Java?**
 
    Collection and Collections serve different purposes in Java:
 
@@ -185,7 +218,7 @@
    List<String> syncList = Collections.synchronizedList(list2);
    ```
 
-6. **In which scenario, LinkedList is better than ArrayList in Java?**
+7. **In which scenario, LinkedList is better than ArrayList in Java?**
 
    LinkedList and ArrayList have different performance characteristics that make each better suited for specific scenarios:
 

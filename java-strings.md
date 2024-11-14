@@ -73,3 +73,34 @@
    ```
 
    In this example, `str1` and `str2` point to the same object in the string pool, while `str3` points to a different object in the heap.
+
+5. **How is the creation of a String using new() different from that of a literal?**
+
+   When creating strings, there are two main approaches:
+
+   1. **String Literal (`String s = "hello";`)**:
+
+      - Creates string in the String Pool
+      - Reuses existing string if identical one exists in pool
+      - More memory efficient
+      - Better performance due to string reuse
+      - Preferred way for string creation
+
+   2. **Using new (`String s = new String("hello");`)**:
+      - Always creates new String object in heap memory
+      - Bypasses String Pool (unless explicitly interned)
+      - Creates two objects: one in heap and one in string pool
+      - Less memory efficient
+      - Useful when you explicitly need a new String instance
+
+   Example demonstrating the difference:
+
+   ```java
+   String str1 = "hello";        // Creates one object in String Pool
+   String str2 = "hello";        // Reuses same object from pool
+   String str3 = new String("hello"); // Creates new object in heap
+
+   System.out.println(str1 == str2);      // true (same reference)
+   System.out.println(str1 == str3);      // false (different objects)
+   System.out.println(str1.equals(str3)); // true (same content)
+   ```

@@ -1,6 +1,39 @@
 # Java Collections Framework
 
-1. **Describe the collection framework in Java.**
+1. **Explain the term enumeration in Java.**
+
+   Enumeration is an interface in Java that provides a way to iterate through a collection of objects sequentially. It was part of the original Java collections design before the introduction of Iterator.
+
+   Key points about Enumeration:
+
+   1. **Methods**:
+
+      - `hasMoreElements()`: Tests if more elements exist
+      - `nextElement()`: Returns the next element
+
+   2. **Legacy Status**:
+
+      - Considered legacy code since Java 2
+      - Replaced by the Iterator interface
+      - Still used in some legacy classes like Vector and Properties
+
+   3. **Differences from Iterator**:
+      - Cannot remove elements (Iterator can)
+      - Method names are longer
+      - Less functionality overall
+
+   Example usage:
+
+   ```java
+   Vector<String> v = new Vector<>();
+   Enumeration<String> e = v.elements();
+   while(e.hasMoreElements()) {
+       String element = e.nextElement();
+       // Process element
+   }
+   ```
+
+2. **Describe the collection framework in Java.**
 
    The Java Collections Framework is a unified architecture for representing and manipulating collections of objects. It provides a set of interfaces, implementations, and algorithms to store and process groups of objects.
 
@@ -52,7 +85,7 @@
        └── Deque
    ```
 
-2. **What are the differences between arrays and ArrayList in Java?**
+3. **What are the differences between arrays and ArrayList in Java?**
 
    Here's a comparison of arrays and ArrayList in Java:
 
@@ -85,7 +118,7 @@
    list.add(4); // Automatically resizes
    ```
 
-3. **What is the difference between List, Set, and Map in Java?**
+4. **What is the difference between List, Set, and Map in Java?**
 
    Here's a comparison of List, Set, and Map interfaces in Java:
 
@@ -122,7 +155,7 @@
    map.get("apple");   // key-based access
    ```
 
-4. **What is the difference between fail-safe and fail-fast iterators?**
+5. **What is the difference between fail-safe and fail-fast iterators?**
 
    Fail-fast and fail-safe iterators differ in how they handle concurrent modifications during iteration:
 
@@ -163,7 +196,7 @@
    }
    ```
 
-5. **What is the difference between Vector and an ArrayList?**
+6. **What is the difference between Vector and an ArrayList?**
 
    Vector and ArrayList are both List implementations, but they have several key differences:
 
@@ -191,7 +224,7 @@
    List<String> syncList = Collections.synchronizedList(new ArrayList<>());
    ```
 
-6. **What are the differences between Collection and Collections in Java?**
+7. **What are the differences between Collection and Collections in Java?**
 
    Collection and Collections serve different purposes in Java:
 
@@ -218,7 +251,7 @@
    List<String> syncList = Collections.synchronizedList(list2);
    ```
 
-7. **In which scenario, LinkedList is better than ArrayList in Java?**
+8. **In which scenario, LinkedList is better than ArrayList in Java?**
 
    LinkedList and ArrayList have different performance characteristics that make each better suited for specific scenarios:
 
@@ -247,3 +280,146 @@
    linkedList.removeFirst();         // O(1)
    linkedList.removeLast();          // O(1)
    ```
+
+9. **Contiguous memory locations are usually used for storing actual values in an array but not in ArrayList. Explain**
+
+   This is actually incorrect - both arrays and ArrayLists in Java use contiguous memory locations to store their elements. However, there are some key differences in how they work:
+
+   Arrays:
+
+   - Store primitive values or object references directly in contiguous memory
+   - Fixed size allocated at creation
+   - Direct memory access to elements
+
+   ArrayList:
+
+   - Uses an internal array to store elements contiguously
+   - Automatically grows by creating new, larger array when needed
+   - Elements are still stored contiguously, just in the backing array
+
+   Example:
+
+   ```java
+   // Array - direct contiguous storage
+   int[] array = new int[5];         // Fixed block of 5 integers
+
+   // ArrayList - contiguous storage via internal array
+   ArrayList<Integer> list = new ArrayList<>();  // Initial capacity 10
+   list.add(1);                      // Stored in backing array
+   list.add(2);                      // Next contiguous position
+   // When backing array is full, ArrayList creates new larger array
+   // and copies elements to maintain contiguous storage
+   ```
+
+10. **Why does the java array index start with 0?**
+
+    Java arrays use 0-based indexing primarily because:
+
+    1. Memory efficiency - The index represents the offset from the start of the array. For the first element, the offset is 0.
+
+    2. Historical precedent - C language, which heavily influenced Java, used 0-based indexing. This was based on how pointer arithmetic worked.
+
+    3. Mathematical consistency - Many mathematical sequences and iterations work more naturally with 0-based indexing.
+
+    Example:
+
+    ```java
+    int[] arr = new int[5];  // Creates array of size 5
+    arr[0] = 1;  // First element at index 0
+    arr[4] = 5;  // Last element at index (length-1)
+
+    // Memory offset calculation (conceptual)
+    // Location = baseAddress + (index * elementSize)
+    // For first element: baseAddress + (0 * elementSize) = baseAddress
+    ```
+
+11. **What are the differences between HashMap and HashTable in Java?**
+
+    | Feature          | HashMap                                                         | HashTable                             |
+    | ---------------- | --------------------------------------------------------------- | ------------------------------------- |
+    | Synchronization  | Not synchronized, not thread-safe                               | Synchronized and thread-safe          |
+    | Null Values      | Allows one null key and multiple null values                    | Does not allow null keys or values    |
+    | Performance      | Generally better performance due to no synchronization overhead | Slower due to synchronization         |
+    | Iterator         | Fail-fast iterator                                              | Enumerator and fail-fast iterator     |
+    | Legacy Status    | Modern implementation, introduced in JDK 1.2                    | Legacy class, exists since JDK 1.0    |
+    | Inheritance      | Extends AbstractMap                                             | Extends Dictionary and implements Map |
+    | Initial Capacity | Default is 16                                                   | Default is 11                         |
+    | Load Factor      | Default is 0.75                                                 | Default is 0.75                       |
+    | Growth           | Doubles in size when threshold reached                          | Increases by (2 \* size + 1)          |
+
+12. **What is the difference between fail-fast and fail-safe iterators?**
+
+    | Feature       | Fail-Fast Iterator                                 | Fail-Safe Iterator                      |
+    | ------------- | -------------------------------------------------- | --------------------------------------- |
+    | Behavior      | Throws ConcurrentModificationException if modified | Allows modifications during iteration   |
+    | Working       | Works directly on collection                       | Works on clone/snapshot of collection   |
+    | Memory        | Uses less memory                                   | Uses more memory due to clone/snapshot  |
+    | Performance   | Better performance                                 | Lower performance due to clone creation |
+    | Examples      | ArrayList, HashMap, Vector iterators               | ConcurrentHashMap, CopyOnWriteArrayList |
+    | Consistency   | Always up-to-date with collection                  | May not reflect recent modifications    |
+    | Thread Safety | Not thread-safe                                    | Thread-safe                             |
+
+    Example:
+
+    ```java
+    // Fail-fast iterator example
+    ArrayList<String> list = new ArrayList<>();
+    Iterator<String> iterator = list.iterator();
+    list.add("item");  // Will throw ConcurrentModificationException
+
+    // Fail-safe iterator example
+    ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+    Iterator<String> safeIterator = map.keySet().iterator();
+    map.put("key", 1);  // Won't throw exception
+    ```
+
+13. **What makes a HashSet different from a TreeSet?**
+
+    | Feature          | HashSet                                      | TreeSet                                         |
+    | ---------------- | -------------------------------------------- | ----------------------------------------------- |
+    | Ordering         | No guaranteed order                          | Maintains natural ordering or custom Comparator |
+    | Implementation   | Backed by HashMap                            | Backed by TreeMap                               |
+    | Performance      | O(1) for add/remove/contains operations      | O(log n) for add/remove/contains operations     |
+    | Null Elements    | Allows one null element                      | Does not allow null elements                    |
+    | Memory Usage     | Uses more memory due to hash table structure | More memory efficient                           |
+    | Duplicate Values | Does not allow duplicates                    | Does not allow duplicates                       |
+    | Internal Storage | Hash table with buckets                      | Red-black tree                                  |
+    | Use Case         | When order doesn't matter and fast access    | When sorted order is required                   |
+
+14. **What is a Comparator in Java?**
+
+    A Comparator is a functional interface in Java used for custom comparison of objects. It defines a way to compare two objects of the same type for ordering.
+
+    Key points about Comparator:
+
+    | Feature         | Description                                                     |
+    | --------------- | --------------------------------------------------------------- |
+    | Interface       | Functional interface with compare() method                      |
+    | Purpose         | Custom ordering of objects that don't implement Comparable      |
+    | Method          | compare(T o1, T o2) returns negative, zero, or positive integer |
+    | Natural Order   | Can override natural ordering of objects                        |
+    | Multiple Orders | Allows multiple different orderings for same class              |
+    | Usage           | Commonly used with sorting methods and ordered collections      |
+
+    Example:
+
+    ```java
+    // Comparator to sort strings by length
+    Comparator<String> lengthComparator = new Comparator<String>() {
+        @Override
+        public int compare(String s1, String s2) {
+            return s1.length() - s2.length();
+        }
+    };
+
+    // Lambda expression equivalent
+    Comparator<String> lengthComparator = (s1, s2) -> s1.length() - s2.length();
+
+    // Using the comparator
+    List<String> list = Arrays.asList("apple", "banana", "kiwi");
+    Collections.sort(list, lengthComparator);
+    ```
+
+15. **Why is the delete function faster in the linked list than an array?**
+
+    In a linked list, deleting a node requires updating the pointers of the adjacent nodes, which is an O(1) operation. In contrast, deleting an element from an array requires shifting all subsequent elements to fill the gap, which is an O(n) operation. This makes linked lists more efficient for frequent insertions and deletions.

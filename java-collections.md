@@ -423,3 +423,85 @@
 15. **Why is the delete function faster in the linked list than an array?**
 
     In a linked list, deleting a node requires updating the pointers of the adjacent nodes, which is an O(1) operation. In contrast, deleting an element from an array requires shifting all subsequent elements to fill the gap, which is an O(n) operation. This makes linked lists more efficient for frequent insertions and deletions.
+
+16. **How to copy an array in Java?**
+
+    There are several ways to copy an array in Java:
+
+    1. **Using `Arrays.copyOf()` method:**
+       This method creates a new array and copies the specified range of the original array into it.
+
+       ```java
+       int[] original = {1, 2, 3, 4, 5};
+       int[] copy = Arrays.copyOf(original, original.length);
+       ```
+
+    2. **Using `System.arraycopy()` method:**
+       This method is a native method that provides a fast way to copy elements from one array to another.
+
+       ```java
+       int[] original = {1, 2, 3, 4, 5};
+       int[] copy = new int[original.length];
+       System.arraycopy(original, 0, copy, 0, original.length);
+       ```
+
+    3. **Using a loop:**
+       You can manually copy elements using a for loop.
+
+       ```java
+       int[] original = {1, 2, 3, 4, 5};
+       int[] copy = new int[original.length];
+       for (int i = 0; i < original.length; i++) {
+          copy[i] = original[i];
+       }
+       ```
+
+    4. **Using `clone()` method:**
+       The `clone()` method creates a shallow copy of the array.
+
+       ```java
+       int[] original = {1, 2, 3, 4, 5};
+       int[] copy = original.clone();
+       ```
+
+    Each of these methods has its own use cases and performance characteristics, so you can choose the one that best fits your needs.
+
+17. **What do you understand by a jagged array?**
+
+    A jagged array, also known as an "array of arrays," is an array whose elements are arrays. The inner arrays can be of different lengths, creating a "jagged" structure. This is in contrast to a multidimensional array, where each dimension must have the same length.
+
+    In Java, you can declare a jagged array as follows:
+
+    ```java
+    int[][] jaggedArray = {
+        {1, 2, 3},
+        {4, 5},
+        {6, 7, 8, 9}
+    };
+    ```
+
+    In this example, `jaggedArray` is a 2D array with three rows, but the lengths of the rows are different. The first row has three elements, the second row has two elements, and the third row has four elements.
+
+    Jagged arrays are useful when you need a collection of arrays of varying lengths, and they provide flexibility in managing such data structures.
+
+18. **Is it possible to make an array volatile?**
+
+    In Java, you cannot make the entire array volatile. However, you can make the reference to the array volatile. This means that the reference to the array will be volatile, but the elements within the array will not be volatile.
+
+    ```java
+    private volatile int[] array;
+    ```
+
+    In this example, the reference to the `array` is volatile, ensuring visibility of the reference across threads. However, individual elements within the array are not subject to the same visibility guarantees.
+
+    If you need to ensure visibility of individual elements, you would need to use other synchronization mechanisms, such as `synchronized` blocks or `java.util.concurrent.atomic` classes for atomic operations on array elements.
+
+19. **What are the advantages and disadvantages of an array?**
+
+    | Advantages                                      | Disadvantages                                     |
+    | ----------------------------------------------- | ------------------------------------------------- |
+    | Fast access to elements using index             | Fixed size, cannot be resized                     |
+    | Simple and easy to use                          | Insertion and deletion operations are costly      |
+    | Memory efficient for storing similar data types | No built-in support for complex data structures   |
+    | Supports random access                          | Can lead to wasted memory if not fully utilized   |
+    | Cache-friendly due to contiguous memory storage | Does not provide type safety for primitive arrays |

@@ -567,30 +567,49 @@
     The program uses the mathematical formula for sum of first n natural numbers: n\*(n+1)/2
     By subtracting the actual sum of array from expected sum, we get the missing number.
 
-12. **Write a Java Program to find the factorial of a given number.**
+12. **Write a Java Program to find the factorial of a given number with/without recursion**
 
     ```java
     public class Factorial {
-        public static long factorial(int n) {
+        // Recursive approach
+        public static long factorialRecursive(int n) {
             if (n < 0) {
                 throw new IllegalArgumentException("Factorial is not defined for negative numbers");
             }
             if (n == 0 || n == 1) {
                 return 1;
             }
-            return n * factorial(n - 1);
+            return n * factorialRecursive(n - 1);
+        }
+
+        // Iterative approach 
+        public static long factorialIterative(int n) {
+            if (n < 0) {
+                throw new IllegalArgumentException("Factorial is not defined for negative numbers");
+            }
+            if (n == 0 || n == 1) {
+                return 1;
+            }
+            long result = 1;
+            for (int i = 2; i <= n; i++) {
+                result *= i;
+            }
+            return result;
         }
 
         public static void main(String[] args) {
             try {
                 int number = 5;
-                System.out.println("Factorial of " + number + " is: " + factorial(number));
+                System.out.println("Recursive factorial of " + number + " is: " + factorialRecursive(number));
+                System.out.println("Iterative factorial of " + number + " is: " + factorialIterative(number));
 
                 number = 0;
-                System.out.println("Factorial of " + number + " is: " + factorial(number));
+                System.out.println("\nRecursive factorial of " + number + " is: " + factorialRecursive(number));
+                System.out.println("Iterative factorial of " + number + " is: " + factorialIterative(number));
 
                 number = -1;
-                System.out.println("Factorial of " + number + " is: " + factorial(number));
+                System.out.println("\nTrying factorial of negative number:");
+                System.out.println(factorialRecursive(number));
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
             }
@@ -601,18 +620,27 @@
     Output:
 
     ```
-    Factorial of 5 is: 120
-    Factorial of 0 is: 1
+    Recursive factorial of 5 is: 120
+    Iterative factorial of 5 is: 120
+
+    Recursive factorial of 0 is: 1
+    Iterative factorial of 0 is: 1
+
+    Trying factorial of negative number:
     Error: Factorial is not defined for negative numbers
     ```
 
     This solution demonstrates:
 
-    - Recursive approach to calculate factorial
+    - Both recursive and iterative approaches to calculate factorial
     - Error handling for negative numbers
     - Base cases for 0 and 1
-    - Time Complexity: O(n)
-    - Space Complexity: O(n) due to recursive call stack
+    - Recursive approach:
+        - Time Complexity: O(n)
+        - Space Complexity: O(n) due to recursive call stack
+    - Iterative approach:
+        - Time Complexity: O(n)
+        - Space Complexity: O(1)
 
 13. **Write a Java program to check if the two strings are anagrams**
 
@@ -682,7 +710,7 @@
         public static void fibonacciIterative(int n) {
             int first = 0, second = 1;
             System.out.print(first + " " + second + " ");
-            
+
             for (int i = 2; i < n; i++) {
                 int next = first + second;
                 System.out.print(next + " ");
@@ -693,12 +721,12 @@
 
         public static void main(String[] args) {
             int n = 10; // Number of terms to print
-            
+
             System.out.println("Fibonacci Series (Recursive) up to " + n + " terms:");
             for (int i = 0; i < n; i++) {
                 System.out.print(fibonacciRecursive(i) + " ");
             }
-            
+
             System.out.println("\n\nFibonacci Series (Iterative) up to " + n + " terms:");
             fibonacciIterative(n);
         }
@@ -706,15 +734,17 @@
     ```
 
     Output:
+
     ```
     Fibonacci Series (Recursive) up to 10 terms:
-    0 1 1 2 3 5 8 13 21 34 
+    0 1 1 2 3 5 8 13 21 34
 
     Fibonacci Series (Iterative) up to 10 terms:
     0 1 1 2 3 5 8 13 21 34
     ```
 
     This solution demonstrates:
+
     - Both recursive and iterative approaches to generate Fibonacci numbers
     - Recursive approach: Time Complexity O(2^n), Space Complexity O(n)
     - Iterative approach: Time Complexity O(n), Space Complexity O(1)
@@ -724,14 +754,98 @@
     - Simple and elegant implementation
     - Base cases handling (n <= 1)
 
-14. **Write a program to find the Second Highest number in an ArrayList**
-15. **Check if a String is Palindrome**
-16. **Find the Length of the Longest Substring Without Repeating Characters**
-17. **Find the First Non-Repeating Character in a String**
-18. **Find the Missing Number in an Array**
-19. **Find the Maximum Subarray Sum**
-20. **Find the Prime Numbers in a Given Range**
-21. **Find the Fibonacci Numbers in a Given Range**
+15. **Write a program to find the Second Highest number in an ArrayList**
+16. **Check if a String is Palindrome with/without Recursion**
+
+    Here's a solution that demonstrates both recursive and iterative approaches to check if a string is a palindrome:
+
+    ```java
+    public class PalindromeChecker {
+        // Iterative approach
+        public static boolean isPalindromeIterative(String str) {
+            str = str.toLowerCase().replaceAll("[^a-zA-Z0-9]", "");
+            int left = 0;
+            int right = str.length() - 1;
+
+            while (left < right) {
+                if (str.charAt(left) != str.charAt(right)) {
+                    return false;
+                }
+                left++;
+                right--;
+            }
+            return true;
+        }
+
+        // Recursive approach
+        public static boolean isPalindromeRecursive(String str) {
+            str = str.toLowerCase().replaceAll("[^a-zA-Z0-9]", "");
+            return isPalindromeHelper(str, 0, str.length() - 1);
+        }
+
+        private static boolean isPalindromeHelper(String str, int left, int right) {
+            if (left >= right) {
+                return true;
+            }
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            return isPalindromeHelper(str, left + 1, right - 1);
+        }
+
+        public static void main(String[] args) {
+            String[] testStrings = {
+                "A man, a plan, a canal: Panama",
+                "race a car",
+                "Was it a car or a cat I saw?",
+                "hello"
+            };
+
+            for (String str : testStrings) {
+                System.out.println("String: \"" + str + "\"");
+                System.out.println("Iterative: " + isPalindromeIterative(str));
+                System.out.println("Recursive: " + isPalindromeRecursive(str));
+                System.out.println();
+            }
+        }
+    }
+    ```
+
+    Output:
+
+    ```
+    String: "A man, a plan, a canal: Panama"
+    Iterative: true
+    Recursive: true
+
+    String: "race a car"
+    Iterative: false
+    Recursive: false
+
+    String: "Was it a car or a cat I saw?"
+    Iterative: true
+    Recursive: true
+
+    String: "hello"
+    Iterative: false
+    Recursive: false
+    ```
+
+    This solution demonstrates:
+
+    - Both iterative and recursive approaches to check palindromes
+    - Case-insensitive comparison
+    - Removal of non-alphanumeric characters
+    - Iterative approach: Time Complexity O(n), Space Complexity O(1)
+    - Recursive approach: Time Complexity O(n), Space Complexity O(n)
+    - Handling of special cases and punctuation
+    - Clean and efficient implementation
+
+17. **Find the Length of the Longest Substring Without Repeating Characters**
+18. **Find the First Non-Repeating Character in a String**
+19. **Find the Missing Number in an Array**
+20. **Find the Maximum Subarray Sum**
+21. **Find the Prime Numbers in a Given Range**
 22. **Find the Factorial of a Number**
 23. **Find the Greatest Common Divisor (GCD) of Two Numbers**
 24. **Find the Least Common Multiple (LCM) of Two Numbers**

@@ -24,9 +24,14 @@
 
       - These patterns deal with object composition and relationships between objects
       - They help ensure that when one part of a system changes, the entire system doesn't need to change
-      - Examples: Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy
+      - Examples: Adapter, Bridge, Filter, Composite, Decorator, Facade, Flyweight, Proxy
 
    3. **Behavioral Design Patterns**
       - These patterns deal with communication between objects
       - They characterize complex control flow that's difficult to follow at run-time
       - Examples: Chain of Responsibility, Command, Interpreter, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor
+
+   4. **J2EE Design Patterns**
+      - These patterns are specifically concerned with the presentation tier in Java EE applications
+      - They are used to solve common problems in distributed systems and enterprise applications
+      - Examples: MVC Pattern, Business Delegate, Composite Entity, Data Access Object (DAO), Front Controller, Intercepting Filter, Service Locator, Transfer Object

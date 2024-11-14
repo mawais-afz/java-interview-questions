@@ -39,11 +39,66 @@
    daemonThread.start();
    ```
 
-3. **What is multithreading in Java?**
+3. **What are the different ways to use threads?**
+
+   There are two primary ways to use threads in Java:
+
+   1. **Extending the Thread class**:
+
+      - Create a new class that extends the Thread class.
+      - Override the `run()` method with the code you want to execute in the new thread.
+      - Create an instance of the new class and call the `start()` method to begin execution.
+
+      Example:
+
+      ```java
+      class MyThread extends Thread {
+          @Override
+          public void run() {
+              System.out.println("Thread is running");
+          }
+      }
+
+      public class Main {
+          public static void main(String[] args) {
+              MyThread thread = new MyThread();
+              thread.start();
+          }
+      }
+      ```
+
+   2. **Implementing the Runnable interface**:
+
+      - Create a new class that implements the Runnable interface.
+      - Implement the `run()` method with the code you want to execute in the new thread.
+      - Create an instance of the Thread class, passing an instance of the new class to the Thread constructor.
+      - Call the `start()` method on the Thread instance to begin execution.
+
+      Example:
+
+      ```java
+      class MyRunnable implements Runnable {
+          @Override
+          public void run() {
+              System.out.println("Thread is running");
+          }
+      }
+
+      public class Main {
+          public static void main(String[] args) {
+              Thread thread = new Thread(new MyRunnable());
+              thread.start();
+          }
+      }
+      ```
+
+   Both approaches achieve the same result, but implementing the Runnable interface is generally preferred because it allows for better separation of task and thread management, and it enables the class to extend another class if needed.
+
+4. **What is multithreading in Java?**
 
    Multithreading in Java is the ability to execute multiple threads (lightweight processes) simultaneously within a single program. Each thread runs independently while sharing the same resources. This enables concurrent execution of tasks, improved performance, and better resource utilization. Java provides built-in support for multithreading through its Thread class and Runnable interface.
 
-4. **What are the different ways of implementing multithreading in Java?**
+5. **What are the different ways of implementing multithreading in Java?**
 
    There are two main ways to implement multithreading in Java:
 
@@ -62,7 +117,7 @@
    - It provides better separation between the task's logic and thread behavior
    - It's more flexible as the same Runnable can be used with different Thread configurations
 
-5. **Explain the Java thread lifecycle/states?**
+6. **Explain the Java thread lifecycle/states?**
 
    A Java thread goes through several states during its lifecycle:
 
@@ -94,7 +149,17 @@
 
    Note that once a thread is terminated, it cannot be restarted. A new thread object must be created for new execution.
 
-6. **What is the difference between start and run method in Java?**
+7. **What are the different types of Thread Priorities in Java? And what is the default priority of a thread assigned by JVM?**
+
+   - **MIN_PRIORITY (1)**: The minimum priority that a thread can have.
+   - **NORM_PRIORITY (5)**: The default priority assigned to a thread by the JVM.
+   - **MAX_PRIORITY (10)**: The maximum priority that a thread can have.
+
+   The default priority of a thread assigned by the JVM is `NORM_PRIORITY` (5).
+
+   Thread priorities are used by the thread scheduler to decide when each thread should run. However, thread priority behavior can be platform-dependent and should not be relied upon for program correctness.
+
+8. **What is the difference between start and run method in Java?**
 
    | Feature           | `start()`                                                          | `run()`                                                   |
    | ----------------- | ------------------------------------------------------------------ | --------------------------------------------------------- |
@@ -105,13 +170,24 @@
    | Usage             | Must be called to start a thread.                                  | Can be called directly, but does not start a new thread.  |
    | Overriding        | Cannot be overridden in the Thread class.                          | Can be overridden in a subclass of Thread.                |
 
-7. **What is the difference between sleep and wait in Java?**
-8. **What is the difference between yield and join in Java?**
-9. **What is the difference between notify and notifyAll in Java?**
-10. **What is the difference between ReentrantLock and synchronized in Java?**
-11. **What is the difference between volatile and synchronized in Java?**
+9. **What is the difference between sleep and wait in Java?**
 
-12. **What is the difference between a program and a process?**
+   | Feature        | `sleep()`                                  | `wait()`                                                   |
+   | -------------- | ------------------------------------------ | ---------------------------------------------------------- |
+   | Purpose        | Pauses thread execution for specified time | Releases lock and waits for notification from other thread |
+   | Lock Release   | Does not release any locks held            | Releases the lock on the object                            |
+   | Method Type    | Static method of Thread class              | Instance method of Object class                            |
+   | Notification   | Automatically wakes after time period      | Must be notified by notify()/notifyAll()                   |
+   | Usage Context  | Can be called anywhere                     | Must be called from synchronized context                   |
+   | Exception      | Throws InterruptedException                | Throws InterruptedException                                |
+   | Resource State | No change in resource state                | Used when waiting for state change in shared resource      |
+
+10. **What is the difference between yield and join in Java?**
+11. **What is the difference between notify and notifyAll in Java?**
+12. **What is the difference between ReentrantLock and synchronized in Java?**
+13. **What is the difference between volatile and synchronized in Java?**
+
+14. **What is the difference between a program and a process?**
 
     - **Program**: A program is a set of instructions written in a programming language that is designed to perform a specific task. It is a static entity stored on disk (e.g., an executable file) and does not consume system resources until it is executed.
 
@@ -119,11 +195,11 @@
 
     In summary, a program is a passive collection of instructions, while a process is an active execution of those instructions with its own state and resources.
 
-13. **Can we make the main() thread a daemon thread?**
+15. **Can we make the main() thread a daemon thread?**
 
     - No, the main() thread cannot be made a daemon thread. In Java, the main thread is the first thread that is created when a program starts, and it is not possible to change its daemon status after it has been started. Daemon threads are designed to run in the background and do not prevent the JVM from exiting when the program finishes executing. Since the main thread is responsible for the execution of the program, it must complete before the JVM can terminate, making it non-daemon by nature.
 
-14. **Why is synchronization necessary? Explain with the help of a relevant example.**
+16. **Why is synchronization necessary? Explain with the help of a relevant example.**
 
     Synchronization is necessary to prevent race conditions and ensure thread safety when multiple threads access shared resources. Without synchronization, concurrent access to shared data can lead to data corruption and inconsistent results.
 
@@ -165,7 +241,7 @@
     - Race conditions are prevented
     - Data consistency is maintained
 
-15. **Assume a thread has a lock on it, calling the sleep() method on that thread will release the lock?**
+17. **Assume a thread has a lock on it, calling the sleep() method on that thread will release the lock?**
 
     No, calling sleep() on a thread that holds a lock will not release the lock. When a thread goes to sleep:
 

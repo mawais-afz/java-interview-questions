@@ -12,7 +12,11 @@
    | Since Version | JDK 1.0                                          | JDK 1.0                                                | JDK 1.5                                                |
    | Use Case      | When string will not change frequently           | In multi-threaded environments                         | In single-threaded environments                        |
 
-2. **What makes Java Strings immutable?**
+2. **Which among String or String Buffer should be preferred when there are a lot of updates required to be done in the data?**
+
+   When frequent updates are needed, StringBuilder is preferred over StringBuffer due to its better performance in single-threaded environments. However, if thread safety is a concern, StringBuffer should be used.
+
+3. **What makes Java Strings immutable?**
 
    Java Strings are immutable by design due to several implementation details:
 
@@ -43,7 +47,73 @@
    str = str + " World"; // Creates new String object
    ```
 
-3. **What is the difference between equals() and ==?**
+4. **Apart from the security aspect, what are the reasons behind making strings immutable in Java?**
+
+   There are several important reasons why strings are immutable in Java:
+
+   1. **String Pool Optimization**
+
+      - Enables safe string pooling and reuse
+      - Reduces memory footprint by sharing string literals
+      - No need to create copies since strings can't be modified
+
+   2. **Thread Safety**
+
+      - Immutable strings are inherently thread-safe
+      - Can be safely shared between multiple threads
+      - No synchronization needed for read operations
+
+   3. **Hash Code Caching**
+
+      - String's hash code can be cached since it won't change
+      - Improves performance when used as keys in HashMaps/HashSets
+      - Only needs to be calculated once
+
+   4. **Network Security**
+
+      - Safe to pass strings between different parts of a system
+      - No risk of modification during transmission
+      - Maintains data integrity across network boundaries
+
+   5. **Performance Benefits**
+
+      - JVM can optimize string operations better
+      - Enables various internal optimizations
+      - Simpler garbage collection
+
+   6. **API Contract Safety**
+      - Method parameters can't be modified unexpectedly
+      - Return values remain consistent
+      - Safer to use as class constants
+
+5. **Why is it said that the length() method of String class doesn't return accurate results?**
+
+   The String.length() method returns the number of code units (char values) in the string, not necessarily the number of actual characters. This can lead to seemingly inaccurate results because:
+
+   1. **Unicode Surrogate Pairs**
+
+      - Some Unicode characters require two char values (surrogate pairs)
+      - length() counts each surrogate pair as two characters
+      - Example: "𝄞" (musical G-clef) has length() = 2
+
+   2. **Combining Characters**
+
+      - Characters with diacritical marks may use combining characters
+      - Each combining character is counted separately
+      - Example: "é" (e + acute accent) has length() = 2 if composed of two code units
+
+   3. **Grapheme Clusters**
+      - What appears visually as one character might be multiple Unicode code points
+      - length() counts each code unit separately
+      - Example: Family emoji "👨‍👩‍👧" consists of multiple code units
+
+   For accurate character counting, alternatives include:
+
+   - codePointCount() for Unicode code points
+   - Using specialized libraries for grapheme cluster counting
+   - java.text.BreakIterator for linguistic character boundaries
+
+6. **What is the difference between equals() and ==?**
 
    | Feature          | `equals()`                                                                           | `==`                                                               |
    | ---------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
@@ -54,7 +124,7 @@
    | Default Behavior | Default implementation in Object class checks reference equality unless overridden.  | Always checks reference equality.                                  |
    | Example          | `str1.equals(str2)` compares the actual string values.                               | `str1 == str2` checks if both references point to the same object. |
 
-4. **What are string pools in Java?**
+7. **What are string pools in Java?**
 
    String pools in Java refer to a special storage area in the Java heap memory where Java stores string literals. When a string literal is created, Java checks the string pool to see if an identical string already exists. If it does, the reference to the existing string is returned, rather than creating a new string object. This mechanism helps in saving memory and improving performance by reusing immutable string objects.
 
@@ -74,7 +144,7 @@
 
    In this example, `str1` and `str2` point to the same object in the string pool, while `str3` points to a different object in the heap.
 
-5. **How is the creation of a String using new() different from that of a literal?**
+8. **How is the creation of a String using new() different from that of a literal?**
 
    When creating strings, there are two main approaches:
 
@@ -104,3 +174,32 @@
    System.out.println(str1 == str3);      // false (different objects)
    System.out.println(str1.equals(str3)); // true (same content)
    ```
+
+9. **Why is the character array preferred over string for storing confidential information?**
+
+   Character arrays (`char[]`) are preferred over Strings for storing sensitive data like passwords for several security reasons:
+
+   1. **Immutability of Strings**:
+
+      - Strings are immutable in Java
+      - String values remain in memory until garbage collection
+      - Multiple copies may exist in memory due to String Pool
+      - Sensitive data stays longer in memory, increasing security risk
+
+   2. **Explicit Clearing**:
+
+      - Character arrays can be explicitly cleared (zeroed out)
+      - Once cleared, sensitive data is immediately removed from memory
+      - Example:
+        ```java
+        char[] password = {'p','a','s','s'};
+        // After use
+        Arrays.fill(password, '0'); // Explicitly clear the data
+        ```
+
+   3. **Memory Control**:
+      - Direct control over memory contents with arrays
+      - Can ensure sensitive data is not kept in memory longer than needed
+      - Reduces risk of memory dumps exposing confidential information
+
+   This is why Java's `Console.readPassword()` returns a char array instead of a String, and many security-related APIs prefer character arrays for handling sensitive data.

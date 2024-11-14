@@ -19,7 +19,77 @@
    5. **Polymorphism**: The ability of different classes to be treated as instances of the same class through a common interface, allowing for the implementation of methods in different ways.
    6. **Abstraction**: The concept of hiding the complex implementation details and showing only the necessary features of an object, simplifying the interaction with the object.
 
-4. **What are classes and objects? Why use them in applications?**
+4. **How is the ‘new’ operator different from the ‘newInstance()’ method in Java?**
+
+   The `new` operator and the `newInstance()` method are both used to create new objects in Java, but they have some key differences:
+
+   - **new Operator**:
+
+     - Used to create a new instance of a class.
+     - Calls the constructor of the class directly.
+     - Syntax: `ClassName obj = new ClassName();`
+     - Example:
+       ```java
+       MyClass obj = new MyClass();
+       ```
+
+   - **newInstance() Method**:
+     - Part of the `Class` class and `Constructor` class.
+     - Used to create a new instance of a class using reflection.
+     - Calls the no-argument constructor of the class.
+     - Syntax: `ClassName obj = ClassName.class.newInstance();`
+     - Example:
+       ```java
+       MyClass obj = MyClass.class.newInstance();
+       ```
+     - Note: As of Java 9, `newInstance()` is deprecated in favor of `getDeclaredConstructor().newInstance()`.
+       ```java
+       MyClass obj = MyClass.class.getDeclaredConstructor().newInstance();
+       ```
+
+5. **What are the different ways to create objects in Java?**
+
+   There are several ways to create objects in Java:
+
+   1. **Using the `new` keyword**:
+
+      ```java
+      MyClass obj = new MyClass();
+      ```
+
+   2. **Using reflection**:
+
+      ```java
+      MyClass obj = MyClass.class.getDeclaredConstructor().newInstance();
+      ```
+
+   3. **Using `clone()` method**:
+
+      ```java
+      MyClass obj1 = new MyClass();
+      MyClass obj2 = (MyClass) obj1.clone();
+      ```
+
+   4. **Using `Class.forName()`**:
+
+      ```java
+      MyClass obj = (MyClass) Class.forName("MyClass").getDeclaredConstructor().newInstance();
+      ```
+
+   5. **Using object deserialization**:
+
+      ```java
+      ObjectInputStream in = new ObjectInputStream(new FileInputStream("file.ser"));
+      MyClass obj = (MyClass) in.readObject();
+      in.close();
+      ```
+
+   6. **Using factory methods**:
+      ```java
+      MyClass obj = MyClassFactory.createInstance();
+      ```
+
+6. **What are classes and objects? Why use them in applications?**
 
    Classes are blueprints for creating objects in object-oriented programming. They define the properties (attributes) and behaviors (methods) that the objects created from the class will have. An object is an instance of a class, representing a specific entity with its own state and behavior.
 
@@ -37,7 +107,7 @@
 
    Overall, classes and objects are fundamental to organizing and structuring code in a way that reflects real-world entities and their interactions.
 
-5. **What do you mean by anonymous class?**
+7. **What do you mean by anonymous class?**
 
    An anonymous class in Java is a class that is defined without a name and is instantiated in a single expression. It is typically used to make the code more concise and to create a one-time use class that extends an existing class or implements an interface. Anonymous classes are often used in situations where a class is needed for a short period of time, such as when implementing event listeners or callbacks.
 
@@ -54,7 +124,7 @@
 
    In this example, an anonymous class is created that extends the `Button` class and overrides the `onClick` method to provide specific behavior when the button is clicked.
 
-6. **What are the differences between subclass and inner class?**
+8. **What are the differences between subclass and inner class?**
 
    | Aspect            | Subclass                                                 | Inner Class                                                    |
    | ----------------- | -------------------------------------------------------- | -------------------------------------------------------------- |
@@ -67,7 +137,7 @@
    | Purpose           | Code reuse and extending functionality                   | Logical grouping and encapsulation                             |
    | Scope             | Available throughout the package/project                 | Limited to the scope of outer class                            |
 
-7. **How to implement classes and objects in Java? What are the members of a class?**
+9. **How to implement classes and objects in Java? What are the members of a class?**
 
    To implement classes and objects in Java, you need to follow these steps:
 
@@ -110,96 +180,96 @@
 
    In this example, the `Car` class is defined with members including attributes, a constructor, and a method. Two objects of the `Car` class are created in the `Main` class, demonstrating how to implement classes and objects in Java.
 
-8. **What is immutable object?**
+10. **What is immutable object?**
 
-   An immutable object is an object whose state cannot be changed after it is created. Once an immutable object is constructed, its contents remain constant throughout its lifetime. String is a classic example of an immutable class in Java.
+    An immutable object is an object whose state cannot be changed after it is created. Once an immutable object is constructed, its contents remain constant throughout its lifetime. String is a classic example of an immutable class in Java.
 
-   Key characteristics of immutable objects:
+    Key characteristics of immutable objects:
 
-   1. **Final Class**: The class should be declared as final to prevent inheritance
-   2. **Private Fields**: All fields should be private and final
-   3. **No Setters**: No methods that modify the object's state
-   4. **Deep Copy**: If mutable objects are used as fields, return copies instead of references
-   5. **Initialize in Constructor**: All fields must be initialized in the constructor
+    1. **Final Class**: The class should be declared as final to prevent inheritance
+    2. **Private Fields**: All fields should be private and final
+    3. **No Setters**: No methods that modify the object's state
+    4. **Deep Copy**: If mutable objects are used as fields, return copies instead of references
+    5. **Initialize in Constructor**: All fields must be initialized in the constructor
 
-   Example of an immutable class:
+    Example of an immutable class:
 
-   ```java
-   public final class ImmutablePerson {
-       private final String name;
-       private final int age;
+    ```java
+    public final class ImmutablePerson {
+        private final String name;
+        private final int age;
 
-       public ImmutablePerson(String name, int age) {
-           this.name = name;
-           this.age = age;
-       }
+        public ImmutablePerson(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
 
-       public String getName() {
-           return name;
-       }
+        public String getName() {
+            return name;
+        }
 
-       public int getAge() {
-           return age;
-       }
-   }
-   ```
+        public int getAge() {
+            return age;
+        }
+    }
+    ```
 
-   Benefits of immutable objects:
+    Benefits of immutable objects:
 
-   - Thread-safe without synchronization
-   - Safe to share and cache
-   - Simple to construct, test, and use
-   - Prevent temporal coupling
-   - Side-effect free behavior
+    - Thread-safe without synchronization
+    - Safe to share and cache
+    - Simple to construct, test, and use
+    - Prevent temporal coupling
+    - Side-effect free behavior
 
-9. **How can we create an immutable class in Java?**
+11. **How can we create an immutable class in Java?**
 
-   To create an immutable class in Java, follow these steps:
+To create an immutable class in Java, follow these steps:
 
-   1. **Declare the class as final** to prevent inheritance
-   2. **Make all fields private and final** to prevent direct access and modification
-   3. **Don't provide setter methods** for fields
-   4. **Initialize all fields via constructor**
-   5. **Make deep copies of mutable objects** in constructor and getter methods
-   6. **Don't expose methods that can change object state**
+1.  **Declare the class as final** to prevent inheritance
+2.  **Make all fields private and final** to prevent direct access and modification
+3.  **Don't provide setter methods** for fields
+4.  **Initialize all fields via constructor**
+5.  **Make deep copies of mutable objects** in constructor and getter methods
+6.  **Don't expose methods that can change object state**
 
-   Example of creating an immutable class:
+Example of creating an immutable class:
 
-   ```java
-   public final class ImmutableStudent {
-       private final String name;
-       private final int id;
-       private final List<String> courses;
+```java
+public final class ImmutableStudent {
+    private final String name;
+    private final int id;
+    private final List<String> courses;
 
-       public ImmutableStudent(String name, int id, List<String> courses) {
-           this.name = name;
-           this.id = id;
-           // Deep copy of mutable object
-           this.courses = new ArrayList<>(courses);
-       }
+    public ImmutableStudent(String name, int id, List<String> courses) {
+        this.name = name;
+        this.id = id;
+        // Deep copy of mutable object
+        this.courses = new ArrayList<>(courses);
+    }
 
-       public String getName() {
-           return name;
-       }
+    public String getName() {
+        return name;
+    }
 
-       public int getId() {
-           return id;
-       }
+    public int getId() {
+        return id;
+    }
 
-       public List<String> getCourses() {
-           // Return copy to prevent modification
-           return new ArrayList<>(courses);
-       }
-   }
-   ```
+    public List<String> getCourses() {
+        // Return copy to prevent modification
+        return new ArrayList<>(courses);
+    }
+}
+```
 
-   This class is immutable because:
+This class is immutable because:
 
-   - It's declared final
-   - All fields are private and final
-   - No setter methods are provided
-   - Mutable List is deep copied in constructor and getter
-   - No methods can modify the object's state
+- It's declared final
+- All fields are private and final
+- No setter methods are provided
+- Mutable List is deep copied in constructor and getter
+- No methods can modify the object's state
 
 10. **What are access specifiers? What are the types of access specifiers?**
 
@@ -1573,7 +1643,23 @@
 
     This behavior occurs because when passing an object, Java creates a copy of the reference, but both references point to the same object in memory. If you modify the object through either reference, the changes are visible through both references. However, if you reassign the parameter to a new object, it only affects the local copy of the reference.
 
-51. **What is the covariant return type?**
+51. **Which Java operator is right associative?**
+    In Java, several operators are right associative:
+
+    1. Assignment operators (=, +=, -=, \*=, /=, %=, etc.)
+    2. Unary operators (++, --, +, -, ~, !)
+    3. Conditional operator (?:)
+    4. Lambda operator (->)
+
+    Right associative means the operations are grouped from right to left. For example:
+
+    ```java
+    a = b = c = 10;  // Evaluated as: a = (b = (c = 10))
+    ```
+
+    This is different from most binary operators which are left associative (grouped left to right).
+
+52. **What is the covariant return type?**
     Covariant return type is a feature introduced in Java 5 that allows a method in a subclass to override a method in a superclass by returning a subtype of the original return type. This provides more type-specific return values while maintaining type safety.
 
     For example:
@@ -1595,7 +1681,7 @@
 
     In this example, `Dog.getType()` returns a `Dog` object instead of an `Animal` object, even though it's overriding `Animal.getType()`. This is possible because `Dog` is a subtype of `Animal`.
 
-52. **Difference between static methods, static variables, and static classes in Java.**
+53. **Difference between static methods, static variables, and static classes in Java.**
 
     | Feature         | Static Methods                                         | Static Variables                                         | Static Classes                                   |
     | --------------- | ------------------------------------------------------ | -------------------------------------------------------- | ------------------------------------------------ |
@@ -1607,7 +1693,7 @@
     | Inheritance     | Cannot be overridden (but can be hidden)               | Inherited but shared across all subclasses               | Can be inherited if nested class is extended     |
     | Purpose         | Utility functions, factory methods                     | Constants, counters, utility values                      | Independent nested classes, helper classes       |
 
-53. **Explain the use of the final keyword in variable, method and class.**
+54. **Explain the use of the final keyword in variable, method and class.**
     The `final` keyword in Java has different implications depending on where it's used:
 
     1. **Final Variables:**
@@ -1641,7 +1727,7 @@
     }
     ```
 
-54. **Dynamic Method Dispatch in Java**
+55. **Dynamic Method Dispatch in Java**
     - A mechanism where a method call is resolved at runtime rather than compile time
     - Enables runtime polymorphism through method overriding
     - The method that gets called is determined by the actual object type, not the reference type

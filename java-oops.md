@@ -384,7 +384,49 @@ This class is immutable because:
 
     In this example, the `add` method is overloaded with different parameter types and counts, demonstrating that static methods can indeed be overloaded.
 
-14. **What is the use of static variables and methods?**
+14. **What are the restrictions that are applied to the Java static methods?**
+
+    There are several important restrictions that apply to static methods in Java:
+
+    1. **Cannot access non-static members directly**
+
+       - Static methods cannot directly access non-static (instance) variables or methods
+       - They can only access other static members of the class
+       - To access instance members, they need an object reference
+
+    2. **Cannot use 'this' or 'super' keywords**
+
+       - The 'this' keyword refers to the current instance, which doesn't exist in static context
+       - The 'super' keyword refers to parent instance, which also doesn't exist in static context
+
+    3. **Method overriding restrictions**
+
+       - Static methods cannot be overridden (they can only be hidden)
+       - If a child class defines same static method as parent, it's method hiding, not overriding
+
+    4. **No abstract static methods**
+       - Static methods cannot be declared as abstract
+       - Abstract methods need to be overridden, which static methods cannot do
+
+    Example demonstrating these restrictions:
+
+    ```java
+    public class StaticRestrictions {
+        private int instanceVar = 10;
+        private static int staticVar = 20;
+
+        // Cannot access instanceVar directly
+        public static void staticMethod() {
+            // System.out.println(instanceVar);     // Error: Cannot access instance variable
+            System.out.println(staticVar);          // OK: Can access static variable
+
+            StaticRestrictions obj = new StaticRestrictions();
+            System.out.println(obj.instanceVar);    // OK: Accessing via object reference
+        }
+    }
+    ```
+
+15. **What is the use of static variables and methods?**
 
     | Feature           | Static Variables                                                                           | Static Methods                                                      |
     | ----------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
@@ -413,7 +455,7 @@ This class is immutable because:
     }
     ```
 
-15. **Can you declare a constructor using static?**
+16. **Can you declare a constructor using static?**
 
     No, constructors cannot be declared as static in Java. This is because:
 
@@ -443,7 +485,7 @@ This class is immutable because:
     }
     ```
 
-16. **What rules that you must follow while creating a constructor in Java?**
+17. **What rules that you must follow while creating a constructor in Java?**
 
     There are several important rules that must be followed when creating a constructor in Java:
 
@@ -480,7 +522,7 @@ This class is immutable because:
     }
     ```
 
-17. **What is the difference between constructor and method?**
+18. **What is the difference between constructor and method?**
 
     | Aspect           | Constructor                                                      | Method                                                      |
     | ---------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -509,7 +551,7 @@ This class is immutable because:
     }
     ```
 
-18. **Explain the constructor overloading**
+19. **Explain the constructor overloading**
 
     Constructor overloading is a technique in Java where a class can have multiple constructors with different parameter lists. Each constructor provides a different way to initialize an object of that class. The constructors must differ in their parameter lists (number of parameters, types of parameters, or both).
 
@@ -560,7 +602,7 @@ This class is immutable because:
     Student s4 = new Student("Mike", 21, "A");          // Uses constructor with all parameters
     ```
 
-19. **What is Copy Constructor in Java?**
+20. **What is Copy Constructor in Java?**
 
     A Copy Constructor in Java is a constructor that creates a new object by copying the values from another object of the same class. It takes an object of the same class as a parameter and creates a new object with the same values. Copy constructors are useful when you want to create a new object with the same state as an existing object.
 
@@ -591,7 +633,7 @@ This class is immutable because:
 
     Note: that Java does not provide automatic copy constructors like C++. You need to implement them explicitly if needed. Also, when dealing with reference types, be careful to perform a deep copy if required, to avoid sharing references between the original and copied objects.
 
-20. **What is a singleton class in Java? Describe the singleton pattern with an example.**
+21. **What is a singleton class in Java? Describe the singleton pattern with an example.**
 
     A Singleton class in Java is a design pattern that restricts the instantiation of a class to a single instance. This is useful when exactly one object is needed to coordinate actions across the system, such as managing configuration settings, database connections, or thread pools.
 
@@ -638,7 +680,7 @@ This class is immutable because:
 
     In this example, the `Singleton` class has a private constructor, a static instance variable, and a public static method `getInstance()` that provides access to the single instance of the class. This ensures that no more than one instance of the `Singleton` class can exist at any time.
 
-21. **What is encapsulation? Explain encapsulation with an example.**
+22. **What is encapsulation? Explain encapsulation with an example.**
 
     Encapsulation is one of the four fundamental OOP concepts that involves bundling data and the methods that operate on that data within a single unit (class), while restricting direct access to some of the object's components. This is achieved in Java through:
 
@@ -683,7 +725,7 @@ This class is immutable because:
     4. The implementation details are hidden from the user
     5. We can change the internal implementation without affecting code that uses the class
 
-22. **What is inheritance and what are its types in Java?**
+23. **What is inheritance and what are its types in Java?**
 
     Inheritance is a fundamental object-oriented programming concept where a class (subclass/child class) can inherit attributes and methods from another class (superclass/parent class). In Java, inheritance is implemented using the `extends` keyword. This mechanism promotes code reuse, simplifies maintenance, and allows for the creation of more specialized classes based on existing ones. There are several types of inheritance supported in Java:
 
@@ -736,7 +778,7 @@ This class is immutable because:
 
     In this example, the `Dog` class inherits the properties and behaviors of the `Animal` class, including the `name` field and the `eat()` and `sleep()` methods. The `Dog` class also adds its own unique behavior, the `bark()` method.
 
-23. **What do you mean by Polymorphism and what are its types?**
+24. **What do you mean by Polymorphism and what are its types?**
 
     Polymorphism means "many forms" and is one of the core concepts of object-oriented programming. It allows objects to be treated as instances of their parent class rather than their actual class. In Java, there are two main types of polymorphism:
 
@@ -797,7 +839,7 @@ This class is immutable because:
 
     The key difference is that runtime polymorphism is resolved during program execution based on the actual object type, while compile-time polymorphism is resolved during compilation based on method signatures.
 
-24. **What do you mean by abstraction and how it is achieved in Java?**
+25. **What do you mean by abstraction and how it is achieved in Java?**
 
     Abstraction is the process of hiding implementation details and showing only the functionality to the user. It helps reduce programming complexity and effort by focusing on what an object does rather than how it does it.
 
@@ -856,7 +898,7 @@ This class is immutable because:
 
     The main benefit of abstraction is that it allows you to focus on what the object does instead of how it does it, reducing complexity and coupling in your code.
 
-25. **What is the difference between extends and implements?**
+26. **What is the difference between extends and implements?**
 
     | Aspect                   | extends                                                 | implements                                             |
     | ------------------------ | ------------------------------------------------------- | ------------------------------------------------------ |
@@ -869,7 +911,7 @@ This class is immutable because:
     | Code Reuse               | Allows reuse of code from parent class                  | Only provides method contracts, no implementation      |
     | Usage Example            | `class Dog extends Animal`                              | `class Bird implements Flyable`                        |
 
-26. **What is the difference between loose coupling and tight coupling?**
+27. **What is the difference between loose coupling and tight coupling?**
 
     Loose coupling refers to a design principle in which components or classes are minimally dependent on each other, allowing for greater flexibility and easier maintenance. In a loosely coupled system, changes in one component have little to no impact on others, making it easier to modify or replace parts of the system without affecting the overall functionality.
 
@@ -939,7 +981,7 @@ This class is immutable because:
     	```
     ````
 
-27. **What is the difference between cohesion and coupling?**
+28. **What is the difference between cohesion and coupling?**
 
     | Aspect     | Cohesion                                                                 | Coupling                                                                              |
     | ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
@@ -992,7 +1034,7 @@ This class is immutable because:
     }
     ```
 
-28. **What is a Marker Interface?**
+29. **What is a Marker Interface?**
 
     A Marker Interface in Java is an interface that does not contain any methods. It is used to mark a class that implements it, indicating that the class has a specific property or behavior. Marker interfaces are often used to indicate that a class has a particular characteristic or capability, such as being serializable, cloneable, or thread-safe.
     Here are some examples of commonly used marker interfaces in Java:
@@ -1036,7 +1078,7 @@ This class is immutable because:
     - `Cloneable`: Marks classes that can be cloned
     - `Remote`: Marks classes that can be used for RMI (Remote Method Invocation)
 
-29. **What is an abstract class? Explain its purpose and when to use it.**
+30. **What is an abstract class? Explain its purpose and when to use it.**
 
     An abstract class in Java is a class that cannot be instantiated on its own and may contain both abstract and concrete methods. It serves as a blueprint for other classes and is designed to be extended by subclasses.
 
@@ -1083,7 +1125,7 @@ This class is immutable because:
     - You need to provide a template for a group of related classes
     - Some common behavior can be implemented in the abstract class, while other behavior must be implemented by each subclass
 
-30. **Can we define a class Abstract even if it does not have any abstract methods?**
+31. **Can we define a class Abstract even if it does not have any abstract methods?**
 
     Yes, we can define a class as abstract even if it doesn't have any abstract methods. This is perfectly valid in Java. The abstract keyword simply prevents the class from being instantiated directly.
 
@@ -1109,7 +1151,7 @@ This class is immutable because:
     - The class is not complete enough to be instantiated meaningfully
     - You're designing a framework where the base class should never be used directly
 
-31. **Can you make abstract methods static in Java?**
+32. **Can you make abstract methods static in Java?**
 
     No, abstract methods cannot be static in Java. This is because:
 
@@ -1140,7 +1182,7 @@ This class is immutable because:
     }
     ```
 
-32. **What is the difference between abstract class and interface in Java?**
+33. **What is the difference between abstract class and interface in Java?**
 
     | Aspect                | Abstract Class                                                                       | Interface                                                                                                               |
     | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
@@ -1151,7 +1193,7 @@ This class is immutable because:
     | Access Modifiers      | Can have access modifiers (public, protected, private).                              | All methods are public by default; cannot have access modifiers.                                                        |
     | Use Case              | Used when classes share a common base and behavior.                                  | Used to define a contract that implementing classes must follow.                                                        |
 
-33. **What do you mean by association? What are the types of associations?**
+34. **What do you mean by association? What are the types of associations?**
 
     Association in object-oriented programming refers to a relationship between two classes that establishes a connection between them. It signifies that one class (the client) uses or interacts with another class (the supplier). Associations can be categorized into three main types:
 
@@ -1165,7 +1207,7 @@ This class is immutable because:
 
     Understanding these associations helps in designing systems that accurately represent real-world relationships between entities.
 
-34. **What is the difference between composition, aggregation, and association?**
+35. **What is the difference between composition, aggregation, and association?**
 
     | Aspect     | Composition                                                                     | Aggregation                                                                  | Association                                                                                 |
     | ---------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -1235,7 +1277,7 @@ This class is immutable because:
     }
     ```
 
-35. **What are the differences between method overloading & overriding?**
+36. **What are the differences between method overloading & overriding?**
 
     | Aspect          | Method Overloading                                                     | Method Overriding                                              |
     | --------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------- |
@@ -1294,11 +1336,11 @@ This class is immutable because:
     In the overloading example, the `Calculator` class has multiple `add` methods with different parameter types/counts.
     In the overriding example, `Dog` and `Cat` classes provide their own specific implementations of the `makeSound()` method inherited from `Animal`.
 
-36. **Why is method overloading in Java not possible by changing the method's return type?**
+37. **Why is method overloading in Java not possible by changing the method's return type?**
 
     Method overloading in Java cannot be achieved solely by changing the return type of the method because the method signature, which is used to identify the method, consists of the method name and the parameter list (types and number of parameters). The return type is not part of the method signature. Therefore, if two methods have the same name and parameter list but different return types, the compiler cannot distinguish between them based on the return type alone, leading to ambiguity.
 
-37. **What is the difference between Java Dynamic Binding and Static Binding?**
+38. **What is the difference between Java Dynamic Binding and Static Binding?**
 
     - **Static Binding**: This occurs at compile time and is used for method calls that are resolved based on the reference type. It is typically used with private, static, and final methods. Since the method to be called is determined at compile time, it cannot be changed at runtime.
 
@@ -1331,7 +1373,7 @@ This class is immutable because:
     }
     ```
 
-38. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
+39. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
 
     An Instance Initializer Block is a block of code that is used to initialize instance variables of a class. It is executed when an instance of the class is created, before the constructor is called.
 
@@ -1360,7 +1402,7 @@ This class is immutable because:
     }
     ```
 
-39. **What is a static block in Java?**
+40. **What is a static block in Java?**
 
     A static block (also called static initialization block) is a block of code inside a class that is executed only once when the class is first loaded into memory. It is used to initialize static variables or perform one-time setup operations.
 
@@ -1392,7 +1434,7 @@ This class is immutable because:
     }
     ```
 
-40. **What is the purpose of static members in Java?**
+41. **What is the purpose of static members in Java?**
 
     Static members in Java (including methods, variables, and nested classes) belong to the class itself rather than any specific instance. They serve several important purposes:
 
@@ -1441,7 +1483,7 @@ This class is immutable because:
     }
     ```
 
-41. **Explain the use of final keyword in variable, method and class**
+42. **Explain the use of final keyword in variable, method and class**
 
     The `final` keyword in Java is used to impose restrictions on variables, methods, and classes:
 
@@ -1466,7 +1508,7 @@ This class is immutable because:
     // class ChildClass extends FinalClass { } // Cannot extend final class
     ```
 
-42. **Difference between the final method and the abstract method?**
+43. **Difference between the final method and the abstract method?**
 
     | Feature            | Final Method                                     | Abstract Method                                                       |
     | ------------------ | ------------------------------------------------ | --------------------------------------------------------------------- |
@@ -1477,8 +1519,6 @@ This class is immutable because:
     | **Class Type**     | Can be in any concrete class                     | Can only be in abstract classes or interfaces                         |
     | **Method Body**    | Must have method body                            | Cannot have method body (except default methods in interfaces)        |
     | **Purpose**        | To preserve implementation across inheritance    | To achieve abstraction and polymorphism                               |
-
-
 
 44. **What is the significant difference between object-oriented language and object-based language?**
 

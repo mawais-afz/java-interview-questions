@@ -16,7 +16,28 @@
    - **Dynamic Array Bounds**: Array bounds are checked dynamically at runtime
    - **Dynamic Security**: Security policies can be configured and enforced at runtime
 
-3. **Explain the main idea behind Java and the concept of Write Once, Run Anywhere**
+3. **Distinguish between static loading and dynamic class loading?**
+
+   **Static Class Loading**:
+
+   - Classes are loaded at compile time
+   - All required classes must be available when the program starts
+   - Uses the `new` keyword for object creation
+   - More predictable but less flexible
+   - Better performance as classes are loaded upfront
+   - Memory is allocated at startup for all classes
+
+   **Dynamic Class Loading**:
+
+   - Classes are loaded on-demand at runtime
+   - Classes can be loaded when needed, not necessarily at startup
+   - Uses `Class.forName()` or ClassLoader methods
+   - More flexible and memory efficient
+   - Allows for plugin architectures and modular applications
+   - Can handle situations where class locations are not known at compile time
+   - May have slight performance overhead due to runtime loading
+
+4. **Explain the main idea behind Java and the concept of Write Once, Run Anywhere**
 
    The main idea behind Java is to create a language that is simple, secure, and platform-independent. The concept of "Write Once, Run Anywhere" (WORA) is one of Java's core principles, which means:
 
@@ -29,7 +50,7 @@
 
    This approach differs from traditional languages like C/C++, which require platform-specific compilation and often need code modifications to work on different operating systems.
 
-4. **List some important features of Java.**
+5. **List some important features of Java.**
 
    - **Platform Independence**: Java programs can run on any device that has the Java Virtual Machine (JVM) installed, making them highly portable.
    - **Object-Oriented**: Java follows the object-oriented programming paradigm, which helps in organizing complex programs into simpler, reusable pieces.
@@ -42,7 +63,7 @@
    - **Dynamic and Extensible**: Java is designed to adapt to evolving environments, with features like dynamic class loading and reflection.
    - **Community Support**: Java has a large and active community, providing extensive resources, libraries, and frameworks to support development.
 
-5. **Can you list some non-object oriented features of Java?**
+6. **Can you list some non-object oriented features of Java?**
 
    - **Primitive Data Types**: Java supports eight primitive data types (byte, short, int, long, float, double, boolean, char) that are not objects.
    - **Static Members**: Static methods and variables belong to the class rather than instances, resembling procedural programming.
@@ -54,7 +75,7 @@
    - **Global Variables**: Through static fields, Java provides a way to create globally accessible variables.
    - **Command-Line Programming**: Java supports console-based, procedural programming through the main method.
 
-6. **What is the difference between JavaEE and JavaSE?**
+7. **What is the difference between JavaEE and JavaSE?**
 
    JavaSE (Java Standard Edition) and JavaEE (Java Enterprise Edition) are different platforms within the Java ecosystem:
 
@@ -82,7 +103,7 @@
 
    Note: JavaEE has been renamed to Jakarta EE after Oracle transferred it to the Eclipse Foundation.
 
-7. **Explain JDK, JRE, and JVM**
+8. **Explain JDK, JRE, and JVM**
 
    | Component | Full Name                | Description                                                                                                                                                                                                                                          |
    | --------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -90,7 +111,7 @@
    | JRE       | Java Runtime Environment | Provides the minimum requirements for executing a Java application; it consists of the Java Virtual Machine (JVM), core classes, and supporting files.                                                                                               |
    | JVM       | Java Virtual Machine     | An abstract computing machine that enables a computer to run a Java program. It provides a runtime environment in which Java bytecode can be executed, ensuring platform independence.                                                               |
 
-8. **What is a ClassLoader? And its role in Java?**
+9. **What is a ClassLoader? And its role in Java?**
 
    A ClassLoader in Java is a fundamental component of the Java Runtime Environment (JRE) responsible for loading Java classes and interfaces into the Java Virtual Machine (JVM) during runtime. Its primary role is to convert Java bytecode (.class files) into Class objects that can be used by the JVM.
 
@@ -126,30 +147,30 @@
    3. **Uniqueness**: Same class loaded by different ClassLoaders are treated as different types
    4. **Non-delegation**: Each ClassLoader should load a class only once
 
-9. **What is the difference between path and classpath?**
+10. **What is the difference between path and classpath?**
 
-   | Aspect  | PATH                                                   | CLASSPATH                                           |
-   | ------- | ------------------------------------------------------ | --------------------------------------------------- |
-   | Purpose | System environment variable to locate executables      | Java-specific variable to locate class files        |
-   | Usage   | Finds OS commands and programs (e.g., java, javac)     | Helps JVM find and load Java classes during runtime |
-   | Content | Directory paths containing executable files            | Paths to .class files, JAR files, and packages      |
-   | Scope   | Operating system level                                 | Java application level                              |
-   | Format  | OS-specific path separator (: for Unix, ; for Windows) | Similar path separator but for Java class locations |
-   | Default | Usually pre-configured by OS installation              | Current directory (.) if not explicitly set         |
+    | Aspect  | PATH                                                   | CLASSPATH                                           |
+    | ------- | ------------------------------------------------------ | --------------------------------------------------- |
+    | Purpose | System environment variable to locate executables      | Java-specific variable to locate class files        |
+    | Usage   | Finds OS commands and programs (e.g., java, javac)     | Helps JVM find and load Java classes during runtime |
+    | Content | Directory paths containing executable files            | Paths to .class files, JAR files, and packages      |
+    | Scope   | Operating system level                                 | Java application level                              |
+    | Format  | OS-specific path separator (: for Unix, ; for Windows) | Similar path separator but for Java class locations |
+    | Default | Usually pre-configured by OS installation              | Current directory (.) if not explicitly set         |
 
-   Example PATH:
+    Example PATH:
 
-   ```
-   /usr/local/bin:/usr/bin:/bin
-   ```
+    ```
+    /usr/local/bin:/usr/bin:/bin
+    ```
 
-   Example CLASSPATH:
+    Example CLASSPATH:
 
-   ```
-   .:/home/user/classes:/home/user/lib/example.jar
-   ```
+    ```
+    .:/home/user/classes:/home/user/lib/example.jar
+    ```
 
-10. **What are the Memory Allocations available in Java**
+11. **What are the Memory Allocations available in Java**
 
     Java's memory structure consists of several key areas:
 
@@ -190,7 +211,7 @@
 
     Each memory area serves a specific purpose in Java's memory management system, contributing to the language's efficiency and reliability.
 
-11. **What are the differences between Heap and Stack Memory in Java?**
+12. **What are the differences between Heap and Stack Memory in Java?**
 
     | Aspect            | Stack Memory                                                 | Heap Memory                                     |
     | ----------------- | ------------------------------------------------------------ | ----------------------------------------------- |
@@ -205,7 +226,7 @@
     | Memory Control    | Size controlled by JVM (-Xss)                                | Initial/Max size controlled by JVM (-Xms/-Xmx)  |
     | Memory Errors     | StackOverflowError                                           | OutOfMemoryError                                |
 
-12. **How does garbage collection work in Java?**
+13. **How does garbage collection work in Java?**
 
     Garbage Collection (GC) in Java is an automatic memory management process that identifies and removes unused objects from heap memory. Here's how it works:
 
@@ -242,7 +263,7 @@
 
     Note: While automatic, GC can impact application performance during collection cycles.
 
-13. **What are the possible ways of making object eligible for garbage collection (GC) in Java?**
+14. **What are the possible ways of making object eligible for garbage collection (GC) in Java?**
 
     An object becomes eligible for garbage collection when it is no longer reachable. Here are the main ways to make an object eligible for GC:
 
@@ -287,7 +308,7 @@
        - Clear collections or remove objects from them
        - Example: `list.clear();` or `map.remove(key);`
 
-14. **What is a Java Variable?**
+15. **What is a Java Variable?**
 
     A Java variable is a named storage location in memory that holds a value of a specific data type. Variables are used to store and manipulate data in a program.
 
@@ -301,7 +322,7 @@
     | Naming Convention | Follows camelCase, starts with a letter, $, or \_                                                                  |
     | Example           | `int age = 25;` or `String name = "John";`                                                                         |
 
-15. **What is the difference between final, finally and finalize keywords in Java?**
+16. **What is the difference between final, finally and finalize keywords in Java?**
 
     Here's a comparison of final, finally, and finalize keywords in Java:
 
@@ -361,7 +382,67 @@
          }
          ```
 
-16. **Is it possible that the 'finally' block will not be executed? If yes then list the case.**
+17. **What is the final and blank final variable?**
+
+    1. **Final Variable**:
+
+       - A variable declared with the `final` keyword
+       - Value cannot be changed once assigned
+       - Must be initialized when declared or in constructor
+       - Acts as a constant in Java
+
+       ```java
+       final int MAX_VALUE = 100; // Initialized at declaration
+       ```
+
+    2. **Blank Final Variable**:
+
+       - A final variable that is not initialized at the time of declaration
+       - Must be initialized in all constructors
+       - Provides flexibility to assign different values based on constructor
+       - Can only be assigned once
+
+       ```java
+       public class Example {
+           final int value; // Blank final variable
+
+           public Example(int val) {
+               value = val; // Initialized in constructor
+           }
+       }
+       ```
+
+18. **What is a compile time constant in Java?**
+
+    A compile-time constant in Java is a variable that:
+
+    - Is declared as `static final`
+    - Is of primitive type or String
+    - Is initialized with a constant expression at declaration
+    - Value is known at compile time
+
+    Example:
+
+    ```java
+    public class Constants {
+        // Compile-time constants
+        static final int MAX_VALUE = 100;
+        static final String PREFIX = "user_";
+        static final double PI = 3.14159;
+
+        // Not compile-time constants
+        static final int random = new Random().nextInt(); // Value not known at compile time
+        static final StringBuilder sb = new StringBuilder(); // Not a primitive/String
+    }
+    ```
+
+    Benefits:
+
+    - Values are inlined by the compiler for better performance
+    - No runtime overhead as values are resolved during compilation
+    - Memory efficient as they are stored in the constant pool
+
+19. **Is it possible that the 'finally' block will not be executed? If yes then list the case.**
 
     Yes, there are a few cases where the finally block may not execute:
 
@@ -384,7 +465,7 @@
     }
     ```
 
-17. **How many times is the finalize method called?**
+20. **How many times is the finalize method called?**
 
     The finalize method is called only once for each object by the garbage collector before the object is garbage collected. However, there are important points to note:
 
@@ -393,7 +474,7 @@
     - Since Java 9, the finalize() method has been deprecated because it is inherently problematic and unpredictable
     - It's recommended to use try-with-resources or explicit cleanup methods instead of relying on finalize()
 
-18. **What is the significance of the this keyword in Java?**
+21. **What is the significance of the this keyword in Java?**
 
     The `this` keyword in Java is a reference variable that refers to the current object. It has several important uses:
 
@@ -446,7 +527,7 @@
        }
        ```
 
-19. **Is it possible to use this keyword in Java to refer to the static members?**
+22. **Is it possible to use this keyword in Java to refer to the static members?**
 
     No, the `this` keyword cannot be used to refer to static members in Java. The `this` keyword refers to the current instance of a class, while static members belong to the class itself rather than any specific instance.
 
@@ -471,7 +552,7 @@
     }
     ```
 
-20. **What are variable types?**
+23. **What are variable types?**
 
     | Variable Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
     | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -479,7 +560,7 @@
     | Instance Variables     | - Declared in a class, but outside a method, constructor or any block<br>- Created when an object is created with the 'new' keyword and destroyed when the object is destroyed<br>- Can use access modifiers<br>- Visible for all methods, constructors and blocks in the class<br>- Have default values (0 for numbers, false for boolean, null for object references)<br>- Can be accessed directly by calling the variable name inside the class                                                                                           |
     | Class/Static Variables | - Declared with the static keyword in a class, but outside a method, constructor or block<br>- Only one copy per class, regardless of how many objects are created<br>- Created when the program starts and destroyed when the program stops<br>- Can be declared as public/private, final, and static<br>- Visible for all methods, constructors and blocks in the class<br>- Have default values (0 for numbers, false for boolean, null for object references)<br>- Can be accessed by calling with the class name: ClassName.VariableName |
 
-21. **What is the difference between transient and volatile variable in Java?**
+24. **What is the difference between transient and volatile variable in Java?**
 
     | Feature | Transient                                                  | Volatile                                                   |
     | ------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
@@ -510,7 +591,7 @@
     }
     ```
 
-22. **What are data types?**
+25. **What are data types?**
 
     Data types in Java specify the type of data that can be stored in a variable. Java has two categories of data types:
 
@@ -530,7 +611,7 @@
 
     Primitive types are predefined by the language and named by a keyword. Reference data types are created by the programmer and are not defined by the language (except for String).
 
-23. **What is Type Casting (Type Conversion)**
+26. **What is Type Casting (Type Conversion)**
 
     Type casting is the process of converting a value from one data type to another in Java. There are two types of type casting:
 
@@ -556,7 +637,7 @@
 
     Widening casting is done automatically when passing a smaller size type to a larger size type. Narrowing casting must be done manually by placing the type in parentheses in front of the value.
 
-24. **What are autoboxing and unboxing?**
+27. **What are autoboxing and unboxing?**
 
     Autoboxing and unboxing are automatic conversions between primitive data types and their corresponding wrapper classes in Java:
 
@@ -597,7 +678,7 @@
     - Enables primitives to work with collections
     - Makes code more readable and maintainable
 
-25. **What are Operators? What are the types of Operators?**
+28. **What are Operators? What are the types of Operators?**
 
     Java operators are symbols that perform operations on variables and values. They allow us to execute various operations such as addition, subtraction, and comparisons. The different types of operators in Java are as follows:
 
@@ -610,7 +691,7 @@
     | Assignment Operators    | Used to assign values to variables (=, +=, -=, \*=, /=, %=, &=, \|=, ^=, <<=, >>=, >>>=). |
     | Miscellaneous Operators | Includes conditional (ternary) operator (`? :`), instanceof operator (`instanceof`).      |
 
-26. **What is the difference between ++a and a++ increment operators?**
+29. **What is the difference between ++a and a++ increment operators?**
 
     The ++a (pre-increment) and a++ (post-increment) operators both increment a variable by 1, but they differ in when the increment occurs and what value is returned:
 
@@ -638,7 +719,7 @@
 
     This difference is particularly important in expressions and method calls where the returned value matters.
 
-27. **What are loops? What are the types of loops?**
+30. **What are loops? What are the types of loops?**
 
     Loops are control structures that allow you to execute a block of code multiple times, depending on a specified condition. In Java, there are several types of loops that you can use to handle repetitive tasks:
 
@@ -650,7 +731,7 @@
 
     4. **Enhanced for loop (for-each loop)**: Introduced in Java 5, this loop is used to iterate over collections and arrays, simplifying the syntax for traversing elements.
 
-28. **What are control statements in Java?**
+31. **What are control statements in Java?**
 
     Control statements in Java are programming constructs that control the flow of program execution. They determine which parts of code are executed and in what order, based on certain conditions or requirements. The main types of control statements in Java are:
 
@@ -675,7 +756,7 @@
 
     These statements allow programmers to create complex program logic and control program flow based on different conditions and requirements.
 
-29. **What are Loop Control Statements? What are the types of Loop Control Statements?**
+32. **What are Loop Control Statements? What are the types of Loop Control Statements?**
 
     Loop control statements are used to alter the flow of control in loops. They allow you to manage the execution of loop iterations based on certain conditions. The types of loop control statements in Java include:
 
@@ -683,7 +764,7 @@
     2. **continue statement**: Skips the current iteration and proceeds to the next iteration of the loop.
     3. **return statement**: Exits from the current method and returns control to the calling method, which can also affect loop execution if used within a loop.
 
-30. **What is Decision Making? What are the types of Decision Making?**
+33. **What is Decision Making? What are the types of Decision Making?**
 
     Decision making in programming refers to the process of making choices based on certain conditions. It allows the program to execute different paths of code based on the evaluation of these conditions. In Java, decision-making is primarily achieved through control statements.
 
@@ -694,7 +775,7 @@
     | **else if statement**   | Allows checking multiple conditions sequentially.                                      |
     | **switch statement**    | Selects one of many code blocks to execute based on the value of a variable.           |
 
-31. **What is the difference between a while loop and a do-while loop?**
+34. **What is the difference between a while loop and a do-while loop?**
 
     | Aspect                 | while loop                                                             | do-while loop                                                |
     | ---------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------ |
@@ -704,7 +785,7 @@
     | **Use Case**           | When you need to check a condition before executing any statements     | When you want to ensure the loop body executes at least once |
     | **Exit Control**       | Entry controlled loop - may exit before first execution                | Exit controlled loop - can only exit after first execution   |
 
-32. **What is the difference between a for loop and an enhanced for loop?**
+35. **What is the difference between a for loop and an enhanced for loop?**
 
     | Aspect            | for loop                                                  | enhanced for loop/for-each loop                            |
     | ----------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
@@ -731,7 +812,7 @@
     }
     ```
 
-33. **What are wrapper classes in Java? Why do we need wrapper classes?**
+36. **What are wrapper classes in Java? Why do we need wrapper classes?**
 
     Wrapper classes in Java are used to convert primitive data types into objects. Each primitive type has a corresponding wrapper class that provides a way to use these primitives as objects. This is particularly useful in situations where objects are required, such as in collections like ArrayList. The wrapper classes in Java include:
 
@@ -762,7 +843,7 @@
     int value = num;    // auto-unboxing
     ```
 
-34. **Distinguish between static loading and dynamic class loading?**
+37. **Distinguish between static loading and dynamic class loading?**
 
     Static loading and dynamic class loading are two different approaches to loading classes in Java:
 
@@ -800,7 +881,7 @@
     }
     ```
 
-35. **What is the purpose of the Runtime class and System class?**
+38. **What is the purpose of the Runtime class and System class?**
 
     The Runtime class and System class serve different but important purposes in Java:
 
@@ -825,7 +906,7 @@
       - Current time in milliseconds
       - System exit
 
-36. **What is the super keyword in Java? When can you use the super keyword?**
+39. **What is the super keyword in Java? When can you use the super keyword?**
 
     The `super` keyword in Java is a reference variable used to refer to the immediate parent class object. It allows you to access parent class members that are hidden or overridden by the child class.
 
@@ -870,7 +951,7 @@
         }
     ```
 
-37. **What are the differences between super and this keywords in Java?**
+40. **What are the differences between super and this keywords in Java?**
 
     | super keyword                                                           | this keyword                                                    |
     | ----------------------------------------------------------------------- | --------------------------------------------------------------- |
@@ -881,7 +962,7 @@
     | Used with inheritance to differentiate between parent and child members | Used to differentiate between instance variables and parameters |
     | Example: `super.method()`, `super.variable`, `super()`                  | Example: `this.method()`, `this.variable`, `this()`             |
 
-38. **What are literals in Java?**
+41. **What are literals in Java?**
 
     Literals are fixed values that can be directly used in code. Java supports several types of literals:
 
@@ -905,7 +986,7 @@
     Object obj = null;
     ```
 
-39. **What is the role and benefit of package in Java?**
+42. **What is the role and benefit of package in Java?**
 
     In Java, a package is a namespace that organizes a set of related classes and interfaces. The primary role of packages is to group related classes together, which helps in avoiding name conflicts and controlling access.
 
@@ -923,7 +1004,7 @@
 
     Overall, packages play a crucial role in structuring Java applications, enhancing maintainability, and promoting best practices in software development.
 
-40. **What are shallow copy and deep copy in Java?**
+43. **What are shallow copy and deep copy in Java?**
 
     In Java, object copying can be done in two ways: shallow copy and deep copy.
 
@@ -975,7 +1056,7 @@
     }
     ```
 
-41. **Can you have virtual functions in Java?**
+44. **Can you have virtual functions in Java?**
 
     In Java, all non-static methods are virtual by default. This means:
 
@@ -1009,7 +1090,41 @@
 
     Only final, static, and private methods cannot be overridden, making them non-virtual.
 
-42. **What are the observer and observable classes?**
+45. **What is a native method?**
+
+    A native method is a method that is implemented in another programming language (typically C/C++) rather than in Java. Key points about native methods:
+
+    - Declared with the `native` keyword in Java
+    - Has no method body in Java code
+    - Implementation is provided in platform-specific code
+    - Used for:
+      - Accessing system-specific functionality
+      - Performance-critical code
+      - Interfacing with legacy systems
+      - Hardware interaction
+
+    Example:
+
+    ```java
+    public class NativeExample {
+        // Declares native method - no implementation in Java
+        public native void performNativeOperation();
+
+        static {
+            // Loads the native library containing the implementation
+            System.loadLibrary("nativeLib");
+        }
+    }
+    ```
+
+    Native methods require the Java Native Interface (JNI) to bridge between Java and native code. While powerful, they should be used sparingly as they:
+
+    - Reduce platform independence
+    - Can introduce security risks
+    - Make debugging more difficult
+    - Require additional build complexity
+
+46. **What are the observer and observable classes?**
 
     Observer and Observable are legacy classes from Java's built-in implementation of the Observer pattern:
 
@@ -1052,7 +1167,7 @@
     - PropertyChangeListener
     - Third-party reactive libraries (RxJava, Project Reactor)
 
-43. **Why are generics used in Java Programming?**
+47. **Why are generics used in Java Programming?**
 
     Generics enable type-safe programming by allowing you to write code that works with different types while providing compile-time type safety. Key benefits include:
 
@@ -1081,7 +1196,7 @@
     - Methods that operate on different types
     - Type-safe APIs
 
-44. **What is a Memory Leak? Discuss some common causes of it.**
+48. **What is a Memory Leak? Discuss some common causes of it.**
 
     A memory leak occurs when a program fails to release memory that is no longer needed, causing the application to consume more and more memory over time. In Java, despite having garbage collection, memory leaks can still occur.
 
@@ -1132,7 +1247,7 @@
     - Profile application memory usage regularly
     - Use memory analysis tools (like JProfiler, MAT)
 
-45. **Which of the below generates a compile-time error? State the reason.**
+49. **Which of the below generates a compile-time error? State the reason.**
 
     ```java
     int[] n1 = new int[0];
@@ -1145,7 +1260,7 @@
     - `n3` will generate a compile-time error because the size exceeds Integer.MAX_VALUE (2147483647).
     - `n1` and `ch` are valid array declarations.
 
-46. **Is this program giving a compile-time error? If Yes then state the reason and number of errors it will give. If not then state the reason.**
+50. **Is this program giving a compile-time error? If Yes then state the reason and number of errors it will give. If not then state the reason.**
 
     ```java
     abstract final class InterviewBit{
@@ -1183,7 +1298,7 @@
 
     Therefore, the program will generate 2 compile-time errors.
 
-47. **Identify the output of the below java program and Justify your answer.**
+51. **Identify the output of the below java program and Justify your answer.**
 
     ```java
     class Main {
@@ -1220,11 +1335,12 @@
 
     Therefore, the code will not compile due to the invalid constructor chaining in `Scaler(int x)`.
 
-48. **What is the difference between System.out, System.err, and System.in?**
+52. **What is the difference between System.out, System.err, and System.in?**
 
     In Java, System.out, System.err, and System.in are standard streams that serve different purposes:
 
     1. System.out:
+
        - This is the standard output stream
        - Used for normal program output
        - Typically prints to the console in black text
@@ -1232,6 +1348,7 @@
        - Example: System.out.println("Hello World");
 
     2. System.err:
+
        - This is the standard error stream
        - Used for error messages and debugging information
        - Typically prints to the console in red text
@@ -1246,6 +1363,7 @@
        - Example: Scanner scanner = new Scanner(System.in);
 
     Key differences:
+
     - Purpose: out for normal output, err for errors, in for input
     - Direction: out and err are output streams, in is an input stream
     - Visual: err typically shows in red, while out shows in black

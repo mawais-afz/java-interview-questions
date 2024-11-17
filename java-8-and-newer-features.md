@@ -1,318 +1,436 @@
 # Java 8 & and Newer Features
 
-1. **What is parallel processing in Java 8?**
-
-   - Parallel processing in Java 8 refers to the ability to execute multiple tasks simultaneously, leveraging multi-core processors to improve performance and efficiency.
-   - Java 8 introduced the `ForkJoinPool` framework and the `Stream` API, which allow developers to easily perform parallel operations on collections.
-   - By using the `parallelStream()` method, developers can process data in parallel, enabling better resource utilization and faster execution times for large datasets.
-   - Example:
-     ```java
-     List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David");
-     names.parallelStream()
-          .forEach(name -> System.out.println(name));
-     ```
-   - This approach can significantly reduce the time taken for operations like filtering, mapping, and reducing when working with large collections.
-   - However, it is important to consider thread safety and the overhead of managing multiple threads when using parallel processing.
-
-2. **What is the difference between a parallel stream and a sequential stream?**
-
-   - **Sequential Stream**:
-
-     - Processes elements sequentially, one at a time
-     - Executes operations in a single thread
-     - Follows the order of elements in the original collection
-     - Suitable for smaller datasets or when order preservation is critical
-     - Default stream type when using `.stream()` method
-     - Example:
-       ```java
-       List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
-       numbers.stream()
-              .filter(n -> n % 2 == 0)
-              .forEach(System.out::println);
-       ```
-
-   - **Parallel Stream**:
-
-     - Processes elements concurrently across multiple threads
-     - Utilizes multiple cores of the processor
-     - Breaks the stream into multiple substreams processed in parallel
-     - Created using `.parallelStream()` or `.parallel()` method
-     - Better performance for large datasets and computationally intensive operations
-     - Does not guarantee order of execution
-     - Example:
-       ```java
-       List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
-       numbers.parallelStream()
-              .filter(n -> n % 2 == 0)
-              .forEach(System.out::println);
-       ```
-
-   - **Key Differences**:
-     1. Performance: Parallel streams are faster for large datasets
-     2. Thread Usage: Sequential uses one thread, parallel uses multiple
-     3. Order: Sequential maintains order, parallel may not
-     4. Overhead: Parallel streams have thread management overhead
-     5. Use Case: Choose based on dataset size and computational complexity
-
-3. **What are default and static interface methods?**
-
-   - Java 8 introduced two new types of methods in interfaces: default and static methods, which significantly expanded the capabilities of interfaces.
-
-   - **Default Methods**:
-
-     - Allow interfaces to have method implementations without forcing implementing classes to provide the implementation
-     - Marked with the `default` keyword
-     - Provide backward compatibility when adding new methods to existing interfaces
-     - Enable adding new methods to interfaces without breaking existing implementations
-     - Example:
-       ```java
-       interface Greeting {
-           default void sayHello() {
-               System.out.println("Hello, World!");
-           }
-       }
-       ```
-
-   - **Static Methods**:
-
-     - Can be defined directly in the interface
-     - Belong to the interface itself, not to implementing classes
-     - Cannot be overridden by implementing classes
-     - Useful for providing utility methods related to the interface
-     - Example:
-       ```java
-       interface MathOperations {
-           static int add(int a, int b) {
-               return a + b;
-           }
-       }
-       ```
-
-   - **Key Characteristics**:
-     1. Default methods allow for method implementations in interfaces
-     2. Static methods provide utility functions at the interface level
-     3. Both enhance interface flexibility and reduce code duplication
-     4. Help in creating more modular and maintainable code
-
-4. **What is the purpose of the Optional class?**
-
-   - The `Optional` class is a container object introduced in Java 8 to help handle potential null values more elegantly and reduce null pointer exceptions
-
-   - **Key Purposes**:
-
-     1. **Explicit Null Handling**: Provides a clear way to represent the possibility of a value being absent
-     2. **Avoid Null Checks**: Reduces boilerplate code for null checking
-     3. **Functional Programming**: Enables functional-style operations on potentially null values
-     4. **Improved Code Readability**: Makes the potential absence of a value explicit in method signatures
-
-   - **Main Benefits**:
-
-     - Encourages developers to explicitly consider and handle potential null scenarios
-     - Provides methods like `isPresent()`, `orElse()`, `orElseGet()`, and `map()` for safe value manipulation
-     - Helps prevent null pointer exceptions by forcing explicit handling of potentially absent values
-
-   - **Example Usage**:
-
-     ```java
-     // Without Optional
-     String name = getName();
-     if (name != null) {
-         System.out.println(name.toUpperCase());
-     }
+1.  **What is parallel processing in Java 8?**
+
+    - Parallel processing in Java 8 refers to the ability to execute multiple tasks simultaneously, leveraging multi-core processors to improve performance and efficiency.
+    - Java 8 introduced the `ForkJoinPool` framework and the `Stream` API, which allow developers to easily perform parallel operations on collections.
+    - By using the `parallelStream()` method, developers can process data in parallel, enabling better resource utilization and faster execution times for large datasets.
+    - Example:
+      ```java
+      List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David");
+      names.parallelStream()
+           .forEach(name -> System.out.println(name));
+      ```
+    - This approach can significantly reduce the time taken for operations like filtering, mapping, and reducing when working with large collections.
+    - However, it is important to consider thread safety and the overhead of managing multiple threads when using parallel processing.
+
+2.  **What is the difference between a parallel stream and a sequential stream?**
+
+    - **Sequential Stream**:
+
+      - Processes elements sequentially, one at a time
+      - Executes operations in a single thread
+      - Follows the order of elements in the original collection
+      - Suitable for smaller datasets or when order preservation is critical
+      - Default stream type when using `.stream()` method
+      - Example:
+        ```java
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        numbers.stream()
+               .filter(n -> n % 2 == 0)
+               .forEach(System.out::println);
+        ```
+
+    - **Parallel Stream**:
+
+      - Processes elements concurrently across multiple threads
+      - Utilizes multiple cores of the processor
+      - Breaks the stream into multiple substreams processed in parallel
+      - Created using `.parallelStream()` or `.parallel()` method
+      - Better performance for large datasets and computationally intensive operations
+      - Does not guarantee order of execution
+      - Example:
+        ```java
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        numbers.parallelStream()
+               .filter(n -> n % 2 == 0)
+               .forEach(System.out::println);
+        ```
+
+    - **Key Differences**:
+      1. Performance: Parallel streams are faster for large datasets
+      2. Thread Usage: Sequential uses one thread, parallel uses multiple
+      3. Order: Sequential maintains order, parallel may not
+      4. Overhead: Parallel streams have thread management overhead
+      5. Use Case: Choose based on dataset size and computational complexity
+
+3.  **What are default and static interface methods?**
+
+    - Java 8 introduced two new types of methods in interfaces: default and static methods, which significantly expanded the capabilities of interfaces.
+
+    - **Default Methods**:
+
+      - Allow interfaces to have method implementations without forcing implementing classes to provide the implementation
+      - Marked with the `default` keyword
+      - Provide backward compatibility when adding new methods to existing interfaces
+      - Enable adding new methods to interfaces without breaking existing implementations
+      - Example:
+        ```java
+        interface Greeting {
+            default void sayHello() {
+                System.out.println("Hello, World!");
+            }
+        }
+        ```
+
+    - **Static Methods**:
+
+      - Can be defined directly in the interface
+      - Belong to the interface itself, not to implementing classes
+      - Cannot be overridden by implementing classes
+      - Useful for providing utility methods related to the interface
+      - Example:
+        ```java
+        interface MathOperations {
+            static int add(int a, int b) {
+                return a + b;
+            }
+        }
+        ```
+
+    - **Key Characteristics**:
+      1. Default methods allow for method implementations in interfaces
+      2. Static methods provide utility functions at the interface level
+      3. Both enhance interface flexibility and reduce code duplication
+      4. Help in creating more modular and maintainable code
+
+4.  **What is the purpose of the Optional class?**
+
+    - The `Optional` class is a container object introduced in Java 8 to help handle potential null values more elegantly and reduce null pointer exceptions
+
+    - **Key Purposes**:
+
+      1. **Explicit Null Handling**: Provides a clear way to represent the possibility of a value being absent
+      2. **Avoid Null Checks**: Reduces boilerplate code for null checking
+      3. **Functional Programming**: Enables functional-style operations on potentially null values
+      4. **Improved Code Readability**: Makes the potential absence of a value explicit in method signatures
+
+    - **Main Benefits**:
+
+      - Encourages developers to explicitly consider and handle potential null scenarios
+      - Provides methods like `isPresent()`, `orElse()`, `orElseGet()`, and `map()` for safe value manipulation
+      - Helps prevent null pointer exceptions by forcing explicit handling of potentially absent values
+
+    - **Example Usage**:
+
+      ```java
+      // Without Optional
+      String name = getName();
+      if (name != null) {
+          System.out.println(name.toUpperCase());
+      }
+
+      // With Optional
+      Optional<String> optionalName = Optional.ofNullable(getName());
+      optionalName.ifPresent(name -> System.out.println(name.toUpperCase()));
+      ```
+
+    - **Best Practices**:
+      1. Use as return types for methods that might not return a value
+      2. Avoid using `Optional` for method parameters
+      3. Do not use `Optional.get()` without checking `isPresent()`
+      4. Prefer `orElse()`, `orElseGet()`, or `orElseThrow()` for default value handling
+
+5.  **What is the difference between Optional.empty(), Optional.of(value), and Optional.ofNullable(value)?**
+
+    | Method                       | Description                                                   | Behavior with Null                | Use Case                                              |
+    | ---------------------------- | ------------------------------------------------------------- | --------------------------------- | ----------------------------------------------------- |
+    | `Optional.empty()`           | Creates an empty Optional instance with no value              | Always returns an empty Optional  | When you want to explicitly represent no value        |
+    | `Optional.of(value)`         | Creates an Optional with a non-null value                     | Throws NullPointerException       | When you are certain the value is NOT null            |
+    | `Optional.ofNullable(value)` | Creates an Optional that may contain a null or non-null value | Returns an empty Optional if null | When the value might be null and you want flexibility |
+
+    **Example**:
+
+    ```java
+    Optional<String> emptyOpt = Optional.empty();  // Empty Optional
+    Optional<String> presentOpt = Optional.of("Hello");  // Optional with "Hello"
+    Optional<String> nullableOpt = Optional.ofNullable(null);  // Empty Optional
+    Optional<String> nullableOpt2 = Optional.ofNullable("World");  // Optional with "World"
+    ```
+
+6.  **What is the purpose of the Stream API?**
+
+    - The Stream API is a powerful feature introduced in Java 8 that provides a functional approach to processing collections of objects
+
+    - **Key Purposes**:
+
+      1. **Declarative Data Processing**: Allows processing collections in a more declarative and functional style
+      2. **Parallel Processing**: Enables easy parallel processing of data with minimal code changes
+      3. **Functional Transformations**: Provides methods for filtering, mapping, reducing, and collecting data
+      4. **Lazy Evaluation**: Supports lazy evaluation, processing elements only when needed
+
+    - **Main Benefits**:
+
+      - Simplifies complex data manipulation operations
+      - Reduces boilerplate code for collection processing
+      - Improves code readability and expressiveness
+      - Supports both sequential and parallel data processing
+
+    - **Core Stream Operations**:
+
+      - `filter()`: Selects elements based on a predicate
+      - `map()`: Transforms elements
+      - `reduce()`: Combines elements into a single result
+      - `collect()`: Gathers results into a collection
+      - `forEach()`: Performs an action on each element
+
+    - **Example Usage**:
+
+      ```java
+      // Traditional approach
+      List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+      List<String> filteredNames = new ArrayList<>();
+      for (String name : names) {
+          if (name.startsWith("A")) {
+              filteredNames.add(name.toUpperCase());
+          }
+      }
+
+      // Stream API approach
+      List<String> streamFilteredNames = names.stream()
+          .filter(name -> name.startsWith("A"))
+          .map(String::toUpperCase)
+          .collect(Collectors.toList());
+      ```
+
+    - **Best Practices**:
+      1. Use streams for complex data transformations
+      2. Prefer method references when possible
+      3. Close streams after use, especially with I/O operations
+      4. Be mindful of performance for large collections
+
+7.  **What is a Lambda and its Shorthand Forms with code examples?**
+
+    - **Lambda Definition**: A lambda expression is a concise way to represent an anonymous function in Java. It was introduced in Java 8 and enables functional programming by allowing functions to be passed as arguments and stored in variables.
+    - **Basic Syntax**: `(parameters) -> { expressions }`
+    - **Shorthand Forms**:
+
+      1. **Single Expression**: Omit curly braces and return
+         ```java
+         // Basic form
+         x -> { return x * 2; }
+         // Shorthand
+         x -> x * 2
+         ```
+      2. **Single Parameter**: Omit parentheses
+         ```java
+         // Basic form
+         (name) -> name.toUpperCase()
+         // Shorthand
+         name -> name.toUpperCase()
+         ```
+      3. **Method References**: Use :: operator
+
+         ```java
+         // Basic form
+         str -> str.length()
+         // Method reference
+         String::length
+
+         // Basic form
+         (obj, str) -> obj.equals(str)
+         // Method reference
+         Object::equals
+         ```
+
+      4. **Type Inference**: Skip parameter types
+         ```java
+         // Basic form
+         (Integer a, Integer b) -> a.compareTo(b)
+         // With type inference
+         (a, b) -> a.compareTo(b)
+         ```
+
+8.  **What are lambda expressions?**
+
+    Lambda expressions are a key feature introduced in Java 8 that provide a concise way to represent anonymous functions or closures. They enable functional programming paradigms in Java by allowing developers to treat functions as first-class citizens.
+
+    - **Definition**: A lambda expression is a short block of code which takes in parameters and returns a value
+    - **Syntax**: `(parameters) -> { body }`
+
+    - **Key Characteristics**:
+
+      1. Enables writing inline methods without declaring a separate method
+      2. Supports functional programming concepts
+      3. Can be passed as arguments to methods
+      4. Reduces boilerplate code compared to anonymous inner classes
+
+    - **Basic Syntax Examples**:
 
-     // With Optional
-     Optional<String> optionalName = Optional.ofNullable(getName());
-     optionalName.ifPresent(name -> System.out.println(name.toUpperCase()));
-     ```
+      ```java
+      // No parameters
+      Runnable noArgLambda = () -> System.out.println("Hello, Lambda!");
 
-   - **Best Practices**:
-     1. Use as return types for methods that might not return a value
-     2. Avoid using `Optional` for method parameters
-     3. Do not use `Optional.get()` without checking `isPresent()`
-     4. Prefer `orElse()`, `orElseGet()`, or `orElseThrow()` for default value handling
-
-5. **What is the difference between Optional.empty(), Optional.of(value), and Optional.ofNullable(value)?**
+      // Single parameter
+      Consumer<String> singleParamLambda = (name) -> System.out.println("Hello, " + name);
+
+      // Multiple parameters
+      Comparator<Integer> multiParamLambda = (a, b) -> a - b;
+
+      // Lambda with multiple statements
+      Predicate<String> complexLambda = (str) -> {
+          if (str == null) return false;
+          return str.length() > 5;
+      };
+      ```
+
+    - **Use Cases**:
+
+      1. Implementing functional interfaces
+      2. Enabling functional-style operations on collections
+      3. Simplifying event handling and callback mechanisms
+      4. Supporting stream operations
+
+    - **Benefits**:
+      - More readable and concise code
+      - Enables functional programming techniques
+      - Supports lazy evaluation
+      - Improves code maintainability
+
+9.  **What is the difference between a lambda expression and a method reference?**
 
-   | Method                       | Description                                                   | Behavior with Null                | Use Case                                              |
-   | ---------------------------- | ------------------------------------------------------------- | --------------------------------- | ----------------------------------------------------- |
-   | `Optional.empty()`           | Creates an empty Optional instance with no value              | Always returns an empty Optional  | When you want to explicitly represent no value        |
-   | `Optional.of(value)`         | Creates an Optional with a non-null value                     | Throws NullPointerException       | When you are certain the value is NOT null            |
-   | `Optional.ofNullable(value)` | Creates an Optional that may contain a null or non-null value | Returns an empty Optional if null | When the value might be null and you want flexibility |
-
-   **Example**:
+    | Aspect      | Lambda Expression                                  | Method Reference                                         |
+    | ----------- | -------------------------------------------------- | -------------------------------------------------------- |
+    | Definition  | An inline implementation of a functional interface | A shorthand notation for calling an existing method      |
+    | Syntax      | `(parameters) -> { body }`                         | `ClassName::methodName`                                  |
+    | Complexity  | Can contain multiple statements and complex logic  | Directly references an existing method                   |
+    | Flexibility | More flexible, can write custom inline logic       | Less flexible, limited to existing method implementation |
+    | Use Case    | When you need custom, inline implementation        | When you want to use an existing method directly         |
+    | Example     | `(x, y) -> x + y`                                  | `Integer::sum`                                           |
+    | Performance | Slightly more overhead                             | Typically more lightweight                               |
+    | Readability | More verbose for simple operations                 | More concise for straightforward method calls            |
 
-   ```java
-   Optional<String> emptyOpt = Optional.empty();  // Empty Optional
-   Optional<String> presentOpt = Optional.of("Hello");  // Optional with "Hello"
-   Optional<String> nullableOpt = Optional.ofNullable(null);  // Empty Optional
-   Optional<String> nullableOpt2 = Optional.ofNullable("World");  // Optional with "World"
-   ```
+10. **What are the different types of method references?**
 
-6. **What is the purpose of the Stream API?**
-
-   - The Stream API is a powerful feature introduced in Java 8 that provides a functional approach to processing collections of objects
-
-   - **Key Purposes**:
-
-     1. **Declarative Data Processing**: Allows processing collections in a more declarative and functional style
-     2. **Parallel Processing**: Enables easy parallel processing of data with minimal code changes
-     3. **Functional Transformations**: Provides methods for filtering, mapping, reducing, and collecting data
-     4. **Lazy Evaluation**: Supports lazy evaluation, processing elements only when needed
-
-   - **Main Benefits**:
-
-     - Simplifies complex data manipulation operations
-     - Reduces boilerplate code for collection processing
-     - Improves code readability and expressiveness
-     - Supports both sequential and parallel data processing
-
-   - **Core Stream Operations**:
-
-     - `filter()`: Selects elements based on a predicate
-     - `map()`: Transforms elements
-     - `reduce()`: Combines elements into a single result
-     - `collect()`: Gathers results into a collection
-     - `forEach()`: Performs an action on each element
-
-   - **Example Usage**:
+    There are four types of method references in Java:
 
-     ```java
-     // Traditional approach
-     List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
-     List<String> filteredNames = new ArrayList<>();
-     for (String name : names) {
-         if (name.startsWith("A")) {
-             filteredNames.add(name.toUpperCase());
-         }
-     }
+    1. **Static Method Reference**:
 
-     // Stream API approach
-     List<String> streamFilteredNames = names.stream()
-         .filter(name -> name.startsWith("A"))
-         .map(String::toUpperCase)
-         .collect(Collectors.toList());
-     ```
+       - Syntax: `ClassName::staticMethodName`
+       - Example: `Math::abs`
 
-   - **Best Practices**:
-     1. Use streams for complex data transformations
-     2. Prefer method references when possible
-     3. Close streams after use, especially with I/O operations
-     4. Be mindful of performance for large collections
+    2. **Instance Method Reference of a Particular Object**:
 
-7. **What are lambda expressions?**
+       - Syntax: `objectInstance::instanceMethodName`
+       - Example: `str::length`
 
-   Lambda expressions are a key feature introduced in Java 8 that provide a concise way to represent anonymous functions or closures. They enable functional programming paradigms in Java by allowing developers to treat functions as first-class citizens.
+    3. **Instance Method Reference of an Arbitrary Object of a Particular Type**:
 
-   - **Definition**: A lambda expression is a short block of code which takes in parameters and returns a value
-   - **Syntax**: `(parameters) -> { body }`
+       - Syntax: `ClassName::instanceMethodName`
+       - Example: `String::compareToIgnoreCase`
 
-   - **Key Characteristics**:
+    4. **Constructor Reference**:
+       - Syntax: `ClassName::new`
+       - Example: `ArrayList::new`
 
-     1. Enables writing inline methods without declaring a separate method
-     2. Supports functional programming concepts
-     3. Can be passed as arguments to methods
-     4. Reduces boilerplate code compared to anonymous inner classes
+    **Example Usage**:
 
-   - **Basic Syntax Examples**:
+    ```java
+    // Static method reference
+    Function<Integer, Integer> abs = Math::abs;
 
-     ```java
-     // No parameters
-     Runnable noArgLambda = () -> System.out.println("Hello, Lambda!");
+    // Instance method reference of particular object
+    String str = "Hello";
+    Supplier<Integer> length = str::length;
 
-     // Single parameter
-     Consumer<String> singleParamLambda = (name) -> System.out.println("Hello, " + name);
+    // Instance method reference of arbitrary object
+    Comparator<String> comp = String::compareToIgnoreCase;
 
-     // Multiple parameters
-     Comparator<Integer> multiParamLambda = (a, b) -> a - b;
+    // Constructor reference
+    Supplier<List<String>> listFactory = ArrayList::new;
+    ```
 
-     // Lambda with multiple statements
-     Predicate<String> complexLambda = (str) -> {
-         if (str == null) return false;
-         return str.length() > 5;
-     };
-     ```
+11. **What variables do lambda expressions have access to?**
 
-   - **Use Cases**:
+    Lambda expressions can access variables from their enclosing scope:
 
-     1. Implementing functional interfaces
-     2. Enabling functional-style operations on collections
-     3. Simplifying event handling and callback mechanisms
-     4. Supporting stream operations
+        1. Instance variables and static variables of the enclosing class
+        2. Parameters of the enclosing method
+        3. Final or effectively final local variables
 
-   - **Benefits**:
-     - More readable and concise code
-     - Enables functional programming techniques
-     - Supports lazy evaluation
-     - Improves code maintainability
+    - **Variable Scope Rules**:
 
-8. **What is the difference between a lambda expression and a method reference?**
+      - Local variables must be final or effectively final
+      - Instance/static variables can be modified
+      - Parameters of the lambda expression itself can be modified
 
-   | Aspect      | Lambda Expression                                  | Method Reference                                         |
-   | ----------- | -------------------------------------------------- | -------------------------------------------------------- |
-   | Definition  | An inline implementation of a functional interface | A shorthand notation for calling an existing method      |
-   | Syntax      | `(parameters) -> { body }`                         | `ClassName::methodName`                                  |
-   | Complexity  | Can contain multiple statements and complex logic  | Directly references an existing method                   |
-   | Flexibility | More flexible, can write custom inline logic       | Less flexible, limited to existing method implementation |
-   | Use Case    | When you need custom, inline implementation        | When you want to use an existing method directly         |
-   | Example     | `(x, y) -> x + y`                                  | `Integer::sum`                                           |
-   | Performance | Slightly more overhead                             | Typically more lightweight                               |
-   | Readability | More verbose for simple operations                 | More concise for straightforward method calls            |
+    - **Example**:
 
-9. **What are the Functional Interfaces?**
+      ```java
+      class Example {
+          private int instanceVar = 1;  // Instance variable - accessible
 
-   - **Definition**:
+          void method() {
+              final int finalVar = 2;   // Final local variable - accessible
+              int effectivelyFinal = 3; // Effectively final - accessible
+              int mutable = 4;          // Mutable - NOT accessible
 
-     - An interface with a single abstract method (SAM)
-     - Designed to be used with lambda expressions and method references
-     - Annotated with `@FunctionalInterface` (optional but recommended)
+              Runnable lambda = () -> {
+                  System.out.println(instanceVar);    // OK
+                  System.out.println(finalVar);       // OK
+                  System.out.println(effectivelyFinal); // OK
+                  // System.out.println(mutable);     // Compilation error
+              };
+          }
+      }
+      ```
 
-   - **Key Built-in Functional Interfaces**:
+12. **What are the Functional Interfaces?**
 
-     1. **Consumer<T>**:
+    **Definition**:
 
-        - Takes an input, performs an action, returns nothing
-        - Method: `void accept(T t)`
-        - Example: `Consumer<String> printer = s -> System.out.println(s)`
+    - An interface with a single abstract method (SAM)
+    - Designed to be used with lambda expressions and method references
+    - Annotated with `@FunctionalInterface` (optional but recommended)
 
-     2. **Supplier<T>**:
+    **Key Built-in Functional Interfaces**:
 
-        - Provides a value, takes no input
-        - Method: `T get()`
-        - Example: `Supplier<Double> randomSupplier = () -> Math.random()`
+    1. **Consumer<T>**:
 
-     3. **Predicate<T>**:
+       - Takes an input, performs an action, returns nothing
+       - Method: `void accept(T t)`
+       - Example: `Consumer<String> printer = s -> System.out.println(s)`
 
-        - Takes an input, returns a boolean
-        - Method: `boolean test(T t)`
-        - Example: `Predicate<String> isLong = s -> s.length() > 5`
+    2. **Supplier<T>**:
 
-     4. **Function<T, R>**:
+       - Provides a value, takes no input
+       - Method: `T get()`
+       - Example: `Supplier<Double> randomSupplier = () -> Math.random()`
 
-        - Takes an input, returns a transformed output
-        - Method: `R apply(T t)`
-        - Example: `Function<String, Integer> lengthFunc = s -> s.length()`
+    3. **Predicate<T>**:
 
-     5. **Comparator<T>**:
-        - Compares two objects
-        - Method: `int compare(T o1, T o2)`
-        - Example: `Comparator<Integer> ascendingOrder = (a, b) -> a - b`
+       - Takes an input, returns a boolean
+       - Method: `boolean test(T t)`
+       - Example: `Predicate<String> isLong = s -> s.length() > 5`
 
-   - **Creating Custom Functional Interfaces**:
+    4. **Function<T, R>**:
 
-     ```java
-     @FunctionalInterface
-     public interface MyFunctionalInterface<T> {
-         boolean process(T input);
-     }
-     ```
+       - Takes an input, returns a transformed output
+       - Method: `R apply(T t)`
+       - Example: `Function<String, Integer> lengthFunc = s -> s.length()`
 
-   - **Benefits**:
-     - Enables functional programming in Java
-     - Supports lambda expressions
-     - Provides standard interfaces for common operations
-     - Improves code readability and conciseness
+    5. **Comparator<T>**:
+       - Compares two objects
+       - Method: `int compare(T o1, T o2)`
+       - Example: `Comparator<Integer> ascendingOrder = (a, b) -> a - b`
 
-10. **Method References and Constructor References**:
+    **Creating Custom Functional Interfaces**:
+
+    ```java
+    @FunctionalInterface
+    public interface MyFunctionalInterface<T> {
+        boolean process(T input);
+    }
+    ```
+
+    **Benefits**:
+
+    - Enables functional programming in Java
+    - Supports lambda expressions
+    - Provides standard interfaces for common operations
+    - Improves code readability and conciseness
+
+13. **What are Method References and Constructor References?**
 
     - A shorthand syntax for lambda expressions that refer to existing methods
     - Provides a more concise way to create functional interface implementations
@@ -341,7 +459,7 @@
     - Simplifies lambda expressions when a method already exists
     - Improves code readability and reduces boilerplate
 
-11. **Repeatable Annotations**:
+14. **What is Repeatable Annotations**:
 
     - A feature introduced in Java 8 that allows the same annotation to be applied multiple times to a single declaration or type
     - Before Java 8, multiple annotations of the same type were not allowed on a single element
@@ -381,7 +499,7 @@
       - Allows multiple annotations of the same type on a single element
       - Improves code readability and expressiveness
 
-12. **What are Annotations on Data Types?**:
+15. **What are Annotations on Data Types?**:
 
     - Java 8 introduced an enhanced annotation system that allows annotations to be applied directly to types
     - This feature enables more precise type checking and provides additional metadata about types
@@ -433,7 +551,7 @@
       }
       ```
 
-13. **What is Reflection for Method Parameters?**
+16. **What is Reflection for Method Parameters?**
 
     - Java 8 introduced enhanced method parameter reflection capabilities
     - Before Java 8, method parameter names were not readily available at runtime
@@ -471,7 +589,7 @@
       - More powerful reflection capabilities
       - Better support for dependency injection and serialization frameworks
 
-14. **What is Parallel Sorting of Arrays?**
+17. **What is Parallel Sorting of Arrays?**
 
     - Java 8 introduced parallel sorting methods for arrays to improve performance on multi-core processors
     - Provides built-in parallel sorting capabilities for primitive and object arrays
@@ -506,7 +624,7 @@
       - Simple, one-method approach to parallel sorting
       - No need to manually implement parallel sorting logic
 
-15. **What is the Stream API in Java 8?**
+18. **What is the Stream API in Java 8?**
 
     - A functional approach to processing collections of objects
     - Enables declarative and functional-style operations on collections
@@ -519,7 +637,7 @@
       4. Lazily evaluated
       5. Can be processed sequentially or in parallel
 
-16. **What are the main operations in Stream API?**
+19. **What are the main operations in Stream API?**
 
     1. **Intermediate Operations**:
 
@@ -541,7 +659,7 @@
        - `allMatch()`: Checks if all elements match a predicate
        - `noneMatch()`: Checks if no elements match a predicate
 
-17. **What is the difference between `map()` and `flatMap()`?**
+20. **What is the difference between `map()` and `flatMap()`?**
 
     ```java
     // map(): One-to-One transformation
@@ -555,7 +673,7 @@
                                        .collect(Collectors.toList());
     ```
 
-18. **How do you create a Stream?**
+21. **How do you create a Stream?**
 
     ```java
     // From Collection
@@ -573,7 +691,7 @@
     Stream<Integer> infiniteStream = Stream.iterate(0, n -> n + 2);
     ```
 
-19. **What is the difference between `findFirst()` and `findAny()`?**
+22. **What is the difference between `findFirst()` and `findAny()`?**
 
     - `findFirst()`: Returns first element in a sequential stream
     - `findAny()`: Returns any element, useful in parallel streams
@@ -583,7 +701,7 @@
     Optional<String> any = parallelStream.findAny();
     ```
 
-20. **How to perform grouping and partitioning with Streams?**
+23. **How to perform grouping and partitioning with Streams?**
 
     ```java
     // Grouping

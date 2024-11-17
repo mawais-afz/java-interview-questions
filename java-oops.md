@@ -1478,26 +1478,7 @@ This class is immutable because:
     | **Method Body**    | Must have method body                            | Cannot have method body (except default methods in interfaces)        |
     | **Purpose**        | To preserve implementation across inheritance    | To achieve abstraction and polymorphism                               |
 
-43. **What is the final blank variable?**
 
-    A final blank variable (or blank final variable) is a final variable that is not initialized at the time of declaration. Key points about blank final variables:
-
-    - Must be initialized exactly once, either in instance initializer block or constructor
-    - Can be initialized based on some logic/computation
-    - Once initialized, cannot be changed
-    - Useful when the final value depends on some constructor parameters
-
-    Example:
-
-    ```java
-    public class Example {
-        final int blankFinal; // blank final variable
-
-        public Example(int value) {
-            this.blankFinal = value; // initialized in constructor
-        }
-    }
-    ```
 
 44. **What is the significant difference between object-oriented language and object-based language?**
 

@@ -47,44 +47,53 @@
    str = str + " World"; // Creates new String object
    ```
 
-4. **Apart from the security aspect, what are the reasons behind making strings immutable in Java?**
+4. **Why is String immutable in Java?**
 
-   There are several important reasons why strings are immutable in Java:
+   Strings in Java are immutable for several important reasons:
 
-   1. **String Pool Optimization**
+   1. **Security**
 
+      - Prevents malicious code from modifying string values
+      - Critical for sensitive data like database credentials, network connections
+      - Ensures string parameters can't be modified unexpectedly
+      - Safe to pass strings between different parts of a system
+      - Maintains data integrity across network boundaries
+
+   2. **String Pool Efficiency**
+
+      - Enables string interning and reuse via string pool
+      - Multiple references can safely share same string object
+      - Reduces memory usage by avoiding duplicate strings
       - Enables safe string pooling and reuse
-      - Reduces memory footprint by sharing string literals
       - No need to create copies since strings can't be modified
 
-   2. **Thread Safety**
+   3. **Thread Safety**
 
       - Immutable strings are inherently thread-safe
-      - Can be safely shared between multiple threads
+      - Can be shared between threads without synchronization
+      - No risk of concurrent modification issues
       - No synchronization needed for read operations
 
-   3. **Hash Code Caching**
+   4. **Hash Code Caching**
 
-      - String's hash code can be cached since it won't change
-      - Improves performance when used as keys in HashMaps/HashSets
-      - Only needs to be calculated once
-
-   4. **Network Security**
-
-      - Safe to pass strings between different parts of a system
-      - No risk of modification during transmission
-      - Maintains data integrity across network boundaries
+      - String's hash code only needs to be calculated once
+      - Can be cached since string value never changes
+      - Improves performance for hash-based collections
+      - Only needs to be calculated once when used as keys in HashMaps/HashSets
 
    5. **Performance Benefits**
 
       - JVM can optimize string operations better
-      - Enables various internal optimizations
+      - No need for defensive copies
       - Simpler garbage collection
+      - Enables various internal optimizations
 
    6. **API Contract Safety**
       - Method parameters can't be modified unexpectedly
       - Return values remain consistent
       - Safer to use as class constants
+
+   The combination of these benefits makes string immutability a fundamental design choice in Java that improves security, efficiency and reliability.
 
 5. **Why is it said that the length() method of String class doesn't return accurate results?**
 
@@ -144,7 +153,7 @@
 
    In this example, `str1` and `str2` point to the same object in the string pool, while `str3` points to a different object in the heap.
 
-8. **How is the creation of a String using new() different from that of a literal?**
+8. **How is the creation of a String using new() different from that of a literal? or What is the difference between creating String as new() and literal?**
 
    When creating strings, there are two main approaches:
 
@@ -203,3 +212,36 @@
       - Reduces risk of memory dumps exposing confidential information
 
    This is why Java's `Console.readPassword()` returns a char array instead of a String, and many security-related APIs prefer character arrays for handling sensitive data.
+
+10. **What is StringJoiner?**
+
+    StringJoiner is a class introduced in Java 8 that helps construct a sequence of characters separated by a delimiter. It provides a convenient way to create strings with delimiters, prefixes, and suffixes.
+
+    Key features:
+
+    1. **Basic Usage**:
+
+       ```java
+       StringJoiner joiner = new StringJoiner(",");
+       joiner.add("apple").add("banana").add("orange");
+       System.out.println(joiner); // Output: apple,banana,orange
+       ```
+
+    2. **With Prefix and Suffix**:
+
+       ```java
+       StringJoiner joiner = new StringJoiner(", ", "[", "]");
+       joiner.add("one").add("two").add("three");
+       System.out.println(joiner); // Output: [one, two, three]
+       ```
+
+    3. **Empty Value Handling**:
+
+       - Returns empty string if no elements added
+       - Can set custom empty value using setEmptyValue()
+
+    4. **Advantages**:
+       - More efficient than repeated String concatenation
+       - Cleaner alternative to StringBuilder for joining strings
+       - Thread-safe (unlike StringBuilder)
+       - Integrates well with Stream API

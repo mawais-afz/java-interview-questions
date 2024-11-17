@@ -505,3 +505,40 @@
     | Memory efficient for storing similar data types | No built-in support for complex data structures   |
     | Supports random access                          | Can lead to wasted memory if not fully utilized   |
     | Cache-friendly due to contiguous memory storage | Does not provide type safety for primitive arrays |
+
+20. **What is CopyOnWriteArrayList in Java?**
+
+    CopyOnWriteArrayList is a thread-safe variant of ArrayList in which all mutative operations (add, set, remove, etc.) are implemented by making a fresh copy of the underlying array.
+
+    Key characteristics:
+
+    1. **Thread Safety**:
+
+       - All operations are thread-safe without explicit synchronization
+       - Particularly useful for concurrent applications
+
+    2. **Implementation**:
+
+       - Maintains an immutable array internally
+       - Creates a new copy of array for any modification
+       - Reads don't require locking
+
+    3. **Best Use Cases**:
+       - When reads greatly outnumber writes
+       - In observer/listener patterns where iteration is frequent
+       - In concurrent scenarios requiring thread-safe list operations
+
+    Example usage:
+
+    ```java
+    CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+    list.add("Item 1");  // Creates new copy
+    list.add("Item 2");  // Creates new copy
+
+    // Safe iteration even if another thread modifies list
+    for(String item : list) {
+        System.out.println(item);
+    }
+    ```
+
+    Note: While thread-safe, it has higher memory overhead and slower write performance due to array copying.

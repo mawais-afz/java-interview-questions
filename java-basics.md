@@ -1368,3 +1368,36 @@
     - Direction: out and err are output streams, in is an input stream
     - Visual: err typically shows in red, while out shows in black
     - Buffer: out is buffered, err is not (immediate output)
+
+53. **What is the purpose of the Runtime class and System class?**
+
+    The Runtime class and System class serve different but important purposes in Java:
+
+    1. Runtime Class:
+
+       - Provides interface to the Java Runtime Environment (JRE)
+       - Only one instance per JVM (Singleton pattern)
+       - Accessed using Runtime.getRuntime()
+       - Key functionalities:
+         - Memory management (totalMemory(), freeMemory(), gc())
+         - Execute external processes (exec())
+         - Shutdown hooks (addShutdownHook())
+         - JVM termination (exit())
+
+    2. System Class:
+       - Provides system-related utility methods and fields
+       - Cannot be instantiated (all members are static)
+       - Key functionalities:
+         - Standard I/O streams (out, err, in)
+         - Environment variables and properties (getenv(), getProperty())
+         - Array copying (arraycopy())
+         - Current time (currentTimeMillis(), nanoTime())
+         - System garbage collection (gc())
+         - Loading native libraries (loadLibrary())
+
+    Key differences:
+
+    - Runtime focuses on JRE interaction and process management
+    - System provides utility methods for common system operations
+    - Runtime uses singleton pattern, System has only static members
+    - Runtime methods are instance methods, System methods are static

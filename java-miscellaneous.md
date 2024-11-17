@@ -115,3 +115,91 @@
    - Better performance (no reflection used)
    - Requires manual implementation of serialization logic
    - Must have public no-arg constructor
+
+4. **How does Java Serialization work internally?**
+
+   Java serialization works through the following process:
+
+   1. **Serialization Process:**
+
+      - When an object is serialized, the ObjectOutputStream traverses the object graph
+      - For each object:
+        - Writes class descriptor (class name, serialVersionUID, field info)
+        - Writes field values recursively
+        - Handles circular references using reference tables
+      - Special methods like writeObject() are called if present
+
+   2. **Deserialization Process:**
+
+      - ObjectInputStream reads the stream and:
+        - Reads class descriptor
+        - Creates object instance without calling constructor
+        - Reads and assigns field values
+        - Resolves object references
+        - Calls readObject() if present
+
+   3. **Key Components:**
+
+      - ObjectOutputStream/ObjectInputStream
+      - SerialVersionUID for version control
+      - writeObject()/readObject() for custom serialization
+      - transient keyword to skip fields
+      - serialPersistentFields for field control
+
+   4. **Security Considerations:**
+      - Validates class during deserialization
+      - Checks SerialVersionUID
+      - Uses SecurityManager if present
+      - Can implement ObjectInputValidation
+
+5. **How can you avoid serialization in child class if the base class is implementing the Serializable interface?**
+
+   To prevent serialization in a child class when the parent class implements Serializable:
+
+   1. **Implement writeObject() method:**
+
+      ```java
+      private void writeObject(ObjectOutputStream out) throws IOException {
+          throw new NotSerializableException("This class cannot be serialized");
+      }
+      ```
+
+   2. **Implement readObject() method:**
+
+      ```java
+      private void readObject(ObjectInputStream in) throws IOException {
+          throw new NotSerializableException("This class cannot be deserialized");
+      }
+      ```
+
+   3. **Alternative approach:**
+      - Make all non-static fields in child class transient
+      - This prevents their serialization while allowing parent class serialization
+
+   Note: These methods must be private to properly override the default serialization behavior.
+
+6. **What is the difference between Serializable and Externalizable interface?**
+
+   | Feature                   | Serializable                                  | Externalizable                                |
+   | ------------------------- | --------------------------------------------- | --------------------------------------------- |
+   | **Interface Type**        | Marker interface (no methods)                 | Has two methods to implement                  |
+   | **Control**               | Automatic serialization with default behavior | Complete control over serialization process   |
+   | **Performance**           | Slower due to reflection                      | Faster due to explicit serialization          |
+   | **Constructor**           | No-arg constructor not required               | Must have public no-arg constructor           |
+   | **Methods**               | Optional writeObject()/readObject()           | Must implement writeExternal()/readExternal() |
+   | **Flexibility**           | Can selectively override default behavior     | Must handle complete serialization process    |
+   | **Implementation Effort** | Minimal - automatic serialization             | More effort - manual implementation required  |
+
+   Example of Externalizable implementation:
+
+   ```java
+   public void writeExternal(ObjectOutput out) throws IOException {
+       out.writeObject(field1);
+       out.writeInt(field2);
+   }
+
+   public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+       field1 = in.readObject();
+       field2 = in.readInt();
+   }
+   ```

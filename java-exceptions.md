@@ -8,25 +8,74 @@
 
    In summary, exceptions are events that disrupt program execution, with checked exceptions requiring explicit handling or declaration, while unchecked exceptions do not have this requirement and generally indicate programming errors.
 
-2. **What is the difference between Error and Exception in Java?**
+2. **Explain hierarchy of Java Exception classes?**
 
-   In Java, both Errors and Exceptions are subclasses of the Throwable class, but they represent different types of problems that can occur during the execution of a program.
+   In Java, all exception classes are organized in a hierarchy with `Throwable` as the root class. Here's the breakdown of the exception hierarchy:
 
-   - **Error**: Errors are serious issues that a typical application should not try to catch. They are usually external to the application and indicate problems that are not expected to be handled by the program. Examples include OutOfMemoryError, StackOverflowError, and other system-level errors. Errors are typically caused by the environment in which the application is running.
+   ```
+   Throwable
+   ├── Error (unchecked)
+   │   ├── OutOfMemoryError
+   │   ├── StackOverflowError
+   │   └── ...
+   └── Exception
+       ├── IOException (checked)
+       ├── SQLException (checked)
+       ├── ClassNotFoundException (checked)
+       └── RuntimeException (unchecked)
+           ├── NullPointerException
+           ├── ArrayIndexOutOfBoundsException
+           ├── ArithmeticException
+           └── ...
+   ```
 
-   - **Exception**: Exceptions are conditions that a program can catch and handle. They represent problems that can occur during the execution of a program and can be anticipated and recovered from. Exceptions can be further categorized into checked exceptions (which must be declared in the method signature or handled) and unchecked exceptions (which do not require explicit handling). Examples of exceptions include IOException, SQLException, and NullPointerException.
+   - **Throwable**: The root class of the exception hierarchy. All errors and exceptions inherit from this class.
 
-   In summary, Errors are usually fatal and indicate serious problems, while Exceptions are conditions that can be caught and handled by the application.
+   - **Error**: A subclass of Throwable representing serious problems that applications should not try to handle.
 
-3. **What is exception handling?**
+   - **Exception**: The superclass of all exception classes. It has two main categories:
+     - Checked Exceptions: Direct subclasses of Exception (excluding RuntimeException)
+     - Unchecked Exceptions: RuntimeException and its subclasses
+
+   This hierarchy helps organize different types of exceptional conditions and determines which exceptions need to be explicitly handled (checked) and which don't (unchecked).
+
+3. **What is checked, unchecked exception and errors?**
+
+   | Feature        | Checked Exception                                 | Unchecked Exception                                  | Error                                                       |
+   | -------------- | ------------------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------------- |
+   | Definition     | Exceptions that must be either caught or declared | Exceptions that don't need to be explicitly caught   | Serious problems that applications should not try to handle |
+   | When Checked   | Compile time                                      | Runtime                                              | Runtime                                                     |
+   | Need to Handle | Yes - must use try-catch or throws                | Optional                                             | Not meant to be caught                                      |
+   | Base Class     | Exception (excluding RuntimeException)            | RuntimeException                                     | Error                                                       |
+   | Examples       | IOException, SQLException                         | NullPointerException, ArrayIndexOutOfBoundsException | OutOfMemoryError, StackOverflowError                        |
+   | Common Causes  | External factors like I/O, network issues         | Programming mistakes, logic errors                   | System/JVM level issues                                     |
+   | Recovery       | Can be anticipated and recovered from             | Can be prevented through better coding               | Usually unrecoverable                                       |
+   | Best Practice  | Handle explicitly with appropriate error handling | Fix the underlying code issue                        | Let the application terminate                               |
+
+4. **What is the difference between Error and Exception in Java?**
+
+   | Feature    | Error                                                                  | Exception                                                     |
+   | ---------- | ---------------------------------------------------------------------- | ------------------------------------------------------------- |
+   | Purpose    | Represents serious problems that applications should not try to handle | Represents conditions that applications can and should handle |
+   | Nature     | Usually external to the application and unrecoverable                  | Usually related to application logic and recoverable          |
+   | Handling   | Not meant to be caught or handled by application code                  | Should be caught and handled appropriately                    |
+   | Examples   | OutOfMemoryError, StackOverflowError, VirtualMachineError              | IOException, SQLException, NullPointerException               |
+   | Cause      | Typically caused by the runtime environment                            | Typically caused by the application itself                    |
+   | Categories | All errors are unchecked                                               | Can be either checked or unchecked exceptions                 |
+   | Recovery   | Generally impossible to recover from                                   | Can be anticipated and recovered from                         |
+   | Prevention | Usually cannot be prevented by application code                        | Can often be prevented through proper coding                  |
+
+   In summary, Errors represent serious system-level problems that applications cannot handle, while Exceptions represent conditions that applications should anticipate and handle appropriately.
+
+5. **What is exception handling?**
 
    Exception handling in Java is a mechanism that allows a program to handle errors and exceptions gracefully, rather than crashing when an error occurs. It involves using try, catch, and finally blocks to catch and handle exceptions, and using throw and throws to throw exceptions.
 
-4. **Name the base class of all the Java exception classes**
+6. **Name the base class of all the Java exception classes**
 
    The base class of all the Java exception classes is `Throwable`.
 
-5. **What is NullPointerException in Java?**
+7. **What is NullPointerException in Java?**
 
    A NullPointerException is a runtime exception that occurs in Java when the Java Virtual Machine (JVM) attempts to access an object or call a method on an object that has not been initialized, meaning it is null. This exception indicates that the program is trying to use a reference that points to no location in memory.
 
@@ -39,7 +88,7 @@
 
    To avoid NullPointerExceptions, it is important to ensure that objects are properly initialized before use and to perform null checks where necessary. Additionally, using Java's Optional class can help manage the presence or absence of values more effectively.
 
-6. **What are the types of keywords used in Java exception handling?**
+8. **What are the types of keywords used in Java exception handling?**
 
    In Java, there are several keywords that are essential for handling exceptions effectively. These keywords include:
 
@@ -55,7 +104,7 @@
 
    In summary, the keywords try, catch, finally, throw, and throws are fundamental to Java's exception handling mechanism, allowing developers to manage errors and maintain program stability.
 
-7. **What is the difference between throw and throws?**
+9. **What is the difference between throw and throws?**
 
    | Feature        | throw                                           | throws                                                                   |
    | -------------- | ----------------------------------------------- | ------------------------------------------------------------------------ |
@@ -67,47 +116,47 @@
 
    In summary, `throw` is used to actually throw an exception, while `throws` is used in a method declaration to indicate that the method may throw exceptions.
 
-8. **What are custom exceptions?**
+10. **What are custom exceptions?**
 
-   Custom exceptions in Java are user-defined exception classes that extend the built-in Exception class or one of its subclasses. They allow developers to create specific exception types that can represent particular error conditions in their applications. By defining custom exceptions, developers can provide more meaningful error messages and handle exceptions in a way that is tailored to the application's needs.
+    Custom exceptions in Java are user-defined exception classes that extend the built-in Exception class or one of its subclasses. They allow developers to create specific exception types that can represent particular error conditions in their applications. By defining custom exceptions, developers can provide more meaningful error messages and handle exceptions in a way that is tailored to the application's needs.
 
-   To create a custom exception, you typically define a new class that extends Exception (or RuntimeException for unchecked exceptions) and provide constructors to initialize the exception message and any other relevant information. For example:
+    To create a custom exception, you typically define a new class that extends Exception (or RuntimeException for unchecked exceptions) and provide constructors to initialize the exception message and any other relevant information. For example:
 
-   ```java
-   public class MyCustomException extends Exception {
-       public MyCustomException(String message) {
-           super(message);
-       }
-   }
-   ```
+    ```java
+    public class MyCustomException extends Exception {
+        public MyCustomException(String message) {
+            super(message);
+        }
+    }
+    ```
 
-   Custom exceptions can be thrown using the `throw` keyword and can be caught using `try-catch` blocks, just like standard exceptions. This enhances the clarity and maintainability of the code by allowing developers to handle specific error scenarios more effectively.
+    Custom exceptions can be thrown using the `throw` keyword and can be caught using `try-catch` blocks, just like standard exceptions. This enhances the clarity and maintainability of the code by allowing developers to handle specific error scenarios more effectively.
 
-   In summary, custom exceptions provide a way to define application-specific error conditions, improving error handling and making the code more understandable.
+    In summary, custom exceptions provide a way to define application-specific error conditions, improving error handling and making the code more understandable.
 
-9. **How does an exception propagate in the code?**
+11. **How does an exception propagate in the code?**
 
-   Exception propagation in Java occurs when an exception is thrown in a method and is not caught within that method. Instead, the exception is passed up the call stack to the method that called it. This process continues until the exception is either caught by a catch block or reaches the main method, at which point the program will terminate if the exception remains unhandled.
+    Exception propagation in Java occurs when an exception is thrown in a method and is not caught within that method. Instead, the exception is passed up the call stack to the method that called it. This process continues until the exception is either caught by a catch block or reaches the main method, at which point the program will terminate if the exception remains unhandled.
 
-   When an exception is thrown, the Java Virtual Machine (JVM) looks for a matching catch block in the current method. If it does not find one, it moves to the calling method and repeats the process. This continues until a suitable catch block is found or the top of the call stack is reached.
+    When an exception is thrown, the Java Virtual Machine (JVM) looks for a matching catch block in the current method. If it does not find one, it moves to the calling method and repeats the process. This continues until a suitable catch block is found or the top of the call stack is reached.
 
-   For example, consider the following scenario:
+    For example, consider the following scenario:
 
-   ```java
-   public void methodA() {
-       methodB(); // Calls methodB
-   }
+    ```java
+    public void methodA() {
+        methodB(); // Calls methodB
+    }
 
-   public void methodB() {
-       throw new RuntimeException("An error occurred"); // Exception thrown here
-   }
-   ```
+    public void methodB() {
+        throw new RuntimeException("An error occurred"); // Exception thrown here
+    }
+    ```
 
-   In this case, `methodB` throws a `RuntimeException`, which is not caught within `methodB`. Therefore, the exception propagates back to `methodA`, which also does not handle it. If `methodA` does not catch the exception, it will continue to propagate up to the main method, potentially causing the program to terminate if unhandled.
+    In this case, `methodB` throws a `RuntimeException`, which is not caught within `methodB`. Therefore, the exception propagates back to `methodA`, which also does not handle it. If `methodA` does not catch the exception, it will continue to propagate up to the main method, potentially causing the program to terminate if unhandled.
 
-   Understanding exception propagation is crucial for effective error handling in Java applications, as it allows developers to manage exceptions at appropriate levels in the call stack.
+    Understanding exception propagation is crucial for effective error handling in Java applications, as it allows developers to manage exceptions at appropriate levels in the call stack.
 
-10. **How do exceptions affect the program if it doesn't handle them?**
+12. **How do exceptions affect the program if it doesn't handle them?**
 
     When exceptions are not handled in a Java program, they have several serious consequences:
 
@@ -132,7 +181,7 @@
 
     To prevent these issues, exceptions should be properly caught and handled using try-catch blocks, allowing the program to gracefully recover from errors and maintain stability.
 
-11. **Is it mandatory for a catch block to be followed after a try block?**
+13. **Is it mandatory for a catch block to be followed after a try block?**
 
     No, it is not mandatory for a catch block to follow a try block. A try block must be followed by either a catch block, a finally block, or both. There are three valid combinations:
 
@@ -141,3 +190,135 @@
     3. try-catch-finally
 
     The catch block handles exceptions that occur in the try block. The finally block contains cleanup code that executes whether an exception occurs or not. Here are examples of each:
+
+14. **What are different scenarios causing "Exception in thread main"?**
+
+    The "Exception in thread main" error occurs in several common scenarios:
+
+    1. NullPointerException:
+
+       - Attempting to access methods or properties of a null object
+
+       ```java
+       String str = null;
+       str.length(); // Throws NullPointerException
+       ```
+
+    2. ArrayIndexOutOfBoundsException:
+
+       - Accessing an array index that doesn't exist
+
+       ```java
+       int[] arr = new int[3];
+       arr[3] = 1; // Throws ArrayIndexOutOfBoundsException
+       ```
+
+    3. NumberFormatException:
+
+       - Invalid number format in string conversion
+
+       ```java
+       int num = Integer.parseInt("abc"); // Throws NumberFormatException
+       ```
+
+    4. ClassNotFoundException:
+
+       - When JVM can't find a specified class
+
+       ```java
+       Class.forName("NonExistentClass"); // Throws ClassNotFoundException
+       ```
+
+    5. NoClassDefFoundError:
+
+       - When a required class definition is missing at runtime
+
+       ```java
+       // Attempting to use a class that exists during compilation but missing at runtime
+       MissingClass obj = new MissingClass(); // Throws NoClassDefFoundError
+       ```
+
+    6. StackOverflowError:
+       - Infinite recursion or extremely deep call stack
+       ```java
+       public void infiniteRecursion() {
+           infiniteRecursion(); // Throws StackOverflowError
+       }
+       ```
+
+    These exceptions typically occur in the main thread and will terminate the program if not properly handled with try-catch blocks.
+
+15. **While overriding a method can you throw another exception or broader exception?**
+
+    When overriding a method, you can:
+
+    - Throw the same exception as the parent method
+    - Throw a more specific (narrower) exception than the parent method
+    - Choose not to throw any exception
+    - You CANNOT throw a new or broader exception than what the parent method declares
+
+    Example:
+
+    ```java
+    class Parent {
+        void method() throws IOException {
+            // Method implementation
+        }
+    }
+
+    class Child extends Parent {
+        // Valid: throws same exception
+        void method() throws IOException {
+            // Method implementation
+        }
+
+        // Valid: throws more specific exception
+        void method() throws FileNotFoundException { // FileNotFoundException is a subclass of IOException
+            // Method implementation
+        }
+
+        // Valid: throws no exception
+        void method() {
+            // Method implementation
+        }
+
+        // INVALID: throws broader or new exception
+        // void method() throws Exception { // Won't compile
+        //     // Method implementation
+        // }
+    }
+    ```
+
+16. **What is difference between ClassNotFoundException and NoClassDefFoundError?**
+
+    ClassNotFoundException and NoClassDefFoundError are two distinct issues:
+
+    1. ClassNotFoundException:
+
+       - It's a checked exception (extends Exception)
+       - Thrown when trying to load a class through its string name using methods like Class.forName() or ClassLoader.loadClass()
+       - Occurs during runtime when the class is not found in the classpath
+
+       ```java
+       try {
+           Class.forName("com.example.NonExistentClass"); // Throws ClassNotFoundException
+       } catch (ClassNotFoundException e) {
+           e.printStackTrace();
+       }
+       ```
+
+    2. NoClassDefFoundError:
+       - It's an error (extends Error)
+       - Thrown when a class that was present during compilation is not found during runtime
+       - Usually occurs when a class was present during compilation but missing during runtime, or if a static initializer fails
+       ```java
+       // If MyClass.class exists during compilation but is deleted/missing at runtime:
+       MyClass obj = new MyClass(); // Throws NoClassDefFoundError
+       ```
+
+    Key differences:
+
+    - ClassNotFoundException is a checked exception that must be handled explicitly
+    - NoClassDefFoundError is an error that indicates a serious problem, typically unrecoverable
+    - ClassNotFoundException occurs during explicit class loading attempts
+    - NoClassDefFoundError occurs when a previously available class is missing at runtime

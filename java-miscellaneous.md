@@ -203,3 +203,78 @@
        field2 = in.readInt();
    }
    ```
+
+7. **How will you invoke any external process in Java?**
+
+   There are several ways to invoke external processes in Java:
+
+   1. **Using ProcessBuilder (Recommended):**
+
+      ```java
+      ProcessBuilder pb = new ProcessBuilder("command", "arg1", "arg2");
+      Process process = pb.start();
+      ```
+
+   2. **Using Runtime.exec():**
+      ```java
+      Runtime.getRuntime().exec("command");
+      ```
+
+   Key points about process handling:
+
+   - **Reading output:**
+
+     ```java
+     BufferedReader reader = new BufferedReader(
+         new InputStreamReader(process.getInputStream()));
+     String line;
+     while ((line = reader.readLine()) != null) {
+         System.out.println(line);
+     }
+     ```
+
+   - **Waiting for completion:**
+
+     ```java
+     int exitCode = process.waitFor();
+     ```
+
+   - **Setting working directory:**
+
+     ```java
+     pb.directory(new File("path/to/directory"));
+     ```
+
+   - **Environment variables:**
+     ```java
+     Map<String, String> env = pb.environment();
+     env.put("VAR_NAME", "value");
+     ```
+
+   ProcessBuilder is preferred over Runtime.exec() because it:
+
+   - Provides better control over process I/O
+   - Handles command arguments more safely
+   - Offers more configuration options
+   - Has cleaner API for environment variables and working directory
+
+8. **What is the static import?**
+
+   Static import allows you to use static members (methods and fields) of a class directly without class qualification. For example:
+
+   ```java
+   // Without static import
+   Math.sqrt(144);
+
+   // With static import
+   import static java.lang.Math.sqrt;
+   sqrt(144);
+   ```
+
+   Key points:
+
+   - Use `import static` keyword
+   - Can import specific members or all static members with `*`
+   - Helps reduce code verbosity
+   - Should be used judiciously to avoid naming conflicts
+   - Common use cases include mathematical functions, constants, and static utility methods

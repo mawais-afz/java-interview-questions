@@ -509,16 +509,16 @@
     - Simplifies lambda expressions when a method already exists
     - Improves code readability and reduces boilerplate
 
-16. **What is Repeatable Annotations**:
+16. **What is Repeatable Annotations?**
 
     - A feature introduced in Java 8 that allows the same annotation to be applied multiple times to a single declaration or type
     - Before Java 8, multiple annotations of the same type were not allowed on a single element
 
-    - **How to Use Repeatable Annotations**:
+17. **How to Use Repeatable Annotations?**
 
-      1. Create a container annotation that will hold multiple instances of the repeatable annotation
-      2. Mark the original annotation with `@Repeatable` annotation
-      3. Specify the container annotation type
+    1. Create a container annotation that will hold multiple instances of the repeatable annotation
+    2. Mark the original annotation with `@Repeatable` annotation
+    3. Specify the container annotation type
 
     - **Example**:
 
@@ -549,7 +549,7 @@
       - Allows multiple annotations of the same type on a single element
       - Improves code readability and expressiveness
 
-17. **What are Annotations on Data Types?**:
+18. **What are Annotations on Data Types?**:
 
     - Java 8 introduced an enhanced annotation system that allows annotations to be applied directly to types
     - This feature enables more precise type checking and provides additional metadata about types
@@ -601,7 +601,7 @@
       }
       ```
 
-18. **What is Java Reflection API?**
+19. **What is Java Reflection API?**
 
     - Java Reflection API allows programs to examine and modify the behavior of classes, interfaces, fields and methods at runtime
     - It provides the ability to inspect and manipulate class information dynamically
@@ -646,7 +646,7 @@
       - Should be used judiciously and only when necessary
       - Requires security considerations in production code
 
-19. **What is Reflection for Method Parameters?**
+20. **What is Reflection for Method Parameters?**
 
     - Java 8 introduced enhanced method parameter reflection capabilities
     - Before Java 8, method parameter names were not readily available at runtime
@@ -684,7 +684,7 @@
       - More powerful reflection capabilities
       - Better support for dependency injection and serialization frameworks
 
-20. **What is Parallel Sorting of Arrays?**
+21. **What is Parallel Sorting of Arrays?**
 
     - Java 8 introduced parallel sorting methods for arrays to improve performance on multi-core processors
     - Provides built-in parallel sorting capabilities for primitive and object arrays
@@ -719,7 +719,7 @@
       - Simple, one-method approach to parallel sorting
       - No need to manually implement parallel sorting logic
 
-21. **What is Stream?**
+22. **What is Stream?**
 
     - A sequence of elements supporting sequential and parallel aggregate operations
     - Introduced in Java 8 as part of the Stream API
@@ -747,7 +747,7 @@
       - Primitive streams (IntStream, LongStream, DoubleStream)
       - Infinite streams (generated streams)
 
-22. **What is the Stream API in Java 8?**
+23. **What is the Stream API in Java 8?**
 
     - A functional approach to processing collections of objects
     - Enables declarative and functional-style operations on collections
@@ -760,7 +760,7 @@
       4. Lazily evaluated
       5. Can be processed sequentially or in parallel
 
-23. **What are the main operations in Stream API?**
+24. **What are the main operations in Stream API?**
 
     1. **Intermediate Operations**:
 
@@ -782,7 +782,7 @@
        - `allMatch()`: Checks if all elements match a predicate
        - `noneMatch()`: Checks if no elements match a predicate
 
-24. **What is the difference between `map()` and `flatMap()`?**
+25. **What is the difference between `map()` and `flatMap()`?**
 
     ```java
     // map(): One-to-One transformation
@@ -796,7 +796,7 @@
                                        .collect(Collectors.toList());
     ```
 
-25. **What are the different ways to create a Stream in Java?**
+26. **What are the different ways to create a Stream in Java?**
 
     There are several ways to create a Stream in Java:
 
@@ -834,7 +834,7 @@
        - `IntStream`, `LongStream`, `DoubleStream`
        - Range-based: `IntStream.range(1, 100)`
 
-26. **What is the difference between `findFirst()` and `findAny()`?**
+27. **What is the difference between `findFirst()` and `findAny()`?**
 
     - `findFirst()`: Returns first element in a sequential stream
     - `findAny()`: Returns any element, useful in parallel streams
@@ -844,7 +844,7 @@
     Optional<String> any = parallelStream.findAny();
     ```
 
-27. **How to perform grouping and partitioning with Streams?**
+28. **How to perform grouping and partitioning with Streams?**
 
     ```java
     // Grouping
@@ -877,7 +877,7 @@
       stream.count(); // IllegalStateException
       ```
 
-28. **What is the difference between Collection and Stream?**
+29. **What is the difference between Collection and Stream?**
 
     Key differences between Collection and Stream:
 
@@ -913,7 +913,7 @@
         .forEach(System.out::println);
     ```
 
-29. **What is the method collect() for in streams?**
+30. **What is the method collect() for in streams?**
 
     The collect() method is a terminal operation in streams that transforms a stream into a Collection or other data structure. It's used to:
 
@@ -943,7 +943,7 @@
     - partitioningBy()
     - summarizingInt/Long/Double()
 
-30. **Why do streams use forEach() and forEachOrdered() methods?**
+31. **Why do streams use forEach() and forEachOrdered() methods?**
 
     The forEach() and forEachOrdered() are terminal operations in streams that serve different purposes:
 
@@ -967,7 +967,7 @@
         .forEachOrdered(item -> System.out.println(item)); // Order preserved
     ```
 
-31. **What are map(), mapToInt(), mapToDouble() and mapToLong() methods in Stream?**
+32. **What are map(), mapToInt(), mapToDouble() and mapToLong() methods in Stream?**
 
     These are intermediate operations in streams that transform elements:
 
@@ -998,7 +998,7 @@
                                   .orElse(0.0);
     ```
 
-32. **What is the purpose of filter() method in streams?**
+33. **What is the purpose of filter() method in streams?**
 
     The filter() method is an intermediate operation that:
 
@@ -1019,7 +1019,7 @@
                                .collect(Collectors.toList());
     ```
 
-33. **What is the use of limit() method in streams?**
+34. **What is the use of limit() method in streams?**
 
     The limit() method is an intermediate operation that:
 
@@ -1040,7 +1040,7 @@
                                           .collect(Collectors.toList());
     ```
 
-34. **What is the use of sorted() method in streams?**
+35. **What is the use of sorted() method in streams?**
 
     The sorted() method is an intermediate operation that:
 
@@ -1065,7 +1065,7 @@
                                             .collect(Collectors.toList());
     ```
 
-35. **What are the flatMap(), flatMapToInt(), flatMapToDouble(), and flatMapToLong() methods in streams?**
+36. **What are the flatMap(), flatMapToInt(), flatMapToDouble(), and flatMapToLong() methods in streams?**
 
     The flatMap methods are intermediate operations that:
 
@@ -1098,7 +1098,7 @@
                         .toArray();
     ```
 
-36. **What are the final methods (terminal operations) of working with streams?**
+37. **What are the final methods (terminal operations) of working with streams?**
 
     Terminal operations in streams are methods that produce a result or side-effect and terminate the stream pipeline. The main terminal operations are:
 
@@ -1129,7 +1129,7 @@
     List<T> collected = stream.collect(Collectors.toList());
     ```
 
-37. **What are the intermediate operations in streams?**
+38. **What are the intermediate operations in streams?**
 
     Intermediate operations in streams are operations that transform a stream into another stream. The main intermediate operations are:
 
@@ -1171,7 +1171,7 @@
     - Don't modify the original stream
     - Return a new stream
 
-38. **Explain Difference between Collection API and Stream API?**
+39. **Explain Difference between Collection API and Stream API?**
 
     Key differences between Collection API and Stream API:
 
@@ -1222,7 +1222,7 @@
         .collect(Collectors.toList());
     ```
 
-39. **What is a Functional Interface?**
+40. **What is a Functional Interface?**
 
     - A functional interface is an interface that contains exactly one abstract method
     - It can have multiple default or static methods, but must have only one abstract method
@@ -1253,7 +1253,7 @@
     Calculator multiplication = (x, y) -> x * y;
     ```
 
-40. **What are static interface methods? How to call static interface method?**
+41. **What are static interface methods? How to call static interface method?**
 
     - Static methods in interfaces were introduced in Java 8
     - They provide utility functionality that belongs to the interface type itself
@@ -1285,7 +1285,7 @@
     // MyClass.isEmpty("test");  // Wrong - cannot access through implementing class
     ```
 
-41. **What are default interface methods?**
+42. **What are default interface methods?**
 
     - Default methods were introduced in Java 8 to enable interface evolution
     - Allow adding new methods to interfaces without breaking existing implementations
@@ -1334,7 +1334,7 @@
     - Help evolve APIs while maintaining backward compatibility
     - Enable composition of behaviors through multiple interface inheritance
 
-42. **How to call default interface method in a class that implements this interface?**
+43. **How to call default interface method in a class that implements this interface?**
 
     - Default interface methods can be called directly like any other method
     - Can also be accessed using `InterfaceName.super.methodName()`
@@ -1375,7 +1375,7 @@
       - Disambiguating between multiple inherited default methods
     - Helps maintain clean and flexible code structure
 
-43. **What are the functional interfaces Function<T,R>, DoubleFunction<R>, IntFunction<R> and LongFunction<R>?**
+44. **What are the functional interfaces Function<T,R>, DoubleFunction<R>, IntFunction<R> and LongFunction<R>?**
 
     These are functional interfaces in the `java.util.function` package for transforming values:
 
@@ -1411,7 +1411,7 @@
     - Can be used with method references and lambda expressions
     - Common in stream operations and functional programming patterns
 
-44. **What are the functional interfaces UnaryOperator<T>, DoubleUnaryOperator, IntUnaryOperator and LongUnaryOperator?**
+45. **What are the functional interfaces UnaryOperator<T>, DoubleUnaryOperator, IntUnaryOperator and LongUnaryOperator?**
 
     These are functional interfaces in the `java.util.function` package for operations that take and return the same type:
 
@@ -1447,7 +1447,7 @@
     - Commonly used for transformations that preserve type
     - Can be chained using `compose()` and `andThen()` methods
 
-45. **What are the functional interfaces BinaryOperator<T>, DoubleBinaryOperator, IntBinaryOperator and LongBinaryOperator?**
+46. **What are the functional interfaces BinaryOperator<T>, DoubleBinaryOperator, IntBinaryOperator and LongBinaryOperator?**
 
     These are functional interfaces in the `java.util.function` package that represent operations taking two operands and producing a result of the same type:
 
@@ -1483,7 +1483,7 @@
     - Commonly used for reduction operations (like sum, product, max, min)
     - Often used in Stream's reduce() operations
 
-46. **What are the functional interfaces Predicate<T>, DoublePredicate, IntPredicate and LongPredicate?**
+47. **What are the functional interfaces Predicate<T>, DoublePredicate, IntPredicate and LongPredicate?**
 
     These are functional interfaces in the `java.util.function` package that represent predicates (boolean-valued functions):
 
@@ -1519,7 +1519,7 @@
     - Primitive specializations avoid boxing/unboxing overhead
     - Commonly used in Stream's filter() operations
 
-47. **What are the functional interfaces Consumer<T>, DoubleConsumer, IntConsumer and LongConsumer?**
+48. **What are the functional interfaces Consumer<T>, DoubleConsumer, IntConsumer and LongConsumer?**
 
     These are functional interfaces in the `java.util.function` package that represent operations that accept a single input argument and return no result:
 
@@ -1561,7 +1561,7 @@
     - Primitive specializations avoid boxing/unboxing overhead
     - Commonly used in Stream's forEach() operations
 
-48. **What are the functional interfaces Supplier<T>, BooleanSupplier, DoubleSupplier, IntSupplier and LongSupplier?**
+49. **What are the functional interfaces Supplier<T>, BooleanSupplier, DoubleSupplier, IntSupplier and LongSupplier?**
 
     These are functional interfaces in the `java.util.function` package that represent suppliers of values:
 
@@ -1602,7 +1602,7 @@
     - Primitive specializations avoid boxing/unboxing overhead
     - Commonly used in Optional's orElseGet() and Stream's generate() methods
 
-49. **What is Type Inference in Java 8?**
+50. **What is Type Inference in Java 8?**
 
     Type inference is a feature in Java 8 that allows the compiler to automatically determine the type of variables and expressions based on their context, reducing verbosity in code. The most notable enhancement was made to support lambda expressions and method references.
 
@@ -1632,7 +1632,7 @@
     - Diamond operator (<>) for generic type inference
     - Works with local variables, lambda parameters, and generic methods
 
-50. **What is difference between External Iteration and Internal Iteration?**
+51. **What is difference between External Iteration and Internal Iteration?**
 
     External iteration and internal iteration represent different approaches to traversing collections in Java.
 
@@ -1666,3 +1666,95 @@
 
     - Use external iteration for simple, sequential operations where explicit control is needed
     - Use internal iteration for complex operations, potential parallelization, or when working with streams
+
+52. **What additional methods for working with associative arrays (maps) appeared in Java 8?**
+
+    Java 8 introduced several useful methods for working with Map interfaces:
+
+    ```java
+    Map<String, Integer> map = new HashMap<>();
+
+    // putIfAbsent - only puts value if key doesn't exist
+    map.putIfAbsent("A", 1); // adds entry
+    map.putIfAbsent("A", 2); // does nothing since key exists
+
+    // computeIfAbsent - compute value if key absent
+    map.computeIfAbsent("B", key -> key.length()); // computes and adds value
+
+    // computeIfPresent - compute new value if key exists
+    map.computeIfPresent("A", (key, val) -> val + 1);
+
+    // compute - compute new value regardless of presence
+    map.compute("C", (key, val) -> val == null ? 1 : val + 1);
+
+    // merge - merge value with existing value
+    map.merge("D", 1, (oldVal, newVal) -> oldVal + newVal);
+
+    // getOrDefault - get value or default if key absent
+    int value = map.getOrDefault("E", 0);
+
+    // forEach - iterate over entries
+    map.forEach((key, val) -> System.out.println(key + "=" + val));
+
+    // replaceAll - replace all values using BiFunction
+    map.replaceAll((key, val) -> val * 2);
+
+    // remove(key, value) - remove only if key maps to given value
+    map.remove("A", 1);
+
+    // replace(key, value) - replace value for key
+    map.replace("B", 42);
+
+    // replace(key, oldValue, newValue) - replace only if key maps to oldValue
+    map.replace("C", 1, 2);
+    ```
+
+    Key benefits:
+
+    - Atomic operations for common map patterns
+    - Reduced boilerplate code
+    - Thread-safe operations
+    - More functional programming style
+    - Better handling of null values
+    - Improved performance for certain operations
+
+53. **What class appeared in Java 8 for encoding / decoding data?**
+
+    The `Base64` class was introduced in Java 8, providing standard methods for encoding and decoding Base64 data. It offers three main encoding variants:
+
+    - `Base64.getEncoder()` - Standard Base64 encoding
+    - `Base64.getUrlEncoder()` - URL-safe Base64 encoding
+    - `Base64.getMimeEncoder()` - MIME-style Base64 encoding
+
+    Example usage:
+
+    ```java
+    String originalString = "Hello, World!";
+    String encodedString = Base64.getEncoder().encodeToString(originalString.getBytes());
+    ```
+
+54. **How to create a Base64 encoder and decoder?**
+
+    ```java
+    // Creating a Base64 encoder
+    Base64.Encoder encoder = Base64.getEncoder();
+
+    // Creating a Base64 decoder
+    Base64.Decoder decoder = Base64.getDecoder();
+
+    // Encoding a string
+    String originalString = "Hello, World!";
+    String encodedString = encoder.encodeToString(originalString.getBytes());
+
+    // Decoding a Base64 encoded string
+    byte[] decodedBytes = decoder.decode(encodedString);
+    String decodedString = new String(decodedBytes);
+
+    // URL-safe encoder and decoder
+    Base64.Encoder urlEncoder = Base64.getUrlEncoder();
+    Base64.Decoder urlDecoder = Base64.getUrlDecoder();
+
+    // MIME encoder and decoder
+    Base64.Encoder mimeEncoder = Base64.getMimeEncoder();
+    Base64.Decoder mimeDecoder = Base64.getMimeDecoder();
+    ```

@@ -542,3 +542,48 @@
     ```
 
     Note: While thread-safe, it has higher memory overhead and slower write performance due to array copying.
+
+21. **What are the methods used to implement for key Object in HashMap?**
+
+    When implementing a key object for use in HashMap, two methods are essential:
+
+    1. **hashCode()**:
+
+       - Must generate a consistent hash code for the object
+       - Objects that are equal must return the same hash code
+       - Should distribute hash codes uniformly to avoid collisions
+       - Used to determine the bucket location in the HashMap
+
+    2. **equals()**:
+       - Must consistently determine if two objects are equal
+       - Should be compatible with hashCode() - if equals() returns true, hashCode() must return same value
+       - Used to handle hash collisions and find exact matches
+
+    Example implementation:
+
+    ```java
+    public class CustomKey {
+        private String id;
+        private int value;
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(id, value);
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (!(obj instanceof CustomKey)) return false;
+            CustomKey other = (CustomKey) obj;
+            return Objects.equals(id, other.id)
+                   && value == other.value;
+        }
+    }
+    ```
+
+    Note: Failing to properly implement these methods can lead to:
+
+    - Incorrect storage and retrieval of values
+    - Poor performance due to hash collisions
+    - Memory leaks or unexpected behavior

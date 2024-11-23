@@ -19,7 +19,39 @@
    5. **Polymorphism**: The ability of different classes to be treated as instances of the same class through a common interface, allowing for the implementation of methods in different ways.
    6. **Abstraction**: The concept of hiding the complex implementation details and showing only the necessary features of an object, simplifying the interaction with the object.
 
-4. **How is the ‘new’ operator different from the ‘newInstance()’ method in Java?**
+4. **What is a class?**
+
+   A class is a blueprint or template for creating objects in object-oriented programming. It defines the properties (attributes/fields) and behaviors (methods) that all objects of that type will have. A class encapsulates data for the object and methods to manipulate that data.
+
+   Key aspects of a class:
+
+   1. **Fields/Attributes**: Variables that store data for objects of the class
+   2. **Methods**: Functions that define behaviors and operations on the class data
+   3. **Constructors**: Special methods used to initialize new objects
+   4. **Access Modifiers**: Keywords that control visibility and access to class members
+
+   Example of a class:
+
+   ```java
+   public class Car {
+       // Fields
+       private String color;
+       private String model;
+
+       // Constructor
+       public Car(String color, String model) {
+           this.color = color;
+           this.model = model;
+       }
+
+       // Method
+       public void displayInfo() {
+           System.out.println("Car Model: " + model + ", Color: " + color);
+       }
+   }
+   ```
+
+5. **How is the ‘new’ operator different from the ‘newInstance()’ method in Java?**
 
    The `new` operator and the `newInstance()` method are both used to create new objects in Java, but they have some key differences:
 
@@ -47,7 +79,7 @@
        MyClass obj = MyClass.class.getDeclaredConstructor().newInstance();
        ```
 
-5. **What are the different ways to create objects in Java? or What are the ways to instantiate the Class class?**
+6. **What are the different ways to create objects in Java? or What are the ways to instantiate the Class class?**
 
    There are several ways to create objects in Java:
 
@@ -89,7 +121,7 @@
       MyClass obj = MyClassFactory.createInstance();
       ```
 
-6. **What are classes and objects? Why use them in applications?**
+7. **What are classes and objects? Why use them in applications?**
 
    Classes are blueprints for creating objects in object-oriented programming. They define the properties (attributes) and behaviors (methods) that the objects created from the class will have. An object is an instance of a class, representing a specific entity with its own state and behavior.
 
@@ -107,17 +139,17 @@
 
    Overall, classes and objects are fundamental to organizing and structuring code in a way that reflects real-world entities and their interactions.
 
-7. **What is immutable object?**
+8. **What is immutable object?**
 
-   An immutable object is an object whose state cannot be modified after it is created. Once an immutable object is constructed, its contents remain constant throughout its lifetime. The class of an immutable object is designed in such a way that no method can change its internal state.
+   An immutable object is an object whose state cannot be changed after it is created. Once an immutable object is constructed, its contents remain constant throughout its lifetime. String is a classic example of an immutable class in Java.
 
    Key characteristics of immutable objects:
 
-   1. **Final class**: The class is declared as final to prevent inheritance
-   2. **Private fields**: All fields are private and final
-   3. **No setters**: No methods that modify the object's state
-   4. **Deep copy**: If mutable objects are used as fields, return copies instead of references
-   5. **Initialization**: All fields are initialized through constructor
+   1. **Final Class**: The class should be declared as final to prevent inheritance
+   2. **Private Fields**: All fields should be private and final
+   3. **No Setters**: No methods that modify the object's state
+   4. **Deep Copy**: If mutable objects are used as fields, return copies instead of references
+   5. **Initialize in Constructor**: All fields must be initialized in the constructor
 
    Example of an immutable class:
 
@@ -141,9 +173,15 @@
    }
    ```
 
-   Common examples of immutable objects in Java include String, Integer, and other wrapper classes. Immutable objects are inherently thread-safe and can be safely shared between multiple threads without synchronization.
+   Benefits of immutable objects:
 
-8. **How can we create an immutable class in Java?**
+   - Thread-safe without synchronization
+   - Safe to share and cache
+   - Simple to construct, test, and use
+   - Prevent temporal coupling
+   - Side-effect free behavior
+
+9. **How can we create an immutable class in Java?**
 
    To create an immutable class in Java, follow these key steps:
 
@@ -186,30 +224,38 @@
    }
    ```
 
+   This class is immutable because:
+
+   - It's declared final
+   - All fields are private and final
+   - No setter methods are provided
+   - Mutable List is deep copied in constructor and getter
+   - No methods can modify the object's state
+
    Additional considerations:
 
    - Use wrapper classes for primitive types
    - For complex objects, implement deep copy mechanisms
    - Ensure all methods preserve immutability
 
-9. **What do you mean by anonymous class?**
+10. **What do you mean by anonymous class?**
 
-   An anonymous class in Java is a class that is defined without a name and is instantiated in a single expression. It is typically used to make the code more concise and to create a one-time use class that extends an existing class or implements an interface. Anonymous classes are often used in situations where a class is needed for a short period of time, such as when implementing event listeners or callbacks.
+    An anonymous class in Java is a class that is defined without a name and is instantiated in a single expression. It is typically used to make the code more concise and to create a one-time use class that extends an existing class or implements an interface. Anonymous classes are often used in situations where a class is needed for a short period of time, such as when implementing event listeners or callbacks.
 
-   Here is an example of an anonymous class:
+    Here is an example of an anonymous class:
 
-   ```java
-   Button myButton = new Button("Click Me") {
-       @Override
-       public void onClick() {
-           System.out.println("Button clicked!");
-       }
-   };
-   ```
+    ```java
+    Button myButton = new Button("Click Me") {
+        @Override
+        public void onClick() {
+            System.out.println("Button clicked!");
+        }
+    };
+    ```
 
-   In this example, an anonymous class is created that extends the `Button` class and overrides the `onClick` method to provide specific behavior when the button is clicked.
+    In this example, an anonymous class is created that extends the `Button` class and overrides the `onClick` method to provide specific behavior when the button is clicked.
 
-10. **What are the differences between subclass and inner class?**
+11. **What are the differences between subclass and inner class?**
 
     | Aspect            | Subclass                                                 | Inner Class                                                    |
     | ----------------- | -------------------------------------------------------- | -------------------------------------------------------------- |
@@ -222,7 +268,7 @@
     | Purpose           | Code reuse and extending functionality                   | Logical grouping and encapsulation                             |
     | Scope             | Available throughout the package/project                 | Limited to the scope of outer class                            |
 
-11. **How to implement classes and objects in Java? What are the members of a class?**
+12. **How to implement classes and objects in Java? What are the members of a class?**
 
     To implement classes and objects in Java, you need to follow these steps:
 
@@ -265,96 +311,38 @@
 
     In this example, the `Car` class is defined with members including attributes, a constructor, and a method. Two objects of the `Car` class are created in the `Main` class, demonstrating how to implement classes and objects in Java.
 
-12. **What is immutable object?**
+13. **What is difference between WeakReference and SoftReference in Java?**
 
-    An immutable object is an object whose state cannot be changed after it is created. Once an immutable object is constructed, its contents remain constant throughout its lifetime. String is a classic example of an immutable class in Java.
+    WeakReference and SoftReference are two types of special reference objects in Java that help with memory management. Here are their key differences:
 
-    Key characteristics of immutable objects:
+    **WeakReference:**
 
-    1. **Final Class**: The class should be declared as final to prevent inheritance
-    2. **Private Fields**: All fields should be private and final
-    3. **No Setters**: No methods that modify the object's state
-    4. **Deep Copy**: If mutable objects are used as fields, return copies instead of references
-    5. **Initialize in Constructor**: All fields must be initialized in the constructor
+    - Objects referenced only by WeakReference are eligible for garbage collection immediately when no strong references exist
+    - Commonly used for implementing caches where entries can be reclaimed as soon as they're no longer strongly referenced
+    - Garbage collector doesn't consider memory availability when collecting weak references
+    - Example use case: WeakHashMap, where entries are removed when keys are no longer referenced
 
-    Example of an immutable class:
+    **SoftReference:**
 
-    ```java
-    public final class ImmutablePerson {
-        private final String name;
-        private final int age;
+    - Objects referenced by SoftReference are eligible for garbage collection only when memory is tight
+    - JVM will try to keep soft-referenced objects in memory as long as possible until memory is needed
+    - Useful for implementing memory-sensitive caches that automatically shrink under memory pressure
+    - More likely to survive garbage collection compared to WeakReference
 
-        public ImmutablePerson(String name, int age) {
-            this.name = name;
-            this.age = age;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getAge() {
-            return age;
-        }
-    }
-    ```
-
-    Benefits of immutable objects:
-
-    - Thread-safe without synchronization
-    - Safe to share and cache
-    - Simple to construct, test, and use
-    - Prevent temporal coupling
-    - Side-effect free behavior
-
-13. **How can we create an immutable class in Java?**
-
-    To create an immutable class in Java, follow these steps:
-
-    1. **Declare the class as final** to prevent inheritance
-    2. **Make all fields private and final** to prevent direct access and modification
-    3. **Don't provide setter methods** for fields
-    4. **Initialize all fields via constructor**
-    5. **Make deep copies of mutable objects** in constructor and getter methods
-    6. **Don't expose methods that can change object state**
-
-    Example of creating an immutable class:
+    Example demonstrating both references:
 
     ```java
-    public final class ImmutableStudent {
-        private final String name;
-        private final int id;
-        private final List<String> courses;
+    // WeakReference example
+    WeakReference<StringBuilder> weakRef = new WeakReference<>(new StringBuilder("Hello"));
 
-        public ImmutableStudent(String name, int id, List<String> courses) {
-            this.name = name;
-            this.id = id;
-            // Deep copy of mutable object
-            this.courses = new ArrayList<>(courses);
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public List<String> getCourses() {
-            // Return copy to prevent modification
-            return new ArrayList<>(courses);
-        }
-    }
+    // SoftReference example
+    SoftReference<StringBuilder> softRef = new SoftReference<>(new StringBuilder("Hello"));
     ```
 
-    This class is immutable because:
+    When to use which:
 
-    - It's declared final
-    - All fields are private and final
-    - No setter methods are provided
-    - Mutable List is deep copied in constructor and getter
-    - No methods can modify the object's state
+    - Use WeakReference when you want objects to be collected as soon as they're not needed
+    - Use SoftReference for memory-sensitive caches that should only be cleared when memory is tight
 
 14. **What are access specifiers? What are the types of access specifiers?**
 
@@ -2034,3 +2022,43 @@
         }
     }
     ```
+
+65. **When can an object reference be cast to a Java interface reference?**
+
+    An object reference can be cast to an interface reference when:
+
+    1. The object's class implements the interface
+    2. Any of its superclasses implements the interface
+
+    Example:
+
+    ```java
+    interface Flyable {
+        void fly();
+    }
+
+    class Bird implements Flyable {
+        public void fly() { }
+    }
+
+    class Sparrow extends Bird {
+        // Inherits fly() from Bird
+    }
+
+    // Valid casts:
+    Bird bird = new Bird();
+    Flyable flyable1 = (Flyable) bird;      // Direct implementation
+
+    Sparrow sparrow = new Sparrow();
+    Flyable flyable2 = (Flyable) sparrow;   // Through inheritance
+
+    // Invalid cast - will throw ClassCastException:
+    String str = "hello";
+    Flyable flyable3 = (Flyable) str;       // String doesn't implement Flyable
+    ```
+
+    Key points:
+
+    - The cast can be checked at runtime using the instanceof operator
+    - An invalid cast will result in a ClassCastException
+    - The cast may be implicit (no cast operator needed) when assigning to an interface reference

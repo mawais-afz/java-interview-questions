@@ -1,5 +1,7 @@
 # Java 8 & and Newer Features
 
+## Parallel Processing
+
 1.  **What is parallel processing in Java 8?**
 
     - Parallel processing in Java 8 refers to the ability to execute multiple tasks simultaneously, leveraging multi-core processors to improve performance and efficiency.
@@ -54,45 +56,42 @@
       4. Overhead: Parallel streams have thread management overhead
       5. Use Case: Choose based on dataset size and computational complexity
 
-3.  **What are default and static interface methods?**
+3.  **What is difference between External Iteration and Internal Iteration?**
 
-    - Java 8 introduced two new types of methods in interfaces: default and static methods, which significantly expanded the capabilities of interfaces.
+    External iteration and internal iteration represent different approaches to traversing collections in Java.
 
-    - **Default Methods**:
+    External Iteration:
 
-      - Allow interfaces to have method implementations without forcing implementing classes to provide the implementation
-      - Marked with the `default` keyword
-      - Provide backward compatibility when adding new methods to existing interfaces
-      - Enable adding new methods to interfaces without breaking existing implementations
-      - Example:
-        ```java
-        interface Greeting {
-            default void sayHello() {
-                System.out.println("Hello, World!");
-            }
-        }
-        ```
+    ```java
+    // Using for loop (external iteration)
+    List<String> list = Arrays.asList("A", "B", "C");
+    for (String item : list) {
+        System.out.println(item);
+    }
+    ```
 
-    - **Static Methods**:
+    Internal Iteration:
 
-      - Can be defined directly in the interface
-      - Belong to the interface itself, not to implementing classes
-      - Cannot be overridden by implementing classes
-      - Useful for providing utility methods related to the interface
-      - Example:
-        ```java
-        interface MathOperations {
-            static int add(int a, int b) {
-                return a + b;
-            }
-        }
-        ```
+    ```java
+    // Using Stream API (internal iteration)
+    List<String> list = Arrays.asList("A", "B", "C");
+    list.stream().forEach(System.out::println);
+    ```
 
-    - **Key Characteristics**:
-      1. Default methods allow for method implementations in interfaces
-      2. Static methods provide utility functions at the interface level
-      3. Both enhance interface flexibility and reduce code duplication
-      4. Help in creating more modular and maintainable code
+    Key differences:
+
+    - Control: External iteration gives explicit control to the programmer (what and how to iterate), while internal iteration handles the iteration details internally
+    - Parallelization: Internal iteration can be easily parallelized (using parallelStream()), while external iteration requires manual thread management
+    - Performance: Internal iteration can optimize the iteration process as it controls the iteration strategy
+    - Readability: Internal iteration often leads to more declarative and readable code
+    - Memory usage: External iteration typically uses less memory as it doesn't create intermediate objects
+
+    Common use cases:
+
+    - Use external iteration for simple, sequential operations where explicit control is needed
+    - Use internal iteration for complex operations, potential parallelization, or when working with streams
+
+## Optional
 
 4.  **What is Optional and How Does It Help Manage Null Values?**
 
@@ -167,56 +166,7 @@
     Optional<String> nullableOpt2 = Optional.ofNullable("World");  // Optional with "World"
     ```
 
-7.  **What is the purpose of the Stream API?**
-
-    - The Stream API is a powerful feature introduced in Java 8 that provides a functional approach to processing collections of objects
-
-    - **Key Purposes**:
-
-      1. **Declarative Data Processing**: Allows processing collections in a more declarative and functional style
-      2. **Parallel Processing**: Enables easy parallel processing of data with minimal code changes
-      3. **Functional Transformations**: Provides methods for filtering, mapping, reducing, and collecting data
-      4. **Lazy Evaluation**: Supports lazy evaluation, processing elements only when needed
-
-    - **Main Benefits**:
-
-      - Simplifies complex data manipulation operations
-      - Reduces boilerplate code for collection processing
-      - Improves code readability and expressiveness
-      - Supports both sequential and parallel data processing
-
-    - **Core Stream Operations**:
-
-      - `filter()`: Selects elements based on a predicate
-      - `map()`: Transforms elements
-      - `reduce()`: Combines elements into a single result
-      - `collect()`: Gathers results into a collection
-      - `forEach()`: Performs an action on each element
-
-    - **Example Usage**:
-
-      ```java
-      // Traditional approach
-      List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
-      List<String> filteredNames = new ArrayList<>();
-      for (String name : names) {
-          if (name.startsWith("A")) {
-              filteredNames.add(name.toUpperCase());
-          }
-      }
-
-      // Stream API approach
-      List<String> streamFilteredNames = names.stream()
-          .filter(name -> name.startsWith("A"))
-          .map(String::toUpperCase)
-          .collect(Collectors.toList());
-      ```
-
-    - **Best Practices**:
-      1. Use streams for complex data transformations
-      2. Prefer method references when possible
-      3. Close streams after use, especially with I/O operations
-      4. Be mindful of performance for large collections
+## Lambda Expressions
 
 8.  **What is a Lambda and its Shorthand Forms with code examples?**
 
@@ -306,6 +256,56 @@
       - Supports lazy evaluation
       - Improves code maintainability
 
+10. **What variables do lambda expressions have access to?**
+
+    Lambda expressions can access variables from their enclosing scope:
+
+        1. Instance variables and static variables of the enclosing class
+        2. Parameters of the enclosing method
+        3. Final or effectively final local variables
+
+    - **Variable Scope Rules**:
+
+      - Local variables must be final or effectively final
+      - Instance/static variables can be modified
+      - Parameters of the lambda expression itself can be modified
+
+    - **Example**:
+
+      ```java
+      class Example {
+          private int instanceVar = 1;  // Instance variable - accessible
+
+          void method() {
+              final int finalVar = 2;   // Final local variable - accessible
+              int effectivelyFinal = 3; // Effectively final - accessible
+              int mutable = 4;          // Mutable - NOT accessible
+
+              Runnable lambda = () -> {
+                  System.out.println(instanceVar);    // OK
+                  System.out.println(finalVar);       // OK
+                  System.out.println(effectivelyFinal); // OK
+                  // System.out.println(mutable);     // Compilation error
+              };
+          }
+      }
+      ```
+
+11. **What is the difference between a lambda expression and a method reference?**
+
+    | Aspect      | Lambda Expression                                  | Method Reference                                         |
+    | ----------- | -------------------------------------------------- | -------------------------------------------------------- |
+    | Definition  | An inline implementation of a functional interface | A shorthand notation for calling an existing method      |
+    | Syntax      | `(parameters) -> { body }`                         | `ClassName::methodName`                                  |
+    | Complexity  | Can contain multiple statements and complex logic  | Directly references an existing method                   |
+    | Flexibility | More flexible, can write custom inline logic       | Less flexible, limited to existing method implementation |
+    | Use Case    | When you need custom, inline implementation        | When you want to use an existing method directly         |
+    | Example     | `(x, y) -> x + y`                                  | `Integer::sum`                                           |
+    | Performance | Slightly more overhead                             | Typically more lightweight                               |
+    | Readability | More verbose for simple operations                 | More concise for straightforward method calls            |
+
+## Method References
+
 10. **What is a method reference?**
 
     Method references are a feature introduced in Java 8 that provide a way to refer to methods or constructors without invoking them. They serve as a more concise alternative to certain lambda expressions.
@@ -337,20 +337,7 @@
     - A shorthand notation for calling an existing method
     - Syntax: `ClassName::methodName`
 
-11. **What is the difference between a lambda expression and a method reference?**
-
-    | Aspect      | Lambda Expression                                  | Method Reference                                         |
-    | ----------- | -------------------------------------------------- | -------------------------------------------------------- |
-    | Definition  | An inline implementation of a functional interface | A shorthand notation for calling an existing method      |
-    | Syntax      | `(parameters) -> { body }`                         | `ClassName::methodName`                                  |
-    | Complexity  | Can contain multiple statements and complex logic  | Directly references an existing method                   |
-    | Flexibility | More flexible, can write custom inline logic       | Less flexible, limited to existing method implementation |
-    | Use Case    | When you need custom, inline implementation        | When you want to use an existing method directly         |
-    | Example     | `(x, y) -> x + y`                                  | `Integer::sum`                                           |
-    | Performance | Slightly more overhead                             | Typically more lightweight                               |
-    | Readability | More verbose for simple operations                 | More concise for straightforward method calls            |
-
-12. **What are the different types of method references?**
+11. **What are the different types of method references?**
 
     There are four types of method references in Java:
 
@@ -390,97 +377,7 @@
     Supplier<List<String>> listFactory = ArrayList::new;
     ```
 
-13. **What variables do lambda expressions have access to?**
-
-    Lambda expressions can access variables from their enclosing scope:
-
-        1. Instance variables and static variables of the enclosing class
-        2. Parameters of the enclosing method
-        3. Final or effectively final local variables
-
-    - **Variable Scope Rules**:
-
-      - Local variables must be final or effectively final
-      - Instance/static variables can be modified
-      - Parameters of the lambda expression itself can be modified
-
-    - **Example**:
-
-      ```java
-      class Example {
-          private int instanceVar = 1;  // Instance variable - accessible
-
-          void method() {
-              final int finalVar = 2;   // Final local variable - accessible
-              int effectivelyFinal = 3; // Effectively final - accessible
-              int mutable = 4;          // Mutable - NOT accessible
-
-              Runnable lambda = () -> {
-                  System.out.println(instanceVar);    // OK
-                  System.out.println(finalVar);       // OK
-                  System.out.println(effectivelyFinal); // OK
-                  // System.out.println(mutable);     // Compilation error
-              };
-          }
-      }
-      ```
-
-14. **What are the Functional Interfaces?**
-
-    **Definition**:
-
-    - An interface with a single abstract method (SAM)
-    - Designed to be used with lambda expressions and method references
-    - Annotated with `@FunctionalInterface` (optional but recommended)
-
-    **Key Built-in Functional Interfaces**:
-
-    1. **Consumer<T>**:
-
-       - Takes an input, performs an action, returns nothing
-       - Method: `void accept(T t)`
-       - Example: `Consumer<String> printer = s -> System.out.println(s)`
-
-    2. **Supplier<T>**:
-
-       - Provides a value, takes no input
-       - Method: `T get()`
-       - Example: `Supplier<Double> randomSupplier = () -> Math.random()`
-
-    3. **Predicate<T>**:
-
-       - Takes an input, returns a boolean
-       - Method: `boolean test(T t)`
-       - Example: `Predicate<String> isLong = s -> s.length() > 5`
-
-    4. **Function<T, R>**:
-
-       - Takes an input, returns a transformed output
-       - Method: `R apply(T t)`
-       - Example: `Function<String, Integer> lengthFunc = s -> s.length()`
-
-    5. **Comparator<T>**:
-       - Compares two objects
-       - Method: `int compare(T o1, T o2)`
-       - Example: `Comparator<Integer> ascendingOrder = (a, b) -> a - b`
-
-    **Creating Custom Functional Interfaces**:
-
-    ```java
-    @FunctionalInterface
-    public interface MyFunctionalInterface<T> {
-        boolean process(T input);
-    }
-    ```
-
-    **Benefits**:
-
-    - Enables functional programming in Java
-    - Supports lambda expressions
-    - Provides standard interfaces for common operations
-    - Improves code readability and conciseness
-
-15. **What are Method References and Constructor References?**
+12. **What are Method References and Constructor References?**
 
     - A shorthand syntax for lambda expressions that refer to existing methods
     - Provides a more concise way to create functional interface implementations
@@ -508,6 +405,8 @@
 
     - Simplifies lambda expressions when a method already exists
     - Improves code readability and reduces boilerplate
+
+## Type System Enhancements
 
 16. **What is Repeatable Annotations?**
 
@@ -601,6 +500,38 @@
       }
       ```
 
+19. **What is Type Inference in Java 8?**
+
+    Type inference is a feature in Java 8 that allows the compiler to automatically determine the type of variables and expressions based on their context, reducing verbosity in code. The most notable enhancement was made to support lambda expressions and method references.
+
+    Example:
+
+    ```java
+    // Before Java 8 - explicit type declaration
+    List<String> list = new ArrayList<String>();
+
+    // With Java 8 type inference - diamond operator
+    List<String> list = new ArrayList<>();
+
+    // Type inference in lambda expressions
+    Predicate<String> isEmpty = s -> s.isEmpty(); // Type of 's' is inferred
+    Function<Integer, String> toString = x -> x.toString(); // Types inferred
+
+    // Type inference with method references
+    List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+    names.sort(String::compareToIgnoreCase); // Types inferred from context
+    ```
+
+    Key points:
+
+    - Reduces boilerplate code while maintaining type safety
+    - Particularly useful with generic types and lambda expressions
+    - Enhanced compiler can infer types from context
+    - Diamond operator (<>) for generic type inference
+    - Works with local variables, lambda parameters, and generic methods
+
+## Java Reflection API
+
 19. **What is Java Reflection API?**
 
     - Java Reflection API allows programs to examine and modify the behavior of classes, interfaces, fields and methods at runtime
@@ -684,6 +615,8 @@
       - More powerful reflection capabilities
       - Better support for dependency injection and serialization frameworks
 
+## Array Operations
+
 21. **What is Parallel Sorting of Arrays?**
 
     - Java 8 introduced parallel sorting methods for arrays to improve performance on multi-core processors
@@ -719,6 +652,8 @@
       - Simple, one-method approach to parallel sorting
       - No need to manually implement parallel sorting logic
 
+## Stream API
+
 22. **What is Stream?**
 
     - A sequence of elements supporting sequential and parallel aggregate operations
@@ -747,7 +682,58 @@
       - Primitive streams (IntStream, LongStream, DoubleStream)
       - Infinite streams (generated streams)
 
-23. **What is the Stream API in Java 8?**
+23. **What is the purpose of the Stream API?**
+
+    - The Stream API is a powerful feature introduced in Java 8 that provides a functional approach to processing collections of objects
+
+    - **Key Purposes**:
+
+      1. **Declarative Data Processing**: Allows processing collections in a more declarative and functional style
+      2. **Parallel Processing**: Enables easy parallel processing of data with minimal code changes
+      3. **Functional Transformations**: Provides methods for filtering, mapping, reducing, and collecting data
+      4. **Lazy Evaluation**: Supports lazy evaluation, processing elements only when needed
+
+    - **Main Benefits**:
+
+      - Simplifies complex data manipulation operations
+      - Reduces boilerplate code for collection processing
+      - Improves code readability and expressiveness
+      - Supports both sequential and parallel data processing
+
+    - **Core Stream Operations**:
+
+      - `filter()`: Selects elements based on a predicate
+      - `map()`: Transforms elements
+      - `reduce()`: Combines elements into a single result
+      - `collect()`: Gathers results into a collection
+      - `forEach()`: Performs an action on each element
+
+    - **Example Usage**:
+
+      ```java
+      // Traditional approach
+      List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+      List<String> filteredNames = new ArrayList<>();
+      for (String name : names) {
+          if (name.startsWith("A")) {
+              filteredNames.add(name.toUpperCase());
+          }
+      }
+
+      // Stream API approach
+      List<String> streamFilteredNames = names.stream()
+          .filter(name -> name.startsWith("A"))
+          .map(String::toUpperCase)
+          .collect(Collectors.toList());
+      ```
+
+    - **Best Practices**:
+      1. Use streams for complex data transformations
+      2. Prefer method references when possible
+      3. Close streams after use, especially with I/O operations
+      4. Be mindful of performance for large collections
+
+24. **What is the Stream API in Java 8?**
 
     - A functional approach to processing collections of objects
     - Enables declarative and functional-style operations on collections
@@ -760,7 +746,7 @@
       4. Lazily evaluated
       5. Can be processed sequentially or in parallel
 
-24. **What are the main operations in Stream API?**
+25. **What are the main operations in Stream API?**
 
     1. **Intermediate Operations**:
 
@@ -782,7 +768,7 @@
        - `allMatch()`: Checks if all elements match a predicate
        - `noneMatch()`: Checks if no elements match a predicate
 
-25. **What is the difference between `map()` and `flatMap()`?**
+26. **What is the difference between `map()` and `flatMap()`?**
 
     ```java
     // map(): One-to-One transformation
@@ -796,7 +782,7 @@
                                        .collect(Collectors.toList());
     ```
 
-26. **What are the different ways to create a Stream in Java?**
+27. **What are the different ways to create a Stream in Java?**
 
     There are several ways to create a Stream in Java:
 
@@ -834,7 +820,7 @@
        - `IntStream`, `LongStream`, `DoubleStream`
        - Range-based: `IntStream.range(1, 100)`
 
-27. **What is the difference between `findFirst()` and `findAny()`?**
+28. **What is the difference between `findFirst()` and `findAny()`?**
 
     - `findFirst()`: Returns first element in a sequential stream
     - `findAny()`: Returns any element, useful in parallel streams
@@ -844,7 +830,7 @@
     Optional<String> any = parallelStream.findAny();
     ```
 
-28. **How to perform grouping and partitioning with Streams?**
+29. **How to perform grouping and partitioning with Streams?**
 
     ```java
     // Grouping
@@ -877,7 +863,7 @@
       stream.count(); // IllegalStateException
       ```
 
-29. **What is the difference between Collection and Stream?**
+30. **What is the difference between Collection and Stream?**
 
     Key differences between Collection and Stream:
 
@@ -913,7 +899,7 @@
         .forEach(System.out::println);
     ```
 
-30. **What is the method collect() for in streams?**
+31. **What is the method collect() for in streams?**
 
     The collect() method is a terminal operation in streams that transforms a stream into a Collection or other data structure. It's used to:
 
@@ -943,7 +929,7 @@
     - partitioningBy()
     - summarizingInt/Long/Double()
 
-31. **Why do streams use forEach() and forEachOrdered() methods?**
+32. **Why do streams use forEach() and forEachOrdered() methods?**
 
     The forEach() and forEachOrdered() are terminal operations in streams that serve different purposes:
 
@@ -967,7 +953,7 @@
         .forEachOrdered(item -> System.out.println(item)); // Order preserved
     ```
 
-32. **What are map(), mapToInt(), mapToDouble() and mapToLong() methods in Stream?**
+33. **What are map(), mapToInt(), mapToDouble() and mapToLong() methods in Stream?**
 
     These are intermediate operations in streams that transform elements:
 
@@ -998,7 +984,7 @@
                                   .orElse(0.0);
     ```
 
-33. **What is the purpose of filter() method in streams?**
+34. **What is the purpose of filter() method in streams?**
 
     The filter() method is an intermediate operation that:
 
@@ -1019,7 +1005,7 @@
                                .collect(Collectors.toList());
     ```
 
-34. **What is the use of limit() method in streams?**
+35. **What is the use of limit() method in streams?**
 
     The limit() method is an intermediate operation that:
 
@@ -1040,7 +1026,7 @@
                                           .collect(Collectors.toList());
     ```
 
-35. **What is the use of sorted() method in streams?**
+36. **What is the use of sorted() method in streams?**
 
     The sorted() method is an intermediate operation that:
 
@@ -1065,7 +1051,7 @@
                                             .collect(Collectors.toList());
     ```
 
-36. **What are the flatMap(), flatMapToInt(), flatMapToDouble(), and flatMapToLong() methods in streams?**
+37. **What are the flatMap(), flatMapToInt(), flatMapToDouble(), and flatMapToLong() methods in streams?**
 
     The flatMap methods are intermediate operations that:
 
@@ -1098,7 +1084,7 @@
                         .toArray();
     ```
 
-37. **What are the final methods (terminal operations) of working with streams?**
+38. **What are the final methods (terminal operations) of working with streams?**
 
     Terminal operations in streams are methods that produce a result or side-effect and terminate the stream pipeline. The main terminal operations are:
 
@@ -1129,7 +1115,7 @@
     List<T> collected = stream.collect(Collectors.toList());
     ```
 
-38. **What are the intermediate operations in streams?**
+39. **What are the intermediate operations in streams?**
 
     Intermediate operations in streams are operations that transform a stream into another stream. The main intermediate operations are:
 
@@ -1171,7 +1157,7 @@
     - Don't modify the original stream
     - Return a new stream
 
-39. **Explain Difference between Collection API and Stream API?**
+40. **Explain Difference between Collection API and Stream API?**
 
     Key differences between Collection API and Stream API:
 
@@ -1222,38 +1208,49 @@
         .collect(Collectors.toList());
     ```
 
-40. **What is a Functional Interface?**
+## Interface Enhancements
 
-    - A functional interface is an interface that contains exactly one abstract method
-    - It can have multiple default or static methods, but must have only one abstract method
-    - Used extensively in Java 8+ for lambda expressions and method references
-    - Marked with @FunctionalInterface annotation (optional but recommended)
+3.  **What are default and static interface methods?**
 
-    Example:
+    - Java 8 introduced two new types of methods in interfaces: default and static methods, which significantly expanded the capabilities of interfaces.
 
-    ```java
-    @FunctionalInterface
-    interface Calculator {
-        // Single abstract method
-        int calculate(int x, int y);
+    - **Default Methods**:
 
-        // Can have default methods
-        default void printInfo() {
-            System.out.println("Calculator interface");
+      - Allow interfaces to have method implementations without forcing implementing classes to provide the implementation
+      - Marked with the `default` keyword
+      - Provide backward compatibility when adding new methods to existing interfaces
+      - Enable adding new methods to interfaces without breaking existing implementations
+      - Example:
+        ```java
+        interface Greeting {
+            default void sayHello() {
+                System.out.println("Hello, World!");
+            }
         }
+        ```
 
-        // Can have static methods
-        static void about() {
-            System.out.println("Calculator utility");
+    - **Static Methods**:
+
+      - Can be defined directly in the interface
+      - Belong to the interface itself, not to implementing classes
+      - Cannot be overridden by implementing classes
+      - Useful for providing utility methods related to the interface
+      - Example:
+        ```java
+        interface MathOperations {
+            static int add(int a, int b) {
+                return a + b;
+            }
         }
-    }
+        ```
 
-    // Usage with lambda expression
-    Calculator addition = (x, y) -> x + y;
-    Calculator multiplication = (x, y) -> x * y;
-    ```
+    - **Key Characteristics**:
+      1. Default methods allow for method implementations in interfaces
+      2. Static methods provide utility functions at the interface level
+      3. Both enhance interface flexibility and reduce code duplication
+      4. Help in creating more modular and maintainable code
 
-41. **What are static interface methods? How to call static interface method?**
+4.  **What are static interface methods? How to call static interface method?**
 
     - Static methods in interfaces were introduced in Java 8
     - They provide utility functionality that belongs to the interface type itself
@@ -1285,7 +1282,7 @@
     // MyClass.isEmpty("test");  // Wrong - cannot access through implementing class
     ```
 
-42. **What are default interface methods?**
+5.  **What are default interface methods?**
 
     - Default methods were introduced in Java 8 to enable interface evolution
     - Allow adding new methods to interfaces without breaking existing implementations
@@ -1334,7 +1331,7 @@
     - Help evolve APIs while maintaining backward compatibility
     - Enable composition of behaviors through multiple interface inheritance
 
-43. **How to call default interface method in a class that implements this interface?**
+6.  **How to call default interface method in a class that implements this interface?**
 
     - Default interface methods can be called directly like any other method
     - Can also be accessed using `InterfaceName.super.methodName()`
@@ -1375,7 +1372,95 @@
       - Disambiguating between multiple inherited default methods
     - Helps maintain clean and flexible code structure
 
-44. **What are the functional interfaces Function<T,R>, DoubleFunction<R>, IntFunction<R> and LongFunction<R>?**
+## Functional Interfaces
+
+14. **What are the Functional Interfaces?**
+
+    **Definition**:
+
+    - An interface with a single abstract method (SAM)
+    - Designed to be used with lambda expressions and method references
+    - Annotated with `@FunctionalInterface` (optional but recommended)
+
+    **Key Built-in Functional Interfaces**:
+
+    1. **Consumer<T>**:
+
+       - Takes an input, performs an action, returns nothing
+       - Method: `void accept(T t)`
+       - Example: `Consumer<String> printer = s -> System.out.println(s)`
+
+    2. **Supplier<T>**:
+
+       - Provides a value, takes no input
+       - Method: `T get()`
+       - Example: `Supplier<Double> randomSupplier = () -> Math.random()`
+
+    3. **Predicate<T>**:
+
+       - Takes an input, returns a boolean
+       - Method: `boolean test(T t)`
+       - Example: `Predicate<String> isLong = s -> s.length() > 5`
+
+    4. **Function<T, R>**:
+
+       - Takes an input, returns a transformed output
+       - Method: `R apply(T t)`
+       - Example: `Function<String, Integer> lengthFunc = s -> s.length()`
+
+    5. **Comparator<T>**:
+       - Compares two objects
+       - Method: `int compare(T o1, T o2)`
+       - Example: `Comparator<Integer> ascendingOrder = (a, b) -> a - b`
+
+    **Creating Custom Functional Interfaces**:
+
+    ```java
+    @FunctionalInterface
+    public interface MyFunctionalInterface<T> {
+        boolean process(T input);
+    }
+    ```
+
+    **Benefits**:
+
+    - Enables functional programming in Java
+    - Supports lambda expressions
+    - Provides standard interfaces for common operations
+    - Improves code readability and conciseness
+
+15. **What is a Functional Interface?**
+
+    - A functional interface is an interface that contains exactly one abstract method
+    - It can have multiple default or static methods, but must have only one abstract method
+    - Used extensively in Java 8+ for lambda expressions and method references
+    - Marked with @FunctionalInterface annotation (optional but recommended)
+
+    Example:
+
+    ```java
+    @FunctionalInterface
+    interface Calculator {
+        // Single abstract method
+        int calculate(int x, int y);
+
+        // Can have default methods
+        default void printInfo() {
+            System.out.println("Calculator interface");
+        }
+
+        // Can have static methods
+        static void about() {
+            System.out.println("Calculator utility");
+        }
+    }
+
+    // Usage with lambda expression
+    Calculator addition = (x, y) -> x + y;
+    Calculator multiplication = (x, y) -> x * y;
+    ```
+
+16. **What are the functional interfaces Function<T,R>, DoubleFunction<R>, IntFunction<R> and LongFunction<R>?**
 
     These are functional interfaces in the `java.util.function` package for transforming values:
 
@@ -1411,7 +1496,7 @@
     - Can be used with method references and lambda expressions
     - Common in stream operations and functional programming patterns
 
-45. **What are the functional interfaces UnaryOperator<T>, DoubleUnaryOperator, IntUnaryOperator and LongUnaryOperator?**
+17. **What are the functional interfaces UnaryOperator<T>, DoubleUnaryOperator, IntUnaryOperator and LongUnaryOperator?**
 
     These are functional interfaces in the `java.util.function` package for operations that take and return the same type:
 
@@ -1447,7 +1532,7 @@
     - Commonly used for transformations that preserve type
     - Can be chained using `compose()` and `andThen()` methods
 
-46. **What are the functional interfaces BinaryOperator<T>, DoubleBinaryOperator, IntBinaryOperator and LongBinaryOperator?**
+18. **What are the functional interfaces BinaryOperator<T>, DoubleBinaryOperator, IntBinaryOperator and LongBinaryOperator?**
 
     These are functional interfaces in the `java.util.function` package that represent operations taking two operands and producing a result of the same type:
 
@@ -1483,7 +1568,7 @@
     - Commonly used for reduction operations (like sum, product, max, min)
     - Often used in Stream's reduce() operations
 
-47. **What are the functional interfaces Predicate<T>, DoublePredicate, IntPredicate and LongPredicate?**
+19. **What are the functional interfaces Predicate<T>, DoublePredicate, IntPredicate and LongPredicate?**
 
     These are functional interfaces in the `java.util.function` package that represent predicates (boolean-valued functions):
 
@@ -1519,7 +1604,7 @@
     - Primitive specializations avoid boxing/unboxing overhead
     - Commonly used in Stream's filter() operations
 
-48. **What are the functional interfaces Consumer<T>, DoubleConsumer, IntConsumer and LongConsumer?**
+20. **What are the functional interfaces Consumer<T>, DoubleConsumer, IntConsumer and LongConsumer?**
 
     These are functional interfaces in the `java.util.function` package that represent operations that accept a single input argument and return no result:
 
@@ -1561,7 +1646,7 @@
     - Primitive specializations avoid boxing/unboxing overhead
     - Commonly used in Stream's forEach() operations
 
-49. **What are the functional interfaces Supplier<T>, BooleanSupplier, DoubleSupplier, IntSupplier and LongSupplier?**
+21. **What are the functional interfaces Supplier<T>, BooleanSupplier, DoubleSupplier, IntSupplier and LongSupplier?**
 
     These are functional interfaces in the `java.util.function` package that represent suppliers of values:
 
@@ -1602,70 +1687,7 @@
     - Primitive specializations avoid boxing/unboxing overhead
     - Commonly used in Optional's orElseGet() and Stream's generate() methods
 
-50. **What is Type Inference in Java 8?**
-
-    Type inference is a feature in Java 8 that allows the compiler to automatically determine the type of variables and expressions based on their context, reducing verbosity in code. The most notable enhancement was made to support lambda expressions and method references.
-
-    Example:
-
-    ```java
-    // Before Java 8 - explicit type declaration
-    List<String> list = new ArrayList<String>();
-
-    // With Java 8 type inference - diamond operator
-    List<String> list = new ArrayList<>();
-
-    // Type inference in lambda expressions
-    Predicate<String> isEmpty = s -> s.isEmpty(); // Type of 's' is inferred
-    Function<Integer, String> toString = x -> x.toString(); // Types inferred
-
-    // Type inference with method references
-    List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
-    names.sort(String::compareToIgnoreCase); // Types inferred from context
-    ```
-
-    Key points:
-
-    - Reduces boilerplate code while maintaining type safety
-    - Particularly useful with generic types and lambda expressions
-    - Enhanced compiler can infer types from context
-    - Diamond operator (<>) for generic type inference
-    - Works with local variables, lambda parameters, and generic methods
-
-51. **What is difference between External Iteration and Internal Iteration?**
-
-    External iteration and internal iteration represent different approaches to traversing collections in Java.
-
-    External Iteration:
-
-    ```java
-    // Using for loop (external iteration)
-    List<String> list = Arrays.asList("A", "B", "C");
-    for (String item : list) {
-        System.out.println(item);
-    }
-    ```
-
-    Internal Iteration:
-
-    ```java
-    // Using Stream API (internal iteration)
-    List<String> list = Arrays.asList("A", "B", "C");
-    list.stream().forEach(System.out::println);
-    ```
-
-    Key differences:
-
-    - Control: External iteration gives explicit control to the programmer (what and how to iterate), while internal iteration handles the iteration details internally
-    - Parallelization: Internal iteration can be easily parallelized (using parallelStream()), while external iteration requires manual thread management
-    - Performance: Internal iteration can optimize the iteration process as it controls the iteration strategy
-    - Readability: Internal iteration often leads to more declarative and readable code
-    - Memory usage: External iteration typically uses less memory as it doesn't create intermediate objects
-
-    Common use cases:
-
-    - Use external iteration for simple, sequential operations where explicit control is needed
-    - Use internal iteration for complex operations, potential parallelization, or when working with streams
+## Map Enhancements
 
 52. **What additional methods for working with associative arrays (maps) appeared in Java 8?**
 
@@ -1717,6 +1739,8 @@
     - More functional programming style
     - Better handling of null values
     - Improved performance for certain operations
+
+## Base64 Encoding/Decoding
 
 53. **What class appeared in Java 8 for encoding / decoding data?**
 

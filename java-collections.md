@@ -1,6 +1,71 @@
 # Java Collections Framework
 
-1. **Explain the term enumeration in Java.**
+1. **What is the Iterator interface?**
+
+   Iterator is a fundamental interface in Java's Collections Framework that provides a uniform way to traverse through a collection of objects. It represents a cursor pointing to elements in a collection and allows sequential access to those elements.
+
+   Key points about Iterator:
+
+   1. **Core Methods**:
+
+      - `hasNext()`: Returns true if there are more elements
+      - `next()`: Returns the next element in iteration
+      - `remove()`: Removes the last element returned by next()
+      - `forEachRemaining()`: Performs an action on remaining elements (Java 8+)
+
+   2. **Advantages**:
+      - Provides a universal way to access elements
+      - Safer than direct index access
+      - Supports element removal during iteration
+      - Works with for-each loops
+
+   Example usage:
+
+   ```java
+   List<String> list = new ArrayList<>();
+   Iterator<String> iterator = list.iterator();
+   while(iterator.hasNext()) {
+       String element = iterator.next();
+       // Process element
+   }
+   ```
+
+2. **Explain the difference between Iterator and ListIterator.**
+
+   | Feature           | Iterator                        | ListIterator                                        |
+   | ----------------- | ------------------------------- | --------------------------------------------------- |
+   | Direction         | Forward only                    | Bi-directional (forward and backward)               |
+   | Add Elements      | Cannot add elements             | Can add elements using add()                        |
+   | Modification      | Can only remove elements        | Can modify elements using set()                     |
+   | Index Access      | No index access                 | Can get index using nextIndex() and previousIndex() |
+   | Collection Types  | Works with all Collection types | Only works with List implementations                |
+   | Navigation        | Only hasNext() and next()       | Has hasPrevious() and previous() in addition        |
+   | Starting Position | Points before first element     | Can be positioned at any index                      |
+   | Iteration Start   | Always starts from beginning    | Can start from any arbitrary position               |
+
+   Example usage:
+
+   ```java
+   // Iterator - Forward only
+   List<String> list = new ArrayList<>();
+   Iterator<String> iterator = list.iterator();
+   while(iterator.hasNext()) {
+       String element = iterator.next();
+   }
+
+   // ListIterator - Bidirectional
+   ListIterator<String> listIterator = list.listIterator();
+   // Forward
+   while(listIterator.hasNext()) {
+       String element = listIterator.next();
+   }
+   // Backward
+   while(listIterator.hasPrevious()) {
+       String element = listIterator.previous();
+   }
+   ```
+
+3. **Explain the term enumeration in Java.**
 
    Enumeration is an interface in Java that provides a way to iterate through a collection of objects sequentially. It was part of the original Java collections design before the introduction of Iterator.
 
@@ -33,7 +98,7 @@
    }
    ```
 
-2. **Describe the collection framework in Java.**
+4. **Describe the collection framework in Java.**
 
    The Java Collections Framework is a unified architecture for representing and manipulating collections of objects. It provides a set of interfaces, implementations, and algorithms to store and process groups of objects.
 
@@ -85,7 +150,7 @@
        └── Deque
    ```
 
-3. **What are the differences between arrays and ArrayList in Java?**
+5. **What are the differences between Arrays and ArrayList in Java?**
 
    Here's a comparison of arrays and ArrayList in Java:
 
@@ -118,7 +183,45 @@
    list.add(4); // Automatically resizes
    ```
 
-4. **What is the difference between List, Set, and Map in Java?**
+6. **What is the difference between ArrayList and LinkedList in Java?**
+
+   Here's a detailed comparison of ArrayList and LinkedList in Java:
+
+   | Feature            | ArrayList                              | LinkedList                                     |
+   | ------------------ | -------------------------------------- | ---------------------------------------------- |
+   | Internal Structure | Resizable array (dynamic array)        | Doubly-linked list                             |
+   | Memory Storage     | Contiguous memory locations            | Non-contiguous memory locations                |
+   | Access Time        | O(1) - constant time for random access | O(n) - linear time for random access           |
+   | Insertion/Deletion | Slower (requires shifting elements)    | Faster, especially at beginning/middle         |
+   | Memory Overhead    | Less memory per element                | More memory per element (stores next/prev ref) |
+   | Best Use Cases     | Frequent random access, less insertion | Frequent insertions/deletions, queue/stack     |
+   | Performance        | Better for get() and set() operations  | Better for add() and remove() operations       |
+   | Implements         | List, RandomAccess interfaces          | List, Deque interfaces                         |
+
+   Example usage:
+
+   ```java
+   // ArrayList example
+   ArrayList<String> arrayList = new ArrayList<>();
+   arrayList.add("apple");     // O(1) amortized
+   arrayList.get(0);           // Very fast O(1) access
+   arrayList.remove(0);        // Slower, requires shifting
+
+   // LinkedList example
+   LinkedList<String> linkedList = new LinkedList<>();
+   linkedList.add("apple");    // Fast O(1) insertion
+   linkedList.addFirst("banana"); // Very fast first insertion
+   linkedList.get(0);          // Slower O(n) access
+   ```
+
+   Key Considerations:
+
+   - Use ArrayList when you need frequent random access
+   - Use LinkedList when you need frequent insertions/deletions
+   - ArrayList is more memory-efficient
+   - LinkedList provides more flexible manipulation operations
+
+7. **What is the difference between List, Set, and Map in Java?**
 
    Here's a comparison of List, Set, and Map interfaces in Java:
 
@@ -155,7 +258,7 @@
    map.get("apple");   // key-based access
    ```
 
-5. **What is the difference between fail-safe and fail-fast iterators?**
+8. **What is the difference between fail-safe and fail-fast iterators?**
 
    Fail-fast and fail-safe iterators differ in how they handle concurrent modifications during iteration:
 
@@ -196,7 +299,7 @@
    }
    ```
 
-6. **What is the difference between Vector and an ArrayList?**
+9. **What is the difference between Vector and an ArrayList?**
 
    Vector and ArrayList are both List implementations, but they have several key differences:
 
@@ -224,94 +327,124 @@
    List<String> syncList = Collections.synchronizedList(new ArrayList<>());
    ```
 
-7. **What are the differences between Collection and Collections in Java?**
+10. **What are Vector and Stack classes?**
 
-   Collection and Collections serve different purposes in Java:
+    Vector and Stack are legacy collection classes in Java with specific characteristics:
 
-   | Feature       | Collection                                    | Collections                                     |
-   | ------------- | --------------------------------------------- | ----------------------------------------------- |
-   | Type          | Interface                                     | Utility class                                   |
-   | Purpose       | Base interface for collection hierarchy       | Provides static utility methods for collections |
-   | Usage         | Implemented by collection classes (List, Set) | Contains methods like sort(), binarySearch()    |
-   | Instantiation | Can be instantiated through implementations   | Cannot be instantiated (all methods static)     |
-   | Methods       | add(), remove(), contains(), etc.             | sort(), shuffle(), synchronizedList(), etc.     |
+    | Feature         | Vector                                               | Stack                                                  |
+    | --------------- | ---------------------------------------------------- | ------------------------------------------------------ |
+    | Inheritance     | Extends AbstractList                                 | Extends Vector                                         |
+    | Synchronization | Fully synchronized (thread-safe)                     | Fully synchronized (thread-safe)                       |
+    | Primary Use     | Dynamic array with synchronized operations           | Last-In-First-Out (LIFO) data structure                |
+    | Key Methods     | add(), remove(), get(), size()                       | push(), pop(), peek(), empty()                         |
+    | Performance     | Slower due to synchronization overhead               | Slower due to synchronization overhead                 |
+    | Legacy Status   | Introduced in JDK 1.0                                | Introduced in JDK 1.0                                  |
+    | Recommended     | Prefer ArrayList with Collections.synchronizedList() | Prefer Deque interface implementations like ArrayDeque |
 
-   Example usage:
+    Example usage:
 
-   ```java
-   // Collection (interface) usage
-   Collection<String> list = new ArrayList<>();
-   list.add("item");
-   list.remove("item");
+    ```java
+    // Vector example
+    Vector<String> vector = new Vector<>();
+    vector.add("element");
+    vector.remove(0);
 
-   // Collections (utility class) usage
-   List<String> list2 = new ArrayList<>();
-   Collections.sort(list2);
-   Collections.shuffle(list2);
-   List<String> syncList = Collections.synchronizedList(list2);
-   ```
+    // Stack example
+    Stack<Integer> stack = new Stack<>();
+    stack.push(1);
+    stack.push(2);
+    int topElement = stack.pop(); // Returns 2
+    boolean isEmpty = stack.empty(); // Checks if stack is empty
+    ```
 
-8. **In which scenario, LinkedList is better than ArrayList in Java?**
+11. **What are the differences between Collection and Collections in Java?**
 
-   LinkedList and ArrayList have different performance characteristics that make each better suited for specific scenarios:
+    Collection and Collections serve different purposes in Java:
 
-   | Operation     | LinkedList                                | ArrayList                      |
-   | ------------- | ----------------------------------------- | ------------------------------ |
-   | Insertion     | O(1) at known positions                   | O(n) if not at end             |
-   | Deletion      | O(1) at known positions                   | O(n) if not at end             |
-   | Random Access | O(n)                                      | O(1)                           |
-   | Memory        | More memory (stores prev/next references) | Less memory (contiguous block) |
+    | Feature       | Collection                                    | Collections                                     |
+    | ------------- | --------------------------------------------- | ----------------------------------------------- |
+    | Type          | Interface                                     | Utility class                                   |
+    | Purpose       | Base interface for collection hierarchy       | Provides static utility methods for collections |
+    | Usage         | Implemented by collection classes (List, Set) | Contains methods like sort(), binarySearch()    |
+    | Instantiation | Can be instantiated through implementations   | Cannot be instantiated (all methods static)     |
+    | Methods       | add(), remove(), contains(), etc.             | sort(), shuffle(), synchronizedList(), etc.     |
 
-   LinkedList is better when:
+    Example usage:
 
-   - Frequent insertions/deletions in the middle of the list
-   - No random access needed
-   - Memory size is not a constraint
+    ```java
+    // Collection (interface) usage
+    Collection<String> list = new ArrayList<>();
+    list.add("item");
+    list.remove("item");
 
-   Example usage:
+    // Collections (utility class) usage
+    List<String> list2 = new ArrayList<>();
+    Collections.sort(list2);
+    Collections.shuffle(list2);
+    List<String> syncList = Collections.synchronizedList(list2);
+    ```
 
-   ```java
-   LinkedList<String> linkedList = new LinkedList<>();
+12. **In which scenario, LinkedList is better than ArrayList in Java?**
 
-   // Efficient operations for LinkedList
-   linkedList.addFirst("first");     // O(1)
-   linkedList.addLast("last");       // O(1)
-   linkedList.add(1, "middle");      // O(1) if position is known
-   linkedList.removeFirst();         // O(1)
-   linkedList.removeLast();          // O(1)
-   ```
+    LinkedList and ArrayList have different performance characteristics that make each better suited for specific scenarios:
 
-9. **Contiguous memory locations are usually used for storing actual values in an array but not in ArrayList. Explain**
+    | Operation     | LinkedList                                | ArrayList                      |
+    | ------------- | ----------------------------------------- | ------------------------------ |
+    | Insertion     | O(1) at known positions                   | O(n) if not at end             |
+    | Deletion      | O(1) at known positions                   | O(n) if not at end             |
+    | Random Access | O(n)                                      | O(1)                           |
+    | Memory        | More memory (stores prev/next references) | Less memory (contiguous block) |
 
-   This is actually incorrect - both arrays and ArrayLists in Java use contiguous memory locations to store their elements. However, there are some key differences in how they work:
+    LinkedList is better when:
 
-   Arrays:
+    - Frequent insertions/deletions in the middle of the list
+    - No random access needed
+    - Memory size is not a constraint
 
-   - Store primitive values or object references directly in contiguous memory
-   - Fixed size allocated at creation
-   - Direct memory access to elements
+    Example usage:
 
-   ArrayList:
+    ```java
+    LinkedList<String> linkedList = new LinkedList<>();
 
-   - Uses an internal array to store elements contiguously
-   - Automatically grows by creating new, larger array when needed
-   - Elements are still stored contiguously, just in the backing array
+    // Efficient operations for LinkedList
+    linkedList.addFirst("first");     // O(1)
+    linkedList.addLast("last");       // O(1)
+    linkedList.add(1, "middle");      // O(1) if position is known
+    linkedList.removeFirst();         // O(1)
+    linkedList.removeLast();          // O(1)
+    ```
 
-   Example:
+13. **Contiguous memory locations are usually used for storing actual values in an array but not in ArrayList. Explain**
 
-   ```java
-   // Array - direct contiguous storage
-   int[] array = new int[5];         // Fixed block of 5 integers
+    This is actually incorrect - both arrays and ArrayLists in Java use contiguous memory locations to store their elements. However, there are some key differences in how they work:
 
-   // ArrayList - contiguous storage via internal array
-   ArrayList<Integer> list = new ArrayList<>();  // Initial capacity 10
-   list.add(1);                      // Stored in backing array
-   list.add(2);                      // Next contiguous position
-   // When backing array is full, ArrayList creates new larger array
-   // and copies elements to maintain contiguous storage
-   ```
+    Arrays:
 
-10. **Why does the java array index start with 0?**
+    - Store primitive values or object references directly in contiguous memory
+    - Fixed size allocated at creation
+    - Direct memory access to elements
+
+    ArrayList:
+
+    - Uses an internal array to store elements contiguously
+    - Automatically grows by creating new, larger array when needed
+    - Elements are still stored contiguously, just in the backing array
+
+    Example:
+
+    ```java
+    // Array - direct contiguous storage
+    int[] array = new int[5];         // Fixed block of 5 integers
+
+    // ArrayList - contiguous storage via internal array
+    ArrayList<Integer> list = new ArrayList<>();  // Initial capacity 10
+    list.add(1);                      // Stored in backing array
+    list.add(2);                      // Next contiguous position
+    // When backing array is full, ArrayList creates new larger array
+    // and copies elements to maintain contiguous storage
+    ```
+
+14. **Why does the java array index start with 0?**
 
     Java arrays use 0-based indexing primarily because:
 
@@ -333,7 +466,7 @@
     // For first element: baseAddress + (0 * elementSize) = baseAddress
     ```
 
-11. **What are the differences between HashMap and HashTable in Java?**
+15. **What are the differences between HashMap and HashTable in Java?**
 
     | Feature          | HashMap                                                         | HashTable                             |
     | ---------------- | --------------------------------------------------------------- | ------------------------------------- |
@@ -347,7 +480,7 @@
     | Load Factor      | Default is 0.75                                                 | Default is 0.75                       |
     | Growth           | Doubles in size when threshold reached                          | Increases by (2 \* size + 1)          |
 
-12. **What is the difference between fail-fast and fail-safe iterators?**
+16. **What is the difference between fail-fast and fail-safe iterators?**
 
     | Feature       | Fail-Fast Iterator                                 | Fail-Safe Iterator                      |
     | ------------- | -------------------------------------------------- | --------------------------------------- |
@@ -373,7 +506,7 @@
     map.put("key", 1);  // Won't throw exception
     ```
 
-13. **What makes a HashSet different from a TreeSet?**
+17. **What makes a HashSet different from a TreeSet?**
 
     | Feature          | HashSet                                      | TreeSet                                         |
     | ---------------- | -------------------------------------------- | ----------------------------------------------- |
@@ -386,7 +519,7 @@
     | Internal Storage | Hash table with buckets                      | Red-black tree                                  |
     | Use Case         | When order doesn't matter and fast access    | When sorted order is required                   |
 
-14. **What is a Comparator in Java?**
+18. **What is a Comparator in Java?**
 
     A Comparator is a functional interface in Java used for custom comparison of objects. It defines a way to compare two objects of the same type for ordering.
 
@@ -420,11 +553,11 @@
     Collections.sort(list, lengthComparator);
     ```
 
-15. **Why is the delete function faster in the linked list than an array?**
+19. **Why is the delete function faster in the linked list than an array?**
 
     In a linked list, deleting a node requires updating the pointers of the adjacent nodes, which is an O(1) operation. In contrast, deleting an element from an array requires shifting all subsequent elements to fill the gap, which is an O(n) operation. This makes linked lists more efficient for frequent insertions and deletions.
 
-16. **How to copy an array in Java?**
+20. **How to copy an array in Java?**
 
     There are several ways to copy an array in Java:
 
@@ -466,7 +599,7 @@
 
     Each of these methods has its own use cases and performance characteristics, so you can choose the one that best fits your needs.
 
-17. **What do you understand by a jagged array?**
+21. **What do you understand by a jagged array?**
 
     A jagged array, also known as an "array of arrays," is an array whose elements are arrays. The inner arrays can be of different lengths, creating a "jagged" structure. This is in contrast to a multidimensional array, where each dimension must have the same length.
 
@@ -484,7 +617,7 @@
 
     Jagged arrays are useful when you need a collection of arrays of varying lengths, and they provide flexibility in managing such data structures.
 
-18. **Is it possible to make an array volatile?**
+22. **Is it possible to make an array volatile?**
 
     In Java, you cannot make the entire array volatile. However, you can make the reference to the array volatile. This means that the reference to the array will be volatile, but the elements within the array will not be volatile.
 
@@ -496,7 +629,7 @@
 
     If you need to ensure visibility of individual elements, you would need to use other synchronization mechanisms, such as `synchronized` blocks or `java.util.concurrent.atomic` classes for atomic operations on array elements.
 
-19. **What are the advantages and disadvantages of an array?**
+23. **What are the advantages and disadvantages of an array?**
 
     | Advantages                                      | Disadvantages                                     |
     | ----------------------------------------------- | ------------------------------------------------- |
@@ -506,7 +639,7 @@
     | Supports random access                          | Can lead to wasted memory if not fully utilized   |
     | Cache-friendly due to contiguous memory storage | Does not provide type safety for primitive arrays |
 
-20. **What is CopyOnWriteArrayList in Java?**
+24. **What is CopyOnWriteArrayList in Java?**
 
     CopyOnWriteArrayList is a thread-safe variant of ArrayList in which all mutative operations (add, set, remove, etc.) are implemented by making a fresh copy of the underlying array.
 
@@ -543,7 +676,7 @@
 
     Note: While thread-safe, it has higher memory overhead and slower write performance due to array copying.
 
-21. **What are the methods used to implement for key Object in HashMap?**
+25. **What are the methods used to implement for key Object in HashMap?**
 
     When implementing a key object for use in HashMap, two methods are essential:
 

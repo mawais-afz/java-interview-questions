@@ -19,7 +19,78 @@
    thread.start();
    ```
 
-2. **What is the Daemon Thread?**
+2. **What is concurrency?**
+
+   Concurrency is the ability of a program to execute multiple tasks simultaneously. In Java, this is achieved through threads that can run in parallel. Key aspects of concurrency include:
+
+   - Multiple tasks progressing at the same time
+   - Shared resources being accessed by multiple threads
+   - Need for synchronization to prevent race conditions
+   - Can improve performance on multi-core systems
+   - Requires careful handling of thread safety
+
+   Example of concurrent execution:
+
+   ```java
+   // Two threads running concurrently
+   Thread thread1 = new Thread(() -> {
+       for(int i = 0; i < 5; i++) {
+           System.out.println("Thread 1: " + i);
+       }
+   });
+
+   Thread thread2 = new Thread(() -> {
+       for(int i = 0; i < 5; i++) {
+           System.out.println("Thread 2: " + i);
+       }
+   });
+
+   thread1.start();
+   thread2.start();
+   ```
+
+3. **What is thread safety?**
+
+   Thread safety is a property of code that ensures correct behavior when multiple threads access shared resources concurrently. It prevents race conditions, data corruption, and unexpected results in multi-threaded environments. Key aspects of thread safety include:
+
+   - Preventing simultaneous access to shared mutable state
+   - Ensuring predictable and consistent behavior under concurrent execution
+   - Using synchronization mechanisms to control thread interactions
+   - Avoiding data races and maintaining data integrity
+
+   Common techniques for achieving thread safety:
+
+   - Synchronized methods and blocks
+   - Immutable objects
+   - Thread-local variables
+   - Atomic operations
+   - Concurrent data structures from java.util.concurrent package
+
+   Example of a non-thread-safe scenario:
+
+   ```java
+   class Counter {
+       private int count = 0;
+
+       // Not thread-safe - multiple threads can corrupt the count
+       public void increment() {
+           count++; // This operation is not atomic
+       }
+   }
+
+   // Thread-safe version
+   class ThreadSafeCounter {
+       private final AtomicInteger count = new AtomicInteger(0);
+
+       public void increment() {
+           count.incrementAndGet(); // Atomic operation
+       }
+   }
+   ```
+
+   Thread safety is crucial in multi-threaded applications to prevent data inconsistencies and ensure reliable concurrent programming.
+
+4. **What is the Daemon Thread?**
 
    A daemon thread is a low-priority background thread that provides support to user threads. Key characteristics of daemon threads:
 
@@ -39,7 +110,7 @@
    daemonThread.start();
    ```
 
-3. **What are the different ways to use threads?**
+5. **What are the different ways to use threads? Or How do you create a thread in Java?**
 
    There are two primary ways to use threads in Java:
 
@@ -94,11 +165,47 @@
 
    Both approaches achieve the same result, but implementing the Runnable interface is generally preferred because it allows for better separation of task and thread management, and it enables the class to extend another class if needed.
 
-4. **What is multithreading in Java?**
+6. **What is the difference between a process and a thread?**
+
+   A process and a thread are two fundamental concepts in concurrent programming with key differences:
+
+   | Feature           | Process                                       | Thread                                                               |
+   | ----------------- | --------------------------------------------- | -------------------------------------------------------------------- |
+   | Definition        | Independent program with its own memory space | Lightweight unit of execution within a process                       |
+   | Memory            | Has its own memory space and resources        | Shares memory space and resources with other threads in same process |
+   | Creation Cost     | More expensive to create                      | Less expensive to create                                             |
+   | Context Switching | More expensive due to separate memory spaces  | Less expensive as memory is shared                                   |
+   | Communication     | Inter-process communication (IPC) needed      | Can directly share data through shared memory                        |
+   | Isolation         | Isolated from other processes                 | Share resources with other threads                                   |
+   | Failure Impact    | Failure contained within process              | Failure can affect entire process                                    |
+   | Resource Usage    | More system resources required                | Less system resources required                                       |
+
+   Key points:
+
+   1. **Resource Sharing**
+
+      - Processes are independent and don't share resources by default
+      - Threads within same process share code, data, and resources
+
+   2. **Performance**
+
+      - Thread creation and switching is faster than processes
+      - Threads provide better performance for concurrent operations
+
+   3. **Communication**
+
+      - Threads can communicate directly through shared memory
+      - Processes require special IPC mechanisms
+
+   4. **Reliability**
+      - Process crashes don't affect other processes
+      - Thread crashes can bring down entire process
+
+7. **What is multithreading in Java?**
 
    Multithreading in Java is the ability to execute multiple threads (lightweight processes) simultaneously within a single program. Each thread runs independently while sharing the same resources. This enables concurrent execution of tasks, improved performance, and better resource utilization. Java provides built-in support for multithreading through its Thread class and Runnable interface.
 
-5. **What are the different ways of implementing multithreading in Java?**
+8. **What are the different ways of implementing multithreading in Java?**
 
    There are two main ways to implement multithreading in Java:
 
@@ -117,7 +224,7 @@
    - It provides better separation between the task's logic and thread behavior
    - It's more flexible as the same Runnable can be used with different Thread configurations
 
-6. **Explain the Java thread lifecycle/states?**
+9. **What are the states/lifecycle of a thread?**
 
    A Java thread goes through several states during its lifecycle:
 
@@ -149,45 +256,44 @@
 
    Note that once a thread is terminated, it cannot be restarted. A new thread object must be created for new execution.
 
-7. **What are the different types of Thread Priorities in Java? And what is the default priority of a thread assigned by JVM?**
+10. **What are the different types of Thread Priorities in Java? And what is the default priority of a thread assigned by JVM?**
 
-   - **MIN_PRIORITY (1)**: The minimum priority that a thread can have.
-   - **NORM_PRIORITY (5)**: The default priority assigned to a thread by the JVM.
-   - **MAX_PRIORITY (10)**: The maximum priority that a thread can have.
+    - **MIN_PRIORITY (1)**: The minimum priority that a thread can have.
+    - **NORM_PRIORITY (5)**: The default priority assigned to a thread by the JVM.
+    - **MAX_PRIORITY (10)**: The maximum priority that a thread can have.
 
-   The default priority of a thread assigned by the JVM is `NORM_PRIORITY` (5).
+    The default priority of a thread assigned by the JVM is `NORM_PRIORITY` (5).
 
-   Thread priorities are used by the thread scheduler to decide when each thread should run. However, thread priority behavior can be platform-dependent and should not be relied upon for program correctness.
+    Thread priorities are used by the thread scheduler to decide when each thread should run. However, thread priority behavior can be platform-dependent and should not be relied upon for program correctness.
 
-8. **What is the difference between start and run method in Java?**
+11. **What is the difference between start and run method in Java?**
 
-   | Feature           | `start()`                                                          | `run()`                                                   |
-   | ----------------- | ------------------------------------------------------------------ | --------------------------------------------------------- |
-   | Purpose           | Starts a new thread and invokes the `run()` method in that thread. | Contains the code that defines the thread's task.         |
-   | Thread Creation   | Creates a new thread of execution.                                 | Does not create a new thread; runs in the current thread. |
-   | Execution Context | Executes in a separate call stack.                                 | Executes in the current call stack.                       |
-   | Thread State      | Changes the thread state to Runnable.                              | Does not change the thread state.                         |
-   | Usage             | Must be called to start a thread.                                  | Can be called directly, but does not start a new thread.  |
-   | Overriding        | Cannot be overridden in the Thread class.                          | Can be overridden in a subclass of Thread.                |
+    | Feature           | `start()`                                                          | `run()`                                                   |
+    | ----------------- | ------------------------------------------------------------------ | --------------------------------------------------------- |
+    | Purpose           | Starts a new thread and invokes the `run()` method in that thread. | Contains the code that defines the thread's task.         |
+    | Thread Creation   | Creates a new thread of execution.                                 | Does not create a new thread; runs in the current thread. |
+    | Execution Context | Executes in a separate call stack.                                 | Executes in the current call stack.                       |
+    | Thread State      | Changes the thread state to Runnable.                              | Does not change the thread state.                         |
+    | Usage             | Must be called to start a thread.                                  | Can be called directly, but does not start a new thread.  |
+    | Overriding        | Cannot be overridden in the Thread class.                          | Can be overridden in a subclass of Thread.                |
 
-9. **What is the difference between sleep and wait in Java?**
+12. **What is the difference between sleep and wait in Java?**
 
-   | Feature        | `sleep()`                                  | `wait()`                                                   |
-   | -------------- | ------------------------------------------ | ---------------------------------------------------------- |
-   | Purpose        | Pauses thread execution for specified time | Releases lock and waits for notification from other thread |
-   | Lock Release   | Does not release any locks held            | Releases the lock on the object                            |
-   | Method Type    | Static method of Thread class              | Instance method of Object class                            |
-   | Notification   | Automatically wakes after time period      | Must be notified by notify()/notifyAll()                   |
-   | Usage Context  | Can be called anywhere                     | Must be called from synchronized context                   |
-   | Exception      | Throws InterruptedException                | Throws InterruptedException                                |
-   | Resource State | No change in resource state                | Used when waiting for state change in shared resource      |
+    | Feature        | `sleep()`                                  | `wait()`                                                   |
+    | -------------- | ------------------------------------------ | ---------------------------------------------------------- |
+    | Purpose        | Pauses thread execution for specified time | Releases lock and waits for notification from other thread |
+    | Lock Release   | Does not release any locks held            | Releases the lock on the object                            |
+    | Method Type    | Static method of Thread class              | Instance method of Object class                            |
+    | Notification   | Automatically wakes after time period      | Must be notified by notify()/notifyAll()                   |
+    | Usage Context  | Can be called anywhere                     | Must be called from synchronized context                   |
+    | Exception      | Throws InterruptedException                | Throws InterruptedException                                |
+    | Resource State | No change in resource state                | Used when waiting for state change in shared resource      |
 
-10. **What is the difference between yield and join in Java?**
-11. **What is the difference between notify and notifyAll in Java?**
-12. **What is the difference between ReentrantLock and synchronized in Java?**
-13. **What is the difference between volatile and synchronized in Java?**
+13. **What is the difference between yield and join in Java?**
+14. **What is the difference between notify and notifyAll in Java?**
+15. **What is the difference between ReentrantLock and synchronized in Java?**
 
-14. **What is the difference between a program and a process?**
+16. **What is the difference between a program and a process?**
 
     - **Program**: A program is a set of instructions written in a programming language that is designed to perform a specific task. It is a static entity stored on disk (e.g., an executable file) and does not consume system resources until it is executed.
 
@@ -195,11 +301,11 @@
 
     In summary, a program is a passive collection of instructions, while a process is an active execution of those instructions with its own state and resources.
 
-15. **Can we make the main() thread a daemon thread?**
+17. **Can we make the main() thread a daemon thread?**
 
     - No, the main() thread cannot be made a daemon thread. In Java, the main thread is the first thread that is created when a program starts, and it is not possible to change its daemon status after it has been started. Daemon threads are designed to run in the background and do not prevent the JVM from exiting when the program finishes executing. Since the main thread is responsible for the execution of the program, it must complete before the JVM can terminate, making it non-daemon by nature.
 
-16. **Why is synchronization necessary? Explain with the help of a relevant example.**
+18. **Why is synchronization necessary? Explain with the help of a relevant example.**
 
     Synchronization is necessary to prevent race conditions and ensure thread safety when multiple threads access shared resources. Without synchronization, concurrent access to shared data can lead to data corruption and inconsistent results.
 
@@ -241,7 +347,7 @@
     - Race conditions are prevented
     - Data consistency is maintained
 
-17. **Assume a thread has a lock on it, calling the sleep() method on that thread will release the lock?**
+19. **Assume a thread has a lock on it, calling the sleep() method on that thread will release the lock?**
 
     No, calling sleep() on a thread that holds a lock will not release the lock. When a thread goes to sleep:
 
@@ -261,3 +367,188 @@
         // Thread still has lock here after waking
     }
     ```
+
+20. **What is the synchronized keyword?**
+
+    The synchronized keyword in Java is used to prevent multiple threads from simultaneously executing a block of code or method, ensuring thread safety. When a thread enters a synchronized block/method, it acquires a lock (monitor) that prevents other threads from entering synchronized blocks protected by the same lock.
+
+    Key aspects of synchronized:
+
+    1. **Method Synchronization**:
+
+       ```java
+       public synchronized void method() {
+           // Only one thread can execute this at a time
+       }
+       ```
+
+    2. **Block Synchronization**:
+
+       ```java
+       public void method() {
+           synchronized(this) {
+               // Only one thread can execute this block at a time
+           }
+       }
+       ```
+
+    3. **Static Synchronization**:
+       ```java
+       public static synchronized void method() {
+           // Synchronizes on the Class object
+       }
+       ```
+
+    Benefits:
+
+    - Prevents race conditions
+    - Ensures data consistency
+    - Establishes happens-before relationships
+    - Provides mutual exclusion
+
+    Drawbacks:
+
+    - Can impact performance due to thread blocking
+    - May cause deadlocks if not used carefully
+    - Increases contention between threads
+
+21. **What is the volatile keyword?**
+
+    The volatile keyword in Java is used to ensure the visibility of variable changes across multiple threads. When a variable is declared as volatile, it guarantees that:
+
+    1. **Immediate Visibility**
+
+       - Changes to the variable are immediately visible to other threads
+       - Prevents thread caching of variable values
+       - Ensures reading the most up-to-date value from main memory
+
+    2. **Memory Barrier**
+       - Prevents instruction reordering around the volatile variable
+       - Creates a happens-before relationship between thread writes and reads
+       - Provides a lightweight synchronization mechanism
+
+    Example usage:
+
+    ```java
+    public class SharedResource {
+        private volatile boolean flag = false;
+
+        public void updateFlag() {
+            flag = true; // Immediately visible to other threads
+        }
+
+        public void checkFlag() {
+            while (!flag) {
+                // Will see the most recent value of flag
+            }
+        }
+    }
+    ```
+
+    Key characteristics:
+
+    - Used for simple shared variables
+    - Ensures visibility but not atomicity of operations
+    - Lightweight compared to synchronized
+    - Useful for flags, status indicators, and simple state variables
+
+    Common use cases:
+
+    - Thread termination flags
+    - Status indicators
+    - Simple shared state variables
+    - Avoiding thread caching issues
+
+22. **What is the difference between volatile and synchronized in Java?**
+
+    | Feature           | `volatile`                                                    | `synchronized`                                                |
+    | ----------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+    | Purpose           | Ensures visibility of variable changes across threads         | Provides mutual exclusion and synchronization of method/block |
+    | Locking Mechanism | No locking mechanism                                          | Acquires and releases locks on objects or methods             |
+    | Performance       | Lightweight, minimal performance overhead                     | Heavier, more significant performance impact                  |
+    | Atomic Operations | Guarantees visibility, not atomicity of complex operations    | Ensures atomic execution of entire synchronized block/method  |
+    | Use Case          | Simple shared variable that needs immediate visibility        | Complex operations requiring exclusive access to shared state |
+    | Keyword Scope     | Can be applied only to variables                              | Can be applied to methods and code blocks                     |
+    | Memory Barrier    | Prevents instruction reordering and ensures memory visibility | Creates memory barrier and ensures thread-safe state          |
+
+23. **What is deadlock?**
+
+    A deadlock is a situation in concurrent programming where two or more threads are unable to proceed because each is waiting for the other to release a lock or resource. In other words, it's a state of mutual blocking where threads are stuck in a circular dependency.
+
+    Key characteristics of deadlock:
+
+    1. **Circular Wait Condition**
+
+       - Threads are waiting for resources held by each other
+       - Creates a circular chain of resource dependencies
+       - No thread can make progress
+
+    2. **Four Necessary Conditions**:
+       - **Mutual Exclusion**: Resources cannot be shared simultaneously
+       - **Hold and Wait**: Threads hold resources while waiting for others
+       - **No Preemption**: Resources cannot be forcibly taken from threads
+       - **Circular Wait**: Threads form a circular chain of resource requests
+
+    Example scenario:
+
+    ```java
+    public class DeadlockExample {
+        private static final Object RESOURCE_A = new Object();
+        private static final Object RESOURCE_B = new Object();
+
+        public static void main(String[] args) {
+            Thread thread1 = new Thread(() -> {
+                synchronized(RESOURCE_A) {
+                    System.out.println("Thread 1: Holding Resource A");
+                    try { Thread.sleep(50); } catch (InterruptedException e) {}
+
+                    synchronized(RESOURCE_B) {
+                        System.out.println("Thread 1: Waiting for Resource B");
+                    }
+                }
+            });
+
+            Thread thread2 = new Thread(() -> {
+                synchronized(RESOURCE_B) {
+                    System.out.println("Thread 2: Holding Resource B");
+                    try { Thread.sleep(50); } catch (InterruptedException e) {}
+
+                    synchronized(RESOURCE_A) {
+                        System.out.println("Thread 2: Waiting for Resource A");
+                    }
+                }
+            });
+
+            thread1.start();
+            thread2.start();
+        }
+    }
+    ```
+
+    Prevention strategies:
+
+    3. **Consistent Lock Ordering**
+
+       - Always acquire locks in the same order
+       - Prevents circular wait condition
+
+    4. **Lock Timeout**
+
+       - Set a maximum wait time for lock acquisition
+       - Release locks if timeout occurs
+
+    5. **Try-Lock Mechanisms**
+
+       - Use `tryLock()` with timeout instead of `synchronized`
+       - Allows more flexible lock handling
+
+    6. **Resource Hierarchy**
+       - Assign a global ordering to resources
+       - Threads must request resources in this order
+
+    Detecting deadlocks:
+
+    - Thread dumps
+    - Profiling tools
+    - Monitoring thread states
+    - Java's built-in thread management tools

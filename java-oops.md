@@ -1,12 +1,20 @@
 # Object-Oriented Programming (OOP) Concepts
 
-1. **Why is Java not considered to be purely object-oriented?**
+1. **What is OOP?**
+
+   Object-oriented programming (OOP) is a programming paradigm that organizes code into objects, which are instances of classes. A class serves as a blueprint that defines both the data (attributes/properties) and behaviors (methods) that its objects will have. OOP emphasizes concepts like encapsulation, inheritance, polymorphism, and abstraction to create modular, reusable, and maintainable code.
+
+   The main advantages of OOP include:
+
+   - Better organization of code through objects and classes
+   - Code reusability through inheritance
+   - Flexibility through polymorphism
+   - Data security through encapsulation
+   - Reduced complexity through abstraction
+
+2. **Why is Java not considered to be purely object-oriented?**
 
    Java is not considered to be purely object-oriented because it supports primitive data types (such as int, char, boolean, byte, short, long, float, and double) that are not objects. In a purely object-oriented language, everything is treated as an object, and all data types would be defined as classes. While Java provides wrapper classes for these primitive types (e.g., Integer for int, Character for char, Boolean for boolean, Byte for byte, Short for short, Long for long, Float for float, and Double for double), the existence of primitives means that Java does not fully adhere to the principles of pure object-oriented programming. Additionally, Java allows for static methods and variables, which are not associated with any object instance, further distinguishing it from purely object-oriented languages.
-
-2. **What is OOP?**
-
-   Object-oriented programming (OOP) is a programming paradigm based on the concept of "objects", which can contain data in the form of fields (often known as attributes or properties) and code in the form of procedures (often known as methods).
 
 3. **What are the pillars of OOP?**
 
@@ -19,7 +27,61 @@
    5. **Polymorphism**: The ability of different classes to be treated as instances of the same class through a common interface, allowing for the implementation of methods in different ways.
    6. **Abstraction**: The concept of hiding the complex implementation details and showing only the necessary features of an object, simplifying the interaction with the object.
 
-4. **What is a class?**
+4. **What are classes and objects? Why use them in applications?**
+
+   Classes are blueprints or templates that define the structure and behavior of objects in object-oriented programming. They specify what properties (attributes/fields) and behaviors (methods) objects of that type will have. Objects are concrete instances of a class - when you create an object, you're creating a specific instance with its own set of data based on the class definition.
+
+   For example, a Car class might define properties like color and model, and methods like start() and stop(). Each Car object would then have its own specific color and model values.
+
+   Classes and objects are essential in applications for several reasons:
+
+   1. **Organization**: They provide a natural way to model real-world concepts and organize code logically. For example, a banking application might have classes for Account, Customer, and Transaction.
+
+   2. **Code Reuse**: Once you define a class, you can create many objects from it without duplicating code. For instance, you can create multiple Customer objects from a single Customer class.
+
+   3. **Data Protection**: Classes can hide their internal details and expose only what's necessary through public methods, preventing invalid data modifications.
+
+   4. **Maintenance**: Changes to a class automatically apply to all objects of that class, making code maintenance easier.
+
+   5. **Extensibility**: New classes can extend existing ones, adding or modifying functionality while keeping the original code intact.
+
+   Example:
+
+   ```java
+   // Class definition
+   public class Car {
+       private String color;
+       private String model;
+
+       public void start() {
+           System.out.println("Car starting...");
+       }
+   }
+
+   // Creating objects
+   Car myCar = new Car();  // First car object
+   Car anotherCar = new Car();  // Second car object
+   ```
+
+5. **What is the significant difference between object-oriented language and object-based language?**
+
+   Object-oriented languages and object-based languages differ in several key aspects:
+
+   | Feature               | Object-Oriented Languages                    | Object-Based Languages                |
+   | --------------------- | -------------------------------------------- | ------------------------------------- |
+   | **Inheritance**       | Supports inheritance and polymorphism        | Does not support inheritance          |
+   | **Class Support**     | Has full class-based abstraction             | May use prototypes instead of classes |
+   | **Examples**          | Java, C++, Python, Ruby                      | JavaScript (pre-ES6), VBScript        |
+   | **Code Organization** | Organized around both classes and objects    | Organized around objects only         |
+   | **Data Abstraction**  | Supports both data and procedure abstraction | Primarily supports data abstraction   |
+
+   Key points:
+
+   - Object-oriented languages provide complete support for OOP principles (inheritance, polymorphism, encapsulation)
+   - Object-based languages support objects but lack inheritance and some other OOP features
+   - Object-based languages often use prototype-based programming instead of class-based inheritance
+
+6. **What is a class?**
 
    A class is a blueprint or template for creating objects in object-oriented programming. It defines the properties (attributes/fields) and behaviors (methods) that all objects of that type will have. A class encapsulates data for the object and methods to manipulate that data.
 
@@ -51,51 +113,78 @@
    }
    ```
 
-5. **How is the ‘new’ operator different from the ‘newInstance()’ method in Java?**
+7. **How to implement classes and objects in Java? What are the members of a class?**
 
-   The `new` operator and the `newInstance()` method are both used to create new objects in Java, but they have some key differences:
+   To implement classes and objects in Java, you need to follow these steps:
 
-   - **new Operator**:
+   1. **Define a Class**: A class is defined using the `class` keyword followed by the class name. Inside the class, you can declare members, which include attributes (fields), methods (functions), and constructors that define the behavior of the objects created from the class.
 
-     - Used to create a new instance of a class.
-     - Calls the constructor of the class directly.
-     - Syntax: `ClassName obj = new ClassName();`
-     - Example:
-       ```java
-       MyClass obj = new MyClass();
-       ```
+   ```java
+   public class Car {
+       // Attributes (Members)
+       private String color;
+       private String model;
 
-   - **newInstance() Method**:
-     - Part of the `Class` class and `Constructor` class.
-     - Used to create a new instance of a class using reflection.
-     - Calls the no-argument constructor of the class.
-     - Syntax: `ClassName obj = ClassName.class.newInstance();`
-     - Example:
-       ```java
-       MyClass obj = MyClass.class.newInstance();
-       ```
-     - Note: As of Java 9, `newInstance()` is deprecated in favor of `getDeclaredConstructor().newInstance()`.
-       ```java
-       MyClass obj = MyClass.class.getDeclaredConstructor().newInstance();
-       ```
+       // Constructor (Member)
+       public Car(String color, String model) {
+           this.color = color;
+           this.model = model;
+       }
 
-6. **What are the different ways to create objects in Java? or What are the ways to instantiate the Class class?**
+       // Method (Member)
+       public void displayInfo() {
+           System.out.println("Car Model: " + model + ", Color: " + color);
+       }
+   }
+   ```
 
-   There are several ways to create objects in Java:
+   2. **Create Objects**: Once the class is defined, you can create objects (instances) of that class using the `new` keyword.
 
-   1. **Using the `new` keyword**:
+   ```java
+   public class Main {
+       public static void main(String[] args) {
+           // Creating objects of the Car class
+           Car myCar = new Car("Red", "Toyota");
+           Car yourCar = new Car("Blue", "Honda");
+
+           // Calling methods on the objects
+           myCar.displayInfo(); // Output: Car Model: Toyota, Color: Red
+           yourCar.displayInfo(); // Output: Car Model: Honda, Color: Blue
+       }
+   }
+   ```
+
+   In this example, the `Car` class is defined with members including attributes, a constructor, and a method. Two objects of the `Car` class are created in the `Main` class, demonstrating how to implement classes and objects in Java.
+
+8. **What are the different ways to create objects in Java and how is the 'new' operator different from other methods?**
+
+   There are several ways to create objects in Java, each with its own characteristics:
+
+   1. **Using the `new` operator** (Most common):
+
+      - Directly calls the constructor of the class
+      - Simple and straightforward syntax
 
       ```java
       MyClass obj = new MyClass();
       ```
 
-   2. **Using reflection**:
+   2. **Using reflection with newInstance()** (Deprecated since Java 9):
+
+      - Creates objects dynamically at runtime
+      - Uses reflection to instantiate the class
+      - Calls the no-argument constructor
 
       ```java
+      MyClass obj = MyClass.class.newInstance(); // Deprecated
+      // Modern approach:
       MyClass obj = MyClass.class.getDeclaredConstructor().newInstance();
       ```
 
    3. **Using `clone()` method**:
+
+      - Creates a copy of an existing object
+      - Class must implement Cloneable interface
 
       ```java
       MyClass obj1 = new MyClass();
@@ -104,11 +193,17 @@
 
    4. **Using `Class.forName()`**:
 
+      - Loads the class dynamically and creates instance
+      - Useful when class name is determined at runtime
+
       ```java
       MyClass obj = (MyClass) Class.forName("MyClass").getDeclaredConstructor().newInstance();
       ```
 
    5. **Using object deserialization**:
+
+      - Recreates object from serialized form
+      - Class must implement Serializable interface
 
       ```java
       ObjectInputStream in = new ObjectInputStream(new FileInputStream("file.ser"));
@@ -117,145 +212,37 @@
       ```
 
    6. **Using factory methods**:
+      - Encapsulates object creation in factory class
+      - Provides more flexibility in instantiation
       ```java
       MyClass obj = MyClassFactory.createInstance();
       ```
 
-7. **What are classes and objects? Why use them in applications?**
+   Key differences between `new` operator and other methods:
 
-   Classes are blueprints for creating objects in object-oriented programming. They define the properties (attributes) and behaviors (methods) that the objects created from the class will have. An object is an instance of a class, representing a specific entity with its own state and behavior.
+   - `new` is compile-time bound, while reflection methods are runtime bound
+   - `new` is more performant than reflection-based approaches
+   - Reflection methods provide more flexibility but are more complex
+   - Factory methods can hide implementation details and provide better abstraction
 
-   Using classes and objects in applications provides several benefits:
+9. **What do you mean by anonymous class?**
 
-   1. **Modularity**: Classes allow developers to break down complex systems into smaller, manageable pieces, making the code easier to understand and maintain.
+   An anonymous class in Java is a class that is defined without a name and is instantiated in a single expression. It is typically used to make the code more concise and to create a one-time use class that extends an existing class or implements an interface. Anonymous classes are often used in situations where a class is needed for a short period of time, such as when implementing event listeners or callbacks.
 
-   2. **Reusability**: Once a class is defined, it can be reused to create multiple objects, reducing code duplication and promoting consistency.
-
-   3. **Encapsulation**: Classes encapsulate data and methods, restricting access to the internal state of the object and exposing only what is necessary through public methods.
-
-   4. **Inheritance**: Classes can inherit properties and methods from other classes, facilitating code reuse and the creation of hierarchical relationships.
-
-   5. **Polymorphism**: Objects of different classes can be treated as objects of a common superclass, allowing for flexible and interchangeable code.
-
-   Overall, classes and objects are fundamental to organizing and structuring code in a way that reflects real-world entities and their interactions.
-
-8. **What is immutable object?**
-
-   An immutable object is an object whose state cannot be changed after it is created. Once an immutable object is constructed, its contents remain constant throughout its lifetime. String is a classic example of an immutable class in Java.
-
-   Key characteristics of immutable objects:
-
-   1. **Final Class**: The class should be declared as final to prevent inheritance
-   2. **Private Fields**: All fields should be private and final
-   3. **No Setters**: No methods that modify the object's state
-   4. **Deep Copy**: If mutable objects are used as fields, return copies instead of references
-   5. **Initialize in Constructor**: All fields must be initialized in the constructor
-
-   Example of an immutable class:
+   Here is an example of an anonymous class:
 
    ```java
-   public final class ImmutablePerson {
-       private final String name;
-       private final int age;
-
-       public ImmutablePerson(String name, int age) {
-           this.name = name;
-           this.age = age;
+   Button myButton = new Button("Click Me") {
+       @Override
+       public void onClick() {
+           System.out.println("Button clicked!");
        }
-
-       public String getName() {
-           return name;
-       }
-
-       public int getAge() {
-           return age;
-       }
-   }
+   };
    ```
 
-   Benefits of immutable objects:
+   In this example, an anonymous class is created that extends the `Button` class and overrides the `onClick` method to provide specific behavior when the button is clicked.
 
-   - Thread-safe without synchronization
-   - Safe to share and cache
-   - Simple to construct, test, and use
-   - Prevent temporal coupling
-   - Side-effect free behavior
-
-9. **How can we create an immutable class in Java?**
-
-   To create an immutable class in Java, follow these key steps:
-
-   1. **Make the class final**: Prevent inheritance that could potentially modify the object's state
-   2. **Make all fields private and final**: Ensure fields cannot be changed after initialization
-   3. **Do not provide setter methods**: Prevent modification of object state after creation
-   4. **Initialize all fields in the constructor**: Set values during object creation
-   5. **Perform deep copy for mutable fields**: If the class contains mutable objects, return defensive copies
-
-   Example of a comprehensive immutable class:
-
-   ```java
-   public final class ImmutableAddress {
-       private final String street;
-       private final String city;
-       private final List<String> phoneNumbers; // Potentially mutable field
-
-       public ImmutableAddress(String street, String city, List<String> phoneNumbers) {
-           this.street = street;
-           this.city = city;
-           // Deep copy of mutable list
-           this.phoneNumbers = phoneNumbers == null ?
-               new ArrayList<>() :
-               new ArrayList<>(phoneNumbers);
-       }
-
-       // Getter methods only - no setters
-       public String getStreet() {
-           return street;
-       }
-
-       public String getCity() {
-           return city;
-       }
-
-       // Defensive copy for mutable field
-       public List<String> getPhoneNumbers() {
-           return new ArrayList<>(phoneNumbers);
-       }
-   }
-   ```
-
-   This class is immutable because:
-
-   - It's declared final
-   - All fields are private and final
-   - No setter methods are provided
-   - Mutable List is deep copied in constructor and getter
-   - No methods can modify the object's state
-
-   Additional considerations:
-
-   - Use wrapper classes for primitive types
-   - For complex objects, implement deep copy mechanisms
-   - Ensure all methods preserve immutability
-
-10. **What do you mean by anonymous class?**
-
-    An anonymous class in Java is a class that is defined without a name and is instantiated in a single expression. It is typically used to make the code more concise and to create a one-time use class that extends an existing class or implements an interface. Anonymous classes are often used in situations where a class is needed for a short period of time, such as when implementing event listeners or callbacks.
-
-    Here is an example of an anonymous class:
-
-    ```java
-    Button myButton = new Button("Click Me") {
-        @Override
-        public void onClick() {
-            System.out.println("Button clicked!");
-        }
-    };
-    ```
-
-    In this example, an anonymous class is created that extends the `Button` class and overrides the `onClick` method to provide specific behavior when the button is clicked.
-
-11. **What are the differences between subclass and inner class?**
+10. **What are the differences between subclass and inner class?**
 
     | Aspect            | Subclass                                                 | Inner Class                                                    |
     | ----------------- | -------------------------------------------------------- | -------------------------------------------------------------- |
@@ -268,97 +255,7 @@
     | Purpose           | Code reuse and extending functionality                   | Logical grouping and encapsulation                             |
     | Scope             | Available throughout the package/project                 | Limited to the scope of outer class                            |
 
-12. **How to implement classes and objects in Java? What are the members of a class?**
-
-    To implement classes and objects in Java, you need to follow these steps:
-
-    1. **Define a Class**: A class is defined using the `class` keyword followed by the class name. Inside the class, you can declare members, which include attributes (fields), methods (functions), and constructors that define the behavior of the objects created from the class.
-
-    ```java
-    public class Car {
-        // Attributes (Members)
-        private String color;
-        private String model;
-
-        // Constructor (Member)
-        public Car(String color, String model) {
-            this.color = color;
-            this.model = model;
-        }
-
-        // Method (Member)
-        public void displayInfo() {
-            System.out.println("Car Model: " + model + ", Color: " + color);
-        }
-    }
-    ```
-
-    2. **Create Objects**: Once the class is defined, you can create objects (instances) of that class using the `new` keyword.
-
-    ```java
-    public class Main {
-        public static void main(String[] args) {
-            // Creating objects of the Car class
-            Car myCar = new Car("Red", "Toyota");
-            Car yourCar = new Car("Blue", "Honda");
-
-            // Calling methods on the objects
-            myCar.displayInfo(); // Output: Car Model: Toyota, Color: Red
-            yourCar.displayInfo(); // Output: Car Model: Honda, Color: Blue
-        }
-    }
-    ```
-
-    In this example, the `Car` class is defined with members including attributes, a constructor, and a method. Two objects of the `Car` class are created in the `Main` class, demonstrating how to implement classes and objects in Java.
-
-13. **What is difference between WeakReference and SoftReference in Java?**
-
-    WeakReference and SoftReference are two types of special reference objects in Java that help with memory management. Here are their key differences:
-
-    **WeakReference:**
-
-    - Objects referenced only by WeakReference are eligible for garbage collection immediately when no strong references exist
-    - Commonly used for implementing caches where entries can be reclaimed as soon as they're no longer strongly referenced
-    - Garbage collector doesn't consider memory availability when collecting weak references
-    - Example use case: WeakHashMap, where entries are removed when keys are no longer referenced
-
-    **SoftReference:**
-
-    - Objects referenced by SoftReference are eligible for garbage collection only when memory is tight
-    - JVM will try to keep soft-referenced objects in memory as long as possible until memory is needed
-    - Useful for implementing memory-sensitive caches that automatically shrink under memory pressure
-    - More likely to survive garbage collection compared to WeakReference
-
-    Example demonstrating both references:
-
-    ```java
-    // WeakReference example
-    WeakReference<StringBuilder> weakRef = new WeakReference<>(new StringBuilder("Hello"));
-
-    // SoftReference example
-    SoftReference<StringBuilder> softRef = new SoftReference<>(new StringBuilder("Hello"));
-    ```
-
-    When to use which:
-
-    - Use WeakReference when you want objects to be collected as soon as they're not needed
-    - Use SoftReference for memory-sensitive caches that should only be cleared when memory is tight
-
-14. **What are access specifiers? What are the types of access specifiers?**
-
-    Access specifiers in Java are keywords that set the accessibility (visibility) of classes, methods, and other members. They control how the members of a class can be accessed from other classes. The main types of access specifiers in Java are:
-
-    1. **Public**: Members declared as public are accessible from any other class in any package. This means there are no restrictions on the visibility of public members.
-
-    2. **Private**: Members declared as private are accessible only within the class they are declared in. This means that private members cannot be accessed from outside the class, providing a way to encapsulate and protect the data.
-
-    3. **Protected**: Members declared as protected are accessible within the same package and by subclasses, even if they are in different packages.
-
-    4. **Default (Package-Private)**: If no access specifier is declared, the member is accessible only within its own package. This is also known as package-private access.
-
-    By using access specifiers, developers can implement encapsulation, which is a fundamental principle of object-oriented programming, ensuring that the internal representation of an object is hidden from the outside.
-
-15. **What are constructors in Java?**
+11. **What are constructors in Java?**
 
     Constructors in Java are special methods that are called when an object is instantiated. They have the same name as the class and do not have a return type, not even void. Constructors are used to initialize the object's attributes and allocate memory for the object. There are two types of constructors in Java:
 
@@ -390,175 +287,39 @@
 
     ```
 
-16. **Can you override static methods in Java?**
+12. **Can you call a constructor of a class inside another constructor? or How can constructor chaining be done using this keyword?**
+    Yes, you can call a constructor from another constructor within the same class using `this()`. This is known as constructor chaining. The call to another constructor must be the first statement in the constructor. This is useful for code reuse and avoiding duplicate initialization code.
 
-    No, static methods cannot be overridden in Java. This is because:
-
-    1. **Static Method Binding**: Static methods are bound at compile time, meaning the method to be called is determined by the reference type, not the object type.
-
-    2. **No Polymorphism**: Since static methods belong to the class rather than instances, they do not participate in polymorphism. Therefore, if a subclass defines a static method with the same name as a static method in its superclass, it is not considered an override but rather a method hiding.
-
-    3. **Accessing Static Methods**: When you call a static method, it is resolved based on the reference type, not the actual object type. This means that the static method of the superclass will be called, even if the reference is of the subclass type.
-
-    Example of static method hiding:
-
-    ```java
-    class Parent {
-        static void display() {
-            System.out.println("Static method in Parent");
-        }
-    }
-
-    class Child extends Parent {
-        static void display() {
-            System.out.println("Static method in Child");
-        }
-    }
-
-    public class Test {
-        public static void main(String[] args) {
-            Parent obj = new Child();
-            obj.display(); // Outputs: Static method in Parent
-        }
-    }
-    ```
-
-    In this example, the static method `display()` in the `Child` class hides the static method in the `Parent` class, but it does not override it.
-
-17. **Is it possible to overload the static methods in Java?**
-
-    Yes, it is possible to overload static methods in Java. Method overloading occurs when two or more methods in the same class have the same name but different parameters (different type, number, or both). Since static methods are resolved at compile time based on the method signature, you can have multiple static methods with the same name as long as their parameter lists differ.
-
-    Example of static method overloading:
-
-    ```java
-    class MathUtils {
-        static int add(int a, int b) {
-            return a + b;
-        }
-
-        static double add(double a, double b) {
-            return a + b;
-        }
-
-        static int add(int a, int b, int c) {
-            return a + b + c;
-        }
-    }
-
-    public class Test {
-        public static void main(String[] args) {
-            System.out.println(MathUtils.add(5, 10));         // Calls the first method
-            System.out.println(MathUtils.add(5.5, 10.5));     // Calls the second method
-            System.out.println(MathUtils.add(5, 10, 15));      // Calls the third method
-        }
-    }
-    ```
-
-    In this example, the `add` method is overloaded with different parameter types and counts, demonstrating that static methods can indeed be overloaded.
-
-18. **What are the restrictions that are applied to the Java static methods?**
-
-    There are several important restrictions that apply to static methods in Java:
-
-    1. **Cannot access non-static members directly**
-
-       - Static methods cannot directly access non-static (instance) variables or methods
-       - They can only access other static members of the class
-       - To access instance members, they need an object reference
-
-    2. **Cannot use 'this' or 'super' keywords**
-
-       - The 'this' keyword refers to the current instance, which doesn't exist in static context
-       - The 'super' keyword refers to parent instance, which also doesn't exist in static context
-
-    3. **Method overriding restrictions**
-
-       - Static methods cannot be overridden (they can only be hidden)
-       - If a child class defines same static method as parent, it's method hiding, not overriding
-
-    4. **No abstract static methods**
-       - Static methods cannot be declared as abstract
-       - Abstract methods need to be overridden, which static methods cannot do
-
-    Example demonstrating these restrictions:
-
-    ```java
-    public class StaticRestrictions {
-        private int instanceVar = 10;
-        private static int staticVar = 20;
-
-        // Cannot access instanceVar directly
-        public static void staticMethod() {
-            // System.out.println(instanceVar);     // Error: Cannot access instance variable
-            System.out.println(staticVar);          // OK: Can access static variable
-
-            StaticRestrictions obj = new StaticRestrictions();
-            System.out.println(obj.instanceVar);    // OK: Accessing via object reference
-        }
-    }
-    ```
-
-19. **What is the use of static variables and methods?**
-
-    | Feature           | Static Variables                                                                           | Static Methods                                                      |
-    | ----------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
-    | Memory Allocation | Single copy shared across all instances of the class                                       | Belongs to class rather than any instance                           |
-    | Access            | Can be accessed without creating class instance                                            | Can be called without creating class instance                       |
-    | Usage             | Common properties shared by all instances (e.g., counters, constants)                      | Utility functions that don't need instance data                     |
-    | Instance Access   | Cannot directly access non-static members                                                  | Cannot directly access non-static members                           |
-    | Memory Efficiency | Saves memory by avoiding multiple copies                                                   | N/A                                                                 |
-    | Example Use Cases | - Counter for number of objects created<br>- Configuration constants<br>- Shared resources | - Math utility functions<br>- Factory methods<br>- Helper functions |
-
-    Example:
+    Here's an example:
 
     ```java
     public class Student {
-        private static int studentCount = 0;  // static variable
         private String name;
+        private int age;
+        private String id;
 
-        public Student(String name) {
+        // Constructor with all parameters
+        public Student(String name, int age, String id) {
             this.name = name;
-            studentCount++;  // tracks total number of students
+            this.age = age;
+            this.id = id;
         }
 
-        public static int getStudentCount() {  // static method
-            return studentCount;
+        // Constructor with two parameters, calls the three-parameter constructor
+        public Student(String name, int age) {
+            this(name, age, "Not Assigned");
         }
-    }
-    ```
 
-20. **Can you declare a constructor using static?**
-
-    No, constructors cannot be declared as static in Java. This is because:
-
-    1. Constructors are instance-specific methods used to initialize object state
-    2. Static members belong to the class rather than instances
-    3. The purpose of a constructor is to create and initialize new instances
-    4. Static methods cannot access instance members, which would defeat the purpose of constructors
-
-    Example of invalid constructor declaration:
-
-    ```java
-    public class Example {
-        // This would cause a compilation error
-        static Example() {  // Invalid - cannot use static with constructor
-            // initialization code
+        // Constructor with one parameter, calls the two-parameter constructor
+        public Student(String name) {
+            this(name, 0);
         }
     }
     ```
 
-    If you need static initialization, use a static initialization block instead:
+    In this example, the constructors are chained together, with each constructor calling another constructor using `this()`. This helps maintain clean and DRY (Don't Repeat Yourself) code.
 
-    ```java
-    public class Example {
-        static {
-            // Static initialization code here
-        }
-    }
-    ```
-
-21. **What rules that you must follow while creating a constructor in Java?**
+13. **What rules that you must follow while creating a constructor in Java?**
 
     There are several important rules that must be followed when creating a constructor in Java:
 
@@ -595,7 +356,7 @@
     }
     ```
 
-22. **What is the difference between constructor and method?**
+14. **What is the difference between constructor and method?**
 
     | Aspect           | Constructor                                                      | Method                                                      |
     | ---------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -624,7 +385,7 @@
     }
     ```
 
-23. **Explain the constructor overloading**
+15. **Explain the constructor overloading**
 
     Constructor overloading is a technique in Java where a class can have multiple constructors with different parameter lists. Each constructor provides a different way to initialize an object of that class. The constructors must differ in their parameter lists (number of parameters, types of parameters, or both).
 
@@ -675,7 +436,7 @@
     Student s4 = new Student("Mike", 21, "A");          // Uses constructor with all parameters
     ```
 
-24. **What is Copy Constructor in Java?**
+16. **What is Copy Constructor in Java?**
 
     A Copy Constructor in Java is a constructor that creates a new object by copying the values from another object of the same class. It takes an object of the same class as a parameter and creates a new object with the same values. Copy constructors are useful when you want to create a new object with the same state as an existing object.
 
@@ -706,7 +467,376 @@
 
     Note: that Java does not provide automatic copy constructors like C++. You need to implement them explicitly if needed. Also, when dealing with reference types, be careful to perform a deep copy if required, to avoid sharing references between the original and copied objects.
 
-25. **What is a singleton class in Java? Describe the singleton pattern with an example.**
+17. **What is a private constructor?**
+    A private constructor is a constructor declared with the `private` access modifier, which restricts its instantiation from outside the class. Key characteristics include:
+
+    1. **Prevents Direct Instantiation:**
+
+       - Blocks creation of objects from outside the class
+       - Ensures the class cannot be directly instantiated
+
+    2. **Common Use Cases:**
+
+       - Implementing Singleton design pattern
+       - Creating utility classes with only static methods
+       - Controlling object creation and maintaining strict control over object lifecycle
+
+    3. **Example Implementations:**
+
+    ```java
+    // Singleton Pattern
+    public class DatabaseConnection {
+        private static DatabaseConnection instance;
+
+        // Private constructor prevents direct instantiation
+        private DatabaseConnection() {
+            // Initialization logic
+        }
+
+        // Controlled object creation method
+        public static DatabaseConnection getInstance() {
+            if (instance == null) {
+                instance = new DatabaseConnection();
+            }
+            return instance;
+        }
+    }
+
+    // Utility Class
+    public class MathUtils {
+        // Private constructor prevents instantiation
+        private MathUtils() {
+            throw new AssertionError("Cannot instantiate utility class");
+        }
+
+        // Only static methods
+        public static int add(int a, int b) {
+            return a + b;
+        }
+    }
+    ```
+
+    4. **Benefits:**
+
+       - Enhances encapsulation
+       - Provides more control over object creation
+       - Prevents unnecessary object instantiation
+
+18. **Can you declare a constructor using static?**
+
+    No, constructors cannot be declared as static in Java. This is because:
+
+    1. Constructors are instance-specific methods used to initialize object state
+    2. Static members belong to the class rather than instances
+    3. The purpose of a constructor is to create and initialize new instances
+    4. Static methods cannot access instance members, which would defeat the purpose of constructors
+
+    Example of invalid constructor declaration:
+
+    ```java
+    public class Example {
+        // This would cause a compilation error
+        static Example() {  // Invalid - cannot use static with constructor
+            // initialization code
+        }
+    }
+    ```
+
+    If you need static initialization, use a static initialization block instead:
+
+    ```java
+    public class Example {
+        static {
+            // Static initialization code here
+        }
+    }
+    ```
+
+19. **What is immutable object?**
+
+    An immutable object is an object whose state cannot be changed after it is created. Once an immutable object is constructed, its contents remain constant throughout its lifetime. String is a classic example of an immutable class in Java.
+
+    Key characteristics of immutable objects:
+
+    1. **Final Class**: The class should be declared as final to prevent inheritance
+    2. **Private Fields**: All fields should be private and final
+    3. **No Setters**: No methods that modify the object's state
+    4. **Deep Copy**: If mutable objects are used as fields, return copies instead of references
+    5. **Initialize in Constructor**: All fields must be initialized in the constructor
+
+    Example of an immutable class:
+
+    ```java
+    public final class ImmutablePerson {
+        private final String name;
+        private final int age;
+
+        public ImmutablePerson(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+    }
+    ```
+
+    Benefits of immutable objects:
+
+    - Thread-safe without synchronization
+    - Safe to share and cache
+    - Simple to construct, test, and use
+    - Prevent temporal coupling
+    - Side-effect free behavior
+
+20. **How can we create an immutable class in Java?**
+
+    To create an immutable class in Java, follow these key steps:
+
+    1. **Make the class final**: Prevent inheritance that could potentially modify the object's state
+    2. **Make all fields private and final**: Ensure fields cannot be changed after initialization
+    3. **Do not provide setter methods**: Prevent modification of object state after creation
+    4. **Initialize all fields in the constructor**: Set values during object creation
+    5. **Perform deep copy for mutable fields**: If the class contains mutable objects, return defensive copies
+
+    Example of a comprehensive immutable class:
+
+    ```java
+    public final class ImmutableAddress {
+        private final String street;
+        private final String city;
+        private final List<String> phoneNumbers; // Potentially mutable field
+
+        public ImmutableAddress(String street, String city, List<String> phoneNumbers) {
+            this.street = street;
+            this.city = city;
+            // Deep copy of mutable list
+            this.phoneNumbers = phoneNumbers == null ?
+                new ArrayList<>() :
+                new ArrayList<>(phoneNumbers);
+        }
+
+        // Getter methods only - no setters
+        public String getStreet() {
+            return street;
+        }
+
+        public String getCity() {
+            return city;
+        }
+
+        // Defensive copy for mutable field
+        public List<String> getPhoneNumbers() {
+            return new ArrayList<>(phoneNumbers);
+        }
+    }
+    ```
+
+    This class is immutable because:
+
+    - It's declared final
+    - All fields are private and final
+    - No setter methods are provided
+    - Mutable List is deep copied in constructor and getter
+    - No methods can modify the object's state
+
+    Additional considerations:
+
+    - Use wrapper classes for primitive types
+    - For complex objects, implement deep copy mechanisms
+    - Ensure all methods preserve immutability
+
+21. **What is difference between WeakReference and SoftReference in Java?**
+
+    WeakReference and SoftReference are two types of special reference objects in Java that help with memory management. Here are their key differences:
+
+    **WeakReference:**
+
+    - Objects referenced only by WeakReference are eligible for garbage collection immediately when no strong references exist
+    - Commonly used for implementing caches where entries can be reclaimed as soon as they're no longer strongly referenced
+    - Garbage collector doesn't consider memory availability when collecting weak references
+    - Example use case: WeakHashMap, where entries are removed when keys are no longer referenced
+
+    **SoftReference:**
+
+    - Objects referenced by SoftReference are eligible for garbage collection only when memory is tight
+    - JVM will try to keep soft-referenced objects in memory as long as possible until memory is needed
+    - Useful for implementing memory-sensitive caches that automatically shrink under memory pressure
+    - More likely to survive garbage collection compared to WeakReference
+
+    Example demonstrating both references:
+
+    ```java
+    // WeakReference example
+    WeakReference<StringBuilder> weakRef = new WeakReference<>(new StringBuilder("Hello"));
+
+    // SoftReference example
+    SoftReference<StringBuilder> softRef = new SoftReference<>(new StringBuilder("Hello"));
+    ```
+
+    When to use which:
+
+    - Use WeakReference when you want objects to be collected as soon as they're not needed
+    - Use SoftReference for memory-sensitive caches that should only be cleared when memory is tight
+
+22. **What are access specifiers? What are the types of access specifiers?**
+
+    Access specifiers in Java are keywords that set the accessibility (visibility) of classes, methods, and other members. They control how the members of a class can be accessed from other classes. The main types of access specifiers in Java are:
+
+    1. **Public**: Members declared as public are accessible from any other class in any package. This means there are no restrictions on the visibility of public members.
+
+    2. **Private**: Members declared as private are accessible only within the class they are declared in. This means that private members cannot be accessed from outside the class, providing a way to encapsulate and protect the data.
+
+    3. **Protected**: Members declared as protected are accessible within the same package and by subclasses, even if they are in different packages.
+
+    4. **Default (Package-Private)**: If no access specifier is declared, the member is accessible only within its own package. This is also known as package-private access.
+
+    By using access specifiers, developers can implement encapsulation, which is a fundamental principle of object-oriented programming, ensuring that the internal representation of an object is hidden from the outside.
+
+23. **Can you override static methods in Java?**
+
+    No, static methods cannot be overridden in Java. This is because:
+
+    1. **Static Method Binding**: Static methods are bound at compile time, meaning the method to be called is determined by the reference type, not the object type.
+
+    2. **No Polymorphism**: Since static methods belong to the class rather than instances, they do not participate in polymorphism. Therefore, if a subclass defines a static method with the same name as a static method in its superclass, it is not considered an override but rather a method hiding.
+
+    3. **Accessing Static Methods**: When you call a static method, it is resolved based on the reference type, not the actual object type. This means that the static method of the superclass will be called, even if the reference is of the subclass type.
+
+    Example of static method hiding:
+
+    ```java
+    class Parent {
+        static void display() {
+            System.out.println("Static method in Parent");
+        }
+    }
+
+    class Child extends Parent {
+        static void display() {
+            System.out.println("Static method in Child");
+        }
+    }
+
+    public class Test {
+        public static void main(String[] args) {
+            Parent obj = new Child();
+            obj.display(); // Outputs: Static method in Parent
+        }
+    }
+    ```
+
+    In this example, the static method `display()` in the `Child` class hides the static method in the `Parent` class, but it does not override it.
+
+24. **Is it possible to overload the static methods in Java?**
+
+    Yes, it is possible to overload static methods in Java. Method overloading occurs when two or more methods in the same class have the same name but different parameters (different type, number, or both). Since static methods are resolved at compile time based on the method signature, you can have multiple static methods with the same name as long as their parameter lists differ.
+
+    Example of static method overloading:
+
+    ```java
+    class MathUtils {
+        static int add(int a, int b) {
+            return a + b;
+        }
+
+        static double add(double a, double b) {
+            return a + b;
+        }
+
+        static int add(int a, int b, int c) {
+            return a + b + c;
+        }
+    }
+
+    public class Test {
+        public static void main(String[] args) {
+            System.out.println(MathUtils.add(5, 10));         // Calls the first method
+            System.out.println(MathUtils.add(5.5, 10.5));     // Calls the second method
+            System.out.println(MathUtils.add(5, 10, 15));      // Calls the third method
+        }
+    }
+    ```
+
+    In this example, the `add` method is overloaded with different parameter types and counts, demonstrating that static methods can indeed be overloaded.
+
+25. **What are the restrictions that are applied to the Java static methods?**
+
+    There are several important restrictions that apply to static methods in Java:
+
+    1. **Cannot access non-static members directly**
+
+       - Static methods cannot directly access non-static (instance) variables or methods
+       - They can only access other static members of the class
+       - To access instance members, they need an object reference
+
+    2. **Cannot use 'this' or 'super' keywords**
+
+       - The 'this' keyword refers to the current instance, which doesn't exist in static context
+       - The 'super' keyword refers to parent instance, which also doesn't exist in static context
+
+    3. **Method overriding restrictions**
+
+       - Static methods cannot be overridden (they can only be hidden)
+       - If a child class defines same static method as parent, it's method hiding, not overriding
+
+    4. **No abstract static methods**
+       - Static methods cannot be declared as abstract
+       - Abstract methods need to be overridden, which static methods cannot do
+
+    Example demonstrating these restrictions:
+
+    ```java
+    public class StaticRestrictions {
+        private int instanceVar = 10;
+        private static int staticVar = 20;
+
+        // Cannot access instanceVar directly
+        public static void staticMethod() {
+            // System.out.println(instanceVar);     // Error: Cannot access instance variable
+            System.out.println(staticVar);          // OK: Can access static variable
+
+            StaticRestrictions obj = new StaticRestrictions();
+            System.out.println(obj.instanceVar);    // OK: Accessing via object reference
+        }
+    }
+    ```
+
+26. **What is the use of static variables and methods?**
+
+    | Feature           | Static Variables                                                                           | Static Methods                                                      |
+    | ----------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+    | Memory Allocation | Single copy shared across all instances of the class                                       | Belongs to class rather than any instance                           |
+    | Access            | Can be accessed without creating class instance                                            | Can be called without creating class instance                       |
+    | Usage             | Common properties shared by all instances (e.g., counters, constants)                      | Utility functions that don't need instance data                     |
+    | Instance Access   | Cannot directly access non-static members                                                  | Cannot directly access non-static members                           |
+    | Memory Efficiency | Saves memory by avoiding multiple copies                                                   | N/A                                                                 |
+    | Example Use Cases | - Counter for number of objects created<br>- Configuration constants<br>- Shared resources | - Math utility functions<br>- Factory methods<br>- Helper functions |
+
+    Example:
+
+    ```java
+    public class Student {
+        private static int studentCount = 0;  // static variable
+        private String name;
+
+        public Student(String name) {
+            this.name = name;
+            studentCount++;  // tracks total number of students
+        }
+
+        public static int getStudentCount() {  // static method
+            return studentCount;
+        }
+    }
+    ```
+
+27. **What is a singleton class in Java? Describe the singleton pattern with an example.**
 
     A Singleton class in Java is a design pattern that restricts the instantiation of a class to a single instance. This is useful when exactly one object is needed to coordinate actions across the system, such as managing configuration settings, database connections, or thread pools.
 
@@ -753,7 +883,7 @@
 
     In this example, the `Singleton` class has a private constructor, a static instance variable, and a public static method `getInstance()` that provides access to the single instance of the class. This ensures that no more than one instance of the `Singleton` class can exist at any time.
 
-26. **What is encapsulation? Explain encapsulation with an example.**
+28. **What is encapsulation? Explain encapsulation with an example.**
 
     Encapsulation is one of the four fundamental OOP concepts that involves bundling data and the methods that operate on that data within a single unit (class), while restricting direct access to some of the object's components. This is achieved in Java through:
 
@@ -798,7 +928,7 @@
     4. The implementation details are hidden from the user
     5. We can change the internal implementation without affecting code that uses the class
 
-27. **What is inheritance and what are its types in Java?**
+29. **What is inheritance and what are its types in Java?**
 
     Inheritance is a fundamental object-oriented programming concept where a class (subclass/child class) can inherit attributes and methods from another class (superclass/parent class). In Java, inheritance is implemented using the `extends` keyword. This mechanism promotes code reuse, simplifies maintenance, and allows for the creation of more specialized classes based on existing ones. There are several types of inheritance supported in Java:
 
@@ -851,7 +981,7 @@
 
     In this example, the `Dog` class inherits the properties and behaviors of the `Animal` class, including the `name` field and the `eat()` and `sleep()` methods. The `Dog` class also adds its own unique behavior, the `bark()` method.
 
-28. **What do you mean by Polymorphism and what are its types?**
+30. **What do you mean by Polymorphism and what are its types?**
 
     Polymorphism means "many forms" and is one of the core concepts of object-oriented programming. It allows objects to be treated as instances of their parent class rather than their actual class. In Java, there are two main types of polymorphism:
 
@@ -912,7 +1042,7 @@
 
     The key difference is that runtime polymorphism is resolved during program execution based on the actual object type, while compile-time polymorphism is resolved during compilation based on method signatures.
 
-29. **What do you mean by abstraction and how it is achieved in Java?**
+31. **What do you mean by abstraction and how it is achieved in Java?**
 
     Abstraction is the process of hiding implementation details and showing only the functionality to the user. It helps reduce programming complexity and effort by focusing on what an object does rather than how it does it.
 
@@ -971,7 +1101,7 @@
 
     The main benefit of abstraction is that it allows you to focus on what the object does instead of how it does it, reducing complexity and coupling in your code.
 
-30. **What is the difference between extends and implements?**
+32. **What is the difference between extends and implements?**
 
     | Aspect                   | extends                                                 | implements                                             |
     | ------------------------ | ------------------------------------------------------- | ------------------------------------------------------ |
@@ -984,7 +1114,7 @@
     | Code Reuse               | Allows reuse of code from parent class                  | Only provides method contracts, no implementation      |
     | Usage Example            | `class Dog extends Animal`                              | `class Bird implements Flyable`                        |
 
-31. **What is the difference between loose coupling and tight coupling?**
+33. **What is the difference between loose coupling and tight coupling?**
 
     Loose coupling refers to a design principle in which components or classes are minimally dependent on each other, allowing for greater flexibility and easier maintenance. In a loosely coupled system, changes in one component have little to no impact on others, making it easier to modify or replace parts of the system without affecting the overall functionality.
 
@@ -1054,7 +1184,7 @@
     	```
     ````
 
-32. **What is the difference between cohesion and coupling?**
+34. **What is the difference between cohesion and coupling?**
 
     | Aspect     | Cohesion                                                                 | Coupling                                                                              |
     | ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
@@ -1107,7 +1237,7 @@
     }
     ```
 
-33. **What is a Marker Interface?**
+35. **What is a Marker Interface?**
 
     A Marker Interface in Java is an interface that does not contain any methods. It is used to mark a class that implements it, indicating that the class has a specific property or behavior. Marker interfaces are often used to indicate that a class has a particular characteristic or capability, such as being serializable, cloneable, or thread-safe.
     Here are some examples of commonly used marker interfaces in Java:
@@ -1151,7 +1281,7 @@
     - `Cloneable`: Marks classes that can be cloned
     - `Remote`: Marks classes that can be used for RMI (Remote Method Invocation)
 
-34. **What is an abstract class? Explain its purpose and when to use it.**
+36. **What is an abstract class? Explain its purpose and when to use it.**
 
     An abstract class in Java is a class that cannot be instantiated on its own and may contain both abstract and concrete methods. It serves as a blueprint for other classes and is designed to be extended by subclasses.
 
@@ -1198,7 +1328,7 @@
     - You need to provide a template for a group of related classes
     - Some common behavior can be implemented in the abstract class, while other behavior must be implemented by each subclass
 
-35. **Can we define a class Abstract even if it does not have any abstract methods?**
+37. **Can we define a class Abstract even if it does not have any abstract methods?**
 
     Yes, we can define a class as abstract even if it doesn't have any abstract methods. This is perfectly valid in Java. The abstract keyword simply prevents the class from being instantiated directly.
 
@@ -1224,7 +1354,7 @@
     - The class is not complete enough to be instantiated meaningfully
     - You're designing a framework where the base class should never be used directly
 
-36. **Can you make abstract methods static in Java?**
+38. **Can you make abstract methods static in Java?**
 
     No, abstract methods cannot be static in Java. This is because:
 
@@ -1255,7 +1385,7 @@
     }
     ```
 
-37. **What is the difference between abstract class and interface in Java?**
+39. **What is the difference between abstract class and interface in Java?**
 
     | Aspect                | Abstract Class                                                                       | Interface                                                                                                               |
     | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
@@ -1266,7 +1396,7 @@
     | Access Modifiers      | Can have access modifiers (public, protected, private).                              | All methods are public by default; cannot have access modifiers.                                                        |
     | Use Case              | Used when classes share a common base and behavior.                                  | Used to define a contract that implementing classes must follow.                                                        |
 
-38. **What do you mean by association? What are the types of associations?**
+40. **What do you mean by association? What are the types of associations?**
 
     Association in object-oriented programming refers to a relationship between two classes that establishes a connection between them. It signifies that one class (the client) uses or interacts with another class (the supplier). Associations can be categorized into three main types:
 
@@ -1280,7 +1410,7 @@
 
     Understanding these associations helps in designing systems that accurately represent real-world relationships between entities.
 
-39. **What is the difference between composition, aggregation, and association?**
+41. **What is the difference between composition, aggregation, and association?**
 
     | Aspect     | Composition                                                                     | Aggregation                                                                  | Association                                                                                 |
     | ---------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -1350,7 +1480,7 @@
     }
     ```
 
-40. **What is the difference between aggregation and composition?**
+42. **What is the difference between aggregation and composition?**
 
     | Aspect       | Aggregation                   | Composition                          |
     | ------------ | ----------------------------- | ------------------------------------ |
@@ -1366,7 +1496,7 @@
 
     - Aggregation: The University class shows aggregation with Student. Students can exist independently of University, and the University simply maintains a collection of Student references. When University is destroyed, the Students continue to exist.
 
-41. **What is the difference between Inheritance and Composition?**
+43. **What is the difference between Inheritance and Composition?**
 
     | Aspect         | Inheritance                           | Composition                               |
     | -------------- | ------------------------------------- | ----------------------------------------- |
@@ -1404,7 +1534,7 @@
     - Composition is generally preferred when possible ("favor composition over inheritance") as it provides more flexibility and looser coupling
     - Inheritance breaks encapsulation as child classes can access protected members of parent class
 
-42. **What are the differences between method overloading & overriding?**
+44. **What are the differences between method overloading & overriding?**
 
     | Aspect          | Method Overloading                                                     | Method Overriding                                              |
     | --------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------- |
@@ -1463,11 +1593,11 @@
     In the overloading example, the `Calculator` class has multiple `add` methods with different parameter types/counts.
     In the overriding example, `Dog` and `Cat` classes provide their own specific implementations of the `makeSound()` method inherited from `Animal`.
 
-43. **Why is method overloading in Java not possible by changing the method's return type?**
+45. **Why is method overloading in Java not possible by changing the method's return type?**
 
     Method overloading in Java cannot be achieved solely by changing the return type of the method because the method signature, which is used to identify the method, consists of the method name and the parameter list (types and number of parameters). The return type is not part of the method signature. Therefore, if two methods have the same name and parameter list but different return types, the compiler cannot distinguish between them based on the return type alone, leading to ambiguity.
 
-44. **What is the difference between Java Dynamic Binding and Static Binding?**
+46. **What is the difference between Java Dynamic Binding and Static Binding?**
 
     - **Static Binding**: This occurs at compile time and is used for method calls that are resolved based on the reference type. It is typically used with private, static, and final methods. Since the method to be called is determined at compile time, it cannot be changed at runtime.
 
@@ -1500,7 +1630,7 @@
     }
     ```
 
-45. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
+47. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
 
     An Instance Initializer Block is a block of code that is used to initialize instance variables of a class. It is executed when an instance of the class is created, before the constructor is called.
 
@@ -1529,7 +1659,7 @@
     }
     ```
 
-46. **What is a static block in Java?**
+48. **What is a static block in Java?**
 
     A static block (also called static initialization block) is a block of code inside a class that is executed only once when the class is first loaded into memory. It is used to initialize static variables or perform one-time setup operations.
 
@@ -1561,7 +1691,7 @@
     }
     ```
 
-47. **What is the purpose of static members in Java?**
+49. **What is the purpose of static members in Java?**
 
     Static members in Java (including methods, variables, and nested classes) belong to the class itself rather than any specific instance. They serve several important purposes:
 
@@ -1610,7 +1740,7 @@
     }
     ```
 
-48. **Explain the use of final keyword in variable, method and class**
+50. **Explain the use of final keyword in variable, method and class**
 
     The `final` keyword in Java is used to impose restrictions on variables, methods, and classes:
 
@@ -1635,7 +1765,7 @@
     // class ChildClass extends FinalClass { } // Cannot extend final class
     ```
 
-49. **Difference between the final method and the abstract method?**
+51. **Difference between the final method and the abstract method?**
 
     | Feature            | Final Method                                     | Abstract Method                                                       |
     | ------------------ | ------------------------------------------------ | --------------------------------------------------------------------- |
@@ -1647,25 +1777,7 @@
     | **Method Body**    | Must have method body                            | Cannot have method body (except default methods in interfaces)        |
     | **Purpose**        | To preserve implementation across inheritance    | To achieve abstraction and polymorphism                               |
 
-50. **What is the significant difference between object-oriented language and object-based language?**
-
-    Object-oriented languages and object-based languages differ in several key aspects:
-
-    | Feature               | Object-Oriented Languages                    | Object-Based Languages                |
-    | --------------------- | -------------------------------------------- | ------------------------------------- |
-    | **Inheritance**       | Supports inheritance and polymorphism        | Does not support inheritance          |
-    | **Class Support**     | Has full class-based abstraction             | May use prototypes instead of classes |
-    | **Examples**          | Java, C++, Python, Ruby                      | JavaScript (pre-ES6), VBScript        |
-    | **Code Organization** | Organized around both classes and objects    | Organized around objects only         |
-    | **Data Abstraction**  | Supports both data and procedure abstraction | Primarily supports data abstraction   |
-
-    Key points:
-
-    - Object-oriented languages provide complete support for OOP principles (inheritance, polymorphism, encapsulation)
-    - Object-based languages support objects but lack inheritance and some other OOP features
-    - Object-based languages often use prototype-based programming instead of class-based inheritance
-
-51. **What is the difference between encapsulation and abstraction?**
+52. **What is the difference between encapsulation and abstraction?**
 
     | Feature            | Encapsulation                                                                                               | Abstraction                                                                                        |
     | ------------------ | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
@@ -1675,14 +1787,14 @@
     | **Example**        | A class with private fields and public methods to access and modify those fields                            | An interface defining methods without implementation, allowing different classes to implement them |
     | **Focus**          | Focuses on the internal state and behavior of an object                                                     | Focuses on the external interface and functionality of an object                                   |
 
-52. **Can we use both final & abstract keywords with a method?**
+53. **Can we use both final & abstract keywords with a method?**
 
     No, we cannot use both final and abstract keywords with a method. A method declared as abstract must be implemented by subclasses, while a final method cannot be overridden. Therefore, it is contradictory to declare a method as both final and abstract, as one implies that the method cannot change, while the other requires it to be defined in a subclass.
 
-53. **Can we declare a method as final in an interface?**  
+54. **Can we declare a method as final in an interface?**  
     No, we cannot declare a method as final in an interface. In Java, all methods in an interface are implicitly abstract (prior to Java 8) and cannot have a body. Since final methods cannot be overridden, it contradicts the purpose of an interface, which is to provide a contract for classes to implement. However, from Java 8 onwards, interfaces can have default and static methods, but these cannot be declared as final either, as they are meant to be overridden in implementing classes if desired.
 
-54. **Can an interface extend another interface?**  
+55. **Can an interface extend another interface?**  
     Yes, an interface can extend another interface in Java. When an interface extends another interface, it inherits all the abstract methods of the parent interface. A class that implements the child interface must provide implementations for all the methods declared in both the child and parent interfaces. This allows for a more flexible and modular design in object-oriented programming.
 
     Here's an example demonstrating interface extension:
@@ -1716,38 +1828,6 @@
         }
     }
     ```
-
-55. **Can you call a constructor of a class inside another constructor? or How can constructor chaining be done using this keyword?**
-    Yes, you can call a constructor from another constructor within the same class using `this()`. This is known as constructor chaining. The call to another constructor must be the first statement in the constructor. This is useful for code reuse and avoiding duplicate initialization code.
-
-    Here's an example:
-
-    ```java
-    public class Student {
-        private String name;
-        private int age;
-        private String id;
-
-        // Constructor with all parameters
-        public Student(String name, int age, String id) {
-            this.name = name;
-            this.age = age;
-            this.id = id;
-        }
-
-        // Constructor with two parameters, calls the three-parameter constructor
-        public Student(String name, int age) {
-            this(name, age, "Not Assigned");
-        }
-
-        // Constructor with one parameter, calls the two-parameter constructor
-        public Student(String name) {
-            this(name, 0);
-        }
-    }
-    ```
-
-    In this example, the constructors are chained together, with each constructor calling another constructor using `this()`. This helps maintain clean and DRY (Don't Repeat Yourself) code.
 
 56. **Does Java work as a "pass by value" or "pass by reference" phenomenon?**
     Java is strictly pass-by-value. However, this can be confusing because when passing objects, the value being passed is actually a reference to the object. This means:
@@ -1888,61 +1968,7 @@
     animal.makeSound();       // Calls Dog's makeSound() at runtime
     ```
 
-62. **What is a private constructor?**
-    A private constructor is a constructor declared with the `private` access modifier, which restricts its instantiation from outside the class. Key characteristics include:
-
-    1. **Prevents Direct Instantiation:**
-
-       - Blocks creation of objects from outside the class
-       - Ensures the class cannot be directly instantiated
-
-    2. **Common Use Cases:**
-
-       - Implementing Singleton design pattern
-       - Creating utility classes with only static methods
-       - Controlling object creation and maintaining strict control over object lifecycle
-
-    3. **Example Implementations:**
-
-    ```java
-    // Singleton Pattern
-    public class DatabaseConnection {
-        private static DatabaseConnection instance;
-
-        // Private constructor prevents direct instantiation
-        private DatabaseConnection() {
-            // Initialization logic
-        }
-
-        // Controlled object creation method
-        public static DatabaseConnection getInstance() {
-            if (instance == null) {
-                instance = new DatabaseConnection();
-            }
-            return instance;
-        }
-    }
-
-    // Utility Class
-    public class MathUtils {
-        // Private constructor prevents instantiation
-        private MathUtils() {
-            throw new AssertionError("Cannot instantiate utility class");
-        }
-
-        // Only static methods
-        public static int add(int a, int b) {
-            return a + b;
-        }
-    }
-    ```
-
-    4. **Benefits:**
-       - Enhances encapsulation
-       - Provides more control over object creation
-       - Prevents unnecessary object instantiation
-
-63. **Can you explain Liskov Substitution Principle (LSP)?**
+62. **Can you explain Liskov Substitution Principle (LSP)?**
 
     The Liskov Substitution Principle states that objects of a superclass should be replaceable with objects of its subclasses without breaking the application. In other words, a subclass should extend the capability of the parent class, not narrow it down.
 
@@ -1998,7 +2024,7 @@
     }
     ```
 
-64. **Can we use private or protected member variables in an interface?**
+63. **Can we use private or protected member variables in an interface?**
 
     - No, interface fields are implicitly public, static and final
     - Prior to Java 9, interface members could only be public
@@ -2023,7 +2049,7 @@
     }
     ```
 
-65. **When can an object reference be cast to a Java interface reference?**
+64. **When can an object reference be cast to a Java interface reference?**
 
     An object reference can be cast to an interface reference when:
 
@@ -2062,3 +2088,85 @@
     - The cast can be checked at runtime using the instanceof operator
     - An invalid cast will result in a ClassCastException
     - The cast may be implicit (no cast operator needed) when assigning to an interface reference
+
+65. **What are getters and setters in Java?**
+
+    Getters and setters are methods that allow controlled access to class fields/attributes:
+
+    ```java
+    public class Person {
+        private String name; // Private field
+        
+        // Getter method
+        public String getName() {
+            return name;
+        }
+        
+        // Setter method
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+    ```
+
+    Key points:
+
+    1. Encapsulation: They provide encapsulation by keeping fields private while allowing controlled access
+    2. Naming Convention:
+        - Getters start with "get" followed by capitalized field name
+        - Setters start with "set" followed by capitalized field name
+        - For boolean fields, getters often start with "is" (e.g., isActive())
+    3. Benefits:
+        - Add validation in setters
+        - Modify internal representation without changing public interface
+        - Control read/write access separately
+        - Enable debugging/logging when fields are accessed
+    4. JavaBeans: Following these naming conventions makes classes compatible with JavaBeans specification
+
+66. **What is static in Java?**
+
+    The static keyword in Java is used to declare members (variables and methods) that belong to the class itself rather than instances of the class:
+
+    ```java
+    public class Counter {
+        private static int count = 0;  // Static variable shared by all instances
+        
+        public static void increment() {  // Static method
+            count++;
+        }
+        
+        public static int getCount() {    // Static method
+            return count;
+        }
+    }
+    ```
+
+    Key points:
+
+    1. Static Variables (Class Variables):
+        - Shared across all instances of the class
+        - Can be accessed without creating class instance
+        - Initialized only once when class is loaded
+        - Memory efficient for common data
+
+    2. Static Methods:
+        - Can be called without creating class instance
+        - Can only directly access other static members
+        - Cannot use 'this' keyword
+        - Common for utility functions
+
+    3. Static Blocks:
+        - Used for static initialization
+        - Executed when class is loaded
+        - Runs before constructor
+
+    4. Static Classes:
+        - Only inner classes can be static
+        - Don't need instance of outer class to be created
+        - Cannot access non-static members of outer class
+
+    5. Common Uses:
+        - Utility methods (e.g., Math.sqrt())
+        - Constants (public static final)
+        - Singleton pattern
+        - Factory methods

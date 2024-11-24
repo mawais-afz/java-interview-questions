@@ -682,7 +682,20 @@
       - Primitive streams (IntStream, LongStream, DoubleStream)
       - Infinite streams (generated streams)
 
-23. **What is the purpose of the Stream API?**
+23. **What are the benefits of using Streams?**
+
+    - Provides a more concise and readable way to process collections
+    - Enables functional-style programming in Java
+    - Supports easy parallel processing of data
+    - Reduces boilerplate code for collection manipulation
+    - Allows for lazy evaluation of operations
+    - Facilitates complex data transformations with minimal code
+    - Improves performance for large datasets through parallel processing
+    - Promotes immutability and functional programming principles
+    - Integrates seamlessly with lambda expressions and method references
+    - Offers a wide range of built-in operations like filter, map, reduce
+
+24. **What is the purpose of the Stream API?**
 
     - The Stream API is a powerful feature introduced in Java 8 that provides a functional approach to processing collections of objects
 
@@ -733,7 +746,9 @@
       3. Close streams after use, especially with I/O operations
       4. Be mindful of performance for large collections
 
-24. **What is the Stream API in Java 8?**
+25. **What are terminal operations on Streams?**
+
+26. **What is the Stream API in Java 8?**
 
     - A functional approach to processing collections of objects
     - Enables declarative and functional-style operations on collections
@@ -746,7 +761,7 @@
       4. Lazily evaluated
       5. Can be processed sequentially or in parallel
 
-25. **What are the main operations in Stream API?**
+27. **What are the main operations in Stream API?**
 
     1. **Intermediate Operations**:
 
@@ -768,7 +783,7 @@
        - `allMatch()`: Checks if all elements match a predicate
        - `noneMatch()`: Checks if no elements match a predicate
 
-26. **What is the difference between `map()` and `flatMap()`?**
+28. **What is the difference between `map()` and `flatMap()`?**
 
     ```java
     // map(): One-to-One transformation
@@ -782,7 +797,7 @@
                                        .collect(Collectors.toList());
     ```
 
-27. **What are the different ways to create a Stream in Java?**
+29. **What are the different ways to create a Stream in Java?**
 
     There are several ways to create a Stream in Java:
 
@@ -820,7 +835,7 @@
        - `IntStream`, `LongStream`, `DoubleStream`
        - Range-based: `IntStream.range(1, 100)`
 
-28. **What is the difference between `findFirst()` and `findAny()`?**
+30. **What is the difference between `findFirst()` and `findAny()`?**
 
     - `findFirst()`: Returns first element in a sequential stream
     - `findAny()`: Returns any element, useful in parallel streams
@@ -830,7 +845,7 @@
     Optional<String> any = parallelStream.findAny();
     ```
 
-29. **How to perform grouping and partitioning with Streams?**
+31. **How to perform grouping and partitioning with Streams?**
 
     ```java
     // Grouping
@@ -863,7 +878,7 @@
       stream.count(); // IllegalStateException
       ```
 
-30. **What is the difference between Collection and Stream?**
+32. **What is the difference between Collection and Stream?**
 
     Key differences between Collection and Stream:
 
@@ -899,7 +914,7 @@
         .forEach(System.out::println);
     ```
 
-31. **What is the method collect() for in streams?**
+33. **What is the method collect() for in streams?**
 
     The collect() method is a terminal operation in streams that transforms a stream into a Collection or other data structure. It's used to:
 
@@ -929,7 +944,7 @@
     - partitioningBy()
     - summarizingInt/Long/Double()
 
-32. **Why do streams use forEach() and forEachOrdered() methods?**
+34. **Why do streams use forEach() and forEachOrdered() methods?**
 
     The forEach() and forEachOrdered() are terminal operations in streams that serve different purposes:
 
@@ -953,7 +968,7 @@
         .forEachOrdered(item -> System.out.println(item)); // Order preserved
     ```
 
-33. **What are map(), mapToInt(), mapToDouble() and mapToLong() methods in Stream?**
+35. **What are map(), mapToInt(), mapToDouble() and mapToLong() methods in Stream?**
 
     These are intermediate operations in streams that transform elements:
 
@@ -984,7 +999,7 @@
                                   .orElse(0.0);
     ```
 
-34. **What is the purpose of filter() method in streams?**
+36. **What is the purpose of filter() method in streams?**
 
     The filter() method is an intermediate operation that:
 
@@ -1005,7 +1020,7 @@
                                .collect(Collectors.toList());
     ```
 
-35. **What is the use of limit() method in streams?**
+37. **What is the use of limit() method in streams?**
 
     The limit() method is an intermediate operation that:
 
@@ -1026,7 +1041,7 @@
                                           .collect(Collectors.toList());
     ```
 
-36. **What is the use of sorted() method in streams?**
+38. **What is the use of sorted() method in streams?**
 
     The sorted() method is an intermediate operation that:
 
@@ -1051,7 +1066,7 @@
                                             .collect(Collectors.toList());
     ```
 
-37. **What are the flatMap(), flatMapToInt(), flatMapToDouble(), and flatMapToLong() methods in streams?**
+39. **What are the flatMap(), flatMapToInt(), flatMapToDouble(), and flatMapToLong() methods in streams?**
 
     The flatMap methods are intermediate operations that:
 
@@ -1084,38 +1099,57 @@
                         .toArray();
     ```
 
-38. **What are the final methods (terminal operations) of working with streams?**
+40. **What are the final methods (terminal operations) of working with streams? Or What are terminal operations on Streams?**
 
     Terminal operations in streams are methods that produce a result or side-effect and terminate the stream pipeline. The main terminal operations are:
 
-    1. **Collecting**
-       - collect(): Collects elements into a container
-       - toArray(): Creates an array from stream elements
-    2. **Reduction**
-       - reduce(): Reduces stream elements to a single value
-       - count(): Returns the count of elements
-       - sum(): Returns the sum (for numeric streams)
-       - min()/max(): Returns minimum/maximum element
-    3. **Search**
-       - findFirst(): Returns first element
-       - findAny(): Returns any element
-       - anyMatch(): Returns true if any elements match
-       - allMatch(): Returns true if all elements match
-       - noneMatch(): Returns true if no elements match
-    4. **Iteration**
-       - forEach(): Performs an action for each element
-       - forEachOrdered(): Like forEach() but respects encounter order
+    1. **Collection Operations**:
+
+       - `collect()`: Collects stream elements into a collection or other data structure
+       - `toArray()`: Converts stream to an array
+
+    2. **Reduction Operations**:
+
+       - `reduce()`: Reduces stream elements to a single value
+       - `count()`: Returns the number of elements in the stream
+       - `sum()`: Returns the sum (for numeric streams)
+       - `min()`: Finds the minimum element
+       - `max()`: Finds the maximum element
+
+    3. **Matching Operations**:
+
+       - `anyMatch()`: Checks if any element matches a predicate
+       - `allMatch()`: Checks if all elements match a predicate
+       - `noneMatch()`: Checks if no elements match a predicate
+
+    4. **Element Retrieval**:
+
+       - `findFirst()`: Returns first element
+       - `findAny()`: Returns any element from the stream
+
+    5. **Iteration and Side-Effect Operations**:
+       - `forEach()`: Performs an action on each element
+       - `forEachOrdered()`: Performs an action on elements in stream order
+
+    Terminal operations in Java Streams are methods that:
+
+    - Produce a result or a side-effect
+    - Terminate the stream pipeline
+    - Cannot be followed by any additional stream operations
+    - Trigger the processing of elements in the stream
+
+    **Example**:
 
     ```java
-    // Examples of terminal operations
-    long count = stream.count();
-    Optional<T> first = stream.findFirst();
-    boolean hasElements = stream.anyMatch(predicate);
-    T reduced = stream.reduce(identity, accumulator);
-    List<T> collected = stream.collect(Collectors.toList());
+    List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+    // Terminal operations examples
+    long count = numbers.stream().count(); // Returns 5
+    int sum = numbers.stream().reduce(0, Integer::sum); // Returns 15
+    boolean hasEven = numbers.stream().anyMatch(n -> n % 2 == 0); // Returns true
     ```
 
-39. **What are the intermediate operations in streams?**
+41. **What are the intermediate operations in streams?**
 
     Intermediate operations in streams are operations that transform a stream into another stream. The main intermediate operations are:
 
@@ -1157,7 +1191,7 @@
     - Don't modify the original stream
     - Return a new stream
 
-40. **Explain Difference between Collection API and Stream API?**
+42. **Explain Difference between Collection API and Stream API?**
 
     Key differences between Collection API and Stream API:
 

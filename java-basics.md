@@ -1366,9 +1366,9 @@
    - Methods that operate on different types
    - Type-safe APIs
 
-5. **Do you know Generics? How did you use them in your coding?**
+5. **What are generics? How did you use them in your coding?**
 
-   Yes, I have extensive experience with Java Generics. Here are some common ways I've used them:
+   Generics in Java allow you to write classes, interfaces, and methods that can work with different types while providing compile-time type safety. Here are some common examples:
 
    1. **Collections Framework**
 
@@ -1420,7 +1420,12 @@
       }
       ```
 
-   These implementations help create type-safe and reusable code while eliminating the need for type casting and reducing runtime errors.
+   Generics provide several benefits:
+
+   - Type safety at compile-time
+   - Elimination of type casting
+   - Enable reusable code that works with different types
+   - Support for generic algorithms and data structures
 
 6. **Which of the below generates a compile-time error? State the reason.**
 

@@ -290,7 +290,29 @@
     | Resource State | No change in resource state                | Used when waiting for state change in shared resource      |
 
 13. **What is the difference between yield and join in Java?**
+
+    | Feature           | `yield()`                                           | `join()`                                                    |
+    | ----------------- | --------------------------------------------------- | ----------------------------------------------------------- |
+    | Purpose           | Temporarily pauses current thread for other threads | Makes current thread wait for another thread to complete    |
+    | Thread State      | Moves thread from Running to Runnable state         | Moves current thread to Waiting state                       |
+    | Execution Control | Thread may immediately resume execution             | Thread must wait for joined thread to finish                |
+    | Lock Release      | Does not release any locks held                     | Does not release any locks held                             |
+    | Method Type       | Static method of Thread class                       | Instance method of Thread class                             |
+    | Exception         | Does not throw any exceptions                       | Throws InterruptedException                                 |
+    | Guarantee         | No guarantee other threads will execute             | Guarantees joined thread completes before current continues |
+
 14. **What is the difference between notify and notifyAll in Java?**
+
+    | Feature          | `notify()`                                         | `notifyAll()`                                       |
+    | ---------------- | -------------------------------------------------- | --------------------------------------------------- |
+    | Purpose          | Wakes up a single waiting thread                   | Wakes up all waiting threads                        |
+    | Thread Selection | Randomly selects one thread from wait set          | Notifies all threads in wait set                    |
+    | Resource Usage   | More efficient when only one thread needs to wake  | Less efficient but safer when multiple need to wake |
+    | Usage Context    | Must be called from synchronized context           | Must be called from synchronized context            |
+    | Method Type      | Instance method of Object class                    | Instance method of Object class                     |
+    | Race Conditions  | May cause issues if wrong thread is awakened       | Avoids issues by waking all threads                 |
+    | Common Use Case  | When exactly one thread should handle notification | When multiple threads may need to handle state      |
+
 15. **What is the difference between ReentrantLock and synchronized in Java?**
 
 16. **What is the difference between a program and a process?**
@@ -552,3 +574,182 @@
     - Profiling tools
     - Monitoring thread states
     - Java's built-in thread management tools
+
+24. **How do notify() and notifyAll() work, and what's the difference between them?**
+
+    - `notify()` wakes up a single thread waiting on the object's monitor
+    - `notifyAll()` wakes up all threads waiting on the object's monitor
+    - Both methods must be called from within a synchronized context
+    - Neither method releases the lock on the object
+
+    Why prefer notifyAll():
+
+    - Safer than notify() since it avoids missed wakeups
+    - Prevents "lost wake-up" problems where the wrong thread gets notified
+    - More predictable behavior in complex scenarios with multiple conditions
+    - Small performance overhead compared to potential bugs
+    - Follows principle "When in doubt, wake everybody up"
+
+    Example usage:
+
+    ```java
+    synchronized(sharedObject) {
+        // Modify state
+        sharedObject.notifyAll(); // Wake up all waiting threads
+    }
+    ```
+
+25. **What is a race condition and how do you avoid it?**
+
+    A race condition occurs when multiple threads access shared data concurrently and at least one thread modifies the data, leading to unpredictable results based on the timing/sequence of thread execution.
+
+    Ways to avoid race conditions:
+
+    1. **Synchronization**
+
+       - Use synchronized blocks/methods
+       - Ensures only one thread can access critical section at a time
+       - Example:
+
+       ```java
+       synchronized(object) {
+           // Critical section - only one thread at a time
+           sharedCounter++;
+       }
+       ```
+
+    2. **Atomic Classes**
+
+       - Use atomic classes from java.util.concurrent.atomic
+       - Provide atomic operations without explicit locking
+       - Example: AtomicInteger, AtomicReference
+
+    3. **Locks**
+
+       - More flexible than synchronized
+       - ReentrantLock, ReadWriteLock etc.
+       - Allow timeouts and interruptible lock attempts
+
+    4. **Thread-Safe Collections**
+
+       - Use concurrent collections
+       - ConcurrentHashMap, CopyOnWriteArrayList etc.
+       - Built-in thread safety
+
+    5. **Immutable Objects**
+       - Make shared objects immutable
+       - Immutable objects are inherently thread-safe
+       - No synchronization needed for read-only data
+
+    Common race condition scenarios:
+
+    - Check-then-act operations
+    - Read-modify-write sequences
+    - Initialization races
+
+26. **What is a deadlock and how do you avoid it?**
+
+    A deadlock occurs when two or more threads are blocked forever, each waiting for the other to release resources. It happens when threads hold resources and request additional ones in a circular manner.
+
+    Example of a deadlock:
+
+    ```java
+    // Thread 1
+    synchronized(resourceA) {
+        synchronized(resourceB) {
+            // Use both resources
+        }
+    }
+
+    // Thread 2
+    synchronized(resourceB) {
+        synchronized(resourceA) {
+            // Use both resources
+        }
+    }
+    ```
+
+    Ways to avoid deadlocks:
+
+    1. **Lock Ordering**
+
+       - Always acquire locks in a fixed, predefined order
+       - Prevents circular wait conditions
+       - Example: Always lock resourceA before resourceB
+
+    2. **Lock Timeouts**
+
+       - Use tryLock() with timeout instead of lock()
+       - Prevents indefinite waiting
+       - Thread can release its locks and retry
+
+    3. **Deadlock Detection**
+
+       - Implement detection mechanisms
+       - Use thread dumps and monitoring
+       - Have recovery strategies
+
+    4. **Resource Allocation**
+
+       - Request all resources at once
+       - Release all resources before requesting new ones
+       - Avoid holding resources while waiting for others
+
+    5. **Thread Management**
+       - Minimize number of locked resources
+       - Keep critical sections small
+       - Use higher-level concurrency utilities when possible
+
+27. What are some of the high-level concurrency classes provided by java.util.concurrent and how do they work?
+
+    The java.util.concurrent package provides several high-level concurrency utilities:
+
+    1. **ExecutorService**
+
+       - Manages thread pools and task execution
+       - Provides methods for submitting tasks and controlling their lifecycle
+       - Example implementations: ThreadPoolExecutor, ScheduledThreadPoolExecutor
+
+    2. **BlockingQueue**
+
+       - Thread-safe queue implementation
+       - Supports operations that wait for the queue to become non-empty/non-full
+       - Implementations: ArrayBlockingQueue, LinkedBlockingQueue, PriorityBlockingQueue
+
+    3. **CountDownLatch**
+
+       - Allows one or more threads to wait until a set of operations completes
+       - Initialized with a count
+       - Count decrements as tasks complete
+       - Waiting threads released when count reaches zero
+
+    4. **CyclicBarrier**
+
+       - Allows a set of threads to wait for each other to reach a common barrier point
+       - Can be reused after release
+       - Useful for parallel algorithms
+
+    5. **Semaphore**
+
+       - Controls access to a shared resource through permits
+       - Can be used to implement resource pools
+       - Supports fair and unfair queueing
+
+    6. **ConcurrentHashMap**
+
+       - Thread-safe version of HashMap
+       - Provides better concurrency than synchronized collections
+       - Supports atomic operations and lock striping
+
+    7. **CompletableFuture**
+
+       - Supports asynchronous programming
+       - Allows composition of asynchronous operations
+       - Provides extensive error handling capabilities
+
+    8. **Atomic Classes**
+       - Provides atomic operations on single variables
+       - Examples: AtomicInteger, AtomicReference, AtomicBoolean
+       - Supports lock-free algorithms
+
+28. **Can you implement a producer-consumer solution in Java?**

@@ -1,4 +1,250 @@
-# SQL
+# JDBC & SQL
+
+## JDBC
+
+1. **What is JDBC?**
+   JDBC (Java Database Connectivity) is a Java API that enables Java applications to interact with databases. Key points about JDBC:
+
+   - It provides a standard interface for connecting to and executing queries on relational databases
+   - Consists of JDBC API (java.sql package) and JDBC Driver Manager
+   - Supports common database operations like:
+     - Establishing connections
+     - Executing SQL queries
+     - Processing results
+     - Managing transactions
+
+   The typical JDBC workflow involves:
+
+   1. Loading the JDBC driver
+   2. Establishing a connection
+   3. Creating and executing statements
+   4. Processing results
+   5. Closing connections
+
+   Example of basic JDBC usage:
+
+   ```java
+   Connection conn = DriverManager.getConnection(url, username, password);
+   Statement stmt = conn.createStatement();
+   ResultSet rs = stmt.executeQuery("SELECT * FROM users");
+   ```
+
+2. **What are the core components of JDBC?**
+   The core components of JDBC include:
+
+   1. **JDBC API (java.sql package)**
+
+      - Provides interfaces and classes for database connectivity
+      - Key interfaces: Connection, Statement, PreparedStatement, CallableStatement
+      - Handles database operations and result processing
+
+   2. **JDBC Driver Manager**
+
+      - Manages database drivers
+      - Establishes connections between Java applications and databases
+      - Loads and registers appropriate JDBC drivers
+
+   3. **Connection**
+
+      - Represents a database connection session
+      - Enables communication between Java application and database
+      - Used to create statements and manage transactions
+
+   4. **Statement Types**
+
+      - **Statement**: For basic SQL queries
+      - **PreparedStatement**: For parameterized and precompiled queries
+      - **CallableStatement**: For executing stored procedures
+
+   5. **ResultSet**
+      - Represents data returned from a database query
+      - Allows traversing and processing query results
+      - Provides methods to retrieve and manipulate data
+
+   These components work together to provide a comprehensive database connectivity solution in Java.
+
+3. **How do you connect to a database in Java?**
+   To connect to a database in Java using JDBC, follow these key steps:
+
+   1. **Load the JDBC Driver**
+
+      ```java
+      // For MySQL
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      // For PostgreSQL
+      Class.forName("org.postgresql.Driver");
+      ```
+
+   2. **Establish a Database Connection**
+
+      ```java
+      // Connection parameters
+      String url = "jdbc:mysql://localhost:3306/mydatabase";
+      String username = "your_username";
+      String password = "your_password";
+
+      // Establish connection
+      Connection connection = DriverManager.getConnection(url, username, password);
+      ```
+
+   3. **Connection Best Practices**
+      - Always use try-with-resources or explicitly close connections
+      - Handle potential `SQLException`
+      - Use connection pooling for better performance in production
+
+   Example with error handling:
+
+   ```java
+   try (Connection conn = DriverManager.getConnection(url, username, password)) {
+       // Perform database operations
+   } catch (SQLException e) {
+       e.printStackTrace();
+   }
+   ```
+
+   Key connection parameters typically include:
+
+   - JDBC URL (protocol, host, port, database name)
+   - Username
+   - Password
+   - Optional connection properties
+
+4. **What is the difference between Statement, PreparedStatement, and CallableStatement?**
+
+   | Component             | Purpose                            | Key Characteristics                         | Use Case                                       | Performance                      | SQL Injection Risk                 |
+   | --------------------- | ---------------------------------- | ------------------------------------------- | ---------------------------------------------- | -------------------------------- | ---------------------------------- |
+   | **Statement**         | Executes static SQL queries        | Simple query execution without parameters   | Basic, unchanging SQL statements               | Lowest performance               | High - vulnerable to SQL injection |
+   | **PreparedStatement** | Executes parameterized SQL queries | Precompiles SQL, supports parameter binding | Dynamic queries with input parameters          | Better performance (precompiled) | Low - prevents SQL injection       |
+   | **CallableStatement** | Executes stored procedures         | Supports calling database stored procedures | Complex database operations, stored procedures | Moderate performance             | Low - supports parameter binding   |
+
+5. **What is the difference between ResultSet and ResultSetMetaData?**
+6. **What is the difference between Statement and PreparedStatement?**
+7. **What is the difference between Statement and CallableStatement?**
+8. **What is the difference between Statement and ResultSet?**
+9. **What is the difference between PreparedStatement and CallableStatement?**
+10. **What is the difference between PreparedStatement and ResultSet?**
+11. **What is the difference between CallableStatement and ResultSet?**
+
+12. **What are the different types of JDBC Driver?**
+    There are 4 types of JDBC drivers:
+
+    1. **Type 1: JDBC-ODBC Bridge Driver**
+
+       - Translates JDBC calls to ODBC calls
+       - Requires ODBC driver to be installed on client machine
+       - Not recommended for production use
+       - Deprecated since Java 8
+
+    2. **Type 2: Native-API Driver**
+
+       - Converts JDBC calls into database-specific native calls
+       - Requires database native client library
+       - Better performance than Type 1
+       - Platform dependent
+
+    3. **Type 3: Network Protocol Driver (Middleware Driver)**
+
+       - Uses middleware server to convert JDBC calls to database protocol
+       - Platform independent
+       - Requires additional network hop
+       - Flexible but can have performance overhead
+
+    4. **Type 4: Pure Java Driver (Thin Driver)**
+       - Written entirely in Java
+       - Converts JDBC calls directly to database-specific protocol
+       - Most commonly used driver type
+       - Platform independent
+       - Best performance
+       - Examples: MySQL Connector/J, PostgreSQL JDBC Driver
+
+13. **What do you mean by batch processing in JDBC?**
+
+    Batch processing in JDBC is a technique that allows multiple SQL statements to be grouped and sent to the database server in a single batch, instead of executing them one by one. This approach offers significant performance improvements, especially when dealing with large numbers of similar database operations.
+
+    Key characteristics of batch processing include:
+
+    - **Performance Optimization**: Reduces network roundtrips between the application and database
+    - **Efficiency**: Minimizes overhead of individual statement executions
+    - **Atomic Operations**: Can commit or rollback entire batch of statements
+
+    Example of batch processing using PreparedStatement:
+
+    ```java
+    Connection conn = null;
+    PreparedStatement pstmt = null;
+    try {
+        conn = DriverManager.getConnection(url, user, password);
+        pstmt = conn.prepareStatement("INSERT INTO users (name, email) VALUES (?, ?)");
+
+        // Adding multiple statements to batch
+        pstmt.setString(1, "John Doe");
+        pstmt.setString(2, "john@example.com");
+        pstmt.addBatch();
+
+        pstmt.setString(1, "Jane Smith");
+        pstmt.setString(2, "jane@example.com");
+        pstmt.addBatch();
+
+        // Execute the batch
+        int[] updateCounts = pstmt.executeBatch();
+    } catch (SQLException e) {
+        // Handle exceptions
+    }
+    ```
+
+    Benefits:
+
+    - Reduces database load
+    - Improves application performance
+    - Ideal for bulk insert, update, or delete operations
+
+14. **What is Connection Pooling?**
+
+    Connection pooling is a technique used in database programming to efficiently manage and reuse database connections, significantly improving application performance and resource utilization.
+
+    Key aspects of connection pooling include:
+
+    - **Connection Reuse**: Instead of creating a new connection for each database request, a pool of pre-established connections is maintained
+    - **Resource Efficiency**: Reduces overhead of creating and closing database connections
+    - **Performance Optimization**: Minimizes connection establishment time and system resource consumption
+
+    How Connection Pooling Works:
+
+    - A pool of database connections is created and maintained in advance
+    - When an application needs a connection, it requests one from the pool
+    - If a connection is available, it's immediately provided
+    - After use, the connection is returned to the pool, not closed
+    - If no connections are available, the application may wait or create a new connection
+
+    Popular Connection Pool Libraries:
+
+    - Apache DBCP (Database Connection Pool)
+    - HikariCP
+    - C3P0
+    - Tomcat Connection Pool
+
+    Example using HikariCP:
+
+    ```java
+    HikariConfig config = new HikariConfig();
+    config.setJdbcUrl("jdbc:mysql://localhost:3306/mydb");
+    config.setUsername("user");
+    config.setPassword("password");
+    config.setMaximumPoolSize(10);  // Maximum number of connections in the pool
+
+    HikariDataSource dataSource = new HikariDataSource(config);
+    Connection conn = dataSource.getConnection();  // Get connection from pool
+    // Use connection
+    conn.close();  // Returns connection to the pool, not actually closing it
+    ```
+
+    Benefits:
+
+    - Reduces connection creation overhead
+    - Improves application scalability
+    - Manages database connection resources more effectively
+
+## SQL
 
 1. **What is SQL and NoSQL?**
 
@@ -893,7 +1139,7 @@ Benefits of JOINs:
 
     Comprehensive database security requires a multi-layered approach, combining technical controls, policies, and ongoing vigilance.
 
-20. **Concurrency Control Strategies in Databases**:
+20. **What are the Concurrency Control Strategies in Databases**:
 
     Concurrency control is crucial for maintaining data integrity and performance in multi-user database systems. Key strategies include:
 
@@ -934,7 +1180,7 @@ Benefits of JOINs:
 
     Effective concurrency control balances data consistency, performance, and system responsiveness.
 
-21. **Using Stored Procedures to Optimize Database Operations**:
+21. **What are Stored Procedures and how can they optimize database operations?**
 
     Stored procedures are powerful database objects that can significantly enhance performance and efficiency:
 
@@ -985,51 +1231,74 @@ Benefits of JOINs:
 
     Stored procedures provide a robust mechanism for improving database performance, security, and maintainability.
 
-22. **Preventing SQL Injections: Comprehensive Security Strategies**:
+22. **How do you prevent SQL Injection Attacks? List comprehensive security strategies**
 
-    - **Parameterized Queries**: Always use prepared statements or parameterized queries to separate SQL logic from user input
+    Preventing SQL injection attacks is crucial for database security. Here are comprehensive strategies:
 
-      ```sql
-      -- Secure approach
-      PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
-      stmt.setString(1, username);
-      ```
+    1. **Use Prepared Statements**
 
-    - **Input Validation**: Implement strict input validation and sanitization
+       - Parameterized queries separate SQL logic from data
+       - Automatically escape and sanitize input
 
-      - Validate data type, length, and format before processing
-      - Use whitelist validation for allowed characters
-      - Reject or sanitize potentially malicious input
+       ```java
+         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
+         stmt.setString(1, username);
+         ResultSet rs = stmt.executeQuery();
+       ```
 
-    - **Least Privilege Principle**:
+    2. **Input Validation**
 
-      - Use database accounts with minimal required permissions
-      - Create specific roles with restricted access rights
-      - Avoid using admin or root-level database credentials
+       - Validate and sanitize all user inputs
 
-    - **ORM and Query Builders**:
+         - Use whitelisting for allowed characters
+         - Implement strict input type and length checks
 
-      - Utilize Object-Relational Mapping (ORM) frameworks
-      - Leverage built-in protection mechanisms
-      - Example: Hibernate, SQLAlchemy provide automatic injection protection
+         ```java
+         if (!username.matches("[A-Za-z0-9_]+")) {
+            throw new IllegalArgumentException("Invalid username format");
+         }
+         ```
 
-    - **Stored Procedures with Parameter Binding**:
+    3. **Least Privilege Principle**
 
-      ```sql
-      CREATE PROCEDURE SafeUserLookup(IN p_username VARCHAR(50))
-      BEGIN
-          SELECT * FROM users
-          WHERE username = p_username;
-      END;
-      ```
+       - Use database accounts with minimal required permissions
+       - Create specific roles with restricted access rights
+       - Avoid using admin or root-level database credentials
 
-    - **Additional Defensive Techniques**:
-      - Escape special characters
-      - Use stored procedures with strict parameter typing
-      - Implement web application firewalls (WAF)
-      - Regular security audits and penetration testing
+    4. **Stored Procedures with Parameter Binding**
 
-23. **Database Backup and Recovery Strategies**:
+       - Use parameterized stored procedures
+       - Provides an additional layer of protection
+
+       ```java
+       CallableStatement stmt = connection.prepareCall("{call getUserDetails(?)}");
+       stmt.setInt(1, userId);
+       ResultSet rs = stmt.executeQuery();
+       ```
+
+    5. **ORM Frameworks**
+
+       - Utilize Object-Relational Mapping (ORM) tools
+       - Leverage built-in protection mechanisms
+
+       ```java
+       // Example with JPA
+       Query query = entityManager.createQuery("FROM User WHERE username = :username");
+       query.setParameter("username", username);
+       ```
+
+    6. **Additional Defensive Techniques**
+
+       - Escape special characters
+       - Use stored procedures with strict parameter typing
+       - Implement web application firewalls (WAF)
+       - Regular security audits and penetration testing
+       - Avoid exposing detailed database error messages
+       - Log errors securely for debugging
+
+       Key Principle: Never trust user input and always use parameterized queries or prepared statements.
+
+23. **What are the Database Backup and Recovery Strategies**:
 
     - **Regular Backup Scheduling**:
 
@@ -1406,3 +1675,412 @@ Benefits of JOINs:
     - Maintain referential integrity
     - Index foreign key columns for better performance
     - Use appropriate relationship type for your data model
+
+30. **What is the difference between WHERE and HAVING clause?**
+
+    The `WHERE` and `HAVING` clauses are both used for filtering in SQL, but they have key differences:
+
+    1.  **WHERE Clause**:
+
+        - Filters individual rows before any grouping occurs
+        - Used with non-aggregated columns
+        - Applied to individual records in the original table
+        - Comes before the `GROUP BY` clause
+        - Example:
+
+        ```sql
+        SELECT department, COUNT(*)
+        FROM employees
+        WHERE salary > 50000
+        GROUP BY department
+        ```
+
+    2.  **HAVING Clause**:
+
+        - Filters groups after grouping and aggregation
+        - Used with aggregated columns (COUNT, SUM, AVG, etc.)
+        - Applied to grouped results
+        - Comes after the `GROUP BY` clause
+        - Example:
+
+        ```sql
+        SELECT department, COUNT(*) as emp_count
+        FROM employees
+        GROUP BY department
+        HAVING emp_count > 5
+        ```
+
+    **Key Differences**:
+
+    - `WHERE` filters rows before grouping
+    - `HAVING` filters groups after grouping
+    - `WHERE` works with individual column values
+    - `HAVING` works with aggregate function results
+
+31. **What are transactions? What is ACID?**
+
+    A transaction is a sequence of database operations that are treated as a single, atomic unit of work. Transactions ensure data integrity and reliability in database systems by following the ACID properties:
+
+    1. **Atomicity (A)**:
+
+       - Ensures that a transaction is treated as a single, indivisible unit of work
+       - Either all operations in a transaction are completed successfully, or none are
+       - If any part of the transaction fails, the entire transaction is rolled back
+       - Prevents partial updates that could leave the database in an inconsistent state
+
+    2. **Consistency (C)**:
+
+       - Guarantees that a transaction brings the database from one valid state to another
+       - All data integrity constraints must be satisfied before and after the transaction
+       - Ensures that the database remains in a consistent state throughout the transaction
+
+    3. **Isolation (I)**:
+
+       - Ensures that concurrent transactions do not interfere with each other
+       - Transactions are executed as if they are the only transaction running
+       - Prevents issues like dirty reads, non-repeatable reads, and phantom reads
+       - Different isolation levels provide varying degrees of protection
+
+    4. **Durability (D)**:
+       - Guarantees that once a transaction is committed, its changes are permanent
+       - Committed data is saved to persistent storage
+       - Survives system crashes, power failures, or other unexpected events
+       - Ensures that completed transactions are not lost
+
+    **Example of a Transaction in SQL**:
+
+    ```sql
+    BEGIN TRANSACTION;
+
+    UPDATE accounts SET balance = balance - 100 WHERE account_id = 1;
+    UPDATE accounts SET balance = balance + 100 WHERE account_id = 2;
+
+    COMMIT;
+    ```
+
+    In this example, both updates must succeed, or neither will be applied, maintaining data integrity during a fund transfer.
+
+32. **Difference between truncate, delete, and drop clause in SQL?**
+
+    | Operation    | DELETE                        | TRUNCATE                     | DROP                           |
+    | ------------ | ----------------------------- | ---------------------------- | ------------------------------ |
+    | Purpose      | Removes specific rows         | Removes all rows             | Removes entire table structure |
+    | Rollback     | Can be rolled back            | Cannot be rolled back        | Cannot be rolled back          |
+    | Performance  | Slower for large datasets     | Faster, minimal logging      | Fastest, removes entire table  |
+    | Triggers     | Activates row-level triggers  | Does not activate triggers   | Removes all triggers           |
+    | Space        | Retains table structure       | Resets table, reclaims space | Removes table completely       |
+    | Where Clause | Supports conditional deletion | No conditional deletion      | No deletion, removes table     |
+    | Logging      | Logs each row deletion        | Minimal logging              | Minimal logging                |
+    | Constraints  | Preserves table constraints   | Preserves table constraints  | Removes all constraints        |
+
+33. **What are window functions? How do they work?**
+
+    Window functions perform calculations across a set of table rows related to the current row. They operate on a "window" (set of rows) defined by the OVER clause.
+
+    **Key characteristics:**
+
+    - Process rows that are related to the current row
+    - Don't collapse results into a single row like regular aggregates
+    - Keep all rows in the result set
+    - Allow calculations using values from multiple rows simultaneously
+
+    **Common window functions:**
+
+    - ROW_NUMBER(): Assigns unique row numbers
+    - RANK(): Assigns ranks with gaps for ties
+    - DENSE_RANK(): Assigns ranks without gaps
+    - LAG/LEAD(): Access previous/next row values
+    - FIRST_VALUE/LAST_VALUE: Get first/last value in window
+
+    **Example:**
+
+    ```sql
+    SELECT
+        employee_name,
+        department,
+        salary,
+        AVG(salary) OVER (PARTITION BY department) as dept_avg,
+        RANK() OVER (ORDER BY salary DESC) as salary_rank
+    FROM employees;
+    ```
+
+    This query shows each employee's salary alongside their department's average salary and their overall salary rank.
+
+## Object Relational Mapping (ORM) (Hibernate & JPA)
+
+1. **What is ORM (Object-Relational Mapping)?**
+
+   ORM is a programming technique that converts data between incompatible type systems in object-oriented programming languages and relational databases. Key aspects include:
+
+   1. **Core Functionality**:
+
+      - Maps database tables to classes
+      - Converts database records to objects
+      - Handles data type conversions
+      - Manages relationships between objects
+
+   2. **Benefits**:
+
+      - Reduces boilerplate database code
+      - Provides database independence
+      - Simplifies data access logic
+      - Enables object-oriented design
+
+   3. **Popular Java ORM Frameworks**:
+      - Hibernate
+      - JPA (Java Persistence API)
+      - EclipseLink
+      - MyBatis
+
+   Example using JPA annotations:
+
+   ```java
+   @Entity
+   @Table(name = "users")
+   public class User {
+       @Id
+       @GeneratedValue(strategy = GenerationType.AUTO)
+       private Long id;
+
+       @Column(name = "username")
+       private String username;
+
+       @OneToMany(mappedBy = "user")
+       private List<Order> orders;
+   }
+   ```
+
+   4. **Key Features**:
+      - Automatic CRUD operations
+      - Relationship management
+      - Caching capabilities
+      - Transaction management
+      - Query language support (e.g., JPQL, HQL)
+
+2. **What is Hibernate?**
+
+   Hibernate is the most popular Java ORM framework that implements JPA specifications. Key aspects include:
+
+   1. **Core Features**:
+
+      - Full JPA implementation
+      - Powerful query languages (HQL/JPQL)
+      - Automatic DDL generation
+      - Connection pooling integration
+      - First and second-level caching
+
+   2. **Key Components**:
+      - SessionFactory (thread-safe factory for Session objects)
+      - Session (represents a database connection)
+      - Transaction (unit of work with the database)
+      - Query (for executing database queries)
+   3. **Basic Example**:
+
+   ```java
+   @Entity
+   public class Employee {
+       @Id
+       @GeneratedValue
+       private Long id;
+
+       private String name;
+       private Double salary;
+
+       // Getters and setters
+   }
+
+   // Using Hibernate Session
+   Session session = sessionFactory.openSession();
+   Transaction tx = session.beginTransaction();
+
+   Employee emp = new Employee();
+   emp.setName("John");
+   emp.setSalary(50000.0);
+
+   session.save(emp);
+   tx.commit();
+   session.close();
+   ```
+
+   4. **Advantages**:
+      - Reduces development time
+      - Database independence
+      - Automatic versioning and timestamp
+      - Complex associations handling
+      - Lazy and eager loading strategies
+
+3. **What is JPA?**
+   JPA (Java Persistence API) is a Java specification that provides a standardized approach for ORM (Object-Relational Mapping) and managing relational data in Java applications. Key aspects include:
+
+   1. **Core Concepts**:
+
+      - Entity management
+      - Object-relational mapping through annotations
+      - Standard query language (JPQL)
+      - Persistence context management
+      - Transaction handling
+
+   2. **Key Components**:
+      - EntityManagerFactory: Creates EntityManager instances
+      - EntityManager: Manages persistence operations
+      - Entity: Java objects mapped to database tables
+      - EntityTransaction: Manages transactions
+   3. **Basic Example**:
+
+      ```java
+      @Entity
+      public class User {
+         @Id
+         @GeneratedValue
+         private Long id;
+         private String name;
+
+         // Getters and setters
+      }
+
+      EntityManager em = emf.createEntityManager();
+      em.getTransaction().begin();
+
+      User user = new User();
+      user.setName("Alice");
+      em.persist(user);
+
+      em.getTransaction().commit();
+      em.close();
+      ```
+
+   4. **Benefits**:
+      - Standard Java ORM specification
+      - Vendor independence
+      - Simplified database operations
+      - Reduced boilerplate code
+      - Automatic dirty checking
+
+4. **What is the difference between Hibernate and JPA?**
+
+   | Aspect             | JPA                                         | Hibernate                                |
+   | ------------------ | ------------------------------------------- | ---------------------------------------- |
+   | Type               | Specification/Standard                      | Implementation                           |
+   | Scope              | Defines standard interfaces and annotations | Provides complete ORM solution           |
+   | Portability        | Vendor independent                          | Specific to Hibernate implementation     |
+   | Features           | Core persistence features only              | Additional features beyond JPA spec      |
+   | Configuration      | Standard JPA annotations                    | Hibernate-specific annotations available |
+   | Query Language     | JPQL only                                   | Supports JPQL and HQL                    |
+   | Caching            | Basic caching support                       | Advanced caching mechanisms              |
+   | Performance Tuning | Limited options                             | Extensive optimization options           |
+   | Learning Curve     | Simpler standard API                        | More complex with additional features    |
+   | Vendor Lock-in     | No vendor lock-in                           | Some Hibernate-specific dependencies     |
+
+5. **What is the difference between @Entity and @Table annotations?**
+6. **When is it better to use plain SQL instead of ORM?**
+   Plain SQL may be preferable over ORM in several scenarios:
+
+   1. **Complex Queries**:
+
+      - When dealing with complex joins, subqueries, or analytical functions
+      - For queries requiring specific database optimizations
+      - When fine-tuning query performance is critical
+
+   2. **Bulk Operations**:
+
+      - Mass updates or deletes
+      - Batch processing large datasets
+      - ETL (Extract, Transform, Load) operations
+
+   3. **Performance-Critical Applications**:
+
+      - When you need complete control over query execution
+      - To avoid ORM overhead in high-performance scenarios
+      - For real-time applications with strict latency requirements
+
+   4. **Database-Specific Features**:
+
+      - When using specialized database features not supported by ORM
+      - For stored procedures and functions
+      - When working with legacy database schemas
+
+   5. **Simple Applications**:
+      - Small applications with few entities
+      - When ORM configuration overhead outweighs benefits
+      - Projects with simple CRUD operations only
+
+7. **What is second level cache? How does it work?**
+
+   Second-level cache is a global cache in Hibernate that stores entity data across multiple sessions and transactions. Unlike first-level cache which is session-scoped, second-level cache is SessionFactory-scoped and shared by all sessions.
+
+   Key aspects of second-level cache:
+
+   1. **Purpose and Benefits**:
+
+      - Reduces database hits by caching data globally
+      - Improves application performance
+      - Shares cached data across sessions
+      - Helps with read-heavy applications
+
+   2. **How it Works**:
+
+      - When an entity is requested, Hibernate first checks the first-level cache
+      - If not found, it checks the second-level cache
+      - If still not found, database query is executed
+      - Retrieved data is stored in both cache levels
+      - Subsequent requests from any session can use cached data
+
+   3. **Implementation**:
+
+      - Uses cache providers like EHCache, Redis, Infinispan
+      - Configured at SessionFactory level
+      - Can be enabled/disabled per entity
+      - Supports different concurrency strategies
+      - Handles cache invalidation and updates
+
+   4. **Best Practices**:
+      - Cache read-mostly data
+      - Configure appropriate time-to-live
+      - Choose suitable cache provider
+      - Monitor cache hit/miss ratios
+      - Consider memory constraints
+
+8. **What is the difference between save() and persist() in Hibernate?**
+
+   The save() and persist() methods in Hibernate are used to persist entities but have some key differences:
+
+   1. **Return Value**:
+
+      - save() returns the generated identifier (Serializable object)
+      - persist() returns void
+
+   2. **Identifier Generation**:
+
+      - save() generates and assigns ID immediately
+      - persist() delays ID generation until flush/commit
+
+   3. **Persistence Context**:
+
+      - save() doesn't guarantee entity is in persistence context
+      - persist() ensures entity enters persistence context
+
+   4. **Usage Outside Transaction**:
+
+      - save() can be used outside transaction
+      - persist() requires active transaction
+
+   5. **JPA Compatibility**:
+      - save() is Hibernate-specific
+      - persist() is JPA standard method
+
+   Best Practice: Use persist() when working with JPA and for better transactional behavior. Use save() only in Hibernate-specific applications where immediate ID generation is needed.
+
+9. **What is the difference between Hibernate and MyBatis?**
+
+   | Aspect          | Hibernate                             | MyBatis                                |
+   | --------------- | ------------------------------------- | -------------------------------------- |
+   | Type            | Full ORM framework                    | SQL mapping framework                  |
+   | Learning Curve  | Steeper learning curve                | Easier to learn                        |
+   | SQL Control     | Generates SQL automatically           | Manual SQL writing required            |
+   | Performance     | May have overhead for complex queries | Better performance for complex queries |
+   | Database Schema | Can generate/update schema            | Manual schema management               |
+   | Query Writing   | Uses HQL/JPQL, criteria queries       | Uses XML/annotations for SQL mapping   |
+   | Caching         | Sophisticated multi-level caching     | Basic caching support                  |
+   | Object Mapping  | Automatic object-relational mapping   | Manual mapping configuration           |
+   | Flexibility     | Less flexible for complex queries     | More flexible SQL control              |
+   | JPA Compliance  | Fully JPA compliant                   | Not JPA compliant                      |

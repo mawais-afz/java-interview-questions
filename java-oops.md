@@ -1968,63 +1968,7 @@
     animal.makeSound();       // Calls Dog's makeSound() at runtime
     ```
 
-62. **Can you explain Liskov Substitution Principle (LSP)?**
-
-    The Liskov Substitution Principle states that objects of a superclass should be replaceable with objects of its subclasses without breaking the application. In other words, a subclass should extend the capability of the parent class, not narrow it down.
-
-    Key points:
-
-    - Subtypes must be substitutable for their base types
-    - Subclass methods should:
-      - Accept same or broader parameter types (contravariance)
-      - Return same or narrower return types (covariance)
-      - Not throw broader exceptions
-      - Not strengthen preconditions
-      - Not weaken postconditions
-
-    Example:
-
-    ```java
-    // Good LSP example
-    class Bird {
-        public void fly() { }
-    }
-
-    class Sparrow extends Bird {
-        @Override
-        public void fly() {
-            // Sparrow-specific flying
-        }
-    }
-
-    // Bad LSP example - Penguin can't fly!
-    class Penguin extends Bird {
-        @Override
-        public void fly() {
-            throw new UnsupportedOperationException(); // Violates LSP
-        }
-    }
-    ```
-
-    Better design would be:
-
-    ```java
-    interface FlyingBird {
-        void fly();
-    }
-
-    class Bird { }
-
-    class Sparrow extends Bird implements FlyingBird {
-        public void fly() { }
-    }
-
-    class Penguin extends Bird {
-        // No fly method, which is correct
-    }
-    ```
-
-63. **Can we use private or protected member variables in an interface?**
+62. **Can we use private or protected member variables in an interface?**
 
     - No, interface fields are implicitly public, static and final
     - Prior to Java 9, interface members could only be public
@@ -2049,7 +1993,7 @@
     }
     ```
 
-64. **When can an object reference be cast to a Java interface reference?**
+63. **When can an object reference be cast to a Java interface reference?**
 
     An object reference can be cast to an interface reference when:
 
@@ -2089,19 +2033,19 @@
     - An invalid cast will result in a ClassCastException
     - The cast may be implicit (no cast operator needed) when assigning to an interface reference
 
-65. **What are getters and setters in Java?**
+64. **What are getters and setters in Java?**
 
     Getters and setters are methods that allow controlled access to class fields/attributes:
 
     ```java
     public class Person {
         private String name; // Private field
-        
+
         // Getter method
         public String getName() {
             return name;
         }
-        
+
         // Setter method
         public void setName(String name) {
             this.name = name;
@@ -2113,28 +2057,28 @@
 
     1. Encapsulation: They provide encapsulation by keeping fields private while allowing controlled access
     2. Naming Convention:
-        - Getters start with "get" followed by capitalized field name
-        - Setters start with "set" followed by capitalized field name
-        - For boolean fields, getters often start with "is" (e.g., isActive())
+       - Getters start with "get" followed by capitalized field name
+       - Setters start with "set" followed by capitalized field name
+       - For boolean fields, getters often start with "is" (e.g., isActive())
     3. Benefits:
-        - Add validation in setters
-        - Modify internal representation without changing public interface
-        - Control read/write access separately
-        - Enable debugging/logging when fields are accessed
+       - Add validation in setters
+       - Modify internal representation without changing public interface
+       - Control read/write access separately
+       - Enable debugging/logging when fields are accessed
     4. JavaBeans: Following these naming conventions makes classes compatible with JavaBeans specification
 
-66. **What is static in Java?**
+65. **What is static in Java?**
 
     The static keyword in Java is used to declare members (variables and methods) that belong to the class itself rather than instances of the class:
 
     ```java
     public class Counter {
         private static int count = 0;  // Static variable shared by all instances
-        
+
         public static void increment() {  // Static method
             count++;
         }
-        
+
         public static int getCount() {    // Static method
             return count;
         }
@@ -2144,29 +2088,33 @@
     Key points:
 
     1. Static Variables (Class Variables):
-        - Shared across all instances of the class
-        - Can be accessed without creating class instance
-        - Initialized only once when class is loaded
-        - Memory efficient for common data
+
+       - Shared across all instances of the class
+       - Can be accessed without creating class instance
+       - Initialized only once when class is loaded
+       - Memory efficient for common data
 
     2. Static Methods:
-        - Can be called without creating class instance
-        - Can only directly access other static members
-        - Cannot use 'this' keyword
-        - Common for utility functions
+
+       - Can be called without creating class instance
+       - Can only directly access other static members
+       - Cannot use 'this' keyword
+       - Common for utility functions
 
     3. Static Blocks:
-        - Used for static initialization
-        - Executed when class is loaded
-        - Runs before constructor
+
+       - Used for static initialization
+       - Executed when class is loaded
+       - Runs before constructor
 
     4. Static Classes:
-        - Only inner classes can be static
-        - Don't need instance of outer class to be created
-        - Cannot access non-static members of outer class
+
+       - Only inner classes can be static
+       - Don't need instance of outer class to be created
+       - Cannot access non-static members of outer class
 
     5. Common Uses:
-        - Utility methods (e.g., Math.sqrt())
-        - Constants (public static final)
-        - Singleton pattern
-        - Factory methods
+       - Utility methods (e.g., Math.sqrt())
+       - Constants (public static final)
+       - Singleton pattern
+       - Factory methods

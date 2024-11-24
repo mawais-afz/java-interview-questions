@@ -720,3 +720,140 @@
     - Incorrect storage and retrieval of values
     - Poor performance due to hash collisions
     - Memory leaks or unexpected behavior
+
+26. **Difference between synchronized and concurrent collections in Java?**
+
+    Here's a comparison between synchronized and concurrent collections:
+
+    | Feature         | Synchronized Collections                | Concurrent Collections                         |
+    | --------------- | --------------------------------------- | ---------------------------------------------- |
+    | Locking         | Lock entire collection (coarse-grained) | Lock segments/elements (fine-grained)          |
+    | Performance     | Lower due to full collection locking    | Better due to less contention                  |
+    | Iterator        | Fail-fast iterator                      | Fail-safe iterator                             |
+    | Creation        | Using Collections.synchronizedXXX()     | Direct instantiation (e.g., ConcurrentHashMap) |
+    | Null values     | Generally allows null values            | Generally does not allow null values           |
+    | Memory overhead | Lower memory usage                      | Higher memory usage due to complex structures  |
+    | Use case        | Simple thread-safe operations           | High concurrency scenarios                     |
+
+    Example:
+
+    ```java
+    // Synchronized Collection
+    List<String> syncList = Collections.synchronizedList(new ArrayList<>());
+
+    // Concurrent Collection
+    ConcurrentHashMap<String, Integer> concurrentMap = new ConcurrentHashMap<>();
+    CopyOnWriteArrayList<String> concurrentList = new CopyOnWriteArrayList<>();
+    ```
+
+    Key differences:
+
+    1. Synchronized collections lock the entire collection during operations
+    2. Concurrent collections allow multiple threads to access different segments
+    3. Concurrent collections generally offer better scalability
+    4. Synchronized collections are simpler but less performant
+
+27. **How is ConcurrentHashMap different from Hashtable? How does it achieve thread-safety?**
+
+    ConcurrentHashMap and Hashtable are both thread-safe map implementations, but they differ significantly in their approach:
+
+    Key differences:
+
+    1. **Locking Mechanism**:
+
+       - Hashtable uses synchronized methods that lock the entire map
+       - ConcurrentHashMap uses segment-level locking (striping) and CAS operations
+
+    2. **Performance**:
+
+       - Hashtable has poor performance under high concurrency due to full map locking
+       - ConcurrentHashMap offers much better performance by allowing concurrent reads and writes
+
+    3. **Null Values**:
+
+       - Hashtable doesn't allow null keys or values
+       - ConcurrentHashMap doesn't allow null keys or values either
+
+    4. **Iterator Behavior**:
+       - Hashtable's iterator is fail-fast
+       - ConcurrentHashMap's iterator is fail-safe (weakly consistent)
+
+    How ConcurrentHashMap achieves thread-safety:
+
+    ```java
+    // Internal structure (simplified)
+    class ConcurrentHashMap<K,V> {
+        // Array of segments (pre-Java 8)
+        private final Segment<K,V>[] segments;
+
+        // Modern implementation (Java 8+) uses Node arrays with CAS
+        transient volatile Node<K,V>[] table;
+    }
+    ```
+
+    1. **Segmentation (pre-Java 8)**:
+
+       - Map divided into segments (like mini-hashtables)
+       - Each segment can be locked independently
+       - Default: 16 segments allowing 16 concurrent updates
+
+    2. **Modern Implementation (Java 8+)**:
+       - Uses Node arrays and CAS operations
+       - synchronized blocks only for updates to same bucket
+       - Uses volatile variables for visibility
+       - Red-black trees for bins exceeding threshold
+
+    This design allows for much higher concurrency while maintaining thread-safety.
+
+28. **When to use LinkedList over ArrayList in Java?**
+
+    LinkedList and ArrayList have different performance characteristics that make each better suited for certain use cases:
+
+    1. **Frequent insertions/deletions in the middle**:
+       - LinkedList: O(1) after finding position
+       - ArrayList: O(n) due to shifting elements
+    2. **Memory considerations**:
+
+       - LinkedList: More memory overhead (node objects)
+       - ArrayList: More memory efficient for fixed-size lists
+
+    3. **Random access**:
+       - LinkedList: O(n) - must traverse from start/end
+       - ArrayList: O(1) - direct index access
+    4. **Use LinkedList when**:
+       - Implementing queues/deques (poll/offer operations)
+       - Frequent insertions/removals from both ends
+       - Memory size can vary significantly
+    5. **Use ArrayList when**:
+       - Mostly reading/iterating data
+       - Random access is common
+       - Size changes are infrequent
+
+    Example usage:
+
+    ```java
+    // Good LinkedList use case - queue operations
+    LinkedList<Task> taskQueue = new LinkedList<>();
+    taskQueue.offer(new Task());  // Add to end
+    Task next = taskQueue.poll(); // Remove from front
+
+    // Good ArrayList use case - random access
+    ArrayList<Integer> scores = new ArrayList<>();
+    scores.add(100);
+    int score = scores.get(0);    // Direct access
+    ```
+
+29. **What is the difference between sorted and ordered collections?**
+
+    | Aspect          | Sorted Collections                         | Ordered Collections                    |
+    | --------------- | ------------------------------------------ | -------------------------------------- |
+    | Definition      | Elements arranged based on natural order   | Elements maintain insertion order      |
+    | Implementation  | TreeSet, TreeMap                           | LinkedHashSet, LinkedHashMap           |
+    | Ordering Method | Uses Comparable or Comparator              | Based on insertion sequence            |
+    | Performance     | O(log n) for insertions and retrievals     | O(1) for insertions and retrievals     |
+    | Memory Usage    | Additional memory for tree structure       | Additional memory for linked list      |
+    | Use Case        | When elements need natural/custom ordering | When insertion order must be preserved |
+    | Null Elements   | Generally don't allow null elements        | Generally allow null elements          |
+    | Duplicates      | No duplicates in Sets                      | No duplicates in Sets                  |
+    | Iteration Order | Based on sorting criteria                  | Based on insertion order               |
+    | Modification    | Re-sorts when elements are modified        | Maintains order regardless of changes  |

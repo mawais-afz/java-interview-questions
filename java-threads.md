@@ -277,7 +277,7 @@
     | Usage             | Must be called to start a thread.                                  | Can be called directly, but does not start a new thread.  |
     | Overriding        | Cannot be overridden in the Thread class.                          | Can be overridden in a subclass of Thread.                |
 
-12. **What is the difference between sleep and wait in Java?**
+12. **What are the differences between wait() and sleep()?**
 
     | Feature        | `sleep()`                                  | `wait()`                                                   |
     | -------------- | ------------------------------------------ | ---------------------------------------------------------- |
@@ -313,9 +313,58 @@
     | Race Conditions  | May cause issues if wrong thread is awakened       | Avoids issues by waking all threads                 |
     | Common Use Case  | When exactly one thread should handle notification | When multiple threads may need to handle state      |
 
-15. **What is the difference between ReentrantLock and synchronized in Java?**
+15. **What are the uses of synchronized keywords?**
 
-16. **What is the difference between a program and a process?**
+    The synchronized keyword in Java has several important uses for thread synchronization:
+
+    1. **Method Synchronization**:
+
+       - When applied to a method, it ensures only one thread can execute that method at a time
+       - Automatically acquires lock on the object (for instance methods) or class (for static methods)
+
+       ```java
+       public synchronized void method() {
+           // Only one thread can execute this at a time
+       }
+       ```
+
+    2. **Block Synchronization**:
+
+       - Allows finer-grained control by synchronizing only critical sections
+       - More efficient than synchronizing entire methods
+
+       ```java
+       synchronized(lockObject) {
+           // Only one thread can execute this block at a time
+       }
+       ```
+
+    3. **Static Synchronization**:
+
+       - Synchronizes access across all instances of a class
+       - Lock is held on the Class object rather than instance
+
+       ```java
+       public static synchronized void method() {
+           // Synchronized across all instances
+       }
+       ```
+
+    4. **Object Level Locking**:
+       - Provides mutual exclusion for shared resources
+       - Prevents multiple threads from simultaneously accessing critical sections
+       - Ensures memory visibility between threads
+
+    Key benefits:
+
+    - Prevents race conditions
+    - Ensures thread safety
+    - Establishes happens-before relationships
+    - Guarantees data consistency in multi-threaded environments
+
+16. **What is the difference between ReentrantLock and synchronized in Java?**
+
+17. **What is the difference between a program and a process?**
 
     - **Program**: A program is a set of instructions written in a programming language that is designed to perform a specific task. It is a static entity stored on disk (e.g., an executable file) and does not consume system resources until it is executed.
 
@@ -323,11 +372,11 @@
 
     In summary, a program is a passive collection of instructions, while a process is an active execution of those instructions with its own state and resources.
 
-17. **Can we make the main() thread a daemon thread?**
+18. **Can we make the main() thread a daemon thread?**
 
     - No, the main() thread cannot be made a daemon thread. In Java, the main thread is the first thread that is created when a program starts, and it is not possible to change its daemon status after it has been started. Daemon threads are designed to run in the background and do not prevent the JVM from exiting when the program finishes executing. Since the main thread is responsible for the execution of the program, it must complete before the JVM can terminate, making it non-daemon by nature.
 
-18. **Why is synchronization necessary? Explain with the help of a relevant example.**
+19. **Why is synchronization necessary? Explain with the help of a relevant example.**
 
     Synchronization is necessary to prevent race conditions and ensure thread safety when multiple threads access shared resources. Without synchronization, concurrent access to shared data can lead to data corruption and inconsistent results.
 
@@ -369,7 +418,7 @@
     - Race conditions are prevented
     - Data consistency is maintained
 
-19. **Assume a thread has a lock on it, calling the sleep() method on that thread will release the lock?**
+20. **Assume a thread has a lock on it, calling the sleep() method on that thread will release the lock?**
 
     No, calling sleep() on a thread that holds a lock will not release the lock. When a thread goes to sleep:
 
@@ -390,7 +439,7 @@
     }
     ```
 
-20. **What is the synchronized keyword?**
+21. **What is the synchronized keyword?**
 
     The synchronized keyword in Java is used to prevent multiple threads from simultaneously executing a block of code or method, ensuring thread safety. When a thread enters a synchronized block/method, it acquires a lock (monitor) that prevents other threads from entering synchronized blocks protected by the same lock.
 
@@ -434,7 +483,7 @@
     - May cause deadlocks if not used carefully
     - Increases contention between threads
 
-21. **What is the volatile keyword?**
+22. **What is the volatile keyword?**
 
     The volatile keyword in Java is used to ensure the visibility of variable changes across multiple threads. When a variable is declared as volatile, it guarantees that:
 
@@ -481,7 +530,7 @@
     - Simple shared state variables
     - Avoiding thread caching issues
 
-22. **What is the difference between volatile and synchronized in Java?**
+23. **What is the difference between volatile and synchronized in Java?**
 
     | Feature           | `volatile`                                                    | `synchronized`                                                |
     | ----------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
@@ -493,7 +542,7 @@
     | Keyword Scope     | Can be applied only to variables                              | Can be applied to methods and code blocks                     |
     | Memory Barrier    | Prevents instruction reordering and ensures memory visibility | Creates memory barrier and ensures thread-safe state          |
 
-23. **What is deadlock?**
+24. **What is deadlock?**
 
     A deadlock is a situation in concurrent programming where two or more threads are unable to proceed because each is waiting for the other to release a lock or resource. In other words, it's a state of mutual blocking where threads are stuck in a circular dependency.
 
@@ -575,7 +624,7 @@
     - Monitoring thread states
     - Java's built-in thread management tools
 
-24. **How do notify() and notifyAll() work, and what's the difference between them?**
+25. **How do notify() and notifyAll() work, and what's the difference between them?**
 
     - `notify()` wakes up a single thread waiting on the object's monitor
     - `notifyAll()` wakes up all threads waiting on the object's monitor
@@ -599,7 +648,7 @@
     }
     ```
 
-25. **What is a race condition and how do you avoid it?**
+26. **What is a race condition and how do you avoid it?**
 
     A race condition occurs when multiple threads access shared data concurrently and at least one thread modifies the data, leading to unpredictable results based on the timing/sequence of thread execution.
 
@@ -647,7 +696,7 @@
     - Read-modify-write sequences
     - Initialization races
 
-26. **What is a deadlock and how do you avoid it?**
+27. **What is a deadlock and how do you avoid it?**
 
     A deadlock occurs when two or more threads are blocked forever, each waiting for the other to release resources. It happens when threads hold resources and request additional ones in a circular manner.
 
@@ -700,7 +749,7 @@
        - Keep critical sections small
        - Use higher-level concurrency utilities when possible
 
-27. What are some of the high-level concurrency classes provided by java.util.concurrent and how do they work?
+28. **What are some of the high-level concurrency classes provided by java.util.concurrent and how do they work?**
 
     The java.util.concurrent package provides several high-level concurrency utilities:
 
@@ -752,4 +801,87 @@
        - Examples: AtomicInteger, AtomicReference, AtomicBoolean
        - Supports lock-free algorithms
 
-28. **Can you implement a producer-consumer solution in Java?**
+29. **Can you implement a producer-consumer solution in Java?**
+
+    Here's an example implementation using BlockingQueue:
+
+    ```java
+    public class ProducerConsumerExample {
+        private static BlockingQueue<Integer> queue = new LinkedBlockingQueue<>(10);
+
+        static class Producer implements Runnable {
+            public void run() {
+                try {
+                    for (int i = 0; i < 100; i++) {
+                        queue.put(i);  // Will block if queue is full
+                        System.out.println("Produced: " + i);
+                        Thread.sleep(100);
+                    }
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
+
+        static class Consumer implements Runnable {
+            public void run() {
+                try {
+                    while (true) {
+                        Integer value = queue.take();  // Will block if queue is empty
+                        System.out.println("Consumed: " + value);
+                        Thread.sleep(200);
+                    }
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
+
+        public static void main(String[] args) {
+            Thread producerThread = new Thread(new Producer());
+            Thread consumerThread = new Thread(new Consumer());
+
+            producerThread.start();
+            consumerThread.start();
+        }
+    }
+    ```
+
+    Key points about this implementation:
+
+    - Uses BlockingQueue which handles synchronization automatically
+    - Producer blocks when queue is full
+    - Consumer blocks when queue is empty
+    - Thread-safe operations with put() and take()
+    - Handles InterruptedException for graceful shutdown
+
+30. **Processes vs Threads: Key Differences**
+
+    - **Memory Space**
+
+      - Processes: Each process has its own independent memory space
+      - Threads: Threads within the same process share memory space
+
+    - **Resource Allocation**
+
+      - Processes: Require more system resources and overhead to create
+      - Threads: Lightweight, faster to create and destroy
+
+    - **Communication**
+
+      - Processes: Inter-process communication (IPC) is more complex
+      - Threads: Can directly communicate through shared memory
+
+    - **Isolation**
+
+      - Processes: Provide strong isolation and protection
+      - Threads: Less isolated, can directly access shared data
+
+    - **Context Switching**
+
+      - Processes: More expensive context switch due to memory map changes
+      - Threads: Faster context switching within the same process
+
+    - **Fault Tolerance**
+      - Processes: Failure of one process doesn't typically affect others
+      - Threads: Failure of one thread can crash the entire process

@@ -615,9 +615,47 @@
       - More powerful reflection capabilities
       - Better support for dependency injection and serialization frameworks
 
+21. **What is the importance of reflection in Java?**
+
+    - Reflection enables runtime inspection and modification of classes, methods, and fields
+    - Allows programs to examine and interact with components dynamically at runtime
+    - Critical for many frameworks and libraries like Spring, Hibernate, JUnit
+
+    - **Key Use Cases**:
+      - Framework development and dependency injection
+      - Unit testing frameworks
+      - Object-relational mapping (ORM)
+      - Serialization/deserialization
+      - Dynamic proxy creation
+    - **Core Capabilities**:
+      - Inspect class structure and metadata
+      - Create new instances dynamically
+      - Access and modify private members
+      - Invoke methods programmatically
+      - Load classes at runtime
+    - **Example**:
+
+      ```java
+      // Get class information
+      Class<?> clazz = obj.getClass();
+
+      // Create new instance
+      Object newInstance = clazz.newInstance();
+
+      // Invoke method dynamically
+      Method method = clazz.getMethod("methodName", paramTypes);
+      method.invoke(obj, args);
+      ```
+
+    - **Considerations**:
+      - Performance overhead due to dynamic nature
+      - Security implications when accessing private members
+      - Can break encapsulation if not used carefully
+      - Should be used judiciously where static alternatives exist
+
 ## Array Operations
 
-21. **What is Parallel Sorting of Arrays?**
+22. **What is Parallel Sorting of Arrays?**
 
     - Java 8 introduced parallel sorting methods for arrays to improve performance on multi-core processors
     - Provides built-in parallel sorting capabilities for primitive and object arrays
@@ -654,7 +692,7 @@
 
 ## Stream API
 
-22. **What is Stream?**
+23. **What is Stream?**
 
     - A sequence of elements supporting sequential and parallel aggregate operations
     - Introduced in Java 8 as part of the Stream API
@@ -682,7 +720,7 @@
       - Primitive streams (IntStream, LongStream, DoubleStream)
       - Infinite streams (generated streams)
 
-23. **What are the benefits of using Streams?**
+24. **What are the benefits of using Streams?**
 
     - Provides a more concise and readable way to process collections
     - Enables functional-style programming in Java
@@ -695,7 +733,7 @@
     - Integrates seamlessly with lambda expressions and method references
     - Offers a wide range of built-in operations like filter, map, reduce
 
-24. **What is the purpose of the Stream API?**
+25. **What is the purpose of the Stream API?**
 
     - The Stream API is a powerful feature introduced in Java 8 that provides a functional approach to processing collections of objects
 
@@ -746,9 +784,9 @@
       3. Close streams after use, especially with I/O operations
       4. Be mindful of performance for large collections
 
-25. **What are terminal operations on Streams?**
+26. **What are terminal operations on Streams?**
 
-26. **What is the Stream API in Java 8?**
+27. **What is the Stream API in Java 8?**
 
     - A functional approach to processing collections of objects
     - Enables declarative and functional-style operations on collections
@@ -761,7 +799,7 @@
       4. Lazily evaluated
       5. Can be processed sequentially or in parallel
 
-27. **What are the main operations in Stream API?**
+28. **What are the main operations in Stream API?**
 
     1. **Intermediate Operations**:
 
@@ -783,7 +821,7 @@
        - `allMatch()`: Checks if all elements match a predicate
        - `noneMatch()`: Checks if no elements match a predicate
 
-28. **What is the difference between `map()` and `flatMap()`?**
+29. **What is the difference between `map()` and `flatMap()`?**
 
     ```java
     // map(): One-to-One transformation
@@ -797,7 +835,7 @@
                                        .collect(Collectors.toList());
     ```
 
-29. **What are the different ways to create a Stream in Java?**
+30. **What are the different ways to create a Stream in Java?**
 
     There are several ways to create a Stream in Java:
 
@@ -835,7 +873,7 @@
        - `IntStream`, `LongStream`, `DoubleStream`
        - Range-based: `IntStream.range(1, 100)`
 
-30. **What is the difference between `findFirst()` and `findAny()`?**
+31. **What is the difference between `findFirst()` and `findAny()`?**
 
     - `findFirst()`: Returns first element in a sequential stream
     - `findAny()`: Returns any element, useful in parallel streams
@@ -845,7 +883,7 @@
     Optional<String> any = parallelStream.findAny();
     ```
 
-31. **How to perform grouping and partitioning with Streams?**
+32. **How to perform grouping and partitioning with Streams?**
 
     ```java
     // Grouping
@@ -878,7 +916,7 @@
       stream.count(); // IllegalStateException
       ```
 
-32. **What is the difference between Collection and Stream?**
+33. **What is the difference between Collection and Stream?**
 
     Key differences between Collection and Stream:
 
@@ -914,7 +952,7 @@
         .forEach(System.out::println);
     ```
 
-33. **What is the method collect() for in streams?**
+34. **What is the method collect() for in streams?**
 
     The collect() method is a terminal operation in streams that transforms a stream into a Collection or other data structure. It's used to:
 
@@ -944,7 +982,7 @@
     - partitioningBy()
     - summarizingInt/Long/Double()
 
-34. **Why do streams use forEach() and forEachOrdered() methods?**
+35. **Why do streams use forEach() and forEachOrdered() methods?**
 
     The forEach() and forEachOrdered() are terminal operations in streams that serve different purposes:
 
@@ -968,7 +1006,7 @@
         .forEachOrdered(item -> System.out.println(item)); // Order preserved
     ```
 
-35. **What are map(), mapToInt(), mapToDouble() and mapToLong() methods in Stream?**
+36. **What are map(), mapToInt(), mapToDouble() and mapToLong() methods in Stream?**
 
     These are intermediate operations in streams that transform elements:
 
@@ -999,7 +1037,7 @@
                                   .orElse(0.0);
     ```
 
-36. **What is the purpose of filter() method in streams?**
+37. **What is the purpose of filter() method in streams?**
 
     The filter() method is an intermediate operation that:
 
@@ -1020,7 +1058,7 @@
                                .collect(Collectors.toList());
     ```
 
-37. **What is the use of limit() method in streams?**
+38. **What is the use of limit() method in streams?**
 
     The limit() method is an intermediate operation that:
 
@@ -1041,7 +1079,7 @@
                                           .collect(Collectors.toList());
     ```
 
-38. **What is the use of sorted() method in streams?**
+39. **What is the use of sorted() method in streams?**
 
     The sorted() method is an intermediate operation that:
 
@@ -1066,7 +1104,7 @@
                                             .collect(Collectors.toList());
     ```
 
-39. **What are the flatMap(), flatMapToInt(), flatMapToDouble(), and flatMapToLong() methods in streams?**
+40. **What are the flatMap(), flatMapToInt(), flatMapToDouble(), and flatMapToLong() methods in streams?**
 
     The flatMap methods are intermediate operations that:
 
@@ -1099,7 +1137,7 @@
                         .toArray();
     ```
 
-40. **What are the final methods (terminal operations) of working with streams? Or What are terminal operations on Streams?**
+41. **What are the final methods (terminal operations) of working with streams? Or What are terminal operations on Streams?**
 
     Terminal operations in streams are methods that produce a result or side-effect and terminate the stream pipeline. The main terminal operations are:
 
@@ -1149,7 +1187,7 @@
     boolean hasEven = numbers.stream().anyMatch(n -> n % 2 == 0); // Returns true
     ```
 
-41. **What are the intermediate operations in streams?**
+42. **What are the intermediate operations in streams?**
 
     Intermediate operations in streams are operations that transform a stream into another stream. The main intermediate operations are:
 
@@ -1191,7 +1229,7 @@
     - Don't modify the original stream
     - Return a new stream
 
-42. **Explain Difference between Collection API and Stream API?**
+43. **Explain Difference between Collection API and Stream API?**
 
     Key differences between Collection API and Stream API:
 

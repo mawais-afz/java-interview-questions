@@ -857,3 +857,120 @@
     | Duplicates      | No duplicates in Sets                      | No duplicates in Sets                  |
     | Iteration Order | Based on sorting criteria                  | Based on insertion order               |
     | Modification    | Re-sorts when elements are modified        | Maintains order regardless of changes  |
+
+30. **What is the difference between ArrayList and Vector in Java?**
+
+    Key differences between ArrayList and Vector:
+
+    | Aspect          | ArrayList                             | Vector                                 |
+    | --------------- | ------------------------------------- | -------------------------------------- |
+    | Synchronization | Not synchronized, not thread-safe     | Synchronized, thread-safe              |
+    | Performance     | Better performance (no sync overhead) | Lower performance due to sync overhead |
+    | Growth          | Grows by 50% of current size          | Doubles in size when full              |
+    | Legacy Status   | Modern, preferred implementation      | Legacy class, rarely used now          |
+    | Iterator        | Fail-fast iterator                    | Fail-fast iterator                     |
+    | Memory Usage    | More memory efficient                 | Less memory efficient                  |
+    | Null Elements   | Allows null elements                  | Allows null elements                   |
+    | Best Use Case   | Single-threaded applications          | Legacy code or strict thread safety    |
+
+    Example usage:
+
+    ```java
+    // ArrayList - modern approach
+    ArrayList<String> list = new ArrayList<>();
+    list.add("item");  // No synchronization overhead
+
+    // Vector - legacy approach
+    Vector<String> vector = new Vector<>();
+    vector.add("item"); // Thread-safe but slower
+    ```
+
+31. **What is the difference between HashSet and TreeSet in Java?**
+
+    Key differences between HashSet and TreeSet:
+
+    | Aspect          | HashSet                         | TreeSet                           |
+    | --------------- | ------------------------------- | --------------------------------- |
+    | Ordering        | No guaranteed order             | Sorted order (natural or custom)  |
+    | Implementation  | Hash table (HashMap internally) | Red-black tree                    |
+    | Performance     | O(1) for add/remove/contains    | O(log n) for add/remove/contains  |
+    | Memory Usage    | Less memory overhead            | More memory for tree structure    |
+    | Null Elements   | Allows one null element         | Does not allow null elements      |
+    | Comparisons     | Uses equals() and hashCode()    | Uses compareTo() or Comparator    |
+    | Iteration Order | Seemingly random order          | Elements returned in sorted order |
+    | Use Case        | When order doesn't matter       | When sorted order is required     |
+
+    Example usage:
+
+    ```java
+    // HashSet - unordered, faster
+    HashSet<Integer> numbers = new HashSet<>();
+    numbers.add(5);
+    numbers.add(2);
+    numbers.add(8);
+    // Output order not guaranteed: e.g., [2, 5, 8] or [8, 2, 5]
+
+    // TreeSet - ordered, slightly slower
+    TreeSet<Integer> sortedNumbers = new TreeSet<>();
+    sortedNumbers.add(5);
+    sortedNumbers.add(2);
+    sortedNumbers.add(8);
+    // Always outputs: [2, 5, 8]
+    ```
+
+32. **How does HashMap work in Java?**
+
+    HashMap in Java is a hash table based implementation of the Map interface. Here's how it works internally:
+
+    1. **Hash Table Structure**
+
+       - Uses an array of buckets/nodes (Entry objects)
+       - Each bucket can store multiple key-value pairs using linked lists or trees
+       - Default initial capacity is 16 buckets with a load factor of 0.75
+
+    2. **Key Operations**
+
+       - **put(K key, V value)**:
+
+         1. Calculates hash code of the key
+         2. Maps hash to array index
+         3. Places entry in appropriate bucket
+         4. If bucket already contains entries, handles collision
+
+       - **get(Object key)**:
+         1. Calculates hash code of the key
+         2. Finds bucket using hash
+         3. Searches bucket for matching key
+         4. Returns associated value if found
+
+    3. **Collision Handling**
+
+       - Uses chaining with linked lists for buckets
+       - Converts to balanced tree if bucket size exceeds threshold (8 entries)
+       - Converts back to linked list when size reduces to 6
+
+    4. **Performance**
+       - Average case: O(1) for put/get/remove/contains
+       - Worst case: O(n) if many collisions occur
+       - Automatically doubles in size when load factor exceeded
+
+    Example usage:
+
+    ```java
+    HashMap<String, Integer> map = new HashMap<>();
+
+    // Adding entries
+    map.put("One", 1);
+    map.put("Two", 2);
+
+    // Retrieving value
+    Integer value = map.get("One"); // Returns 1
+
+    // Checking existence
+    boolean exists = map.containsKey("Two"); // Returns true
+
+    // Removing entry
+    map.remove("One");
+    ```
+
+    Note: HashMap is not thread-safe. For concurrent operations, use ConcurrentHashMap instead.

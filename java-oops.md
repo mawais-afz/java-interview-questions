@@ -356,9 +356,9 @@
     }
     ```
 
-14. **What is the difference between constructor and method?**
+14. **What is the difference between constructors and methods?**
 
-    | Aspect           | Constructor                                                      | Method                                                      |
+    | Aspect           | Constructors                                                     | Methods                                                     |
     | ---------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
     | Purpose          | Used to initialize object state when creating a new instance     | Used to perform operations and implement behavior           |
     | Name             | Must have the same name as the class                             | Can have any valid name                                     |
@@ -2118,3 +2118,18 @@
        - Constants (public static final)
        - Singleton pattern
        - Factory methods
+
+66. **What is the difference between abstract classes and interfaces?**
+
+    | Feature               | Abstract Class                                    | Interface                                                                                 |
+    | --------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+    | Multiple Inheritance  | Not supported (single inheritance only)           | A class can implement multiple interfaces                                                 |
+    | Variables             | Can have instance variables, static variables     | Only static final (constants) variables                                                   |
+    | Method Implementation | Can have concrete and abstract methods            | Prior to Java 8: Only abstract methods. After Java 8: Can have default and static methods |
+    | Constructor           | Can have constructors                             | Cannot have constructors                                                                  |
+    | Access Modifiers      | Can use all access modifiers                      | Methods are implicitly public abstract, variables are public static final                 |
+    | Purpose               | For related classes sharing common functionality  | To define a contract of behaviors                                                         |
+    | Instantiation         | Cannot be instantiated                            | Cannot be instantiated                                                                    |
+    | Member Variables      | Can have non-final and non-static variables       | Variables must be public static final                                                     |
+    | Speed                 | Faster as resolved during compile time            | Slightly slower as resolved during runtime                                                |
+    | Usage                 | When you want to share code among related classes | When you want to define common behavior that can be implemented by unrelated classes      |

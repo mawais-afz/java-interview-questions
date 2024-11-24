@@ -244,6 +244,43 @@
     - Improves application scalability
     - Manages database connection resources more effectively
 
+15. **What is the difference between execute, executeQuery, executeUpdate?**
+
+    These are three different methods in JDBC Statement interface for executing SQL statements:
+
+    1. **executeQuery()**
+
+       - Used for SELECT statements that return data
+       - Returns a ResultSet object containing the query results
+       - Example:
+
+       ```java
+       String sql = "SELECT * FROM employees";
+       ResultSet rs = statement.executeQuery(sql);
+       ```
+
+    2. **executeUpdate()**
+
+       - Used for INSERT, UPDATE, DELETE statements and DDL statements
+       - Returns an int representing number of rows affected
+       - Does not return any data
+       - Example:
+
+       ```java
+       String sql = "UPDATE employees SET salary = 50000 WHERE id = 1";
+       int rowsAffected = statement.executeUpdate(sql);
+       ```
+
+    3. **execute()**
+       - General purpose method that can execute any SQL statement
+       - Returns boolean: true if result is a ResultSet, false if row count/no result
+       - Used when statement type is unknown or for multiple results
+       - Example:
+       ```java
+       String sql = "CREATE TABLE employees (id INT, name VARCHAR(100))";
+       boolean hasResultSet = statement.execute(sql);
+       ```
+
 ## SQL
 
 1. **What is SQL and NoSQL?**

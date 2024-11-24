@@ -416,6 +416,54 @@
     - Profile application memory usage regularly
     - Use memory analysis tools (like JProfiler, MAT)
 
+17. **What are the different types of garbage collectors in Java?**
+
+    Java provides several garbage collector implementations, each optimized for different use cases:
+
+    1. **Serial GC**
+
+       - Single-threaded collector
+       - Simple and efficient for small applications
+       - Uses mark-sweep-compact algorithm
+       - Good for small heaps and single CPU environments
+
+    2. **Parallel GC (Throughput Collector)**
+
+       - Multiple threads for collection
+       - Default GC in Java 8
+       - Focuses on maximizing throughput
+       - Best for multi-core systems running batch processing
+
+    3. **CMS (Concurrent Mark Sweep)**
+
+       - Minimizes pause times by doing most work concurrently
+       - Good for applications requiring low latency
+       - More CPU-intensive
+       - Can lead to heap fragmentation
+
+    4. **G1 (Garbage First)**
+
+       - Default GC since Java 9
+       - Divides heap into regions
+       - Predictable pause times
+       - Good for large heaps (>4GB)
+       - Balance between latency and throughput
+
+    5. **ZGC (Z Garbage Collector)**
+
+       - Introduced in Java 11
+       - Designed for very large heaps
+       - Ultra-low latency (<10ms pause times)
+       - Concurrent and scalable
+
+    6. **Shenandoah**
+       - Similar to ZGC
+       - Ultra-low pause times
+       - Concurrent compaction
+       - Available in OpenJDK
+
+    Selection can be done using JVM flags, e.g., `-XX:+UseG1GC` for G1 collector.
+
 ## Variables & Data Types
 
 1. **What is a Java Variable?**
@@ -946,6 +994,110 @@
        }
    }
    ```
+
+10. **What is the difference between this() and super() in Java?**
+
+    `this()` and `super()` are both constructor calls in Java, but they serve different purposes:
+
+    **this()**:
+
+    - Calls another constructor in the same class (constructor chaining)
+    - Must be the first statement in a constructor
+    - Used to avoid code duplication between constructors
+    - Cannot be used along with super() in the same constructor
+
+    Example of this():
+
+    ```java
+    public class Student {
+        private String name;
+        private int age;
+
+        public Student() {
+            this("Unknown", 0); // Calls the second constructor
+        }
+
+        public Student(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+    }
+    ```
+
+    **super()**:
+
+    - Calls a constructor in the immediate parent class
+    - Must be the first statement in a constructor
+    - If not explicitly called, compiler adds super() implicitly
+    - Used to ensure proper initialization of parent class members
+
+    Example of super():
+
+    ```java
+    class Person {
+        String name;
+        Person(String name) {
+            this.name = name;
+        }
+    }
+
+    class Student extends Person {
+        int grade;
+        Student(String name, int grade) {
+            super(name);  // Calls Person constructor
+            this.grade = grade;
+        }
+    }
+    ```
+
+11. **Differentiate between static and non-static methods in Java.**
+
+    Static methods and non-static methods have several key differences:
+
+    **Static Methods**:
+
+    - Belong to the class rather than any specific instance
+    - Can be called without creating an object of the class
+    - Cannot access non-static members directly
+    - Cannot use 'this' keyword
+    - Memory allocated once when class is loaded
+    - Often used for utility functions
+
+    Example of static method:
+
+    ```java
+    public class Calculator {
+        public static int add(int a, int b) {
+            return a + b;
+        }
+    }
+    // Called as:
+    Calculator.add(5, 3);
+    ```
+
+    **Non-static Methods**:
+
+    - Belong to instances of the class
+    - Require an object instance to be called
+    - Can access both static and non-static members
+    - Can use 'this' keyword
+    - Memory allocated for each instance
+    - Used for object-specific behaviors
+
+    Example of non-static method:
+
+    ```java
+    public class Student {
+        private String name;
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
+    // Called as:
+    Student student = new Student();
+    student.setName("John");
+    ```
 
 ## Control Flow & Operators
 

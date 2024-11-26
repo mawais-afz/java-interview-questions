@@ -56,7 +56,45 @@
    - **Dynamic Array Bounds**: Array bounds are checked dynamically at runtime
    - **Dynamic Security**: Security policies can be configured and enforced at runtime
 
-6. **Distinguish between static loading and dynamic class loading?**
+6. **What does it mean that Java is a statically typed language? What are the Characteristics of Static Typing**
+
+   Java is a statically typed language, which means that variable types are checked at compile time rather than runtime. This has several important characteristics:
+
+   **Core Characteristics:**
+
+   - All variables must have their type explicitly declared before use
+   - Type checking occurs during compilation, catching type errors early
+   - Once declared, a variable's type cannot be changed
+   - All method parameters and return types must be explicitly declared
+
+   **Benefits:**
+
+   - Early detection of type-related errors during compilation
+   - Improved code reliability and maintainability
+   - Better performance as type checking is done at compile time
+   - Enhanced IDE support with better code completion and error detection
+   - Self-documenting code through explicit type declarations
+
+   **Examples:**
+
+   ```java
+   // Valid static typing
+   String name = "John";
+   int age = 25;
+
+   // Invalid - would cause compile error
+   String text = "Hello";
+   text = 42;  // Error: incompatible types
+
+   // Method with explicit parameter and return types
+   public String formatName(String firstName, String lastName) {
+       return firstName + " " + lastName;
+   }
+   ```
+
+   This differs from dynamically typed languages like Python or JavaScript, where types are checked at runtime and variables can change types freely.
+
+7. **Distinguish between static loading and dynamic class loading?**
 
    Static loading and dynamic class loading are two different approaches to loading classes in Java:
 
@@ -102,7 +140,7 @@
    }
    ```
 
-7. **What is the difference between JavaEE and JavaSE?**
+8. **What is the difference between JavaEE and JavaSE?**
 
    JavaSE (Java Standard Edition) and JavaEE (Java Enterprise Edition) are different platforms within the Java ecosystem:
 
@@ -130,7 +168,7 @@
 
    Note: JavaEE has been renamed to Jakarta EE after Oracle transferred it to the Eclipse Foundation.
 
-8. **Explain JDK, JRE, and JVM**
+9. **Explain JDK, JRE, and JVM**
 
    | Component | Full Name                | Description                                                                                                                                                                                                                                          |
    | --------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -138,43 +176,43 @@
    | JRE       | Java Runtime Environment | Provides the minimum requirements for executing a Java application; it consists of the Java Virtual Machine (JVM), core classes, and supporting files.                                                                                               |
    | JVM       | Java Virtual Machine     | An abstract computing machine that enables a computer to run a Java program. It provides a runtime environment in which Java bytecode can be executed, ensuring platform independence.                                                               |
 
-9. **What is a ClassLoader? And its role in Java?**
+10. **What is a ClassLoader? And its role in Java?**
 
-   A ClassLoader in Java is a fundamental component of the Java Runtime Environment (JRE) responsible for loading Java classes and interfaces into the Java Virtual Machine (JVM) during runtime. Its primary role is to convert Java bytecode (.class files) into Class objects that can be used by the JVM.
+    A ClassLoader in Java is a fundamental component of the Java Runtime Environment (JRE) responsible for loading Java classes and interfaces into the Java Virtual Machine (JVM) during runtime. Its primary role is to convert Java bytecode (.class files) into Class objects that can be used by the JVM.
 
-   Key responsibilities of a ClassLoader include:
+    Key responsibilities of a ClassLoader include:
 
-   - **Loading Classes**: Reads the bytecode from .class files and creates Class objects
-   - **Security**: Ensures classes are loaded from trusted sources and meet Java specifications
-   - **Namespace Management**: Maintains separate namespaces for different types of classes
-   - **Dynamic Loading**: Loads classes on-demand when they are first referenced
+    - **Loading Classes**: Reads the bytecode from .class files and creates Class objects
+    - **Security**: Ensures classes are loaded from trusted sources and meet Java specifications
+    - **Namespace Management**: Maintains separate namespaces for different types of classes
+    - **Dynamic Loading**: Loads classes on-demand when they are first referenced
 
-   Java provides three built-in ClassLoaders, each with specific responsibilities:
+    Java provides three built-in ClassLoaders, each with specific responsibilities:
 
-   - **Bootstrap ClassLoader**:
+    - **Bootstrap ClassLoader**:
 
-     - Written in native code (not Java)
-     - Loads core Java API classes from rt.jar
-     - Parent of all other ClassLoaders
+      - Written in native code (not Java)
+      - Loads core Java API classes from rt.jar
+      - Parent of all other ClassLoaders
 
-   - **Extension ClassLoader**:
+    - **Extension ClassLoader**:
 
-     - Loads classes from extension directories (JAVA_HOME/lib/ext)
-     - Child of Bootstrap ClassLoader
+      - Loads classes from extension directories (JAVA_HOME/lib/ext)
+      - Child of Bootstrap ClassLoader
 
-   - **System/Application ClassLoader**:
-     - Loads application classes from classpath
-     - Child of Extension ClassLoader
-     - Used to load application-specific classes
+    - **System/Application ClassLoader**:
+      - Loads application classes from classpath
+      - Child of Extension ClassLoader
+      - Used to load application-specific classes
 
-   ClassLoaders follow important principles:
+    ClassLoaders follow important principles:
 
-   1. **Delegation Hierarchy**: Before loading a class, a ClassLoader asks its parent first
-   2. **Visibility**: Child ClassLoaders can see classes loaded by parents, but not vice versa
-   3. **Uniqueness**: Same class loaded by different ClassLoaders are treated as different types
-   4. **Non-delegation**: Each ClassLoader should load a class only once
+    1. **Delegation Hierarchy**: Before loading a class, a ClassLoader asks its parent first
+    2. **Visibility**: Child ClassLoaders can see classes loaded by parents, but not vice versa
+    3. **Uniqueness**: Same class loaded by different ClassLoaders are treated as different types
+    4. **Non-delegation**: Each ClassLoader should load a class only once
 
-10. **What is the difference between path and classpath?**
+11. **What is the difference between path and classpath?**
 
     | Aspect  | PATH                                                   | CLASSPATH                                           |
     | ------- | ------------------------------------------------------ | --------------------------------------------------- |
@@ -195,6 +233,29 @@
 
     ```
     .:/home/user/classes:/home/user/lib/example.jar
+    ```
+
+12. **What is bytecode in the context of Java?**
+
+    Bytecode is the intermediate representation of Java code that is generated when Java source code is compiled. Key points about bytecode:
+
+    - It's the compiled form of Java code (.class files)
+    - Platform-independent - can run on any device with a JVM
+    - Contains instructions that the JVM executes
+    - Consists of one-byte operation codes (opcodes) followed by parameters
+    - More compact than source code but not machine code
+    - JVM interprets or compiles bytecode to native machine code at runtime
+    - Can be decompiled back to approximate source code
+    - Verified by JVM for security and correctness before execution
+    - Other JVM languages (Kotlin, Scala) also compile to bytecode
+
+    Example bytecode instruction:
+
+    ```
+    iload_1     // Load integer from local variable 1
+    iload_2     // Load integer from local variable 2
+    iadd        // Add two integers
+    istore_3    // Store result in local variable 3
     ```
 
 ## Memory Management & Garbage Collection
@@ -500,7 +561,22 @@
 
    Primitive types are predefined by the language and named by a keyword. Reference data types are created by the programmer and are not defined by the language (except for String).
 
-3. **What are literals in Java?**
+3. **What is the difference between an int and an Integer in Java?**
+
+   | Aspect               | int                              | Integer                                             |
+   | -------------------- | -------------------------------- | --------------------------------------------------- |
+   | Type                 | Primitive data type              | Wrapper class (Reference type)                      |
+   | Memory               | 32 bits in stack memory          | Object in heap memory with overhead                 |
+   | Default Value        | 0                                | null                                                |
+   | Usage in Collections | Cannot be used directly          | Can be used in collections (ArrayList etc.)         |
+   | Methods/Operations   | Only basic arithmetic operations | Additional utility methods (parseInt, valueOf etc.) |
+   | Null Assignment      | Cannot be null                   | Can be assigned null                                |
+   | Performance          | Better performance               | Slightly slower due to object overhead              |
+   | Autoboxing/Unboxing  | N/A                              | Automatic conversion between int and Integer        |
+   | Memory Usage         | Less memory                      | More memory due to object overhead                  |
+   | Usage in Generics    | Cannot be used                   | Can be used as type parameter                       |
+
+4. **What are literals in Java?**
 
    Literals are fixed values that can be directly used in code. Java supports several types of literals:
 
@@ -524,7 +600,7 @@
    Object obj = null;
    ```
 
-4. **What are wrapper classes? Why do we need wrapper classes?**
+5. **What are wrapper classes? Why do we need wrapper classes?**
 
    Wrapper classes in Java are used to convert primitive data types into objects. Each primitive type has a corresponding wrapper class that provides a way to use these primitives as objects. This is particularly useful in situations where objects are required, such as in collections like ArrayList. The wrapper classes in Java include:
 
@@ -555,7 +631,7 @@
    int value = num;    // auto-unboxing
    ```
 
-5. **What are the different ways of creating Wrapper class instances? Or What are differences in the two ways of creating Wrapper classes?**
+6. **What are the different ways of creating Wrapper class instances? Or What are differences in the two ways of creating Wrapper classes?**
 
    There are several ways to create wrapper class instances in Java:
 
@@ -601,7 +677,7 @@
    - Parsing methods are useful for converting strings
    - Each wrapper class has similar creation methods
 
-6. **What are autoboxing and unboxing?**
+7. **What are autoboxing and unboxing?**
 
    Autoboxing and unboxing are automatic conversions between primitive data types and their corresponding wrapper classes in Java:
 
@@ -642,7 +718,7 @@
    - Enables primitives to work with collections
    - Makes code more readable and maintainable
 
-7. **What are variable types?**
+8. **What are variable types?**
 
    | Variable Type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
    | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -650,7 +726,7 @@
    | Instance Variables     | - Declared in a class, but outside a method, constructor or any block<br>- Created when an object is created with the 'new' keyword and destroyed when the object is destroyed<br>- Can use access modifiers<br>- Visible for all methods, constructors and blocks in the class<br>- Have default values (0 for numbers, false for boolean, null for object references)<br>- Can be accessed directly by calling the variable name inside the class                                                                                           |
    | Class/Static Variables | - Declared with the static keyword in a class, but outside a method, constructor or block<br>- Only one copy per class, regardless of how many objects are created<br>- Created when the program starts and destroyed when the program stops<br>- Can be declared as public/private, final, and static<br>- Visible for all methods, constructors and blocks in the class<br>- Have default values (0 for numbers, false for boolean, null for object references)<br>- Can be accessed by calling with the class name: ClassName.VariableName |
 
-8. **What is the difference between transient and volatile variable in Java?**
+9. **What is the difference between transient and volatile variable in Java?**
 
    | Feature | Transient                                                  | Volatile                                                   |
    | ------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
@@ -681,31 +757,31 @@
    }
    ```
 
-9. **What is Type Casting (Type Conversion)**
+10. **What is Type Casting (Type Conversion)**
 
-   Type casting is the process of converting a value from one data type to another in Java. There are two types of type casting:
+    Type casting is the process of converting a value from one data type to another in Java. There are two types of type casting:
 
-   1. Widening Casting (Implicit) - automatically converting a smaller type to a larger type size
-      `byte -> short -> char -> int -> long -> float -> double`
+    1. Widening Casting (Implicit) - automatically converting a smaller type to a larger type size
+       `byte -> short -> char -> int -> long -> float -> double`
 
-   - **Example**:
+    - **Example**:
 
-   ```java
-   byte byteValue = 10;
-   int intValue = byteValue; // Widening casting from byte to int
-   ```
+    ```java
+    byte byteValue = 10;
+    int intValue = byteValue; // Widening casting from byte to int
+    ```
 
-   1. Narrowing Casting (Explicit) - manually converting a larger type to a smaller size type
-      `double -> float -> long -> int -> char -> short -> byte`
+    1. Narrowing Casting (Explicit) - manually converting a larger type to a smaller size type
+       `double -> float -> long -> int -> char -> short -> byte`
 
-   - **Example**:
+    - **Example**:
 
-   ```java
-   double doubleValue = 9.78;
-   int intValue = (int) doubleValue; // Narrowing casting from double to int
-   ```
+    ```java
+    double doubleValue = 9.78;
+    int intValue = (int) doubleValue; // Narrowing casting from double to int
+    ```
 
-   Widening casting is done automatically when passing a smaller size type to a larger size type. Narrowing casting must be done manually by placing the type in parentheses in front of the value.
+    Widening casting is done automatically when passing a smaller size type to a larger size type. Narrowing casting must be done manually by placing the type in parentheses in front of the value.
 
 ## Keywords & Language Features
 
@@ -769,35 +845,53 @@
         }
         ```
 
-2. **What is the final and blank final variable?**
+2. **What is the final and final blank variable? Can we initialize the final blank variable?**
 
    1. **Final Variable**:
 
       - A variable declared with the `final` keyword
       - Value cannot be changed once assigned
       - Must be initialized when declared or in constructor
-      - Acts as a constant in Java
+      - Provides immutability
+      - Helps in creating constants
 
       ```java
       final int MAX_VALUE = 100; // Initialized at declaration
+      final String MESSAGE = "Hello"; // Can be final for Strings too
       ```
 
-   2. **Blank Final Variable**:
+   2. **Final Blank Variable**:
 
-      - A final variable that is not initialized at the time of declaration
-      - Must be initialized in all constructors
-      - Provides flexibility to assign different values based on constructor
-      - Can only be assigned once
+      - A final variable that is not initialized at declaration
+      - Must be initialized exactly once
+      - Can be initialized in:
+        - Constructor
+        - Instance initialization block
+      - Allows dynamic initialization based on constructor parameters
+      - Prevents reassignment after initialization
 
       ```java
       public class Example {
           final int value; // Blank final variable
 
+          // Initialization in constructor
           public Example(int val) {
-              value = val; // Initialized in constructor
+              value = val; // Must be initialized here
+          }
+
+          // Another example with multiple constructors
+          public Example() {
+              value = 10; // Must initialize in ALL constructors
           }
       }
       ```
+
+   **Key Points**:
+
+   - Final blank variables MUST be initialized before use
+   - Can only be assigned once
+   - Provides a way to create runtime constants
+   - Helps in creating immutable objects
 
 3. **What is a compile time constant in Java?**
 
@@ -829,7 +923,7 @@
    - No runtime overhead as values are resolved during compilation
    - Memory efficient as they are stored in the constant pool
 
-4. **What is the significance of the this keyword in Java?**
+4. **What is this keyword in java? Or What is the significance of the this keyword in Java?**
 
    The `this` keyword in Java is a reference variable that refers to the current object. It has several important uses:
 
@@ -882,175 +976,303 @@
       }
       ```
 
-5. **What is the super keyword in Java? When can you use the super keyword?**
+5. **What are the advantages of passing this into a method instead of the current class object itself?**
 
-   The `super` keyword in Java is a reference variable used to refer to the immediate parent class object. It allows you to access parent class members that are hidden or overridden by the child class.
+   Passing `this` into a method instead of the current class object has several advantages:
 
-   You can use the super keyword in the following ways:
+   1. **Type Safety**:
 
-   The `super` keyword in Java can be used in the following scenarios:
+      - `this` is guaranteed to be the correct type at compile time
+      - No need for type casting which could fail at runtime
 
-   1. **Call Parent Class Methods**:
+   2. **Performance**:
 
-      - When a method is overridden, use `super` to call the parent version
-      - Example: `super.methodName()`
+      - No need to create a new reference to the object
+      - Avoids unnecessary object creation and memory allocation
 
-   2. **Access Parent Class Fields**:
+   3. **Clear Intent**:
 
-      - Access fields from parent class that might be hidden by child class
-      - Example: `super.fieldName`
+      - Makes it explicit that you're passing the current instance
+      - Improves code readability and maintainability
 
-   3. **Call Parent Class Constructor**:
-      - Must be first statement in constructor
-      - Example: `super()` or `super(parameters)`
+   4. **Method Chaining**:
+
+      - Enables fluent interfaces and method chaining
+      - Example:
+
+      ```java
+      class Builder {
+          void process(Builder b) {
+              // processing
+          }
+
+          Builder chainedMethod() {
+              process(this); // enables chaining
+              return this;
+          }
+      }
+      ```
+
+   5. **Event Handling**:
+      - Useful in event listeners and callbacks
+      - Maintains reference to the original object context
+
+6. **What is super in java? When can you use the super keyword? What are the main uses of the super keyword?**
+
+   The `super` keyword in Java is a reference variable that refers to the immediate parent class object. It provides a way to access parent class members that are hidden or overridden in the child class.
+
+   The `super` keyword can be used in the following scenarios:
+
+   1. **Call Parent Class Constructor**:
+
+      - Must be the first statement in a child class constructor
+      - Used to ensure proper initialization of parent class members
+      - Syntax: `super()` or `super(parameters)`
+
+   2. **Call Parent Class Methods**:
+
+      - Used to call an overridden method from the parent class
+      - Helps avoid recursion when overriding methods
+      - Syntax: `super.methodName()`
+
+   3. **Access Parent Class Fields**:
+      - Used to access fields from parent class that are hidden by child class
+      - Helps resolve naming conflicts between parent and child class fields
+      - Syntax: `super.fieldName`
 
    Example:
 
    ```java
-   class Parent {
-       String name = "Parent";
-       void display() {
-           System.out.println("Parent method");
+   class Vehicle {
+       protected String brand = "Ford";
+
+       public void honk() {
+           System.out.println("Beep!");
        }
    }
 
-   class Child extends Parent {
-       String name = "Child";
+   class Car extends Vehicle {
+       private String brand = "Tesla";  // hides parent's brand
 
-       Child() {
-           super(); // Call parent constructor
+       public Car() {
+           super();  // calls Vehicle's constructor
        }
 
-       void display() {
-           super.display(); // Call parent method
-           System.out.println(super.name); // Access parent field
+       public void displayInfo() {
+           super.honk();  // calls Vehicle's honk method
+           System.out.println("Parent brand: " + super.brand);  // accesses Vehicle's brand
+           System.out.println("Child brand: " + this.brand);    // accesses Car's brand
        }
-   ```
-
-6. **What are the differences between super and this keywords in Java?**
-
-   | super keyword                                                           | this keyword                                                    |
-   | ----------------------------------------------------------------------- | --------------------------------------------------------------- |
-   | Used to refer to the immediate parent class object                      | Used to refer to the current class object                       |
-   | Used to access parent class members hidden by child class               | Used to access current class members                            |
-   | Must be first statement in constructor when calling parent constructor  | Can be used anywhere within instance methods and constructors   |
-   | Cannot be used in static context                                        | Cannot be used in static context                                |
-   | Used with inheritance to differentiate between parent and child members | Used to differentiate between instance variables and parameters |
-   | Example: `super.method()`, `super.variable`, `super()`                  | Example: `this.method()`, `this.variable`, `this()`             |
-
-7. **Is it possible that the 'finally' block will not be executed? If yes then list the case.**
-
-   Yes, there are a few cases where the finally block may not execute:
-
-   1. If `System.exit()` is called within the try or catch block
-   2. If the JVM crashes or is terminated abruptly
-   3. If the thread executing the try-catch block is interrupted or killed
-   4. If there is an infinite loop in the try or catch block
-   5. If a fatal error occurs that causes the JVM to crash (e.g., OutOfMemoryError, StackOverflowError)
-
-   Example with System.exit():
-
-   ```java
-   try {
-       System.out.println("In try block");
-       System.exit(0);  // Finally block won't execute
-   } catch (Exception e) {
-       System.out.println("In catch block");
-   } finally {
-       System.out.println("This won't be printed");
    }
    ```
 
-8. **How many times is the finalize method called?**
+7. **What are the main uses of this keyword?**
 
-   The finalize method is called only once for each object by the garbage collector before the object is garbage collected. However, there are important points to note:
+   The `this` keyword in Java is a reference variable that refers to the current object instance. Here are its main uses:
 
-   - There is no guarantee when or if finalize() will be called, as it depends on the garbage collector
-   - An object can be resurrected during finalization, but finalize() won't be called again when that object becomes garbage again
-   - Since Java 9, the finalize() method has been deprecated because it is inherently problematic and unpredictable
-   - It's recommended to use try-with-resources or explicit cleanup methods instead of relying on finalize()
+   1. **Differentiate Instance Variables from Parameters**:
 
-9. **Is it possible to use this keyword in Java to refer to the static members?**
+      ```java
+      public class Person {
+          private String name;
+          public Person(String name) {
+              this.name = name; // Distinguishes field from parameter
+          }
+      }
+      ```
 
-   No, the `this` keyword cannot be used to refer to static members in Java. The `this` keyword refers to the current instance of a class, while static members belong to the class itself rather than any specific instance.
+   2. **Call Current Class Methods**:
 
-   To access static members, you should:
+      - Can be used to invoke another method in the same class
+      - Example: `this.methodName()`
 
-   - Use the class name: `ClassName.staticMember`
-   - Or access directly within the same class: `staticMember`
+   3. **Pass Current Object as Parameter**:
+
+      ```java
+      public void process(Handler handler) {
+          handler.handle(this); // Passing current object
+      }
+      ```
+
+   4. **Constructor Chaining**:
+
+      - Call another constructor in same class
+      - Must be first statement in constructor
+      - Example: `this()` or `this(parameters)`
+
+   5. **Return Current Class Instance**:
+
+      ```java
+      public Person setName(String name) {
+          this.name = name;
+          return this; // Method chaining
+      }
+      ```
+
+   6. **Distinguish Instance Members**:
+      - Access instance variables when shadowed by local variables
+      - Access instance methods explicitly
+
+8. **Can we assign the reference to this variable?**
+
+   No, we cannot assign a reference to the `this` variable in Java. The `this` reference is implicitly assigned by the JVM and is read-only. Attempting to assign a value to `this` will result in a compilation error.
 
    Example:
 
    ```java
    public class Example {
-       private static int count = 0;
-       private int instanceVar = 0;
-
        public void method() {
-           this.instanceVar = 1;    // Valid - refers to instance variable
-           this.count = 1;          // Invalid - cannot use this with static
-           Example.count = 1;       // Valid - proper way to access static
-           count = 1;               // Also valid when in same class
+           this = new Example(); // Compilation error: Cannot assign to 'this'
        }
    }
    ```
 
-10. **What is the difference between this() and super() in Java?**
+   This restriction helps maintain object identity and prevents confusion about which object instance a method is operating on.
 
-    `this()` and `super()` are both constructor calls in Java, but they serve different purposes:
+9. **Can this keyword be used to refer static members?**
 
-    **this()**:
+   While it's not recommended, the `this` keyword can technically be used to refer to static members in Java. However, it's considered bad practice because:
 
-    - Calls another constructor in the same class (constructor chaining)
-    - Must be the first statement in a constructor
-    - Used to avoid code duplication between constructors
-    - Cannot be used along with super() in the same constructor
+   - The `this` keyword represents the current instance of a class
+   - Static members belong to the class itself, not to any specific instance
+   - Using the class name is clearer and more explicit
 
-    Example of this():
+   Example showing it works but isn't recommended:
+
+   ```java
+   public class Main {
+       private static int count = 10;
+       private int id;
+
+       public Main() {
+           System.out.println(++this.count);   // Works fine with static member
+           System.out.println(++this.id);      // Works with instance member
+       }
+   }
+   ```
+
+   The recommended way to access static members is using the class name:
+
+   ```java
+   Main.count++;    // Clearer and more explicit
+   ```
+
+10. **What are the differences between this and super keyword?**
+
+    | Feature           | super keyword                                                          | this keyword                                                             |
+    | ----------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+    | Purpose           | Used to refer to immediate parent class object                         | Used to refer to current class object                                    |
+    | Member Access     | Accesses parent class members hidden by child class                    | Accesses current class members                                           |
+    | Constructor Usage | Must be first statement in constructor when calling parent constructor | Must be first statement in constructor when calling another constructor  |
+    | Static Context    | Cannot be used in static context                                       | Cannot be used in static context                                         |
+    | Common Use Case   | Used with inheritance to access overridden methods/fields              | Used to avoid naming conflicts between instance variables and parameters |
+    | Constructor Call  | super() calls parent constructor                                       | this() calls another constructor in same class                           |
+    | Method Call       | super.method() calls parent version                                    | this.method() calls current class version                                |
+    | Variable Access   | super.variable accesses parent's variable                              | this.variable accesses current class variable                            |
+    | Scope             | Can only access immediate parent class                                 | Can access all members of current class                                  |
+
+11. **Can you use this and super both in a constructor?**
+
+    No, you cannot use both `this()` and `super()` in the same constructor because:
+
+    - Both `this()` and `super()` must be the first statement in a constructor
+    - Only one of them can be the first statement
+    - They cannot be used together in the same constructor
+
+    Example showing this restriction:
 
     ```java
-    public class Student {
-        private String name;
-        private int age;
+    class Parent {
+        Parent() {
+            System.out.println("Parent constructor");
+        }
+    }
 
-        public Student() {
-            this("Unknown", 0); // Calls the second constructor
+    class Child extends Parent {
+        Child() {
+            super();  // OK - calls Parent constructor
+            // this(); // Error - can't use both super() and this()
         }
 
-        public Student(String name, int age) {
-            this.name = name;
-            this.age = age;
+        Child(int x) {
+            this();   // OK - calls Child()
+            // super(); // Error - can't use both this() and super()
         }
     }
     ```
 
-    **super()**:
-
-    - Calls a constructor in the immediate parent class
-    - Must be the first statement in a constructor
-    - If not explicitly called, compiler adds super() implicitly
-    - Used to ensure proper initialization of parent class members
-
-    Example of super():
+    However, you can use `this` and `super` keywords (without parentheses) to refer to members in the same constructor:
 
     ```java
-    class Person {
-        String name;
-        Person(String name) {
-            this.name = name;
-        }
-    }
+    class Child extends Parent {
+        private int value;
 
-    class Student extends Person {
-        int grade;
-        Student(String name, int grade) {
-            super(name);  // Calls Person constructor
-            this.grade = grade;
+        Child(int value) {
+            super();  // Call parent constructor
+            this.value = value;  // Use this to refer to instance variable
+            super.someMethod();  // Use super to call parent method
         }
     }
     ```
 
-11. **Differentiate between static and non-static methods in Java.**
+12. **Is there any case when finally will not be executed? If yes then list the case.**
+
+    Yes, there are a few cases where the finally block may not execute:
+
+    1. If `System.exit()` is called within the try or catch block
+    2. If the JVM crashes or is terminated abruptly
+    3. If the thread executing the try-catch block is interrupted or killed
+    4. If there is an infinite loop in the try or catch block
+    5. If a fatal error occurs that causes the JVM to crash (e.g., OutOfMemoryError, StackOverflowError)
+
+    Example with System.exit():
+
+    ```java
+    try {
+        System.out.println("In try block");
+        System.exit(0);  // Finally block won't execute
+    } catch (Exception e) {
+        System.out.println("In catch block");
+    } finally {
+        System.out.println("This won't be printed");
+    }
+    ```
+
+13. **How many times is the finalize method called?**
+
+    The finalize method is called only once for each object by the garbage collector before the object is garbage collected. However, there are important points to note:
+
+    - There is no guarantee when or if finalize() will be called, as it depends on the garbage collector
+    - An object can be resurrected during finalization, but finalize() won't be called again when that object becomes garbage again
+    - Since Java 9, the finalize() method has been deprecated because it is inherently problematic and unpredictable
+    - It's recommended to use try-with-resources or explicit cleanup methods instead of relying on finalize()
+
+14. **Is it possible to use this keyword in Java to refer to the static members?**
+
+    No, the `this` keyword cannot be used to refer to static members in Java. The `this` keyword refers to the current instance of a class, while static members belong to the class itself rather than any specific instance.
+
+    To access static members, you should:
+
+    - Use the class name: `ClassName.staticMember`
+    - Or access directly within the same class: `staticMember`
+
+    Example:
+
+    ```java
+    public class Example {
+        private static int count = 0;
+        private int instanceVar = 0;
+
+        public void method() {
+            this.instanceVar = 1;    // Valid - refers to instance variable
+            this.count = 1;          // Invalid - cannot use this with static
+            Example.count = 1;       // Valid - proper way to access static
+            count = 1;               // Also valid when in same class
+        }
+    }
+    ```
+
+15. **Differentiate between static and non-static methods in Java.**
 
     Static methods and non-static methods have several key differences:
 
@@ -1099,6 +1321,39 @@
     student.setName("John");
     ```
 
+16. **What are the restrictions that are applied to the Java static methods?**
+
+    Static methods in Java have several restrictions:
+
+    - **Cannot access non-static members**: Static methods cannot directly access instance variables or instance methods. They can only access static members of the class.
+
+    - **Cannot use 'this' keyword**: Since static methods do not belong to any specific instance, they cannot use the 'this' keyword, which refers to the current object.
+
+    - **Cannot be overridden in the same way as instance methods**: While static methods can be hidden (not overridden) in subclasses, they do not exhibit polymorphic behavior like instance methods.
+
+    - **Cannot be abstract**: Static methods cannot be declared as abstract, as they must have a body.
+
+    - **Cannot be synchronized**: Static methods can be synchronized, but the synchronization applies to the class level, not the instance level.
+
+    These restrictions are important to understand when designing classes and methods in Java.
+
+17. **Why is the main method static?**
+
+    The main method in Java is static because it allows the Java Virtual Machine (JVM) to invoke it without needing to create an instance of the class. Since the main method serves as the entry point for the program, it must be accessible to the JVM at the start of the application. By being static, it can be called directly using the class name, ensuring that the program can start running without any prior object instantiation. Additionally, static methods cannot access instance variables or methods, which aligns with the main method's purpose of being a standalone entry point.
+
+18. **What is the difference between static (class) method and instance method?**
+
+    | Aspect          | Static (Class) Method                   | Instance Method                             |
+    | --------------- | --------------------------------------- | ------------------------------------------- |
+    | Declaration     | Declared with `static` keyword          | Declared without `static` keyword           |
+    | Object Instance | Does not require object instance        | Requires object instance to be called       |
+    | Access          | Can only access static members directly | Can access both static and instance members |
+    | Memory          | Single copy shared across all instances | Separate copy for each instance             |
+    | 'this' keyword  | Cannot use 'this' keyword               | Can use 'this' keyword                      |
+    | Calling syntax  | Called using ClassName.methodName()     | Called using objectName.methodName()        |
+    | Purpose         | Operations related to class as a whole  | Operations specific to object instance      |
+    | Polymorphism    | Cannot be overridden (can be hidden)    | Can be overridden in subclasses             |
+
 ## Control Flow & Operators
 
 1. **What are Operators? What are the types of Operators?**
@@ -1114,7 +1369,34 @@
    | Assignment Operators    | Used to assign values to variables (=, +=, -=, \*=, /=, %=, &=, \|=, ^=, <<=, >>=, >>>=). |
    | Miscellaneous Operators | Includes conditional (ternary) operator (`? :`), instanceof operator (`instanceof`).      |
 
-2. **What is the difference between ++a and a++ increment operators?**
+2. **What is Java instanceOf operator?**
+
+   The instanceof operator in Java is a type comparison operator used to test whether an object is an instance of a specific class, interface, or superclass. It returns true if the object is an instance of the specified type, and false otherwise.
+
+   Example:
+
+   ```java
+   String str = "Hello";
+   if (str instanceof String) {
+       // This will evaluate to true
+       System.out.println("str is a String");
+   }
+
+   Object obj = new ArrayList<>();
+   if (obj instanceof List) {
+       // This will evaluate to true since ArrayList implements List
+       System.out.println("obj is a List");
+   }
+   ```
+
+   Key points about instanceof:
+
+   - It's commonly used before type casting to prevent ClassCastException
+   - Returns false if the object being tested is null
+   - Can be used with interfaces and abstract classes
+   - Often used in inheritance hierarchies to determine object types
+
+3. **What is the difference between ++a and a++ increment operators?**
 
    The ++a (pre-increment) and a++ (post-increment) operators both increment a variable by 1, but they differ in when the increment occurs and what value is returned:
 
@@ -1142,7 +1424,7 @@
 
    This difference is particularly important in expressions and method calls where the returned value matters.
 
-3. **What are loops? What are the types of loops?**
+4. **What are loops? What are the types of loops?**
 
    Loops are control structures that allow you to execute a block of code multiple times, depending on a specified condition. In Java, there are several types of loops that you can use to handle repetitive tasks:
 
@@ -1154,7 +1436,7 @@
 
    4. **Enhanced for loop (for-each loop)**: Introduced in Java 5, this loop is used to iterate over collections and arrays, simplifying the syntax for traversing elements.
 
-4. **What are control statements in Java?**
+5. **What are control statements in Java?**
 
    Control statements in Java are programming constructs that control the flow of program execution. They determine which parts of code are executed and in what order, based on certain conditions or requirements. The main types of control statements in Java are:
 
@@ -1179,7 +1461,7 @@
 
    These statements allow programmers to create complex program logic and control program flow based on different conditions and requirements.
 
-5. **What are Loop Control Statements? What are the types of Loop Control Statements?**
+6. **What are Loop Control Statements? What are the types of Loop Control Statements?**
 
    Loop control statements are used to alter the flow of control in loops. They allow you to manage the execution of loop iterations based on certain conditions. The types of loop control statements in Java include:
 
@@ -1187,7 +1469,7 @@
    2. **continue statement**: Skips the current iteration and proceeds to the next iteration of the loop.
    3. **return statement**: Exits from the current method and returns control to the calling method, which can also affect loop execution if used within a loop.
 
-6. **What is Decision Making? What are the types of Decision Making?**
+7. **What is Decision Making? What are the types of Decision Making?**
 
    Decision making in programming refers to the process of making choices based on certain conditions. It allows the program to execute different paths of code based on the evaluation of these conditions. In Java, decision-making is primarily achieved through control statements.
 
@@ -1198,7 +1480,7 @@
    | **else if statement**   | Allows checking multiple conditions sequentially.                                      |
    | **switch statement**    | Selects one of many code blocks to execute based on the value of a variable.           |
 
-7. **What is the difference between a while loop and a do-while loop?**
+8. **What is the difference between a while loop and a do-while loop?**
 
    | Aspect                 | while loop                                                             | do-while loop                                                |
    | ---------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------ |
@@ -1208,7 +1490,7 @@
    | **Use Case**           | When you need to check a condition before executing any statements     | When you want to ensure the loop body executes at least once |
    | **Exit Control**       | Entry controlled loop - may exit before first execution                | Exit controlled loop - can only exit after first execution   |
 
-8. **What is the difference between a for loop and an enhanced for loop?**
+9. **What is the difference between a for loop and an enhanced for loop?**
 
    | Aspect            | for loop                                                  | enhanced for loop/for-each loop                            |
    | ----------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
@@ -1668,3 +1950,110 @@
       - A constructor cannot call both `this()` and `super()`
 
    Therefore, the code will not compile due to the invalid constructor chaining in `Scaler(int x)`.
+
+3. **What is the output of the following Java program?**
+
+   ```java
+   class Person
+    {
+        public Person()
+        {
+            System.out.println("Person class constructor called");
+        }
+    }
+    public class Employee extends Person
+    {
+        public Employee()
+        {
+            System.out.println("Employee class constructor called");
+        }
+        public static void main (String args[])
+        {
+            Employee e = new Employee();
+        }
+    }
+   ```
+
+   The output will be:
+
+   ```
+   Person class constructor called
+   Employee class constructor called
+   ```
+
+   This happens because:
+
+   1. When `new Employee()` is called, Java first calls the parent class's constructor implicitly via `super()`
+   2. The `Person` constructor executes and prints its message
+   3. Then the `Employee` constructor executes and prints its message
+   4. The constructors execute in this order because a child class must initialize its parent class before initializing itself
+
+4. **What is the output of the following Java program?**
+
+   ```java
+   class OverloadingCalculation3{
+       void sum(int a,long b){System.out.println("a method invoked");}
+       void sum(long a,int b){System.out.println("b method invoked");}
+
+       public static void main(String args[]){
+           OverloadingCalculation3 obj=new OverloadingCalculation3();
+           obj.sum(20,20);//now ambiguity
+       }
+   }
+   ```
+
+   The program will not produce any output. Instead, it will fail to compile with an error message similar to:
+
+   ```
+   reference to sum is ambiguous
+   both method sum(int,long) and method sum(long,int) match
+   ```
+
+   This happens because when calling `obj.sum(20,20)`, the compiler cannot determine which overloaded method to call:
+
+   - The first argument 20 could be used as either int or promoted to long
+   - The second argument 20 could be used as either int or promoted to long
+   - This creates an ambiguous situation where both method signatures are equally valid matches
+
+5. **What is the output of the following Java program?**
+
+   ```java
+   public class ExceptionHandlingExample {
+       public static void main(String args[])
+       {
+           try
+           {
+               int a = 1/0;
+               System.out.println("a = "+a);
+           }
+           catch(Exception e){System.out.println(e);}
+           catch(ArithmeticException ex){System.out.println(ex);}
+       }
+   }
+   ```
+
+   This program will not compile. It will generate a compilation error because the catch block for `ArithmeticException` is unreachable. This happens because:
+
+   1. `ArithmeticException` is a subclass of `Exception`
+   2. The first catch block catches all `Exception`s (including `ArithmeticException`)
+   3. The second catch block can never be reached
+
+   To fix this, either:
+
+   - Remove the second catch block, or
+   - Put the more specific exception (`ArithmeticException`) first:
+
+   ```java
+   try {
+       int a = 1/0;
+       System.out.println("a = "+a);
+   }
+   catch(ArithmeticException ex){System.out.println(ex);}
+   catch(Exception e){System.out.println(e);}
+   ```
+
+   With the fixed version, the output would be:
+
+   ```
+   java.lang.ArithmeticException: / by zero
+   ```

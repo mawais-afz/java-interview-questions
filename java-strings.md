@@ -16,7 +16,23 @@
 
    When frequent updates are needed, StringBuilder is preferred over StringBuffer due to its better performance in single-threaded environments. However, if thread safety is a concern, StringBuffer should be used.
 
-3. **What makes Java Strings immutable?**
+3. **What is the meaning of immutable regarding String?**
+
+   Immutable means that once a String object is created, its contents cannot be changed. Any operation that appears to modify a String actually creates a new String object with the modified value, while the original String remains unchanged. For example:
+
+   ```java
+   String str = "Hello";
+   str = str + " World"; // Creates new String object, original "Hello" is unchanged
+   ```
+
+   This is in contrast to mutable objects like StringBuilder where the same object can be modified:
+
+   ```java
+   StringBuilder sb = new StringBuilder("Hello");
+   sb.append(" World"); // Modifies the same StringBuilder object
+   ```
+
+4. **What makes Java Strings immutable?**
 
    Java Strings are immutable by design due to several implementation details:
 
@@ -47,7 +63,7 @@
    str = str + " World"; // Creates new String object
    ```
 
-4. **Why is String immutable in Java?**
+5. **Why is String immutable in Java?**
 
    Strings in Java are immutable for several important reasons:
 
@@ -95,7 +111,7 @@
 
    The combination of these benefits makes string immutability a fundamental design choice in Java that improves security, efficiency and reliability.
 
-5. **Are all String's Immutable in Java?**
+6. **Are all String's Immutable in Java?**
 
    While the String class in Java is designed to be immutable, there are some nuanced scenarios that provide ways to modify string-like content:
 
@@ -126,7 +142,7 @@
 
    The core principle remains: standard String objects are immutable by design, ensuring thread safety, security, and predictable behavior in Java applications.
 
-6. **Where are String values stored in memory?**
+7. **Where are String values stored in memory?**
 
    In Java, String values are stored in different memory areas depending on how they are created:
 
@@ -156,7 +172,7 @@
 
    The storage mechanism ensures efficient memory usage while maintaining the immutability of String objects in Java.
 
-7. **Why should you be careful about String concatenation(+) operator in loops? How do you solve this problem?**
+8. **Why should you be careful about String concatenation(+) operator in loops? How do you solve this problem?**
 
    String concatenation using the `+` operator inside loops can lead to significant performance and memory challenges:
 
@@ -215,7 +231,7 @@
 
    For large-scale string manipulations, always prefer `StringBuilder` or `StringBuffer` over the `+` operator in loops.
 
-8. **Why is it said that the length() method of String class doesn't return accurate results?**
+9. **Why is it said that the length() method of String class doesn't return accurate results?**
 
    The String.length() method returns the number of code units (char values) in the string, not necessarily the number of actual characters. This can lead to seemingly inaccurate results because:
 
@@ -242,18 +258,18 @@
    - Using specialized libraries for grapheme cluster counting
    - java.text.BreakIterator for linguistic character boundaries
 
-9. **What is the difference between equals() and ==?**
+10. **What is the difference between equals() and ==?**
 
-   | Feature          | `equals()`                                                                           | `==`                                                               |
-   | ---------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
-   | Purpose          | Compares the content/values of two objects.                                          | Compares the reference (memory address) of two objects.            |
-   | Usage            | Used for object comparison, especially for Strings and other objects.                | Used for primitive data types and reference comparison.            |
-   | Null Safety      | Can handle null values without throwing an exception (returns false if one is null). | Throws a NullPointerException if one of the references is null.    |
-   | Overriding       | Can be overridden in a class to provide custom equality logic.                       | Cannot be overridden; checks reference equality only.              |
-   | Default Behavior | Default implementation in Object class checks reference equality unless overridden.  | Always checks reference equality.                                  |
-   | Example          | `str1.equals(str2)` compares the actual string values.                               | `str1 == str2` checks if both references point to the same object. |
+    | Feature          | `equals()`                                                                           | `==`                                                               |
+    | ---------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
+    | Purpose          | Compares the content/values of two objects.                                          | Compares the reference (memory address) of two objects.            |
+    | Usage            | Used for object comparison, especially for Strings and other objects.                | Used for primitive data types and reference comparison.            |
+    | Null Safety      | Can handle null values without throwing an exception (returns false if one is null). | Throws a NullPointerException if one of the references is null.    |
+    | Overriding       | Can be overridden in a class to provide custom equality logic.                       | Cannot be overridden; checks reference equality only.              |
+    | Default Behavior | Default implementation in Object class checks reference equality unless overridden.  | Always checks reference equality.                                  |
+    | Example          | `str1.equals(str2)` compares the actual string values.                               | `str1 == str2` checks if both references point to the same object. |
 
-10. **What are string pools in Java?**
+11. **What is String Pool?**
 
     String pools in Java refer to a special storage area in the Java heap memory where Java stores string literals. When a string literal is created, Java checks the string pool to see if an identical string already exists. If it does, the reference to the existing string is returned, rather than creating a new string object. This mechanism helps in saving memory and improving performance by reusing immutable string objects.
 
@@ -273,26 +289,46 @@
 
     In this example, `str1` and `str2` point to the same object in the string pool, while `str3` points to a different object in the heap.
 
-11. **How is the creation of a String using new() different from that of a literal? or What is the difference between creating String as new() and literal?**
+12. **How many ways can we create the string object?**
 
-    When creating strings, there are two main approaches:
+    There are several ways to create String objects in Java:
 
     1. **String Literal (`String s = "hello";`)**:
 
        - Creates string in the String Pool
+       - Most memory efficient method
        - Reuses existing string if identical one exists in pool
-       - More memory efficient
-       - Better performance due to string reuse
        - Preferred way for string creation
 
-    2. **Using new (`String s = new String("hello");`)**:
-       - Always creates new String object in heap memory
-       - Bypasses String Pool (unless explicitly interned)
+    2. **Using new operator (`String s = new String("hello");`)**:
+
+       - Creates new String object in heap memory
        - Creates two objects: one in heap and one in string pool
        - Less memory efficient
-       - Useful when you explicitly need a new String instance
+       - Useful when explicitly needing a new instance
 
-    Example demonstrating the difference:
+    3. **Using String constructor with byte array**:
+
+       ```java
+       byte[] bytes = {65, 66, 67};  // ASCII values
+       String str = new String(bytes); // Creates "ABC"
+       ```
+
+    4. **Using String constructor with char array**:
+
+       ```java
+       char[] chars = {'h', 'e', 'l', 'l', 'o'};
+       String str = new String(chars);
+       ```
+
+    5. **Using String.valueOf()**:
+       ```java
+       String str1 = String.valueOf(123);     // From int
+       String str2 = String.valueOf(true);    // From boolean
+       String str3 = String.valueOf(new char[]{'a', 'b'}); // From char array
+       ```
+
+    Example comparing literal vs new:
 
     ```java
     String str1 = "hello";        // Creates one object in String Pool
@@ -304,7 +340,7 @@
     System.out.println(str1.equals(str3)); // true (same content)
     ```
 
-12. **Why is the character array preferred over string for storing confidential information?**
+13. **Why is the character array preferred over string for storing confidential information?**
 
     Character arrays (`char[]`) are preferred over Strings for storing sensitive data like passwords for several security reasons:
 
@@ -333,7 +369,7 @@
 
     This is why Java's `Console.readPassword()` returns a char array instead of a String, and many security-related APIs prefer character arrays for handling sensitive data.
 
-13. **What is StringJoiner?**
+14. **What is StringJoiner?**
 
     StringJoiner is a class introduced in Java 8 that helps construct a sequence of characters separated by a delimiter. It provides a convenient way to create strings with delimiters, prefixes, and suffixes.
 
@@ -366,7 +402,7 @@
        - Thread-safe (unlike StringBuilder)
        - Integrates well with Stream API
 
-14. **What are differences between String and StringBuffer?**
+15. **What are differences between String and StringBuffer?**
 
     | Aspect            | String                                       | StringBuffer                                                  |
     | ----------------- | -------------------------------------------- | ------------------------------------------------------------- |
@@ -402,7 +438,7 @@
        - Memory efficiency is important
        - Working with large text manipulations
 
-15. **What are differences between StringBuilder and StringBuffer?**
+16. **What are differences between StringBuilder and StringBuffer?**
 
     | Aspect            | StringBuilder                               | StringBuffer                                   |
     | ----------------- | ------------------------------------------- | ---------------------------------------------- |
@@ -438,7 +474,7 @@
        - Thread safety is required
        - Willing to trade performance for thread safety
 
-16. **What are some common String utility methods with examples?**
+17. **What are some common String utility methods with examples?**
 
     ```java
     String str = "Hello World";
@@ -478,3 +514,111 @@
     ```
 
     These are some of the most commonly used String utility methods in Java. Each serves a specific purpose in string manipulation and analysis.
+
+18. **How many objects will be created in the following code?**
+
+    ```java
+    String s1="Welcome";
+    String s2="Welcome";
+    String s3="Welcome";
+    ```
+
+    Only 1 String object will be created in the String pool. When string literals are used, Java first checks if the string already exists in the String pool. If it does, it reuses the same object. In this case:
+
+    1. When `s1="Welcome"` is executed, a new String object is created in the pool
+    2. When `s2="Welcome"` is executed, Java finds "Welcome" already exists in pool, so reuses it
+    3. When `s3="Welcome"` is executed, Java again reuses the same pooled object
+
+    All three variables will point to the same String object in memory.
+
+19. **How many objects will be created in the following code?**
+
+    ```java
+    String s = new String("Welcome");
+    ```
+
+    This code creates 2 objects:
+
+    1. A new String object in the heap(non-pool) memory
+    2. A String object in the String pool (if not already present)
+
+20. **What is the output of the following Java program?**
+
+    ```java
+    String s1 = "Hello";
+    String s2 = "Hello";
+    String s3 = new String("Hello");
+    System.out.println(s1 == s2);  // Line 1: true
+    System.out.println(s1 == s3);  // Line 2: false
+    System.out.println(s1.equals(s3)); // Line 3: true
+    ```
+
+    The output will be:
+
+    ```
+    true
+    false
+    true
+    ```
+
+    Explanation:
+
+    - Line 1 prints `true` because s1 and s2 both refer to the same String object in the String pool since they use string literals
+    - Line 2 prints `false` because s3 creates a new String object in the heap memory using `new`, so it has a different reference than s1
+    - Line 3 prints `true` because equals() compares the actual string content rather than references, and both strings contain "Hello"
+
+21. **What is the output of the following Java program?**
+
+    ```java
+    public class Test
+    {
+       public static void main (String args[])
+       {
+          String s1 = "Sharma is a good player";
+          String s2 = new String("Sharma is a good player");
+          s2 = s2.intern();
+          System.out.println(s1 ==s2);
+       }
+    }
+    ```
+
+    The output will be:
+
+    ```
+    true
+    ```
+
+    Explanation:
+
+    - Initially, `s1` creates a string literal in the String pool
+    - `s2` creates a new String object in the heap memory
+    - When `intern()` is called on `s2`, it checks if the String pool has an identical string
+    - Since "Sharma is a good player" already exists in the pool (referenced by s1), `intern()` returns a reference to that pooled string
+    - Therefore, after interning, both `s1` and `s2` reference the same String object in the pool
+    - The `==` comparison returns true because both variables now point to the same object
+
+22. **What is the purpose of toString() method in Java?**
+
+    The toString() method in Java is used to get a string representation of an object. Here are the key points about toString():
+
+    - It is defined in the Object class, so every class inherits it
+    - By default, it returns the class name followed by @ and the object's hashcode in hexadecimal
+    - Classes typically override toString() to provide a meaningful string representation of their objects
+    - It is automatically called when an object is concatenated with a String or printed
+    - Common use cases include:
+        - Debugging and logging
+        - Displaying object state in a readable format
+        - Converting objects to strings for display purposes
+
+    Example:
+    ```java
+    class Person {
+        String name;
+        int age;
+        
+        @Override
+        public String toString() {
+            return "Person{name='" + name + "', age=" + age + "}";
+        }
+    }
+    ```

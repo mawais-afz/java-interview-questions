@@ -725,4 +725,49 @@
 
     The architecture provides a flexible, performant approach to database interactions, abstracting complex database operations into simple, manageable Java interfaces.
 
+19. **How Spring Boot Manages Application Properties?**
+
+    Spring Boot provides a flexible and hierarchical system for managing application properties:
+
+    1. **Property Sources**
+       - application.properties/application.yml files
+       - Environment variables
+       - Command-line arguments
+       - Cloud configuration
+       - Profile-specific properties (application-{profile}.properties)
+
+    2. **Property Hierarchy (Highest to Lowest Priority)**
+       1. Command-line arguments
+       2. SPRING_APPLICATION_JSON properties
+       3. ServletConfig init parameters
+       4. ServletContext init parameters
+       5. JNDI attributes
+       6. Java System properties
+       7. OS environment variables
+       8. Profile-specific properties
+       9. Application properties
+       10. Default properties
+
+    3. **Common Locations (Searched in Order)**
+       - File in ./config subdirectory
+       - File in current directory
+       - Classpath /config package
+       - Classpath root
+
+    4. **Key Features**
+       - Property placeholder resolution (${property.name})
+       - YAML support
+       - Type-safe configuration properties (@ConfigurationProperties)
+       - Environment-specific profiles
+       - Property validation
+       - Relaxed binding (property.name = propertyName = PROPERTY_NAME)
+
+    5. **Best Practices**
+       - Use meaningful property namespaces
+       - Leverage profile-specific configurations
+       - Document configuration properties
+       - Use configuration metadata
+       - Implement property validation when necessary
+
+    This system allows for flexible, environment-specific configuration management while maintaining clear precedence rules and easy overrides.
 

@@ -602,3 +602,25 @@
     5. **Learning Curve**: Teams new to SOLID principles may require training and time to adapt, potentially slowing down development initially.
 
     However, these downsides are generally outweighed by the long-term benefits of maintainability, flexibility, and code reusability that SOLID principles provide.
+
+12. **What is the difference between a design pattern and a design principle?**
+
+    Design patterns and design principles serve different purposes in software development:
+
+    **Design Principles**:
+    - Are high-level guidelines and best practices for writing good code
+    - Describe general rules and concepts (like SOLID)
+    - Are abstract and broadly applicable across different situations
+    - Help make architectural decisions
+    - Examples: Single Responsibility, Open/Closed, Interface Segregation
+
+    **Design Patterns**:
+    - Are specific, reusable solutions to common programming problems
+    - Provide concrete templates and implementations
+    - Address particular recurring design challenges
+    - Are more tactical and implementation-focused
+    - Examples: Factory, Observer, Strategy, Singleton
+
+    Think of principles as the fundamental rules that guide good design, while patterns are proven templates that implement those principles in specific situations. For instance, the Strategy pattern is one way to implement the Open/Closed Principle.
+
+13. 

@@ -149,27 +149,38 @@
 
     In summary, custom exceptions provide a way to define application-specific error conditions, improving error handling and making the code more understandable.
 
-11. **How does an exception propagate in the code?**
+11. **What is exception propagation?**
 
     Exception propagation in Java occurs when an exception is thrown in a method and is not caught within that method. Instead, the exception is passed up the call stack to the method that called it. This process continues until the exception is either caught by a catch block or reaches the main method, at which point the program will terminate if the exception remains unhandled.
 
-    When an exception is thrown, the Java Virtual Machine (JVM) looks for a matching catch block in the current method. If it does not find one, it moves to the calling method and repeats the process. This continues until a suitable catch block is found or the top of the call stack is reached.
-
-    For example, consider the following scenario:
+    Here's a simple example to demonstrate:
 
     ```java
-    public void methodA() {
-        methodB(); // Calls methodB
+    public void method3() {
+        int[] arr = new int[5];
+        arr[10] = 50;    // Throws ArrayIndexOutOfBoundsException
     }
 
-    public void methodB() {
-        throw new RuntimeException("An error occurred"); // Exception thrown here
+    public void method2() {
+        method3();       // Exception propagates to here
+    }
+
+    public void method1() {
+        try {
+            method2();   // Exception propagates to here and gets caught
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array index error caught");
+        }
     }
     ```
 
-    In this case, `methodB` throws a `RuntimeException`, which is not caught within `methodB`. Therefore, the exception propagates back to `methodA`, which also does not handle it. If `methodA` does not catch the exception, it will continue to propagate up to the main method, potentially causing the program to terminate if unhandled.
+    In this example:
 
-    Understanding exception propagation is crucial for effective error handling in Java applications, as it allows developers to manage exceptions at appropriate levels in the call stack.
+    - `method3()` throws an exception but doesn't handle it
+    - The exception propagates to `method2()`, which also doesn't handle it
+    - Finally, it reaches `method1()` where it's caught in the try-catch block
+
+    If no method in the call stack handles the exception, it will eventually reach the main method and terminate the program. This automatic propagation mechanism helps keep code cleaner by allowing exceptions to be handled at the most appropriate level in the application.
 
 12. **How do exceptions affect the program if it doesn't handle them?**
 
@@ -337,3 +348,132 @@
     - NoClassDefFoundError is an error that indicates a serious problem, typically unrecoverable
     - ClassNotFoundException occurs during explicit class loading attempts
     - NoClassDefFoundError occurs when a previously available class is missing at runtime
+
+17. **Is it necessary that each try block must be followed by a catch block?**
+
+    No, a try block doesn't always need to be followed by a catch block. There are three valid combinations:
+
+    1. try-catch:
+
+       ```java
+       try {
+           // Code that may throw exception
+       } catch (Exception e) {
+           // Handle exception
+       }
+       ```
+
+    2. try-finally:
+
+       ```java
+       try {
+           // Code that may throw exception
+       } finally {
+           // Always executed code
+       }
+       ```
+
+    3. try-catch-finally:
+       ```java
+       try {
+           // Code that may throw exception
+       } catch (Exception e) {
+           // Handle exception
+       } finally {
+           // Always executed code
+       }
+       ```
+
+    However, a try block must be followed by either a catch block or a finally block. You cannot have a try block alone.
+
+    Since Java 7, there's also try-with-resources statement which automatically handles closing resources:
+
+    ```java
+    try (FileReader fr = new FileReader("file.txt")) {
+        // Code that uses the resource
+    } // Resource automatically closed
+    ```
+
+18. **Can finally block be used without a catch?**
+
+    Yes, a finally block can be used without a catch block. This is known as a try-finally statement. The finally block will execute regardless of whether an exception occurs in the try block.
+
+    Example:
+
+    ```java
+    try {
+        // Code that may throw exception
+    } finally {
+        // This code always executes
+        // Used for cleanup operations like closing resources
+    }
+    ```
+
+    This pattern is useful when:
+
+    - You want to ensure cleanup code runs but don't need to handle exceptions
+    - You want exceptions to propagate up while still performing cleanup
+    - You're using try-with-resources (Java 7+) but still need additional cleanup code
+
+    However, if you don't catch the exception, it will continue to propagate up the call stack.
+
+19. **Can an exception be rethrown?**
+
+    Yes, an exception can be rethrown using the `throw` keyword inside a catch block. This is useful when you want to:
+
+    - Log the exception but let it propagate up
+    - Modify the exception before propagating it
+    - Handle part of the exception but let others handle it too
+
+    Example:
+
+    ```java
+    try {
+        // Some code that may throw exception
+    } catch (Exception e) {
+        // Do some logging or partial handling
+        System.out.println("Logging error: " + e.getMessage());
+        throw e;  // Rethrow the same exception
+    }
+    ```
+
+    You can also wrap the original exception in a new one:
+
+    ```java
+    try {
+        // Some code
+    } catch (SQLException e) {
+        throw new RuntimeException("Database error", e);  // Wrap and rethrow
+    }
+    ```
+
+20. **Can subclass overriding method declare an exception if parent class method doesn't throw an exception?**
+
+    No, an overriding method in a subclass cannot declare checked exceptions that are broader than or not declared by the overridden method in the parent class. This is because it would violate the Liskov Substitution Principle.
+
+    However, there are two exceptions to this rule:
+
+    1. The overriding method can declare narrower checked exceptions or fewer exceptions than the parent method
+    2. The overriding method can declare any unchecked exceptions (RuntimeException and its subclasses)
+
+    Example:
+
+    ```java
+    class Parent {
+        void method() { // No exception declared
+            // Some code
+        }
+    }
+
+    class Child extends Parent {
+        // This is NOT allowed - will not compile
+        void method() throws IOException {  // Checked exception
+            // Some code
+        }
+
+        // This IS allowed
+        void method() throws RuntimeException {  // Unchecked exception
+            // Some code
+        }
+    }
+    ```

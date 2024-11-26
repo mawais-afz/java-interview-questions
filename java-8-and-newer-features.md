@@ -784,9 +784,7 @@
       3. Close streams after use, especially with I/O operations
       4. Be mindful of performance for large collections
 
-26. **What are terminal operations on Streams?**
-
-27. **What is the Stream API in Java 8?**
+26. **What is the Stream API in Java 8?**
 
     - A functional approach to processing collections of objects
     - Enables declarative and functional-style operations on collections
@@ -799,7 +797,7 @@
       4. Lazily evaluated
       5. Can be processed sequentially or in parallel
 
-28. **What are the main operations in Stream API?**
+27. **What are the main operations in Stream API?**
 
     1. **Intermediate Operations**:
 
@@ -821,7 +819,7 @@
        - `allMatch()`: Checks if all elements match a predicate
        - `noneMatch()`: Checks if no elements match a predicate
 
-29. **What is the difference between `map()` and `flatMap()`?**
+28. **What is the difference between `map()` and `flatMap()`?**
 
     ```java
     // map(): One-to-One transformation
@@ -835,7 +833,7 @@
                                        .collect(Collectors.toList());
     ```
 
-30. **What are the different ways to create a Stream in Java?**
+29. **What are the different ways to create a Stream in Java?**
 
     There are several ways to create a Stream in Java:
 
@@ -873,7 +871,7 @@
        - `IntStream`, `LongStream`, `DoubleStream`
        - Range-based: `IntStream.range(1, 100)`
 
-31. **What is the difference between `findFirst()` and `findAny()`?**
+30. **What is the difference between `findFirst()` and `findAny()`?**
 
     - `findFirst()`: Returns first element in a sequential stream
     - `findAny()`: Returns any element, useful in parallel streams
@@ -883,7 +881,7 @@
     Optional<String> any = parallelStream.findAny();
     ```
 
-32. **How to perform grouping and partitioning with Streams?**
+31. **How to perform grouping and partitioning with Streams?**
 
     ```java
     // Grouping
@@ -916,7 +914,7 @@
       stream.count(); // IllegalStateException
       ```
 
-33. **What is the difference between Collection and Stream?**
+32. **What is the difference between Collection and Stream?**
 
     Key differences between Collection and Stream:
 
@@ -952,7 +950,7 @@
         .forEach(System.out::println);
     ```
 
-34. **What is the method collect() for in streams?**
+33. **What is the method collect() for in streams?**
 
     The collect() method is a terminal operation in streams that transforms a stream into a Collection or other data structure. It's used to:
 
@@ -982,7 +980,7 @@
     - partitioningBy()
     - summarizingInt/Long/Double()
 
-35. **Why do streams use forEach() and forEachOrdered() methods?**
+34. **Why do streams use forEach() and forEachOrdered() methods?**
 
     The forEach() and forEachOrdered() are terminal operations in streams that serve different purposes:
 

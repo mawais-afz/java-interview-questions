@@ -532,126 +532,126 @@
 
 ## Java Reflection API
 
-19. **What is Java Reflection API?**
+1. **What is Java Reflection API?**
 
-    - Java Reflection API allows programs to examine and modify the behavior of classes, interfaces, fields and methods at runtime
-    - It provides the ability to inspect and manipulate class information dynamically
-    - Key capabilities include:
+   - Java Reflection API allows programs to examine and modify the behavior of classes, interfaces, fields and methods at runtime
+   - It provides the ability to inspect and manipulate class information dynamically
+   - Key capabilities include:
 
-      - Examining class structure and metadata
-      - Creating new instances of classes
-      - Accessing and modifying fields
-      - Invoking methods dynamically
-      - Working with annotations
+     - Examining class structure and metadata
+     - Creating new instances of classes
+     - Accessing and modifying fields
+     - Invoking methods dynamically
+     - Working with annotations
 
-    - **Common Use Cases**:
+   - **Common Use Cases**:
 
-      - Dependency injection frameworks
-      - Unit testing frameworks
-      - Serialization/deserialization
-      - Dynamic proxy creation
-      - Plugin architectures
+     - Dependency injection frameworks
+     - Unit testing frameworks
+     - Serialization/deserialization
+     - Dynamic proxy creation
+     - Plugin architectures
 
-    - **Example**:
+   - **Example**:
 
-      ```java
-      // Get class information
-      Class<?> clazz = MyClass.class;
+     ```java
+     // Get class information
+     Class<?> clazz = MyClass.class;
 
-      // Create new instance
-      Object obj = clazz.getDeclaredConstructor().newInstance();
+     // Create new instance
+     Object obj = clazz.getDeclaredConstructor().newInstance();
 
-      // Get and invoke method
-      Method method = clazz.getDeclaredMethod("myMethod", String.class);
-      method.invoke(obj, "parameter");
+     // Get and invoke method
+     Method method = clazz.getDeclaredMethod("myMethod", String.class);
+     method.invoke(obj, "parameter");
 
-      // Access private field
-      Field field = clazz.getDeclaredField("privateField");
-      field.setAccessible(true);
-      field.set(obj, "new value");
-      ```
+     // Access private field
+     Field field = clazz.getDeclaredField("privateField");
+     field.setAccessible(true);
+     field.set(obj, "new value");
+     ```
 
-    - **Considerations**:
-      - Can impact performance due to runtime overhead
-      - May break encapsulation if not used carefully
-      - Should be used judiciously and only when necessary
-      - Requires security considerations in production code
+   - **Considerations**:
+     - Can impact performance due to runtime overhead
+     - May break encapsulation if not used carefully
+     - Should be used judiciously and only when necessary
+     - Requires security considerations in production code
 
-20. **What is Reflection for Method Parameters?**
+2. **What is Reflection for Method Parameters?**
 
-    - Java 8 introduced enhanced method parameter reflection capabilities
-    - Before Java 8, method parameter names were not readily available at runtime
-    - The new `java.lang.reflect.Parameter` class provides detailed information about method parameters
+   - Java 8 introduced enhanced method parameter reflection capabilities
+   - Before Java 8, method parameter names were not readily available at runtime
+   - The new `java.lang.reflect.Parameter` class provides detailed information about method parameters
 
-    - **Key Features**:
+   - **Key Features**:
 
-      - Ability to retrieve parameter names at runtime
-      - Access to parameter modifiers and annotations
-      - More comprehensive introspection of method signatures
+     - Ability to retrieve parameter names at runtime
+     - Access to parameter modifiers and annotations
+     - More comprehensive introspection of method signatures
 
-    - **Example**:
+   - **Example**:
 
-      ```java
-      public void exampleMethod(String firstName, @Deprecated int age) {
-          Method method = this.getClass().getMethod("exampleMethod", String.class, int.class);
-          Parameter[] parameters = method.getParameters();
+     ```java
+     public void exampleMethod(String firstName, @Deprecated int age) {
+         Method method = this.getClass().getMethod("exampleMethod", String.class, int.class);
+         Parameter[] parameters = method.getParameters();
 
-          for (Parameter param : parameters) {
-              System.out.println("Parameter Name: " + param.getName());
-              System.out.println("Is Deprecated: " + param.isAnnotationPresent(Deprecated.class));
-          }
-      }
-      ```
+         for (Parameter param : parameters) {
+             System.out.println("Parameter Name: " + param.getName());
+             System.out.println("Is Deprecated: " + param.isAnnotationPresent(Deprecated.class));
+         }
+     }
+     ```
 
-    - **How to Enable Parameter Names**:
+   - **How to Enable Parameter Names**:
 
-      - Compile with the `-parameters` flag
-      - Allows preservation of actual parameter names during compilation
-      - Without this flag, parameters will have synthetic names like `arg0`, `arg1`
+     - Compile with the `-parameters` flag
+     - Allows preservation of actual parameter names during compilation
+     - Without this flag, parameters will have synthetic names like `arg0`, `arg1`
 
-    - **Benefits**:
-      - Improved debugging and logging
-      - Enhanced framework and library support
-      - More powerful reflection capabilities
-      - Better support for dependency injection and serialization frameworks
+   - **Benefits**:
+     - Improved debugging and logging
+     - Enhanced framework and library support
+     - More powerful reflection capabilities
+     - Better support for dependency injection and serialization frameworks
 
-21. **What is the importance of reflection in Java?**
+3. **What is the importance of reflection in Java?**
 
-    - Reflection enables runtime inspection and modification of classes, methods, and fields
-    - Allows programs to examine and interact with components dynamically at runtime
-    - Critical for many frameworks and libraries like Spring, Hibernate, JUnit
+   - Reflection enables runtime inspection and modification of classes, methods, and fields
+   - Allows programs to examine and interact with components dynamically at runtime
+   - Critical for many frameworks and libraries like Spring, Hibernate, JUnit
 
-    - **Key Use Cases**:
-      - Framework development and dependency injection
-      - Unit testing frameworks
-      - Object-relational mapping (ORM)
-      - Serialization/deserialization
-      - Dynamic proxy creation
-    - **Core Capabilities**:
-      - Inspect class structure and metadata
-      - Create new instances dynamically
-      - Access and modify private members
-      - Invoke methods programmatically
-      - Load classes at runtime
-    - **Example**:
+   - **Key Use Cases**:
+     - Framework development and dependency injection
+     - Unit testing frameworks
+     - Object-relational mapping (ORM)
+     - Serialization/deserialization
+     - Dynamic proxy creation
+   - **Core Capabilities**:
+     - Inspect class structure and metadata
+     - Create new instances dynamically
+     - Access and modify private members
+     - Invoke methods programmatically
+     - Load classes at runtime
+   - **Example**:
 
-      ```java
-      // Get class information
-      Class<?> clazz = obj.getClass();
+     ```java
+     // Get class information
+     Class<?> clazz = obj.getClass();
 
-      // Create new instance
-      Object newInstance = clazz.newInstance();
+     // Create new instance
+     Object newInstance = clazz.newInstance();
 
-      // Invoke method dynamically
-      Method method = clazz.getMethod("methodName", paramTypes);
-      method.invoke(obj, args);
-      ```
+     // Invoke method dynamically
+     Method method = clazz.getMethod("methodName", paramTypes);
+     method.invoke(obj, args);
+     ```
 
-    - **Considerations**:
-      - Performance overhead due to dynamic nature
-      - Security implications when accessing private members
-      - Can break encapsulation if not used carefully
-      - Should be used judiciously where static alternatives exist
+   - **Considerations**:
+     - Performance overhead due to dynamic nature
+     - Security implications when accessing private members
+     - Can break encapsulation if not used carefully
+     - Should be used judiciously where static alternatives exist
 
 ## Array Operations
 
@@ -1004,7 +1004,7 @@
         .forEachOrdered(item -> System.out.println(item)); // Order preserved
     ```
 
-36. **What are map(), mapToInt(), mapToDouble() and mapToLong() methods in Stream?**
+35. **What are map(), mapToInt(), mapToDouble() and mapToLong() methods in Stream?**
 
     These are intermediate operations in streams that transform elements:
 
@@ -1035,7 +1035,7 @@
                                   .orElse(0.0);
     ```
 
-37. **What is the purpose of filter() method in streams?**
+36. **What is the purpose of filter() method in streams?**
 
     The filter() method is an intermediate operation that:
 
@@ -1056,7 +1056,7 @@
                                .collect(Collectors.toList());
     ```
 
-38. **What is the use of limit() method in streams?**
+37. **What is the use of limit() method in streams?**
 
     The limit() method is an intermediate operation that:
 
@@ -1077,7 +1077,7 @@
                                           .collect(Collectors.toList());
     ```
 
-39. **What is the use of sorted() method in streams?**
+38. **What is the use of sorted() method in streams?**
 
     The sorted() method is an intermediate operation that:
 
@@ -1102,7 +1102,7 @@
                                             .collect(Collectors.toList());
     ```
 
-40. **What are the flatMap(), flatMapToInt(), flatMapToDouble(), and flatMapToLong() methods in streams?**
+39. **What are the flatMap(), flatMapToInt(), flatMapToDouble(), and flatMapToLong() methods in streams?**
 
     The flatMap methods are intermediate operations that:
 
@@ -1135,7 +1135,7 @@
                         .toArray();
     ```
 
-41. **What are the final methods (terminal operations) of working with streams? Or What are terminal operations on Streams?**
+40. **What are the final methods (terminal operations) of working with streams? Or What are terminal operations on Streams?**
 
     Terminal operations in streams are methods that produce a result or side-effect and terminate the stream pipeline. The main terminal operations are:
 
@@ -1185,7 +1185,7 @@
     boolean hasEven = numbers.stream().anyMatch(n -> n % 2 == 0); // Returns true
     ```
 
-42. **What are the intermediate operations in streams?**
+41. **What are the intermediate operations in streams?**
 
     Intermediate operations in streams are operations that transform a stream into another stream. The main intermediate operations are:
 
@@ -1227,7 +1227,7 @@
     - Don't modify the original stream
     - Return a new stream
 
-43. **Explain Difference between Collection API and Stream API?**
+42. **Explain Difference between Collection API and Stream API?**
 
     Key differences between Collection API and Stream API:
 

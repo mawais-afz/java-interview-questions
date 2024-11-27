@@ -134,119 +134,315 @@
    }
    ```
 
-8. **How to implement classes and objects in Java? What are the members of a class?**
+8. **What is inner class? What are the advantages of Java inner classes?**
 
-   To implement classes and objects in Java, you need to follow these steps:
+   An inner class is a class defined within another class. The inner class exists within the scope of another class (outer class) and has access to all its members, including private ones.
 
-   1. **Define a Class**: A class is defined using the `class` keyword followed by the class name. Inside the class, you can declare members, which include attributes (fields), methods (functions), and constructors that define the behavior of the objects created from the class.
+   Types of inner classes:
+
+   1. **Member Inner Class**: Non-static class defined at member level
+   2. **Static Inner Class**: Static class defined at member level
+   3. **Local Inner Class**: Class defined within a method
+   4. **Anonymous Inner Class**: Class defined without a name, often used for interfaces/abstract classes
+
+   Example of different inner class types:
 
    ```java
-   public class Car {
-       // Attributes (Members)
-       private String color;
-       private String model;
+   public class OuterClass {
+       private int x = 10;
 
-       // Constructor (Member)
-       public Car(String color, String model) {
-           this.color = color;
-           this.model = model;
+       // Member inner class
+       class MemberInner {
+           void print() { System.out.println(x); }
        }
 
-       // Method (Member)
-       public void displayInfo() {
-           System.out.println("Car Model: " + model + ", Color: " + color);
+       // Static inner class
+       static class StaticInner {
+           void print() { System.out.println("Static inner"); }
+       }
+
+       void method() {
+           // Local inner class
+           class LocalInner {
+               void print() { System.out.println(x); }
+           }
+
+           // Anonymous inner class
+           Runnable r = new Runnable() {
+               public void run() {
+                   System.out.println(x);
+               }
+           };
        }
    }
    ```
 
-   2. **Create Objects**: Once the class is defined, you can create objects (instances) of that class using the `new` keyword.
+   Advantages of inner classes:
+
+   1. **Encapsulation**: Inner classes can access private members of the outer class
+   2. **Code Organization**: Helps group related classes together
+   3. **Better Readability**: Classes are defined close to where they are used
+   4. **Security**: Inner class can be hidden from other packages
+   5. **Event Handling**: Particularly useful for implementing event listeners
+   6. **Memory Efficiency**: Non-static inner classes share the namespace with outer class
+
+9. **What is a nested class?**
+
+   A nested class is a class defined within another class. In Java, nested classes can be categorized into two main types:
+
+   1. **Static Nested Classes**: These are static classes declared inside another class. They can access only static members of the outer class directly.
 
    ```java
-   public class Main {
-       public static void main(String[] args) {
-           // Creating objects of the Car class
-           Car myCar = new Car("Red", "Toyota");
-           Car yourCar = new Car("Blue", "Honda");
-
-           // Calling methods on the objects
-           myCar.displayInfo(); // Output: Car Model: Toyota, Color: Red
-           yourCar.displayInfo(); // Output: Car Model: Honda, Color: Blue
+   class OuterClass {
+       static class StaticNestedClass {
+           // can only access static members of OuterClass
        }
    }
    ```
 
-   In this example, the `Car` class is defined with members including attributes, a constructor, and a method. Two objects of the `Car` class are created in the `Main` class, demonstrating how to implement classes and objects in Java.
+   2. **Inner Classes**: These are non-static nested classes. They have access to all members of the enclosing class (both static and non-static).
+      - Member inner classes
+      - Local inner classes
+      - Anonymous inner classes
 
-9. **What are the different ways to create objects in Java and how is the 'new' operator different from other methods?**
+   Key differences between static nested classes and inner classes:
 
-   There are several ways to create objects in Java, each with its own characteristics:
+   - Static nested classes cannot access non-static members of outer class directly
+   - Inner classes can access all members of outer class
+   - Static nested classes can be instantiated without an instance of outer class
+   - Inner classes require an instance of outer class to be instantiated
 
-   1. **Using the `new` operator** (Most common):
+   Usage:
 
-      - Directly calls the constructor of the class
-      - Simple and straightforward syntax
+   ```java
+   OuterClass.StaticNestedClass staticNested = new OuterClass.StaticNestedClass(); // Static nested class
+   OuterClass outer = new OuterClass();
+   OuterClass.InnerClass inner = outer.new InnerClass(); // Inner class
+   ```
 
-      ```java
-      MyClass obj = new MyClass();
-      ```
+10. **What are anonymous inner classes?**
 
-   2. **Using reflection with newInstance()** (Deprecated since Java 9):
+    Anonymous inner classes are classes without a name that are defined and instantiated at the same time. They are typically used when you need to create a one-time-use class that implements an interface or extends a class.
 
-      - Creates objects dynamically at runtime
-      - Uses reflection to instantiate the class
-      - Calls the no-argument constructor
+    Key characteristics:
 
-      ```java
-      MyClass obj = MyClass.class.newInstance(); // Deprecated
-      // Modern approach:
-      MyClass obj = MyClass.class.getDeclaredConstructor().newInstance();
-      ```
+    1. **No name**: They are declared and instantiated in a single expression
+    2. **One-time use**: Can only create one instance of the class
+    3. **Can extend a class or implement an interface**: But not both
+    4. **Can access final or effectively final local variables**: From the enclosing scope
+    5. **Cannot have constructors**: Since they don't have a name
 
-   3. **Using `clone()` method**:
+    Example:
 
-      - Creates a copy of an existing object
-      - Class must implement Cloneable interface
+    ```java
+    // Anonymous class implementing Runnable interface
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            System.out.println("Running in anonymous class");
+        }
+    };
 
-      ```java
-      MyClass obj1 = new MyClass();
-      MyClass obj2 = (MyClass) obj1.clone();
-      ```
+    // Anonymous class extending a class
+    AbstractClass instance = new AbstractClass() {
+        @Override
+        public void abstractMethod() {
+            System.out.println("Implementation in anonymous class");
+        }
+    };
+    ```
 
-   4. **Using `Class.forName()`**:
+    Common use cases:
 
-      - Loads the class dynamically and creates instance
-      - Useful when class name is determined at runtime
+    - Event handlers in GUI programming
+    - Thread creation
+    - Callback implementations
+    - Testing and quick prototyping
 
-      ```java
-      MyClass obj = (MyClass) Class.forName("MyClass").getDeclaredConstructor().newInstance();
-      ```
+11. **What is the difference between nested classes and inner classes?**
 
-   5. **Using object deserialization**:
+    Inner classes are a subset of nested classes. The key differences are:
 
-      - Recreates object from serialized form
-      - Class must implement Serializable interface
+    1. **Scope**:
 
-      ```java
-      ObjectInputStream in = new ObjectInputStream(new FileInputStream("file.ser"));
-      MyClass obj = (MyClass) in.readObject();
-      in.close();
-      ```
+       - Nested classes is the broader term that includes both static and non-static classes defined within another class
+       - Inner classes specifically refer to non-static nested classes only
 
-   6. **Using factory methods**:
-      - Encapsulates object creation in factory class
-      - Provides more flexibility in instantiation
-      ```java
-      MyClass obj = MyClassFactory.createInstance();
-      ```
+    2. **Static vs Non-static**:
 
-   Key differences between `new` operator and other methods:
+       - Nested classes can be either static or non-static
+       - Inner classes are always non-static
 
-   - `new` is compile-time bound, while reflection methods are runtime bound
-   - `new` is more performant than reflection-based approaches
-   - Reflection methods provide more flexibility but are more complex
-   - Factory methods can hide implementation details and provide better abstraction
+    3. **Access to outer class**:
 
-10. **What is object cloning?**
+       - Static nested classes can only access static members of outer class
+       - Inner classes can access all members (static and non-static) of outer class
+
+    4. **Instance requirement**:
+       - Static nested classes don't require an instance of outer class
+       - Inner classes require an instance of outer class to be created
+
+    Example:
+
+    ```java
+    class Outer {
+        // Static nested class
+        static class StaticNested { }
+
+        // Inner class (non-static nested class)
+        class Inner { }
+    }
+
+    // Usage:
+    Outer.StaticNested staticNested = new Outer.StaticNested(); // No outer instance needed
+    Outer outer = new Outer();
+    Outer.Inner inner = outer.new Inner(); // Requires outer instance
+    ```
+
+12. **How to implement classes and objects in Java? What are the members of a class?**
+
+    To implement classes and objects in Java, you need to follow these steps:
+
+    1. **Define a Class**: A class is defined using the `class` keyword followed by the class name. Inside the class, you can declare members, which include attributes (fields), methods (functions), and constructors that define the behavior of the objects created from the class.
+
+    ```java
+    public class Car {
+        // Attributes (Members)
+        private String color;
+        private String model;
+
+        // Constructor (Member)
+        public Car(String color, String model) {
+            this.color = color;
+            this.model = model;
+        }
+
+        // Method (Member)
+        public void displayInfo() {
+            System.out.println("Car Model: " + model + ", Color: " + color);
+        }
+    }
+    ```
+
+    2. **Create Objects**: Once the class is defined, you can create objects (instances) of that class using the `new` keyword.
+
+    ```java
+    public class Main {
+        public static void main(String[] args) {
+            // Creating objects of the Car class
+            Car myCar = new Car("Red", "Toyota");
+            Car yourCar = new Car("Blue", "Honda");
+
+            // Calling methods on the objects
+            myCar.displayInfo(); // Output: Car Model: Toyota, Color: Red
+            yourCar.displayInfo(); // Output: Car Model: Honda, Color: Blue
+        }
+    }
+    ```
+
+    In this example, the `Car` class is defined with members including attributes, a constructor, and a method. Two objects of the `Car` class are created in the `Main` class, demonstrating how to implement classes and objects in Java.
+
+13. **What are the different ways to create objects in Java and how is the 'new' operator different from other methods?**
+
+    There are several ways to create objects in Java, each with its own characteristics:
+
+    1. **Using the `new` operator** (Most common):
+
+       - Directly calls the constructor of the class
+       - Simple and straightforward syntax
+
+       ```java
+       MyClass obj = new MyClass();
+       ```
+
+    2. **Using reflection with newInstance()** (Deprecated since Java 9):
+
+       - Creates objects dynamically at runtime
+       - Uses reflection to instantiate the class
+       - Calls the no-argument constructor
+
+       ```java
+       MyClass obj = MyClass.class.newInstance(); // Deprecated
+       // Modern approach:
+       MyClass obj = MyClass.class.getDeclaredConstructor().newInstance();
+       ```
+
+    3. **Using `clone()` method**:
+
+       - Creates a copy of an existing object
+       - Class must implement Cloneable interface
+
+       ```java
+       MyClass obj1 = new MyClass();
+       MyClass obj2 = (MyClass) obj1.clone();
+       ```
+
+    4. **Using `Class.forName()`**:
+
+       - Loads the class dynamically and creates instance
+       - Useful when class name is determined at runtime
+
+       ```java
+       MyClass obj = (MyClass) Class.forName("MyClass").getDeclaredConstructor().newInstance();
+       ```
+
+    5. **Using object deserialization**:
+
+       - Recreates object from serialized form
+       - Class must implement Serializable interface
+
+       ```java
+       ObjectInputStream in = new ObjectInputStream(new FileInputStream("file.ser"));
+       MyClass obj = (MyClass) in.readObject();
+       in.close();
+       ```
+
+    6. **Using factory methods**:
+       - Encapsulates object creation in factory class
+       - Provides more flexibility in instantiation
+       ```java
+       MyClass obj = MyClassFactory.createInstance();
+       ```
+
+    Key differences between `new` operator and other methods:
+
+    - `new` is compile-time bound, while reflection methods are runtime bound
+    - `new` is more performant than reflection-based approaches
+    - Reflection methods provide more flexibility but are more complex
+    - Factory methods can hide implementation details and provide better abstraction
+
+14. **What are the ways to instantiate the Class class?**
+
+In Java, the `Class` class cannot be instantiated directly using the `new` operator. Instead, instances of the `Class` class are created by the Java Virtual Machine (JVM) when classes are loaded. Here are some common ways to obtain a `Class` object:
+
+1.  **Using `.class` syntax**:
+
+    ```java
+    Class<MyClass> clazz = MyClass.class;
+    ```
+
+2.  **Using `Class.forName()` method**:
+
+    ```java
+    Class<?> clazz = Class.forName("MyClass");
+    ```
+
+3.  **Using `getClass()` method on an object**:
+
+    ```java
+    MyClass obj = new MyClass();
+    Class<?> clazz = obj.getClass();
+    ```
+
+4.  **Using `getComponentType()` for arrays**:
+    ```java
+    int[] array = new int[10];
+    Class<?> clazz = array.getClass().getComponentType();
+    ```
+
+Each of these methods provides a way to obtain a `Class` object representing a specific class in Java.
+
+14. **What is object cloning?**
 
     Object cloning in Java is the process of creating an exact copy of an existing object. There are two types of cloning:
 
@@ -278,7 +474,7 @@
     }
     ```
 
-11. **What do you mean by anonymous class?**
+15. **What do you mean by anonymous class?**
 
     An anonymous class in Java is a class that is defined without a name and is instantiated in a single expression. It is typically used to make the code more concise and to create a one-time use class that extends an existing class or implements an interface. Anonymous classes are often used in situations where a class is needed for a short period of time, such as when implementing event listeners or callbacks.
 
@@ -295,7 +491,7 @@
 
     In this example, an anonymous class is created that extends the `Button` class and overrides the `onClick` method to provide specific behavior when the button is clicked.
 
-12. **What are the differences between subclass and inner class?**
+16. **What are the differences between subclass and inner class?**
 
     | Aspect            | Subclass                                                 | Inner Class                                                    |
     | ----------------- | -------------------------------------------------------- | -------------------------------------------------------------- |
@@ -308,7 +504,7 @@
     | Purpose           | Code reuse and extending functionality                   | Logical grouping and encapsulation                             |
     | Scope             | Available throughout the package/project                 | Limited to the scope of outer class                            |
 
-13. **What are constructors in Java? How many types of constructors are used in Java?**
+17. **What are constructors in Java? How many types of constructors are used in Java?**
 
     Constructors in Java are special methods that are called when an object is instantiated. They have the same name as the class and do not have a return type, not even void. Constructors are used to initialize the object's attributes and allocate memory for the object. There are two types of constructors in Java:
 
@@ -355,7 +551,7 @@
 
     ```
 
-14. **Can you call a constructor of a class inside another constructor? or How can constructor chaining be done using this keyword?**
+18. **Can you call a constructor of a class inside another constructor? or How can constructor chaining be done using this keyword?**
     Yes, you can call a constructor from another constructor within the same class using `this()`. This is known as constructor chaining. The call to another constructor must be the first statement in the constructor. This is useful for code reuse and avoiding duplicate initialization code.
 
     Here's an example:
@@ -387,7 +583,7 @@
 
     In this example, the constructors are chained together, with each constructor calling another constructor using `this()`. This helps maintain clean and DRY (Don't Repeat Yourself) code.
 
-15. **How can constructor chaining be done by using the super keyword?**
+19. **How can constructor chaining be done by using the super keyword?**
     Constructor chaining can also be done using the `super()` keyword to call a constructor from the parent class. The `super()` call must be the first statement in the constructor. This is useful when you want to reuse initialization code from the parent class.
 
     Here's an example:
@@ -426,7 +622,7 @@
 
     In this example, the `Car` class constructors use `super()` to call constructors from the parent `Vehicle` class, demonstrating constructor chaining between parent and child classes.
 
-16. **What rules that you must follow while creating a constructor in Java?**
+20. **What rules that you must follow while creating a constructor in Java?**
 
     There are several important rules that must be followed when creating a constructor in Java:
 
@@ -463,7 +659,7 @@
     }
     ```
 
-17. **What are the differences between the constructors and methods?**
+21. **What are the differences between the constructors and methods?**
 
     | Aspect           | Constructors                                                     | Methods                                                     |
     | ---------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -492,7 +688,7 @@
     }
     ```
 
-18. **Can we make constructors static?**
+22. **Can we make constructors static?**
 
     No, constructors cannot be declared as static in Java. Here's why:
 
@@ -529,7 +725,7 @@
     }
     ```
 
-19. **Explain the constructor overloading? Or Can we overload the constructors?**
+23. **Explain the constructor overloading? Or Can we overload the constructors?**
 
     Constructor overloading is a technique in Java where a class can have multiple constructors with different parameter lists. Each constructor provides a different way to initialize an object of that class. The constructors must differ in their parameter lists (number of parameters, types of parameters, or both).
 
@@ -580,7 +776,7 @@
     Student s4 = new Student("Mike", 21, "A");          // Uses constructor with all parameters
     ```
 
-20. **Can you make a constructor final?**
+24. **Can you make a constructor final?**
 
     No, constructors cannot be declared as final in Java. This is because:
 
@@ -590,15 +786,15 @@
 
     3. **Compilation Error**: Attempting to declare a constructor as final will result in a compile-time error.
 
-21. **Does a constructor return any value?**
+25. **Does a constructor return any value?**
 
     No, constructors do not return any value, not even void. Their primary purpose is to initialize the object when it is created. Instead of returning a value, a constructor initializes the instance variables of the class and prepares the new object for use.
 
-22. **Is constructor inherited?**
+26. **Is constructor inherited?**
 
     No, constructors are not inherited in Java. Each class has its own constructors, and they are not accessible to subclasses. When a subclass is created, it does not inherit the constructors of its parent class. However, a subclass can call a parent class constructor using the `super` keyword to initialize inherited fields. This means that while constructors themselves are not inherited, the initialization of inherited properties can be achieved through the parent class's constructors.
 
-23. **What is Copy Constructor in Java? What are the ways to copy the values of one object into another?**
+27. **What is Copy Constructor in Java? What are the ways to copy the values of one object into another?**
 
     A Copy Constructor in Java is a constructor that creates a new object by copying the values from another object of the same class. It takes an object of the same class as a parameter and initializes the new object with the same values. Copy constructors are particularly useful when you want to create a new object that has the same state as an existing object.
 
@@ -714,7 +910,7 @@
 
     ```
 
-24. **What is a private constructor?**
+28. **What is a private constructor?**
     A private constructor is a constructor declared with the `private` access modifier, which restricts its instantiation from outside the class. Key characteristics include:
 
     1. **Prevents Direct Instantiation:**
@@ -769,7 +965,7 @@
        - Provides more control over object creation
        - Prevents unnecessary object instantiation
 
-25. **Can you declare a constructor using static?**
+29. **Can you declare a constructor using static?**
 
     No, constructors cannot be declared as static in Java. This is because:
 
@@ -799,7 +995,7 @@
     }
     ```
 
-26. **What is immutable object?**
+30. **What is immutable object?**
 
     An immutable object is an object whose state cannot be changed after it is created. Once an immutable object is constructed, its contents remain constant throughout its lifetime. String is a classic example of an immutable class in Java.
 
@@ -841,7 +1037,7 @@
     - Prevent temporal coupling
     - Side-effect free behavior
 
-27. **How can we create an immutable class in Java?**
+31. **How can we create an immutable class in Java?**
 
     To create an immutable class in Java, follow these key steps:
 
@@ -898,7 +1094,7 @@
     - For complex objects, implement deep copy mechanisms
     - Ensure all methods preserve immutability
 
-28. **What is difference between WeakReference and SoftReference in Java?**
+32. **What is difference between WeakReference and SoftReference in Java?**
 
     WeakReference and SoftReference are two types of special reference objects in Java that help with memory management. Here are their key differences:
 
@@ -931,7 +1127,7 @@
     - Use WeakReference when you want objects to be collected as soon as they're not needed
     - Use SoftReference for memory-sensitive caches that should only be cleared when memory is tight
 
-29. **What are access specifiers? What are the types of access specifiers?**
+33. **What are access specifiers? What are the types of access specifiers?**
 
     Access specifiers in Java are keywords that set the accessibility (visibility) of classes, methods, and other members. They control how the members of a class can be accessed from other classes. The main types of access specifiers in Java are:
 
@@ -945,7 +1141,9 @@
 
     By using access specifiers, developers can implement encapsulation, which is a fundamental principle of object-oriented programming, ensuring that the internal representation of an object is hidden from the outside.
 
-30. **Can we override the static method? Why can we not override static method?**
+34. **Can you access the private method from outside the class?**
+
+34. **Can we override the static method? Why can we not override static method?**
 
     No, static methods cannot be overridden in Java. This is because:
 
@@ -988,7 +1186,7 @@
     - The method called depends on the reference type, not the actual object type
     - Subclass static method hides the parent class static method instead of overriding it
 
-31. **Can we override the private methods?**
+35. **Can we override the private methods?**
 
     No, private methods cannot be overridden in Java. This is because:
 
@@ -1027,7 +1225,7 @@
     - A method with the same name in a subclass is treated as a completely separate method
     - True method overriding requires the method to be accessible to the subclass
 
-32. **Is it possible to overload the static methods in Java?**
+36. **Is it possible to overload the static methods in Java?**
 
     Yes, it is possible to overload static methods in Java. Method overloading occurs when two or more methods in the same class have the same name but different parameters (different type, number, or both). Since static methods are resolved at compile time based on the method signature, you can have multiple static methods with the same name as long as their parameter lists differ.
 
@@ -1059,7 +1257,7 @@
 
     In this example, the `add` method is overloaded with different parameter types and counts, demonstrating that static methods can indeed be overloaded.
 
-33. **What is method overloading with type promotion?**
+37. **What is method overloading with type promotion?**
 
     Type promotion in method overloading refers to Java's automatic widening of primitive data types when matching method calls to overloaded methods. When an exact match is not found, Java will automatically promote the argument to a wider type to find a matching method.
 
@@ -1094,7 +1292,7 @@
 
     When calling `calculate(b)`, even though there's no method that takes a byte parameter, Java promotes the byte to int and calls the first method. Similarly, the float argument is promoted to double for the second method call.
 
-34. **Can we overload the methods by making them static?**
+38. **Can we overload the methods by making them static?**
 
     No, we cannot overload methods just by making them static. Method overloading in Java is based on having different parameter lists (different number or types of parameters). The static modifier does not affect the method signature and therefore cannot be used as a basis for overloading.
 
@@ -1130,7 +1328,7 @@
     }
     ```
 
-35. **What are the restrictions that are applied to the Java static methods?**
+39. **What are the restrictions that are applied to the Java static methods?**
 
     There are several important restrictions that apply to static methods in Java:
 
@@ -1172,7 +1370,7 @@
     }
     ```
 
-36. **What is the use of static variables and methods? or What is the purpose of static methods and variables?**
+40. **What is the use of static variables and methods? or What is the purpose of static methods and variables?**
 
     | Feature           | Static Variables                                                                           | Static Methods                                                      |
     | ----------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
@@ -1211,7 +1409,7 @@
     3. Utility and Helper Functions: Provide common functionality
     4. Tracking and Counting: Maintain class-level state
 
-37. **What is a singleton class in Java? Describe the singleton pattern with an example.**
+41. **What is a singleton class in Java? Describe the singleton pattern with an example.**
 
     A Singleton class in Java is a design pattern that restricts the instantiation of a class to a single instance. This is useful when exactly one object is needed to coordinate actions across the system, such as managing configuration settings, database connections, or thread pools.
 
@@ -1258,7 +1456,7 @@
 
     In this example, the `Singleton` class has a private constructor, a static instance variable, and a public static method `getInstance()` that provides access to the single instance of the class. This ensures that no more than one instance of the `Singleton` class can exist at any time.
 
-38. **What is encapsulation? Explain encapsulation with an example.**
+42. **What is encapsulation? Explain encapsulation with an example.**
 
     Encapsulation is one of the four fundamental OOP concepts that involves bundling data and the methods that operate on that data within a single unit (class), while restricting direct access to some of the object's components. This is achieved in Java through:
 
@@ -1303,7 +1501,7 @@
     4. The implementation details are hidden from the user
     5. We can change the internal implementation without affecting code that uses the class
 
-39. **What is inheritance and what are its types in Java?**
+43. **What is inheritance and what are its types in Java?**
 
     Inheritance is a fundamental object-oriented programming concept where a class (subclass/child class) can inherit attributes and methods from another class (superclass/parent class). In Java, inheritance is implemented using the `extends` keyword. This mechanism promotes code reuse, simplifies maintenance, and allows for the creation of more specialized classes based on existing ones. There are several types of inheritance supported in Java:
 
@@ -1356,7 +1554,7 @@
 
     In this example, the `Dog` class inherits the properties and behaviors of the `Animal` class, including the `name` field and the `eat()` and `sleep()` methods. The `Dog` class also adds its own unique behavior, the `bark()` method.
 
-40. **Why is multiple inheritance not supported in java?**
+44. **Why is multiple inheritance not supported in java?**
 
     Multiple inheritance is not supported in Java through classes for several key reasons:
 
@@ -1382,7 +1580,7 @@
     // class D extends B, C {} // Which method() would D inherit?
     ```
 
-41. **Why is Inheritance used in Java?**
+45. **Why is Inheritance used in Java?**
 
     Inheritance in Java is used for several important reasons:
 
@@ -1400,7 +1598,7 @@
 
     For example, in the Animal-Dog relationship shown earlier, the Dog class inherits common animal behaviors (eat, sleep) while adding specific dog behaviors (bark), demonstrating efficient code organization and reuse.
 
-42. **What do you mean by Polymorphism and what are its types?**
+46. **What do you mean by Polymorphism and what are its types?**
 
     Polymorphism means "many forms" and is one of the core concepts of object-oriented programming. It allows objects to be treated as instances of their parent class rather than their actual class. In Java, there are two main types of polymorphism:
 
@@ -1461,7 +1659,7 @@
 
     The key difference is that runtime polymorphism is resolved during program execution based on the actual object type, while compile-time polymorphism is resolved during compilation based on method signatures.
 
-43. **What is the difference between compile-time polymorphism and runtime polymorphism?**
+47. **What is the difference between compile-time polymorphism and runtime polymorphism?**
 
     | Feature              | Compile-time Polymorphism                                          | Runtime Polymorphism                                   |
     | -------------------- | ------------------------------------------------------------------ | ------------------------------------------------------ |
@@ -1474,7 +1672,7 @@
     | **Example Usage**    | Multiple versions of methods like `print(int)` and `print(String)` | Parent class reference holding child class object      |
     | **Flexibility**      | Limited to method overloading within same class                    | More flexible as behavior changes based on object type |
 
-44. **What is the interface?**
+48. **What is the interface?**
 
     An interface is a blueprint of a class that contains only abstract methods, constants, default methods, static methods, and nested types. It specifies what a class must do but not how it should do it. Key points about interfaces:
 
@@ -1512,7 +1710,67 @@
     }
     ```
 
-45. **Can we declare an interface as final?**
+49. **What is the nested interface? Can a class have an interface?**
+
+    A nested interface is an interface declared within another class or interface. Key points about nested interfaces:
+
+    - Can be declared as public, private, or protected (if inside a class)
+    - Are implicitly static when declared inside an interface
+    - Can access members of the enclosing class/interface
+    - Help organize related interfaces together
+
+    Example:
+
+    ```java
+    class OuterClass {
+        // Nested interface in a class
+        interface NestedInterface {
+            void nestedMethod();
+        }
+    }
+
+    interface OuterInterface {
+        // Nested interface in an interface
+        interface InnerInterface {
+            void innerMethod();
+        }
+    }
+
+    // Implementing nested interface
+    class MyClass implements OuterClass.NestedInterface {
+        @Override
+        public void nestedMethod() {
+            System.out.println("Nested method implementation");
+        }
+    }
+    ```
+
+50. **Can an Interface have a class?**
+
+    Yes, an interface can have a class. This is known as a member class or nested class within an interface. Key points:
+
+    - Classes inside interfaces are implicitly public and static
+    - They can implement the enclosing interface or other interfaces
+    - They can be instantiated and used like regular classes
+    - Useful for providing default implementations or helper classes
+
+    Example:
+
+    ```java
+    interface OuterInterface {
+        void outerMethod();
+
+        // Nested class in interface
+        class NestedClass implements OuterInterface {
+            @Override
+            public void outerMethod() {
+                System.out.println("Implementation in nested class");
+            }
+        }
+    }
+    ```
+
+51. **Can we declare an interface as final?**
 
     No, an interface cannot be declared as final. This is because:
 
@@ -1529,7 +1787,7 @@
     }
     ```
 
-46. **What do you mean by abstraction and how it is achieved in Java?**
+52. **What do you mean by abstraction and how it is achieved in Java?**
 
     Abstraction is the process of hiding implementation details and showing only the functionality to the user. It helps reduce programming complexity and effort by focusing on what an object does rather than how it does it.
 
@@ -1588,7 +1846,7 @@
 
     The main benefit of abstraction is that it allows you to focus on what the object does instead of how it does it, reducing complexity and coupling in your code.
 
-47. **What is the difference between extends and implements?**
+53. **What is the difference between extends and implements?**
 
     | Aspect                   | extends                                                 | implements                                             |
     | ------------------------ | ------------------------------------------------------- | ------------------------------------------------------ |
@@ -1601,7 +1859,7 @@
     | Code Reuse               | Allows reuse of code from parent class                  | Only provides method contracts, no implementation      |
     | Usage Example            | `class Dog extends Animal`                              | `class Bird implements Flyable`                        |
 
-48. **What is the difference between loose coupling and tight coupling?**
+54. **What is the difference between loose coupling and tight coupling?**
 
     Loose coupling refers to a design principle in which components or classes are minimally dependent on each other, allowing for greater flexibility and easier maintenance. In a loosely coupled system, changes in one component have little to no impact on others, making it easier to modify or replace parts of the system without affecting the overall functionality.
 
@@ -1671,7 +1929,7 @@
     	```
     ````
 
-49. **What is the difference between cohesion and coupling?**
+55. **What is the difference between cohesion and coupling?**
 
     | Aspect     | Cohesion                                                                 | Coupling                                                                              |
     | ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
@@ -1724,7 +1982,7 @@
     }
     ```
 
-50. **What is a Marker Interface?**
+56. **What is a Marker Interface?**
 
     A Marker Interface in Java is an interface that does not contain any methods. It is used to mark a class that implements it, indicating that the class has a specific property or behavior. Marker interfaces are often used to indicate that a class has a particular characteristic or capability, such as being serializable, cloneable, or thread-safe.
     Here are some examples of commonly used marker interfaces in Java:
@@ -1768,7 +2026,7 @@
     - `Cloneable`: Marks classes that can be cloned
     - `Remote`: Marks classes that can be used for RMI (Remote Method Invocation)
 
-51. **What is an abstract class? Explain its purpose and when to use it.**
+57. **What is an abstract class? Explain its purpose and when to use it.**
 
     An abstract class in Java is a class that cannot be instantiated on its own and may contain both abstract and concrete methods. It serves as a blueprint for other classes and is designed to be extended by subclasses.
 
@@ -1815,7 +2073,7 @@
     - You need to provide a template for a group of related classes
     - Some common behavior can be implemented in the abstract class, while other behavior must be implemented by each subclass
 
-52. **Can there be an abstract method without an abstract class?**
+58. **Can there be an abstract method without an abstract class?**
 
     Yes, abstract methods can exist without an abstract class when they are declared in an interface. In Java, interface methods are implicitly abstract (unless marked as default or static).
 
@@ -1833,7 +2091,7 @@
     - The class must be declared abstract if it contains any abstract methods
     - Abstract methods in the class must be implemented by concrete subclasses
 
-53. **Can you use abstract and final both with a method?**
+59. **Can you use abstract and final both with a method?**
 
     No, you cannot use both abstract and final modifiers with a method. This is because:
 
@@ -1851,7 +2109,7 @@
     }
     ```
 
-54. **Is it possible to instantiate the abstract class?**
+60. **Is it possible to instantiate the abstract class?**
 
     No, it is not possible to instantiate an abstract class directly. Abstract classes are incomplete by design and can only be used as superclasses.
 
@@ -1885,7 +2143,7 @@
     2. Implement all abstract methods in the subclass
     3. Instantiate the concrete subclass
 
-55. **Can we define a class Abstract even if it does not have any abstract methods?**
+61. **Can we define a class Abstract even if it does not have any abstract methods?**
 
     Yes, we can define a class as abstract even if it doesn't have any abstract methods. This is perfectly valid in Java. The abstract keyword simply prevents the class from being instantiated directly.
 
@@ -1911,7 +2169,7 @@
     - The class is not complete enough to be instantiated meaningfully
     - You're designing a framework where the base class should never be used directly
 
-56. **Can you make abstract methods static in Java?**
+62. **Can you make abstract methods static in Java?**
 
     No, abstract methods cannot be static in Java. This is because:
 
@@ -1942,7 +2200,7 @@
     }
     ```
 
-57. **Can we declare the static variables and methods in an abstract class?**
+63. **Can we declare the static variables and methods in an abstract class?**
 
     Yes, we can declare static variables and methods in an abstract class. This is because:
 
@@ -1973,7 +2231,7 @@
     - The static method `convertToRadians()` can be called as `Shape.convertToRadians(90)`
     - Both can be used without creating an instance of Shape
 
-59. **Can you declare an interface method static?**
+64. **Can you declare an interface method static?**
 
     Yes, starting from Java 8, you can declare static methods in interfaces. Static interface methods:
 
@@ -1993,13 +2251,14 @@
     ```
 
     To call this method:
+
     ```java
     int sum = Calculator.add(5, 3); // Called using interface name
     ```
 
     Static methods in interfaces are commonly used to provide utility methods that are related to the interface's purpose but don't require access to instance-specific data.
 
-58. **What are the differences between abstract class and interface?**
+65. **What are the differences between abstract class and interface?**
 
     | Aspect                | Abstract Class                                                                       | Interface                                                                                                               |
     | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
@@ -2010,7 +2269,7 @@
     | Access Modifiers      | Can have access modifiers (public, protected, private).                              | All methods are public by default; cannot have access modifiers.                                                        |
     | Use Case              | Used when classes share a common base and behavior.                                  | Used to define a contract that implementing classes must follow.                                                        |
 
-59. **What do you mean by association? What are the types of associations?**
+66. **What do you mean by association? What are the types of associations?**
 
     Association in object-oriented programming refers to a relationship between two classes that establishes a connection between them. It signifies that one class (the client) uses or interacts with another class (the supplier). Associations can be categorized into three main types:
 
@@ -2024,7 +2283,7 @@
 
     Understanding these associations helps in designing systems that accurately represent real-world relationships between entities.
 
-60. **What is aggregation?**
+67. **What is aggregation?**
 
     Aggregation is a special form of association that represents a "has-a" relationship between two classes, where one class (the whole) contains or is composed of other classes (the parts), but the parts can exist independently of the whole. It represents a weak ownership relationship between objects.
 
@@ -2059,7 +2318,7 @@
     - If the Department is destroyed, the Teacher objects continue to exist
     - The same Teacher object could potentially belong to multiple Departments
 
-61. **What is composition?**
+68. **What is composition?**
 
     Composition is a strong form of association that represents a "part-of" relationship between classes, where one class (the whole) contains instances of other classes (the parts) and is responsible for their lifecycle. In composition, the child (part) cannot exist without the parent (whole).
 
@@ -2093,7 +2352,7 @@
 
     In this example, the Engine is composed within the Car. The Engine cannot exist without the Car, and when the Car object is destroyed, its Engine instance is also destroyed. This demonstrates the strong lifecycle dependency characteristic of composition.
 
-62. **What is the difference between composition, aggregation, and association?**
+69. **What is the difference between composition, aggregation, and association?**
 
     | Aspect     | Composition                                                                     | Aggregation                                                                  | Association                                                                                 |
     | ---------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -2163,7 +2422,7 @@
     }
     ```
 
-63. **What is the difference between aggregation and composition?**
+70. **What is the difference between aggregation and composition?**
 
     | Aspect       | Aggregation                   | Composition                          |
     | ------------ | ----------------------------- | ------------------------------------ |
@@ -2179,7 +2438,7 @@
 
     - Aggregation: The University class shows aggregation with Student. Students can exist independently of University, and the University simply maintains a collection of Student references. When University is destroyed, the Students continue to exist.
 
-64. **What is the difference between Inheritance and Composition?**
+71. **What is the difference between Inheritance and Composition?**
 
     | Aspect         | Inheritance                           | Composition                               |
     | -------------- | ------------------------------------- | ----------------------------------------- |
@@ -2217,7 +2476,7 @@
     - Composition is generally preferred when possible ("favor composition over inheritance") as it provides more flexibility and looser coupling
     - Inheritance breaks encapsulation as child classes can access protected members of parent class
 
-65. **What are the differences between method overloading and overriding?**
+72. **What are the differences between method overloading and overriding?**
 
     | Aspect          | Method Overloading                                                                                                                                                                                                                                                                                                                              | Method Overriding                                                                                                                                                                                                                                                                                                               |
     | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2277,7 +2536,7 @@
     In the overloading example, the `Calculator` class has multiple `add` methods with different parameter types/counts.
     In the overriding example, `Dog` and `Cat` classes provide their own specific implementations of the `makeSound()` method inherited from `Animal`.
 
-66. **Why is method overloading not possible by changing the return type in java?**
+73. **Why is method overloading not possible by changing the return type in java?**
 
     Method overloading in Java cannot be achieved by only changing the return type because:
 
@@ -2309,7 +2568,7 @@
     public double getValue(double x) { return x; } // Valid overload
     ```
 
-67. **What is the difference between Java Dynamic Binding and Static Binding?**
+74. **What is the difference between Java Dynamic Binding and Static Binding?**
 
     - **Static Binding**: This occurs at compile time and is used for method calls that are resolved based on the reference type. It is typically used with private, static, and final methods. Since the method to be called is determined at compile time, it cannot be changed at runtime.
 
@@ -2342,7 +2601,7 @@
     }
     ```
 
-68. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
+75. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
 
     An Instance Initializer Block is a block of code that is used to initialize instance variables of a class. It is executed when an instance of the class is created, before the constructor is called.
 
@@ -2371,7 +2630,7 @@
     }
     ```
 
-69. **What is a static block in Java?**
+76. **What is a static block in Java?**
 
     A static block (also called static initialization block) is a block of code inside a class that is executed only once when the class is first loaded into memory. It is used to initialize static variables or perform one-time setup operations.
 
@@ -2403,7 +2662,7 @@
     }
     ```
 
-70. **What is the purpose of static members in Java?**
+77. **What is the purpose of static members in Java?**
 
     Static members in Java (including methods, variables, and nested classes) belong to the class itself rather than any specific instance. They serve several important purposes:
 
@@ -2452,7 +2711,7 @@
     }
     ```
 
-71. **Explain the use of final keyword in variable, method and class**
+78. **Explain the use of final keyword in variable, method and class**
 
     The `final` keyword in Java is used to impose restrictions on variables, methods, and classes:
 
@@ -2477,7 +2736,7 @@
     // class ChildClass extends FinalClass { } // Cannot extend final class
     ```
 
-72. **What is the difference between the final method and abstract method?**
+79. **What is the difference between the final method and abstract method?**
 
     | Feature            | Final Method                                     | Abstract Method                                                       |
     | ------------------ | ------------------------------------------------ | --------------------------------------------------------------------- |
@@ -2489,7 +2748,7 @@
     | **Method Body**    | Must have method body                            | Cannot have method body (except default methods in interfaces)        |
     | **Purpose**        | To preserve implementation across inheritance    | To achieve abstraction and polymorphism                               |
 
-73. **What is the difference between encapsulation and abstraction?**
+80. **What is the difference between encapsulation and abstraction?**
 
     | Feature            | Encapsulation                                                                                               | Abstraction                                                                                        |
     | ------------------ | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
@@ -2499,14 +2758,14 @@
     | **Example**        | A class with private fields and public methods to access and modify those fields                            | An interface defining methods without implementation, allowing different classes to implement them |
     | **Focus**          | Focuses on the internal state and behavior of an object                                                     | Focuses on the external interface and functionality of an object                                   |
 
-74. **Can we use both final & abstract keywords with a method?**
+81. **Can we use both final & abstract keywords with a method?**
 
     No, we cannot use both final and abstract keywords with a method. A method declared as abstract must be implemented by subclasses, while a final method cannot be overridden. Therefore, it is contradictory to declare a method as both final and abstract, as one implies that the method cannot change, while the other requires it to be defined in a subclass.
 
-75. **Can we declare a method as final in an interface?**  
+82. **Can we declare a method as final in an interface?**  
     No, we cannot declare a method as final in an interface. In Java, all methods in an interface are implicitly abstract (prior to Java 8) and cannot have a body. Since final methods cannot be overridden, it contradicts the purpose of an interface, which is to provide a contract for classes to implement. However, from Java 8 onwards, interfaces can have default and static methods, but these cannot be declared as final either, as they are meant to be overridden in implementing classes if desired.
 
-76. **Can an interface extend another interface?**  
+83. **Can an interface extend another interface?**  
     Yes, an interface can extend another interface in Java. When an interface extends another interface, it inherits all the abstract methods of the parent interface. A class that implements the child interface must provide implementations for all the methods declared in both the child and parent interfaces. This allows for a more flexible and modular design in object-oriented programming.
 
     Here's an example demonstrating interface extension:
@@ -2541,7 +2800,7 @@
     }
     ```
 
-77. **Does Java work as a "pass by value" or "pass by reference" phenomenon?**
+84. **Does Java work as a "pass by value" or "pass by reference" phenomenon?**
     Java is strictly pass-by-value. However, this can be confusing because when passing objects, the value being passed is actually a reference to the object. This means:
 
     1. For primitive types (int, double, etc.): The actual value is passed
@@ -2583,7 +2842,7 @@
 
     This behavior occurs because when passing an object, Java creates a copy of the reference, but both references point to the same object in memory. If you modify the object through either reference, the changes are visible through both references. However, if you reassign the parameter to a new object, it only affects the local copy of the reference.
 
-78. **Which Java operator is right associative?**
+85. **Which Java operator is right associative?**
     In Java, several operators are right associative:
 
     1. Assignment operators (=, +=, -=, \*=, /=, %=, etc.)
@@ -2599,7 +2858,7 @@
 
     This is different from most binary operators which are left associative (grouped left to right).
 
-79. **What is the covariant return type?**
+86. **What is the covariant return type?**
     Covariant return type is a feature introduced in Java 5 that allows a method in a subclass to override a method in a superclass by returning a subtype of the original return type. This provides more type-specific return values while maintaining type safety.
 
     For example:
@@ -2621,7 +2880,7 @@
 
     In this example, `Dog.getType()` returns a `Dog` object instead of an `Animal` object, even though it's overriding `Animal.getType()`. This is possible because `Dog` is a subtype of `Animal`.
 
-80. **Difference between static methods, static variables, and static classes in Java.**
+87. **Difference between static methods, static variables, and static classes in Java.**
 
     | Feature         | Static Methods                                         | Static Variables                                         | Static Classes                                   |
     | --------------- | ------------------------------------------------------ | -------------------------------------------------------- | ------------------------------------------------ |
@@ -2633,7 +2892,7 @@
     | Inheritance     | Cannot be overridden (but can be hidden)               | Inherited but shared across all subclasses               | Can be inherited if nested class is extended     |
     | Purpose         | Utility functions, factory methods                     | Constants, counters, utility values                      | Independent nested classes, helper classes       |
 
-81. **Explain the use of the final keyword in variable, method and class.**
+88. **Explain the use of the final keyword in variable, method and class.**
     The `final` keyword in Java has different implications depending on where it's used:
 
     1. **Final Variables:**
@@ -2667,7 +2926,7 @@
     }
     ```
 
-82. **Dynamic Method Dispatch in Java**
+89. **Dynamic Method Dispatch in Java**
 
     - A mechanism where a method call is resolved at runtime rather than compile time
     - Enables runtime polymorphism through method overriding
@@ -2680,7 +2939,7 @@
     animal.makeSound();       // Calls Dog's makeSound() at runtime
     ```
 
-83. **Can we use private or protected member variables in an interface?**
+90. **Can we use private or protected member variables in an interface?**
 
     - No, interface fields are implicitly public, static and final
     - Prior to Java 9, interface members could only be public
@@ -2705,7 +2964,7 @@
     }
     ```
 
-84. **When can an object reference be cast to a Java interface reference?**
+91. **When can an object reference be cast to a Java interface reference?**
 
     An object reference can be cast to an interface reference when:
 
@@ -2745,7 +3004,7 @@
     - An invalid cast will result in a ClassCastException
     - The cast may be implicit (no cast operator needed) when assigning to an interface reference
 
-85. **What are getters and setters in Java?**
+92. **What are getters and setters in Java?**
 
     Getters and setters are methods that allow controlled access to class fields/attributes:
 
@@ -2779,7 +3038,7 @@
        - Enable debugging/logging when fields are accessed
     4. JavaBeans: Following these naming conventions makes classes compatible with JavaBeans specification
 
-86. **What is static in Java?**
+93. **What is static in Java?**
 
     The static keyword in Java is used to declare members (variables and methods) that belong to the class itself rather than instances of the class:
 
@@ -2831,7 +3090,7 @@
        - Singleton pattern
        - Factory methods
 
-87. **What is the difference between abstract classes and interfaces?**
+94. **What is the difference between abstract classes and interfaces?**
 
     | Feature               | Abstract Class                                    | Interface                                                                                 |
     | --------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------- |

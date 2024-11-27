@@ -258,9 +258,95 @@
     istore_3    // Store result in local variable 3
     ```
 
+13. **What is the purpose of using javap?**
+
+    The `javap` tool is a Java class file disassembler that provides a way to view the details of compiled Java classes. Its primary purposes include:
+
+    - **Inspecting Class Files**: It allows developers to examine the structure of class files, including methods, fields, and their access modifiers.
+    - **Understanding Bytecode**: `javap` can display the bytecode instructions contained in a class file, which helps in understanding how Java code is translated into bytecode.
+    - **Debugging**: It aids in debugging by providing insights into the compiled code, which can be useful for performance tuning and optimization.
+    - **Learning Tool**: It serves as an educational resource for those looking to learn more about Java's compilation process and bytecode.
+
+    Example usage of `javap`:
+
+    ```
+    javap -c MyClass
+    ```
+
+    This command will display the bytecode for the `MyClass` class.
+
 ## Memory Management & Garbage Collection
 
-11. **What are the Memory Allocations available in Java**
+11. **What is Garbage Collection?**
+
+    Garbage Collection (GC) is Java's automatic memory management system that identifies and removes objects that are no longer being used by the application. Key aspects include:
+
+    - Automatically frees memory by removing unreferenced objects
+    - Runs in the background with minimal programmer intervention
+    - Uses different algorithms and strategies to identify unused objects
+    - Helps prevent memory leaks and manual memory management errors
+    - Can impact application performance during collection cycles
+
+    The process works by:
+
+    1. **Marking**: Identifies which objects are in use and which aren't
+    2. **Deletion**: Removes unused objects
+    3. **Compaction**: Optionally defragments memory by moving remaining objects together
+
+    Example of object eligible for garbage collection:
+
+    ```java
+    public void createObject() {
+        String str = new String("Hello"); // Creates object
+        str = null; // Original object now eligible for GC
+    }
+    ```
+
+12. **How can an object be unreferenced?**
+
+    An object can become unreferenced (eligible for garbage collection) in several ways:
+
+    1. **Nulling the Reference**:
+
+       ```java
+       Student student = new Student();
+       student = null; // Object is now unreferenced
+       ```
+
+    2. **Reassigning the Reference**:
+
+       ```java
+       Student student = new Student();
+       student = new Student(); // First object is now unreferenced
+       ```
+
+    3. **Object Goes Out of Scope**:
+
+       ```java
+       public void method() {
+           Student student = new Student(); // Local variable
+       } // student goes out of scope, object becomes unreferenced
+       ```
+
+    4. **Island of Isolation**:
+
+       ```java
+       class Node {
+           Node next;
+           Node() {}
+       }
+
+       Node node1 = new Node();
+       Node node2 = new Node();
+       node1.next = node2;
+       node2.next = node1;
+       node1 = null;
+       node2 = null; // Both objects become unreferenced
+       ```
+
+    These unreferenced objects become eligible for garbage collection, though the exact timing of collection depends on the JVM's garbage collector implementation.
+
+13. **What are the Memory Allocations available in Java**
 
     Java's memory structure consists of several key areas:
 
@@ -301,7 +387,7 @@
 
     Each memory area serves a specific purpose in Java's memory management system, contributing to the language's efficiency and reliability.
 
-12. **The difference between Serial and Parallel Garbage Collector?**
+14. **The difference between Serial and Parallel Garbage Collector?**
 
     Serial and Parallel Garbage Collectors differ in several key aspects:
 
@@ -329,7 +415,7 @@
 
     The main tradeoff is between simplicity (Serial) and performance (Parallel), with Parallel GC generally providing better throughput on modern hardware.
 
-13. **How does the Garbage Collector algorithm work? Or How does garbage collection work in Java?**
+15. **How does the Garbage Collector algorithm work? Or How does garbage collection work in Java?**
 
     Garbage Collection (GC) in Java is an automatic memory management process that identifies and removes unused objects from heap memory. Here's how it works:
 
@@ -366,7 +452,7 @@
 
     The GC process is automatic but can be influenced through JVM parameters and choice of collector implementation (Serial, Parallel, CMS, G1, ZGC).
 
-14. **What are the differences between Heap and Stack Memory in Java?**
+16. **What are the differences between Heap and Stack Memory in Java?**
 
     | Aspect            | Stack Memory                                                 | Heap Memory                                     |
     | ----------------- | ------------------------------------------------------------ | ----------------------------------------------- |
@@ -381,7 +467,7 @@
     | Memory Control    | Size controlled by JVM (-Xss)                                | Initial/Max size controlled by JVM (-Xms/-Xmx)  |
     | Memory Errors     | StackOverflowError                                           | OutOfMemoryError                                |
 
-15. **What are the possible ways of making object eligible for garbage collection (GC) in Java?**
+17. **What are the possible ways of making object eligible for garbage collection (GC) in Java?**
 
     An object becomes eligible for garbage collection when it is no longer reachable. Here are the main ways to make an object eligible for GC:
 
@@ -426,7 +512,7 @@
        - Clear collections or remove objects from them
        - Example: `list.clear();` or `map.remove(key);`
 
-16. **What is a Memory Leak? Discuss some common causes of it.**
+18. **What is a Memory Leak? Discuss some common causes of it.**
 
     A memory leak occurs when a program fails to release memory that is no longer needed, causing the application to consume more and more memory over time. In Java, despite having garbage collection, memory leaks can still occur.
 
@@ -477,7 +563,7 @@
     - Profile application memory usage regularly
     - Use memory analysis tools (like JProfiler, MAT)
 
-17. **What are the different types of garbage collectors in Java?**
+19. **What are the different types of garbage collectors in Java?**
 
     Java provides several garbage collector implementations, each optimized for different use cases:
 
@@ -1238,7 +1324,7 @@
     }
     ```
 
-13. **How many times is the finalize method called?**
+13. **What is the purpose of the finalize method? How many times is the finalize method called?**
 
     The finalize method is called only once for each object by the garbage collector before the object is garbage collected. However, there are important points to note:
 

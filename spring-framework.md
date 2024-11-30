@@ -684,12 +684,14 @@
     Hibernate's architecture is designed to provide a robust and flexible Object-Relational Mapping (ORM) solution with multiple layers of abstraction:
 
     1. **Core Components**
+
        - **Configuration**: Reads mapping and configuration files
        - **SessionFactory**: Thread-safe object that creates Session instances
        - **Session**: Single-threaded unit of work with the database
        - **Transaction**: Manages database transaction boundaries
 
     2. **Architectural Layers**
+
        ```
        +----------------------------+
        | Application Layer          |
@@ -704,12 +706,14 @@
        ```
 
     3. **Key Architectural Elements**
+
        - **Persistent Objects**: Java classes mapped to database tables
        - **Hibernate Session**: Manages CRUD operations
        - **Transaction Management**: Ensures data integrity
        - **Connection Pooling**: Efficiently manages database connections
 
     4. **Data Access Process**
+
        1. Configure Hibernate with database settings
        2. Create SessionFactory
        3. Open a Session
@@ -730,6 +734,7 @@
     Spring Boot provides a flexible and hierarchical system for managing application properties:
 
     1. **Property Sources**
+
        - application.properties/application.yml files
        - Environment variables
        - Command-line arguments
@@ -737,6 +742,7 @@
        - Profile-specific properties (application-{profile}.properties)
 
     2. **Property Hierarchy (Highest to Lowest Priority)**
+
        1. Command-line arguments
        2. SPRING_APPLICATION_JSON properties
        3. ServletConfig init parameters
@@ -749,12 +755,14 @@
        10. Default properties
 
     3. **Common Locations (Searched in Order)**
+
        - File in ./config subdirectory
        - File in current directory
        - Classpath /config package
        - Classpath root
 
     4. **Key Features**
+
        - Property placeholder resolution (${property.name})
        - YAML support
        - Type-safe configuration properties (@ConfigurationProperties)
@@ -771,3 +779,84 @@
 
     This system allows for flexible, environment-specific configuration management while maintaining clear precedence rules and easy overrides.
 
+20. **What is difference between Authorization & Authentication?**
+
+    | Aspect            | Authentication                         | Authorization                                                     |
+    | ----------------- | -------------------------------------- | ----------------------------------------------------------------- |
+    | Definition        | Process of verifying who someone is    | Process of verifying what specific resources a user has access to |
+    | Purpose           | Validates user identity                | Validates user permissions                                        |
+    | Timing            | Done before authorization              | Done after successful authentication                              |
+    | Example           | Verifying username/password            | Checking if user can access admin page                            |
+    | Data Needed       | Credentials (username, password, etc.) | Privileges, roles, and permissions                                |
+    | Error Message     | "Invalid credentials"                  | "Access denied"                                                   |
+    | Security Level    | First level of security                | Second level of security                                          |
+    | Protocol Examples | OAuth, OpenID, SAML                    | RBAC, ABAC                                                        |
+    | Risk on Failure   | Prevents access to system              | Prevents access to specific resources                             |
+    | User Awareness    | User actively participates             | Happens in background                                             |
+
+
+21. **A user is login with a username and password now another user login with the same username and password now you have to show a session expiration notification to the first user. What will be the approach?**
+
+    1. **Session Management**
+       - Use Spring Session to manage user sessions
+       - Store session information in a centralized store (Redis/Database)
+       - Track active sessions per user
+       - Generate unique session IDs for each login
+
+    2. **Concurrent Session Control**
+       - Implement ConcurrentSessionControlAuthenticationStrategy
+       - Set maximum sessions allowed per user (e.g., maxSessionsPreventsLogin=false)
+       - Configure session registry to track session information
+
+    3. **Session Invalidation**
+       - When new login occurs, identify existing sessions for the user
+       - Mark previous session as expired in session registry
+       - Invalidate the old session
+
+    4. **User Notification**
+       - Implement WebSocket/Server-Sent Events for real-time communication
+       - Send session expiration message to previous session
+       - Display notification using JavaScript on client side
+       - Redirect to login page after acknowledgment
+
+    5. **Security Considerations**
+       - Implement proper session timeout
+       - Use secure session IDs
+       - Encrypt session data if sensitive
+       - Implement proper logout mechanisms
+
+22. **Two users concurrently login using the same credentials. How to manage their sessions?**
+
+    There are several approaches to handle concurrent logins with the same credentials:
+
+    1. **First-In-First-Out (FIFO) Strategy**
+       - Allow new login but terminate oldest session
+       - Configure ConcurrentSessionControlAuthenticationStrategy
+       - Set maximumSessions=1 in Spring Security config
+       - Notify terminated user via WebSocket/SSE
+
+    2. **Last-In-First-Out (LIFO) Strategy** 
+       - Prevent new login attempts when session exists
+       - Set maxSessionsPreventsLogin=true
+       - Return error message to new login attempt
+       - Keep existing session active
+
+    3. **Allow Multiple Sessions**
+       - Track all active sessions per user
+       - Use Spring Session with Redis/Database backend
+       - Implement custom SessionRegistry
+       - Allow configured maximum number of sessions
+
+    4. **Implementation Steps**
+       - Configure session management in SecurityConfig
+       - Implement SessionInformationExpiredStrategy
+       - Set up real-time notifications
+       - Handle session timeouts appropriately
+       - Log session events for auditing
+
+    5. **Best Practices**
+       - Use secure session IDs
+       - Implement proper session timeout
+       - Store session data securely
+       - Provide clear user feedback
+       - Monitor concurrent sessions

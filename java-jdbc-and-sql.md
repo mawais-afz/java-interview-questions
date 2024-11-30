@@ -2121,3 +2121,51 @@ Benefits of JOINs:
    | Object Mapping  | Automatic object-relational mapping   | Manual mapping configuration           |
    | Flexibility     | Less flexible for complex queries     | More flexible SQL control              |
    | JPA Compliance  | Fully JPA compliant                   | Not JPA compliant                      |
+
+10. **A table name user_addesses contains columns id, user_id, address, is_primary(0/1) Every user must have only one primary address. There is lots of data dumped in this table now some users do not have a primary address, write a query to find these records?**
+
+    Table Schema:
+
+    ```sql
+    user_addresses (
+        id INT,
+        user_id INT,
+        address VARCHAR,
+        is_primary BIT(1)  -- 0/1 flag
+    )
+    ```
+
+    Query to find users without any primary address:
+
+    ```sql
+    SELECT DISTINCT ua.user_id
+    FROM user_addresses ua
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM user_addresses ua2
+        WHERE ua2.user_id = ua.user_id
+        AND ua2.is_primary = 1
+    );
+    ```
+
+    This query:
+
+    - Uses EXISTS to check if a user has any primary address
+    - Returns distinct user_ids that have no matching primary address record
+    - Works efficiently even with large datasets
+
+    Or using a more efficient approach:
+
+      ```sql
+      SELECT user_id
+      FROM user_addresses
+      GROUP BY user_id
+      HAVING SUM(CASE WHEN is_primary = 1 THEN 1 ELSE 0 END) = 0;
+      ```
+
+    This query:
+
+      - Groups by user_id
+      - Uses SUM and CASE to count primary addresses
+      - Filters users with no primary addresses
+      - More efficient for large datasets

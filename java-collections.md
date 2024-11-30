@@ -956,21 +956,31 @@
 
     Example usage:
 
-    ```java
-    HashMap<String, Integer> map = new HashMap<>();
+      ```java
+      HashMap<String, Integer> map = new HashMap<>();
 
-    // Adding entries
-    map.put("One", 1);
-    map.put("Two", 2);
+      // Adding entries
+      map.put("One", 1);
+      map.put("Two", 2);
 
-    // Retrieving value
-    Integer value = map.get("One"); // Returns 1
+      // Retrieving value
+      Integer value = map.get("One"); // Returns 1
 
-    // Checking existence
-    boolean exists = map.containsKey("Two"); // Returns true
+      // Checking existence
+      boolean exists = map.containsKey("Two"); // Returns true
 
-    // Removing entry
-    map.remove("One");
-    ```
+      // Removing entry
+      map.remove("One");
+      ```
 
-    Note: HashMap is not thread-safe. For concurrent operations, use ConcurrentHashMap instead.
+      Note: HashMap is not thread-safe. For concurrent operations, use ConcurrentHashMap instead.
+
+33. **Does List maintain insertion order?**
+
+    - Lists maintain insertion order by default
+    - Elements remain in the order they were added
+    - Different List implementations have different ordering guarantees:
+      - ArrayList: Maintains insertion order
+      - LinkedList: Maintains insertion order
+      - Vector: Maintains insertion order
+    - Order can be modified using sort() or other operations

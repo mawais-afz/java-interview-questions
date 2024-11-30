@@ -885,3 +885,53 @@
     - **Fault Tolerance**
       - Processes: Failure of one process doesn't typically affect others
       - Threads: Failure of one thread can crash the entire process
+
+31. **Create a class thread safe/synchronized**
+
+    ```java
+    public class ThreadSafeCounter {
+        // Using volatile for visibility across threads
+        private volatile int count = 0;
+
+        // Synchronized method to safely increment counter
+        public synchronized void increment() {
+            count++;
+        }
+
+        // Synchronized method to safely decrement counter
+        public synchronized void decrement() {
+            count--;
+        }
+
+        // Synchronized getter to ensure latest value
+        public synchronized int getCount() {
+            return count;
+        }
+
+        // Synchronized method to reset counter
+        public synchronized void reset() {
+            count = 0;
+        }
+    }
+    ```
+
+32. **Why is synchronization necessary?**
+
+    Synchronization is necessary for several key reasons:
+
+    - **Data Consistency**: Prevents multiple threads from simultaneously modifying shared data, which could lead to data corruption
+
+    - **Race Conditions**: Eliminates race conditions where the outcome depends on the timing/sequence of thread execution
+
+    - **Visibility**: Ensures changes made by one thread are visible to other threads
+
+    - **Atomicity**: Makes compound operations atomic by treating them as a single unit
+
+    - **Memory Consistency**: Establishes happens-before relationships and prevents memory consistency errors
+
+    Without synchronization, concurrent access to shared resources can result in:
+
+    - Lost updates
+    - Dirty reads
+    - Inconsistent state
+    - Unpredictable behavior

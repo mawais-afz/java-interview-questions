@@ -398,3 +398,41 @@
     - Helps reduce code verbosity
     - Should be used judiciously to avoid naming conflicts
     - Common use cases include mathematical functions, constants, and static utility methods
+
+13. **Explain Serialization and Deserialization.**
+
+    Serialization is the process of converting an object into a byte stream, while deserialization is the reverse process of recreating an object from a byte stream.
+
+    Key points:
+
+    - **Serialization:**
+
+      - Converts object state into a format that can be stored or transmitted
+      - Classes must implement `Serializable` interface
+      - Used for persistence, network transfer, caching
+
+      ```java
+      // Serialization example
+      FileOutputStream fileOut = new FileOutputStream("object.ser");
+      ObjectOutputStream out = new ObjectOutputStream(fileOut);
+      out.writeObject(object);
+      ```
+
+    - **Deserialization:**
+      - Reconstructs object from serialized form
+      - Must have class definition available
+      - Handles version compatibility via `serialVersionUID`
+      ```java
+      // Deserialization example
+      FileInputStream fileIn = new FileInputStream("object.ser");
+      ObjectInputStream in = new ObjectInputStream(fileIn);
+      MyClass object = (MyClass) in.readObject();
+      ```
+
+    Important considerations:
+
+    - `transient` keyword excludes fields from serialization
+    - Static fields are not serialized
+    - All object references must also be serializable
+    - Security implications when deserializing untrusted data
+    - Version control using `serialVersionUID`

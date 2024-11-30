@@ -477,3 +477,34 @@
         }
     }
     ```
+
+21. **What is the importance of finally block in exception handling?**
+
+    The finally block is a crucial part of exception handling that ensures certain code is executed regardless of whether an exception occurs or not. Here are the key points about finally:
+
+    1. Guaranteed Execution: Code in finally block executes even if try block throws an exception or return statement is encountered
+    2. Resource Cleanup: Ideal for cleanup operations like closing files, database connections, or network resources
+    3. Always Executes: Runs even if try or catch blocks have return statements
+    4. Exception Handling: If finally block throws an exception, it replaces any exception from try/catch blocks
+
+    Example:
+
+    ```java
+    FileInputStream file = null;
+    try {
+        file = new FileInputStream("file.txt");
+        // Process file
+    } catch (IOException e) {
+        System.err.println("Error reading file: " + e.getMessage());
+    } finally {
+        if (file != null) {
+            try {
+                file.close();  // Always close the file
+            } catch (IOException e) {
+                // Handle closing error
+            }
+        }
+    }
+    ```
+
+    Note: In modern Java, try-with-resources is preferred over finally for resource management.

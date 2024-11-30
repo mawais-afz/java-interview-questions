@@ -1143,48 +1143,86 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
 34. **Can you access the private method from outside the class?**
 
+    No, private methods cannot be accessed from outside the class where they are declared. This is because:
+
+    1. **Encapsulation**: Private methods are used to implement encapsulation, which means hiding internal implementation details from outside access.
+
+    2. **Access Restriction**: The private access modifier restricts the method's visibility to only within the declaring class.
+
+    3. **Compilation Error**: Any attempt to access a private method from outside its class will result in a compilation error.
+
+    Example demonstrating private method access:
+
+    ```java
+    public class MyClass {
+        private void privateMethod() {
+            System.out.println("Private method");
+        }
+    }
+
+    public class AnotherClass {
+        public void tryToAccess() {
+            MyClass obj = new MyClass();
+            // obj.privateMethod(); // This will cause compilation error
+        }
+    }
+    ```
+
+    However, there are ways to access private methods indirectly:
+
+    1. Using public methods that internally call private methods
+    2. Using Reflection API (though this is generally not recommended for production code)
+
 34. **Can we override the static method? Why can we not override static method?**
 
-    No, static methods cannot be overridden in Java. This is because:
+    No, static methods cannot be overridden in Java. Here's why:
 
-    1. **Static Method Binding**: Static methods are bound at compile time through static binding, which means the method to be called is determined by the reference type, not the actual object type.
+    1. **Static Methods Belong to Class**: Static methods belong to the class itself, not instances. They are associated with the class rather than objects.
 
-    2. **Class-Level Methods**: Static methods belong to the class itself, not to individual object instances. They are associated with the class rather than an object's runtime type.
+    2. **Compile-time Binding**: Static methods use static binding at compile time. The method call is determined by the reference type, not the actual object type.
 
-    3. **No Runtime Polymorphism**: Since static methods are resolved at compile time, they do not support runtime polymorphism. When a subclass defines a static method with the same signature as a method in its superclass, it is method hiding, not overriding.
+    3. **Method Hiding Instead**: When a subclass defines a static method with the same signature as its parent class, it's called method hiding, not overriding.
 
-    Example demonstrating method hiding:
+    Example showing method hiding vs overriding:
 
     ```java
     class Parent {
-        static void display() {
-            System.out.println("Static method in Parent");
+        static void staticMethod() {
+            System.out.println("Parent static method");
+        }
+        
+        void instanceMethod() {
+            System.out.println("Parent instance method"); 
         }
     }
 
     class Child extends Parent {
-        // This is method hiding, not overriding
-        static void display() {
-            System.out.println("Static method in Child");
+        // This is method hiding
+        static void staticMethod() {
+            System.out.println("Child static method");
+        }
+        
+        // This is method overriding
+        @Override
+        void instanceMethod() {
+            System.out.println("Child instance method");
         }
     }
 
     public class Test {
         public static void main(String[] args) {
-            Parent obj = new Child();
-            obj.display(); // Outputs: Static method in Parent
-
-            Child childObj = new Child();
-            childObj.display(); // Outputs: Static method in Child
+            Parent p = new Child();
+            p.staticMethod();   // Prints "Parent static method" - uses reference type
+            p.instanceMethod(); // Prints "Child instance method" - uses object type
         }
     }
     ```
 
-    Key differences from instance method overriding:
-
-    - Static methods are resolved at compile-time
-    - The method called depends on the reference type, not the actual object type
-    - Subclass static method hides the parent class static method instead of overriding it
+    The key points are:
+    - Static methods are bound at compile-time based on the reference type
+    - Instance methods are bound at runtime based on the actual object type
+    - Static methods can be hidden but not overridden
+    - The @Override annotation will cause a compilation error if used with static methods
 
 35. **Can we override the private methods?**
 
@@ -2351,6 +2389,112 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     ```
 
     In this example, the Engine is composed within the Car. The Engine cannot exist without the Car, and when the Car object is destroyed, its Engine instance is also destroyed. This demonstrates the strong lifecycle dependency characteristic of composition.
+
+69. **Difference between Composition and Aggregation. How to use them?**
+
+    Composition and Aggregation are two types of object relationships in OOP, with key differences in how tightly coupled the objects are:
+
+    **Composition:**
+    - Represents a "part-of" relationship where the child (part) cannot exist without the parent (whole)
+    - The child's lifecycle is completely dependent on the parent
+    - When parent is destroyed, all child objects are destroyed
+    - Child belongs to only one parent at a time
+    - Example: Car and Engine
+
+    ```java
+    class Engine {
+        private String type;
+        
+        public Engine(String type) {
+            this.type = type;
+        }
+    }
+
+    class Car {
+        private final Engine engine; // Composition - Engine cannot exist without Car
+        
+        public Car() {
+            engine = new Engine("V8"); // Engine created with Car
+        }
+    }
+    ```
+
+    **Aggregation:**
+    - Represents a "has-a" relationship where child can exist independently
+    - Child objects can outlive the parent
+    - When parent is destroyed, children continue to exist
+    - Child can belong to multiple parents
+    - Example: Department and Teachers
+
+    ```java
+    class Department {
+        private List<Teacher> teachers; // Aggregation - Teachers can exist independently
+        
+        public Department() {
+            teachers = new ArrayList<>();
+        }
+        
+        public void addTeacher(Teacher teacher) {
+            teachers.add(teacher);
+        }
+    }
+    ```
+
+    **When to use which:**
+    
+    **Composition Example - Computer Parts:**
+    ```java
+    class CPU {
+        private String processor;
+        private int cores;
+        
+        public CPU(String processor, int cores) {
+            this.processor = processor;
+            this.cores = cores;
+        }
+    }
+    
+    class Computer {
+        private final CPU cpu;        // CPU cannot exist without computer
+        private final Memory memory;  // Memory cannot exist without computer
+        
+        public Computer() {
+            this.cpu = new CPU("Intel i7", 8);     // Created with computer
+            this.memory = new Memory("DDR4", 16);  // Created with computer
+        }
+        // When Computer is destroyed, CPU and Memory are also destroyed
+    }
+    ```
+    
+    **Aggregation Example - Library System:**
+    ```java
+    class Book {
+        private String title;
+        private String author;
+        
+        public Book(String title, String author) {
+            this.title = title;
+            this.author = author;
+        }
+    }
+    
+    class Library {
+        private List<Book> books;  // Books can exist independently
+        
+        public Library() {
+            this.books = new ArrayList<>();
+        }
+        
+        public void addBook(Book book) {  // Books can be added
+            books.add(book);
+        }
+        
+        public void removeBook(Book book) {  // Books can be removed and still exist
+            books.remove(book);
+        }
+        // Books continue to exist even if Library is destroyed
+    }
+    ```
 
 69. **What is the difference between composition, aggregation, and association?**
 

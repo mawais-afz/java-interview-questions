@@ -302,6 +302,24 @@
     }
     ```
 
+12. **What is the purpose of garbage collection in Java?**
+
+    Garbage collection in Java serves several critical purposes:
+
+    - **Automated Memory Management**: Automatically frees heap memory by removing objects that are no longer referenced by the program
+    - **Memory Leak Prevention**: Helps prevent memory leaks by ensuring unused objects don't consume memory indefinitely
+    - **Developer Productivity**: Eliminates the need for manual memory management, reducing development time and errors
+    - **Program Safety**: Prevents common memory-related bugs like dangling pointers and double free errors
+    - **Resource Optimization**: Efficiently manages and reclaims memory resources to maintain application performance
+
+    The garbage collector achieves these goals by:
+    - Tracking object references
+    - Identifying unreachable objects
+    - Reclaiming memory from unused objects
+    - Defragmenting memory through compaction when needed
+
+    This automatic memory management is one of Java's key features that distinguishes it from languages like C/C++ where memory must be manually managed.
+
 12. **How can an object be unreferenced?**
 
     An object can become unreferenced (eligible for garbage collection) in several ways:
@@ -2143,3 +2161,49 @@
    ```
    java.lang.ArithmeticException: / by zero
    ```
+
+6. **How many variables are eligible for garbage collection?**
+
+   ```java
+   public static void main(String[] fruits) {
+       String fruit1 = new String("apple");
+       String fruit2 = new String("orange");
+       String fruit3 = new String("pear");
+       fruit3 = fruit1;
+       fruit2 = fruit3;
+       fruit1 = fruit2;
+   }
+   ```
+
+   There are 2 variables eligible for garbage collection: `fruit1` and `fruit2`. The other variables (`fruit3`) are not eligible for garbage collection because it still points to the same object as `fruit1`.
+
+7. **What is the output of the following Java program?**
+
+   ```java
+   public class InitOrder {
+	public String first = "instance";
+	public InitOrder() {
+		first = "constructor"; 
+	}
+	{ first = "block"; }
+	public void print() {
+		System.out.println(first);
+	}
+	public static void main(String... args) {
+		new InitOrder().print();
+	}
+   }
+   ```
+
+   The output will be:
+   ```
+   constructor
+   ```
+
+   This is because the initialization order in Java is:
+   1. Static variables/blocks (not present here)
+   2. Instance variables ("instance")
+   3. Instance initialization blocks ("block") 
+   4. Constructor ("constructor")
+
+   So while `first` gets assigned different values, the final value that gets printed is "constructor" since the constructor runs last.

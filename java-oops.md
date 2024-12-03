@@ -421,7 +421,7 @@
         ```
 
     4.  **Using `getComponentType()` for arrays**:
-            
+        
         ```java
         int[] array = new int[10];
         Class<?> clazz = array.getClass().getComponentType();
@@ -497,22 +497,22 @@
 
     1. **Default Constructor**: A constructor that does not take any parameters and is used to provide default initialization when no explicit constructor is defined. If no constructor is explicitly created in a class, the Java compiler automatically provides a default constructor.
 
-    Purpose of a Default Constructor:
+       Purpose of a Default Constructor:
 
-    - Initializes object instance variables to their default values (0 for numeric types, null for objects, false for boolean)
-    - Ensures that an object can be created even without explicit initialization
-    - Allows for creating objects with standard initial state
-    - Provides a no-argument entry point for object creation
+       - Initializes object instance variables to their default values (0 for numeric types, null for objects, false for boolean)
+       - Ensures that an object can be created even without explicit initialization
+       - Allows for creating objects with standard initial state
+       - Provides a no-argument entry point for object creation
 
     2. **Parameterized Constructor**: A constructor that takes parameters to initialize an object with specific values at the time of creation.
 
-    Purpose of a Parameterized Constructor:
+       Purpose of a Parameterized Constructor:
 
-    - Allows customized initialization of object attributes during object creation
-    - Provides flexibility to set different initial states for different objects
-    - Enables validation of input values during object instantiation
-    - Supports creating objects with specific, meaningful initial configurations
-    - Reduces the need for separate setter methods to initialize object state
+       - Allows customized initialization of object attributes during object creation
+       - Provides flexibility to set different initial states for different objects
+       - Enables validation of input values during object instantiation
+       - Supports creating objects with specific, meaningful initial configurations
+       - Reduces the need for separate setter methods to initialize object state
 
     Here's an example of a parameterized constructor in Java:
 
@@ -539,6 +539,7 @@
     ```
 
 19. **Can you call a constructor of a class inside another constructor? or How can constructor chaining be done using this keyword?**
+
     Yes, you can call a constructor from another constructor within the same class using `this()`. This is known as constructor chaining. The call to another constructor must be the first statement in the constructor. This is useful for code reuse and avoiding duplicate initialization code.
 
     Here's an example:
@@ -571,6 +572,7 @@
     In this example, the constructors are chained together, with each constructor calling another constructor using `this()`. This helps maintain clean and DRY (Don't Repeat Yourself) code.
 
 20. **How can constructor chaining be done by using the super keyword?**
+
     Constructor chaining can also be done using the `super()` keyword to call a constructor from the parent class. The `super()` call must be the first statement in the constructor. This is useful when you want to reuse initialization code from the parent class.
 
     Here's an example:
@@ -898,6 +900,7 @@
     ```
 
 29. **What is a private constructor?**
+
     A private constructor is a constructor declared with the `private` access modifier, which restricts its instantiation from outside the class. Key characteristics include:
 
     1. **Prevents Direct Instantiation:**
@@ -1157,8 +1160,8 @@
 
     However, there are ways to access private methods indirectly:
 
-    1. Using public methods that internally call private methods
-    2. Using Reflection API (though this is generally not recommended for production code)
+    4. Using public methods that internally call private methods
+    5. Using Reflection API (though this is generally not recommended for production code)
 
 36. **Can we override the static method? Why can we not override static method?**
 
@@ -1689,7 +1692,7 @@
 
     | Feature              | Compile-time Polymorphism                                          | Runtime Polymorphism                                   |
     | -------------------- | ------------------------------------------------------------------ | ------------------------------------------------------ |
-    | **Also Known As**    | Static Binding, Method Overloading                                 | Dynamic Binding, Method Overriding                     |
+    | **Also Known As**    | Static/Early Binding, Method Overloading                           | Dynamic/Late Binding, Method Overriding                |
     | **When Resolved**    | During compilation                                                 | During program execution                               |
     | **How Achieved**     | Multiple methods with same name but different parameters           | Method overriding in inherited classes                 |
     | **Binding**          | Static - based on reference type                                   | Dynamic - based on object type                         |
@@ -2899,9 +2902,11 @@
     No, we cannot use both final and abstract keywords with a method. A method declared as abstract must be implemented by subclasses, while a final method cannot be overridden. Therefore, it is contradictory to declare a method as both final and abstract, as one implies that the method cannot change, while the other requires it to be defined in a subclass.
 
 85. **Can we declare a method as final in an interface?**  
+    
     No, we cannot declare a method as final in an interface. In Java, all methods in an interface are implicitly abstract (prior to Java 8) and cannot have a body. Since final methods cannot be overridden, it contradicts the purpose of an interface, which is to provide a contract for classes to implement. However, from Java 8 onwards, interfaces can have default and static methods, but these cannot be declared as final either, as they are meant to be overridden in implementing classes if desired.
 
 86. **Can an interface extend another interface?**  
+    
     Yes, an interface can extend another interface in Java. When an interface extends another interface, it inherits all the abstract methods of the parent interface. A class that implements the child interface must provide implementations for all the methods declared in both the child and parent interfaces. This allows for a more flexible and modular design in object-oriented programming.
 
     Here's an example demonstrating interface extension:
@@ -2937,6 +2942,7 @@
     ```
 
 87. **Does Java work as a "pass by value" or "pass by reference" phenomenon?**
+    
     Java is strictly pass-by-value. However, this can be confusing because when passing objects, the value being passed is actually a reference to the object. This means:
 
     1. For primitive types (int, double, etc.): The actual value is passed
@@ -2979,6 +2985,7 @@
     This behavior occurs because when passing an object, Java creates a copy of the reference, but both references point to the same object in memory. If you modify the object through either reference, the changes are visible through both references. However, if you reassign the parameter to a new object, it only affects the local copy of the reference.
 
 88. **Which Java operator is right associative?**
+    
     In Java, several operators are right associative:
 
     1. Assignment operators (=, +=, -=, \*=, /=, %=, etc.)

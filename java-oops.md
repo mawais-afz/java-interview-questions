@@ -401,32 +401,33 @@
 
     In Java, the `Class` class cannot be instantiated directly using the `new` operator. Instead, instances of the `Class` class are created by the Java Virtual Machine (JVM) when classes are loaded. Here are some common ways to obtain a `Class` object:
 
-        1.  **Using `.class` syntax**:
+    1.  **Using `.class` syntax**:
 
-            ```java
-            Class<MyClass> clazz = MyClass.class;
-            ```
+        ```java
+        Class<MyClass> clazz = MyClass.class;
+        ```
 
-        2.  **Using `Class.forName()` method**:
+    2.  **Using `Class.forName()` method**:
 
-            ```java
-            Class<?> clazz = Class.forName("MyClass");
-            ```
+        ```java
+        Class<?> clazz = Class.forName("MyClass");
+        ```
 
-        3.  **Using `getClass()` method on an object**:
+    3.  **Using `getClass()` method on an object**:
 
-            ```java
-            MyClass obj = new MyClass();
-            Class<?> clazz = obj.getClass();
-            ```
+        ```java
+        MyClass obj = new MyClass();
+        Class<?> clazz = obj.getClass();
+        ```
 
-        4.  **Using `getComponentType()` for arrays**:
-            ```java
-            int[] array = new int[10];
-            Class<?> clazz = array.getClass().getComponentType();
-            ```
+    4.  **Using `getComponentType()` for arrays**:
+            
+        ```java
+        int[] array = new int[10];
+        Class<?> clazz = array.getClass().getComponentType();
+        ```
 
-        Each of these methods provides a way to obtain a `Class` object representing a specific class in Java.
+    Each of these methods provides a way to obtain a `Class` object representing a specific class in Java.
 
 15. **What is object cloning?**
 

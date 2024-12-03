@@ -1,224 +1,224 @@
 # Object-Oriented Programming (OOP) Concepts
 
-1. **What is OOP?**
+1.  **What is OOP?**
 
-   Object-oriented programming (OOP) is a programming paradigm that organizes code into objects, which are instances of classes. A class serves as a blueprint that defines both the data (attributes/properties) and behaviors (methods) that its objects will have. OOP emphasizes concepts like encapsulation, inheritance, polymorphism, and abstraction to create modular, reusable, and maintainable code.
+    Object-oriented programming (OOP) is a programming paradigm that organizes code into objects, which are instances of classes. A class serves as a blueprint that defines both the data (attributes/properties) and behaviors (methods) that its objects will have. OOP emphasizes concepts like encapsulation, inheritance, polymorphism, and abstraction to create modular, reusable, and maintainable code.
 
-   The main advantages of OOP include:
+    The main advantages of OOP include:
 
-   - Better organization of code through objects and classes
-   - Code reusability through inheritance
-   - Flexibility through polymorphism
-   - Data security through encapsulation
-   - Reduced complexity through abstraction
+    - Better organization of code through objects and classes
+    - Code reusability through inheritance
+    - Flexibility through polymorphism
+    - Data security through encapsulation
+    - Reduced complexity through abstraction
 
-2. **What is object-oriented paradigm?**
+2.  **What is object-oriented paradigm?**
 
-   The object-oriented paradigm is a programming approach that structures software design around data, or objects, rather than functions and logic. In this paradigm, objects are instances of classes that combine both data (attributes) and behaviors (methods) into a single entity.
+    The object-oriented paradigm is a programming approach that structures software design around data, or objects, rather than functions and logic. In this paradigm, objects are instances of classes that combine both data (attributes) and behaviors (methods) into a single entity.
 
-   Key characteristics of the object-oriented paradigm include:
+    Key characteristics of the object-oriented paradigm include:
 
-   - Organizing software as a collection of interacting objects
-   - Emphasizing data abstraction and the relationships between objects
-   - Promoting modular and flexible code design
-   - Representing real-world entities and their interactions through code
-   - Focusing on creating reusable and maintainable software components
+    - Organizing software as a collection of interacting objects
+    - Emphasizing data abstraction and the relationships between objects
+    - Promoting modular and flexible code design
+    - Representing real-world entities and their interactions through code
+    - Focusing on creating reusable and maintainable software components
 
-   Unlike procedural programming, which focuses on writing procedures or functions that perform operations on data, the object-oriented paradigm treats data and the methods that operate on that data as a unified concept. This approach allows for more intuitive modeling of complex systems, better code organization, and improved software scalability.
+    Unlike procedural programming, which focuses on writing procedures or functions that perform operations on data, the object-oriented paradigm treats data and the methods that operate on that data as a unified concept. This approach allows for more intuitive modeling of complex systems, better code organization, and improved software scalability.
 
-   The object-oriented paradigm is implemented through core principles such as:
+    The object-oriented paradigm is implemented through core principles such as:
 
-   - Encapsulation: Bundling data and methods that operate on that data
-   - Inheritance: Creating new classes based on existing classes
-   - Polymorphism: Allowing objects to be treated as instances of their parent class
-   - Abstraction: Hiding complex implementation details
+    - Encapsulation: Bundling data and methods that operate on that data
+    - Inheritance: Creating new classes based on existing classes
+    - Polymorphism: Allowing objects to be treated as instances of their parent class
+    - Abstraction: Hiding complex implementation details
 
-3. **Why is Java not considered to be purely object-oriented?**
+3.  **Why is Java not considered to be purely object-oriented?**
 
-   Java is not considered to be purely object-oriented because it supports primitive data types (such as int, char, boolean, byte, short, long, float, and double) that are not objects. In a purely object-oriented language, everything is treated as an object, and all data types would be defined as classes. While Java provides wrapper classes for these primitive types (e.g., Integer for int, Character for char, Boolean for boolean, Byte for byte, Short for short, Long for long, Float for float, and Double for double), the existence of primitives means that Java does not fully adhere to the principles of pure object-oriented programming. Additionally, Java allows for static methods and variables, which are not associated with any object instance, further distinguishing it from purely object-oriented languages.
+    Java is not considered to be purely object-oriented because it supports primitive data types (such as int, char, boolean, byte, short, long, float, and double) that are not objects. In a purely object-oriented language, everything is treated as an object, and all data types would be defined as classes. While Java provides wrapper classes for these primitive types (e.g., Integer for int, Character for char, Boolean for boolean, Byte for byte, Short for short, Long for long, Float for float, and Double for double), the existence of primitives means that Java does not fully adhere to the principles of pure object-oriented programming. Additionally, Java allows for static methods and variables, which are not associated with any object instance, further distinguishing it from purely object-oriented languages.
 
-4. **What are the pillars of OOP?**
+4.  **What are the pillars of OOP?**
 
-   The four pillars of Object-Oriented Programming (OOP) are:
+    The four pillars of Object-Oriented Programming (OOP) are:
 
-   1. **Class**: A blueprint for creating objects, defining the properties and behaviors of an object.
-   2. **Object**: An instance of a class, created from the class blueprint.
-   3. **Encapsulation**: The bundling of data with the methods that operate on that data, restricting direct access to some of the object's components.
-   4. **Inheritance**: The mechanism by which one class can inherit the properties and methods of another class, promoting code reuse and the creation of a hierarchical relationship between classes.
-   5. **Polymorphism**: The ability of different classes to be treated as instances of the same class through a common interface, allowing for the implementation of methods in different ways.
-   6. **Abstraction**: The concept of hiding the complex implementation details and showing only the necessary features of an object, simplifying the interaction with the object.
+    1. **Class**: A blueprint for creating objects, defining the properties and behaviors of an object.
+    2. **Object**: An instance of a class, created from the class blueprint.
+    3. **Encapsulation**: The bundling of data with the methods that operate on that data, restricting direct access to some of the object's components.
+    4. **Inheritance**: The mechanism by which one class can inherit the properties and methods of another class, promoting code reuse and the creation of a hierarchical relationship between classes.
+    5. **Polymorphism**: The ability of different classes to be treated as instances of the same class through a common interface, allowing for the implementation of methods in different ways.
+    6. **Abstraction**: The concept of hiding the complex implementation details and showing only the necessary features of an object, simplifying the interaction with the object.
 
-5. **What are classes and objects? Why use them in applications?**
+5.  **What are classes and objects? Why use them in applications?**
 
-   Classes are blueprints or templates that define the structure and behavior of objects in object-oriented programming. They specify what properties (attributes/fields) and behaviors (methods) objects of that type will have. Objects are concrete instances of a class - when you create an object, you're creating a specific instance with its own set of data based on the class definition.
+    Classes are blueprints or templates that define the structure and behavior of objects in object-oriented programming. They specify what properties (attributes/fields) and behaviors (methods) objects of that type will have. Objects are concrete instances of a class - when you create an object, you're creating a specific instance with its own set of data based on the class definition.
 
-   For example, a Car class might define properties like color and model, and methods like start() and stop(). Each Car object would then have its own specific color and model values.
+    For example, a Car class might define properties like color and model, and methods like start() and stop(). Each Car object would then have its own specific color and model values.
 
-   Classes and objects are essential in applications for several reasons:
+    Classes and objects are essential in applications for several reasons:
 
-   1. **Organization**: They provide a natural way to model real-world concepts and organize code logically. For example, a banking application might have classes for Account, Customer, and Transaction.
+    1. **Organization**: They provide a natural way to model real-world concepts and organize code logically. For example, a banking application might have classes for Account, Customer, and Transaction.
 
-   2. **Code Reuse**: Once you define a class, you can create many objects from it without duplicating code. For instance, you can create multiple Customer objects from a single Customer class.
+    2. **Code Reuse**: Once you define a class, you can create many objects from it without duplicating code. For instance, you can create multiple Customer objects from a single Customer class.
 
-   3. **Data Protection**: Classes can hide their internal details and expose only what's necessary through public methods, preventing invalid data modifications.
+    3. **Data Protection**: Classes can hide their internal details and expose only what's necessary through public methods, preventing invalid data modifications.
 
-   4. **Maintenance**: Changes to a class automatically apply to all objects of that class, making code maintenance easier.
+    4. **Maintenance**: Changes to a class automatically apply to all objects of that class, making code maintenance easier.
 
-   5. **Extensibility**: New classes can extend existing ones, adding or modifying functionality while keeping the original code intact.
+    5. **Extensibility**: New classes can extend existing ones, adding or modifying functionality while keeping the original code intact.
 
-   Example:
+    Example:
 
-   ```java
-   // Class definition
-   public class Car {
-       private String color;
-       private String model;
+    ```java
+    // Class definition
+    public class Car {
+        private String color;
+        private String model;
 
-       public void start() {
-           System.out.println("Car starting...");
-       }
-   }
+        public void start() {
+            System.out.println("Car starting...");
+        }
+    }
 
-   // Creating objects
-   Car myCar = new Car();  // First car object
-   Car anotherCar = new Car();  // Second car object
-   ```
+    // Creating objects
+    Car myCar = new Car();  // First car object
+    Car anotherCar = new Car();  // Second car object
+    ```
 
-6. **What is the significant difference between object-oriented language and object-based language? Or What is the difference between object-oriented and object-based languages?**
+6.  **What is the significant difference between object-oriented language and object-based language? Or What is the difference between object-oriented and object-based languages?**
 
-   Object-oriented languages and object-based languages differ in several key aspects:
+    Object-oriented languages and object-based languages differ in several key aspects:
 
-   | Feature               | Object-Oriented Languages                    | Object-Based Languages                |
-   | --------------------- | -------------------------------------------- | ------------------------------------- |
-   | **Inheritance**       | Supports inheritance and polymorphism        | Does not support inheritance          |
-   | **Class Support**     | Has full class-based abstraction             | May use prototypes instead of classes |
-   | **Examples**          | Java, C++, Python, Ruby                      | JavaScript (pre-ES6), VBScript        |
-   | **Code Organization** | Organized around both classes and objects    | Organized around objects only         |
-   | **Data Abstraction**  | Supports both data and procedure abstraction | Primarily supports data abstraction   |
+    | Feature               | Object-Oriented Languages                    | Object-Based Languages                |
+    | --------------------- | -------------------------------------------- | ------------------------------------- |
+    | **Inheritance**       | Supports inheritance and polymorphism        | Does not support inheritance          |
+    | **Class Support**     | Has full class-based abstraction             | May use prototypes instead of classes |
+    | **Examples**          | Java, C++, Python, Ruby                      | JavaScript (pre-ES6), VBScript        |
+    | **Code Organization** | Organized around both classes and objects    | Organized around objects only         |
+    | **Data Abstraction**  | Supports both data and procedure abstraction | Primarily supports data abstraction   |
 
-   Key points:
+    Key points:
 
-   - Object-oriented languages provide complete support for OOP principles (inheritance, polymorphism, encapsulation)
-   - Object-based languages support objects but lack inheritance and some other OOP features
-   - Object-based languages often use prototype-based programming instead of class-based inheritance
+    - Object-oriented languages provide complete support for OOP principles (inheritance, polymorphism, encapsulation)
+    - Object-based languages support objects but lack inheritance and some other OOP features
+    - Object-based languages often use prototype-based programming instead of class-based inheritance
 
-7. **What is a class?**
+7.  **What is a class?**
 
-   A class is a blueprint or template for creating objects in object-oriented programming. It defines the properties (attributes/fields) and behaviors (methods) that all objects of that type will have. A class encapsulates data for the object and methods to manipulate that data.
+    A class is a blueprint or template for creating objects in object-oriented programming. It defines the properties (attributes/fields) and behaviors (methods) that all objects of that type will have. A class encapsulates data for the object and methods to manipulate that data.
 
-   Key aspects of a class:
+    Key aspects of a class:
 
-   1. **Fields/Attributes**: Variables that store data for objects of the class
-   2. **Methods**: Functions that define behaviors and operations on the class data
-   3. **Constructors**: Special methods used to initialize new objects
-   4. **Access Modifiers**: Keywords that control visibility and access to class members
+    1. **Fields/Attributes**: Variables that store data for objects of the class
+    2. **Methods**: Functions that define behaviors and operations on the class data
+    3. **Constructors**: Special methods used to initialize new objects
+    4. **Access Modifiers**: Keywords that control visibility and access to class members
 
-   Example of a class:
+    Example of a class:
 
-   ```java
-   public class Car {
-       // Fields
-       private String color;
-       private String model;
+    ```java
+    public class Car {
+        // Fields
+        private String color;
+        private String model;
 
-       // Constructor
-       public Car(String color, String model) {
-           this.color = color;
-           this.model = model;
-       }
+        // Constructor
+        public Car(String color, String model) {
+            this.color = color;
+            this.model = model;
+        }
 
-       // Method
-       public void displayInfo() {
-           System.out.println("Car Model: " + model + ", Color: " + color);
-       }
-   }
-   ```
+        // Method
+        public void displayInfo() {
+            System.out.println("Car Model: " + model + ", Color: " + color);
+        }
+    }
+    ```
 
-8. **What is inner class? What are the advantages of Java inner classes?**
+8.  **What is inner class? What are the advantages of Java inner classes?**
 
-   An inner class is a class defined within another class. The inner class exists within the scope of another class (outer class) and has access to all its members, including private ones.
+    An inner class is a class defined within another class. The inner class exists within the scope of another class (outer class) and has access to all its members, including private ones.
 
-   Types of inner classes:
+    Types of inner classes:
 
-   1. **Member Inner Class**: Non-static class defined at member level
-   2. **Static Inner Class**: Static class defined at member level
-   3. **Local Inner Class**: Class defined within a method
-   4. **Anonymous Inner Class**: Class defined without a name, often used for interfaces/abstract classes
+    1. **Member Inner Class**: Non-static class defined at member level
+    2. **Static Inner Class**: Static class defined at member level
+    3. **Local Inner Class**: Class defined within a method
+    4. **Anonymous Inner Class**: Class defined without a name, often used for interfaces/abstract classes
 
-   Example of different inner class types:
+    Example of different inner class types:
 
-   ```java
-   public class OuterClass {
-       private int x = 10;
+    ```java
+    public class OuterClass {
+        private int x = 10;
 
-       // Member inner class
-       class MemberInner {
-           void print() { System.out.println(x); }
-       }
+        // Member inner class
+        class MemberInner {
+            void print() { System.out.println(x); }
+        }
 
-       // Static inner class
-       static class StaticInner {
-           void print() { System.out.println("Static inner"); }
-       }
+        // Static inner class
+        static class StaticInner {
+            void print() { System.out.println("Static inner"); }
+        }
 
-       void method() {
-           // Local inner class
-           class LocalInner {
-               void print() { System.out.println(x); }
-           }
+        void method() {
+            // Local inner class
+            class LocalInner {
+                void print() { System.out.println(x); }
+            }
 
-           // Anonymous inner class
-           Runnable r = new Runnable() {
-               public void run() {
-                   System.out.println(x);
-               }
-           };
-       }
-   }
-   ```
+            // Anonymous inner class
+            Runnable r = new Runnable() {
+                public void run() {
+                    System.out.println(x);
+                }
+            };
+        }
+    }
+    ```
 
-   Advantages of inner classes:
+    Advantages of inner classes:
 
-   1. **Encapsulation**: Inner classes can access private members of the outer class
-   2. **Code Organization**: Helps group related classes together
-   3. **Better Readability**: Classes are defined close to where they are used
-   4. **Security**: Inner class can be hidden from other packages
-   5. **Event Handling**: Particularly useful for implementing event listeners
-   6. **Memory Efficiency**: Non-static inner classes share the namespace with outer class
+    1. **Encapsulation**: Inner classes can access private members of the outer class
+    2. **Code Organization**: Helps group related classes together
+    3. **Better Readability**: Classes are defined close to where they are used
+    4. **Security**: Inner class can be hidden from other packages
+    5. **Event Handling**: Particularly useful for implementing event listeners
+    6. **Memory Efficiency**: Non-static inner classes share the namespace with outer class
 
-9. **What is a nested class?**
+9.  **What is a nested class?**
 
-   A nested class is a class defined within another class. In Java, nested classes can be categorized into two main types:
+    A nested class is a class defined within another class. In Java, nested classes can be categorized into two main types:
 
-   1. **Static Nested Classes**: These are static classes declared inside another class. They can access only static members of the outer class directly.
+    1. **Static Nested Classes**: These are static classes declared inside another class. They can access only static members of the outer class directly.
 
-   ```java
-   class OuterClass {
-       static class StaticNestedClass {
-           // can only access static members of OuterClass
-       }
-   }
-   ```
+    ```java
+    class OuterClass {
+        static class StaticNestedClass {
+            // can only access static members of OuterClass
+        }
+    }
+    ```
 
-   2. **Inner Classes**: These are non-static nested classes. They have access to all members of the enclosing class (both static and non-static).
-      - Member inner classes
-      - Local inner classes
-      - Anonymous inner classes
+    2. **Inner Classes**: These are non-static nested classes. They have access to all members of the enclosing class (both static and non-static).
+       - Member inner classes
+       - Local inner classes
+       - Anonymous inner classes
 
-   Key differences between static nested classes and inner classes:
+    Key differences between static nested classes and inner classes:
 
-   - Static nested classes cannot access non-static members of outer class directly
-   - Inner classes can access all members of outer class
-   - Static nested classes can be instantiated without an instance of outer class
-   - Inner classes require an instance of outer class to be instantiated
+    - Static nested classes cannot access non-static members of outer class directly
+    - Inner classes can access all members of outer class
+    - Static nested classes can be instantiated without an instance of outer class
+    - Inner classes require an instance of outer class to be instantiated
 
-   Usage:
+    Usage:
 
-   ```java
-   OuterClass.StaticNestedClass staticNested = new OuterClass.StaticNestedClass(); // Static nested class
-   OuterClass outer = new OuterClass();
-   OuterClass.InnerClass inner = outer.new InnerClass(); // Inner class
-   ```
+    ```java
+    OuterClass.StaticNestedClass staticNested = new OuterClass.StaticNestedClass(); // Static nested class
+    OuterClass outer = new OuterClass();
+    OuterClass.InnerClass inner = outer.new InnerClass(); // Inner class
+    ```
 
 10. **What are anonymous inner classes?**
 
@@ -399,36 +399,36 @@
 
 14. **What are the ways to instantiate the Class class?**
 
-In Java, the `Class` class cannot be instantiated directly using the `new` operator. Instead, instances of the `Class` class are created by the Java Virtual Machine (JVM) when classes are loaded. Here are some common ways to obtain a `Class` object:
+    In Java, the `Class` class cannot be instantiated directly using the `new` operator. Instead, instances of the `Class` class are created by the Java Virtual Machine (JVM) when classes are loaded. Here are some common ways to obtain a `Class` object:
 
-1.  **Using `.class` syntax**:
+        1.  **Using `.class` syntax**:
 
-    ```java
-    Class<MyClass> clazz = MyClass.class;
-    ```
+            ```java
+            Class<MyClass> clazz = MyClass.class;
+            ```
 
-2.  **Using `Class.forName()` method**:
+        2.  **Using `Class.forName()` method**:
 
-    ```java
-    Class<?> clazz = Class.forName("MyClass");
-    ```
+            ```java
+            Class<?> clazz = Class.forName("MyClass");
+            ```
 
-3.  **Using `getClass()` method on an object**:
+        3.  **Using `getClass()` method on an object**:
 
-    ```java
-    MyClass obj = new MyClass();
-    Class<?> clazz = obj.getClass();
-    ```
+            ```java
+            MyClass obj = new MyClass();
+            Class<?> clazz = obj.getClass();
+            ```
 
-4.  **Using `getComponentType()` for arrays**:
-    ```java
-    int[] array = new int[10];
-    Class<?> clazz = array.getClass().getComponentType();
-    ```
+        4.  **Using `getComponentType()` for arrays**:
+            ```java
+            int[] array = new int[10];
+            Class<?> clazz = array.getClass().getComponentType();
+            ```
 
-Each of these methods provides a way to obtain a `Class` object representing a specific class in Java.
+        Each of these methods provides a way to obtain a `Class` object representing a specific class in Java.
 
-14. **What is object cloning?**
+15. **What is object cloning?**
 
     Object cloning in Java is the process of creating an exact copy of an existing object. There are two types of cloning:
 
@@ -460,7 +460,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-15. **What do you mean by anonymous class?**
+16. **What do you mean by anonymous class?**
 
     An anonymous class in Java is a class that is defined without a name and is instantiated in a single expression. It is typically used to make the code more concise and to create a one-time use class that extends an existing class or implements an interface. Anonymous classes are often used in situations where a class is needed for a short period of time, such as when implementing event listeners or callbacks.
 
@@ -477,7 +477,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     In this example, an anonymous class is created that extends the `Button` class and overrides the `onClick` method to provide specific behavior when the button is clicked.
 
-16. **What are the differences between subclass and inner class?**
+17. **What are the differences between subclass and inner class?**
 
     | Aspect            | Subclass                                                 | Inner Class                                                    |
     | ----------------- | -------------------------------------------------------- | -------------------------------------------------------------- |
@@ -490,7 +490,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     | Purpose           | Code reuse and extending functionality                   | Logical grouping and encapsulation                             |
     | Scope             | Available throughout the package/project                 | Limited to the scope of outer class                            |
 
-17. **What are constructors in Java? How many types of constructors are used in Java?**
+18. **What are constructors in Java? How many types of constructors are used in Java?**
 
     Constructors in Java are special methods that are called when an object is instantiated. They have the same name as the class and do not have a return type, not even void. Constructors are used to initialize the object's attributes and allocate memory for the object. There are two types of constructors in Java:
 
@@ -537,7 +537,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     ```
 
-18. **Can you call a constructor of a class inside another constructor? or How can constructor chaining be done using this keyword?**
+19. **Can you call a constructor of a class inside another constructor? or How can constructor chaining be done using this keyword?**
     Yes, you can call a constructor from another constructor within the same class using `this()`. This is known as constructor chaining. The call to another constructor must be the first statement in the constructor. This is useful for code reuse and avoiding duplicate initialization code.
 
     Here's an example:
@@ -569,7 +569,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     In this example, the constructors are chained together, with each constructor calling another constructor using `this()`. This helps maintain clean and DRY (Don't Repeat Yourself) code.
 
-19. **How can constructor chaining be done by using the super keyword?**
+20. **How can constructor chaining be done by using the super keyword?**
     Constructor chaining can also be done using the `super()` keyword to call a constructor from the parent class. The `super()` call must be the first statement in the constructor. This is useful when you want to reuse initialization code from the parent class.
 
     Here's an example:
@@ -608,7 +608,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     In this example, the `Car` class constructors use `super()` to call constructors from the parent `Vehicle` class, demonstrating constructor chaining between parent and child classes.
 
-20. **What rules that you must follow while creating a constructor in Java?**
+21. **What rules that you must follow while creating a constructor in Java?**
 
     There are several important rules that must be followed when creating a constructor in Java:
 
@@ -645,7 +645,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-21. **What are the differences between the constructors and methods?**
+22. **What are the differences between the constructors and methods?**
 
     | Aspect           | Constructors                                                     | Methods                                                     |
     | ---------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -674,7 +674,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-22. **Can we make constructors static?**
+23. **Can we make constructors static?**
 
     No, constructors cannot be declared as static in Java. Here's why:
 
@@ -711,7 +711,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-23. **Explain the constructor overloading? Or Can we overload the constructors?**
+24. **Explain the constructor overloading? Or Can we overload the constructors?**
 
     Constructor overloading is a technique in Java where a class can have multiple constructors with different parameter lists. Each constructor provides a different way to initialize an object of that class. The constructors must differ in their parameter lists (number of parameters, types of parameters, or both).
 
@@ -762,7 +762,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     Student s4 = new Student("Mike", 21, "A");          // Uses constructor with all parameters
     ```
 
-24. **Can you make a constructor final?**
+25. **Can you make a constructor final?**
 
     No, constructors cannot be declared as final in Java. This is because:
 
@@ -772,15 +772,15 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     3. **Compilation Error**: Attempting to declare a constructor as final will result in a compile-time error.
 
-25. **Does a constructor return any value?**
+26. **Does a constructor return any value?**
 
     No, constructors do not return any value, not even void. Their primary purpose is to initialize the object when it is created. Instead of returning a value, a constructor initializes the instance variables of the class and prepares the new object for use.
 
-26. **Is constructor inherited?**
+27. **Is constructor inherited?**
 
     No, constructors are not inherited in Java. Each class has its own constructors, and they are not accessible to subclasses. When a subclass is created, it does not inherit the constructors of its parent class. However, a subclass can call a parent class constructor using the `super` keyword to initialize inherited fields. This means that while constructors themselves are not inherited, the initialization of inherited properties can be achieved through the parent class's constructors.
 
-27. **What is Copy Constructor in Java? What are the ways to copy the values of one object into another?**
+28. **What is Copy Constructor in Java? What are the ways to copy the values of one object into another?**
 
     A Copy Constructor in Java is a constructor that creates a new object by copying the values from another object of the same class. It takes an object of the same class as a parameter and initializes the new object with the same values. Copy constructors are particularly useful when you want to create a new object that has the same state as an existing object.
 
@@ -896,7 +896,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     ```
 
-28. **What is a private constructor?**
+29. **What is a private constructor?**
     A private constructor is a constructor declared with the `private` access modifier, which restricts its instantiation from outside the class. Key characteristics include:
 
     1. **Prevents Direct Instantiation:**
@@ -951,7 +951,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
        - Provides more control over object creation
        - Prevents unnecessary object instantiation
 
-29. **Can you declare a constructor using static?**
+30. **Can you declare a constructor using static?**
 
     No, constructors cannot be declared as static in Java. This is because:
 
@@ -981,7 +981,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-30. **What is immutable object?**
+31. **What is immutable object?**
 
     An immutable object is an object whose state cannot be changed after it is created. Once an immutable object is constructed, its contents remain constant throughout its lifetime. String is a classic example of an immutable class in Java.
 
@@ -1023,7 +1023,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - Prevent temporal coupling
     - Side-effect free behavior
 
-31. **How can we create an immutable class in Java?**
+32. **How can we create an immutable class in Java?**
 
     To create an immutable class in Java, follow these key steps:
 
@@ -1080,7 +1080,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - For complex objects, implement deep copy mechanisms
     - Ensure all methods preserve immutability
 
-32. **What is difference between WeakReference and SoftReference in Java?**
+33. **What is difference between WeakReference and SoftReference in Java?**
 
     WeakReference and SoftReference are two types of special reference objects in Java that help with memory management. Here are their key differences:
 
@@ -1113,7 +1113,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - Use WeakReference when you want objects to be collected as soon as they're not needed
     - Use SoftReference for memory-sensitive caches that should only be cleared when memory is tight
 
-33. **What are access specifiers? What are the types of access specifiers?**
+34. **What are access specifiers? What are the types of access specifiers?**
 
     Access specifiers in Java are keywords that set the accessibility (visibility) of classes, methods, and other members. They control how the members of a class can be accessed from other classes. The main types of access specifiers in Java are:
 
@@ -1127,7 +1127,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     By using access specifiers, developers can implement encapsulation, which is a fundamental principle of object-oriented programming, ensuring that the internal representation of an object is hidden from the outside.
 
-34. **Can you access the private method from outside the class?**
+35. **Can you access the private method from outside the class?**
 
     No, private methods cannot be accessed from outside the class where they are declared. This is because:
 
@@ -1159,7 +1159,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     1. Using public methods that internally call private methods
     2. Using Reflection API (though this is generally not recommended for production code)
 
-35. **Can we override the static method? Why can we not override static method?**
+36. **Can we override the static method? Why can we not override static method?**
 
     No, static methods cannot be overridden in Java. Here's why:
 
@@ -1211,7 +1211,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - Static methods can be hidden but not overridden
     - The @Override annotation will cause a compilation error if used with static methods
 
-36. **Can we override the private methods?**
+37. **Can we override the private methods?**
 
     No, private methods cannot be overridden in Java. This is because:
 
@@ -1250,7 +1250,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - A method with the same name in a subclass is treated as a completely separate method
     - True method overriding requires the method to be accessible to the subclass
 
-37. **Is it possible to overload the static methods in Java?**
+38. **Is it possible to overload the static methods in Java?**
 
     Yes, it is possible to overload static methods in Java. Method overloading occurs when two or more methods in the same class have the same name but different parameters (different type, number, or both). Since static methods are resolved at compile time based on the method signature, you can have multiple static methods with the same name as long as their parameter lists differ.
 
@@ -1282,7 +1282,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     In this example, the `add` method is overloaded with different parameter types and counts, demonstrating that static methods can indeed be overloaded.
 
-38. **What is method overloading with type promotion?**
+39. **What is method overloading with type promotion?**
 
     Type promotion in method overloading refers to Java's automatic widening of primitive data types when matching method calls to overloaded methods. When an exact match is not found, Java will automatically promote the argument to a wider type to find a matching method.
 
@@ -1317,7 +1317,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     When calling `calculate(b)`, even though there's no method that takes a byte parameter, Java promotes the byte to int and calls the first method. Similarly, the float argument is promoted to double for the second method call.
 
-39. **Can we overload the methods by making them static?**
+40. **Can we overload the methods by making them static?**
 
     No, we cannot overload methods just by making them static. Method overloading in Java is based on having different parameter lists (different number or types of parameters). The static modifier does not affect the method signature and therefore cannot be used as a basis for overloading.
 
@@ -1353,7 +1353,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-40. **What are the restrictions that are applied to the Java static methods?**
+41. **What are the restrictions that are applied to the Java static methods?**
 
     There are several important restrictions that apply to static methods in Java:
 
@@ -1395,7 +1395,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-41. **What is the use of static variables and methods? or What is the purpose of static methods and variables?**
+42. **What is the use of static variables and methods? or What is the purpose of static methods and variables?**
 
     | Feature           | Static Variables                                                                           | Static Methods                                                      |
     | ----------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
@@ -1434,7 +1434,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     3. Utility and Helper Functions: Provide common functionality
     4. Tracking and Counting: Maintain class-level state
 
-42. **What is a singleton class in Java? Describe the singleton pattern with an example.**
+43. **What is a singleton class in Java? Describe the singleton pattern with an example.**
 
     A Singleton class in Java is a design pattern that restricts the instantiation of a class to a single instance. This is useful when exactly one object is needed to coordinate actions across the system, such as managing configuration settings, database connections, or thread pools.
 
@@ -1481,7 +1481,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     In this example, the `Singleton` class has a private constructor, a static instance variable, and a public static method `getInstance()` that provides access to the single instance of the class. This ensures that no more than one instance of the `Singleton` class can exist at any time.
 
-43. **What is encapsulation? Explain encapsulation with an example.**
+44. **What is encapsulation? Explain encapsulation with an example.**
 
     Encapsulation is one of the four fundamental OOP concepts that involves bundling data and the methods that operate on that data within a single unit (class), while restricting direct access to some of the object's components. This is achieved in Java through:
 
@@ -1526,7 +1526,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     4. The implementation details are hidden from the user
     5. We can change the internal implementation without affecting code that uses the class
 
-44. **What is inheritance and what are its types in Java?**
+45. **What is inheritance and what are its types in Java?**
 
     Inheritance is a fundamental object-oriented programming concept where a class (subclass/child class) can inherit attributes and methods from another class (superclass/parent class). In Java, inheritance is implemented using the `extends` keyword. This mechanism promotes code reuse, simplifies maintenance, and allows for the creation of more specialized classes based on existing ones. There are several types of inheritance supported in Java:
 
@@ -1579,7 +1579,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     In this example, the `Dog` class inherits the properties and behaviors of the `Animal` class, including the `name` field and the `eat()` and `sleep()` methods. The `Dog` class also adds its own unique behavior, the `bark()` method.
 
-45. **Why is multiple inheritance not supported in java?**
+46. **Why is multiple inheritance not supported in java?**
 
     Multiple inheritance is not supported in Java through classes for several key reasons:
 
@@ -1605,7 +1605,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     // class D extends B, C {} // Which method() would D inherit?
     ```
 
-46. **Why is Inheritance used in Java?**
+47. **Why is Inheritance used in Java?**
 
     Inheritance in Java is used for several important reasons:
 
@@ -1623,7 +1623,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     For example, in the Animal-Dog relationship shown earlier, the Dog class inherits common animal behaviors (eat, sleep) while adding specific dog behaviors (bark), demonstrating efficient code organization and reuse.
 
-47. **What do you mean by Polymorphism and what are its types?**
+48. **What do you mean by Polymorphism and what are its types?**
 
     Polymorphism means "many forms" and is one of the core concepts of object-oriented programming. It allows objects to be treated as instances of their parent class rather than their actual class. In Java, there are two main types of polymorphism:
 
@@ -1684,7 +1684,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     The key difference is that runtime polymorphism is resolved during program execution based on the actual object type, while compile-time polymorphism is resolved during compilation based on method signatures.
 
-48. **What is the difference between compile-time polymorphism and runtime polymorphism?**
+49. **What is the difference between compile-time polymorphism and runtime polymorphism?**
 
     | Feature              | Compile-time Polymorphism                                          | Runtime Polymorphism                                   |
     | -------------------- | ------------------------------------------------------------------ | ------------------------------------------------------ |
@@ -1697,7 +1697,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     | **Example Usage**    | Multiple versions of methods like `print(int)` and `print(String)` | Parent class reference holding child class object      |
     | **Flexibility**      | Limited to method overloading within same class                    | More flexible as behavior changes based on object type |
 
-49. **What is the interface?**
+50. **What is the interface?**
 
     An interface is a blueprint of a class that contains only abstract methods, constants, default methods, static methods, and nested types. It specifies what a class must do but not how it should do it. Key points about interfaces:
 
@@ -1735,7 +1735,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-50. **What is the nested interface? Can a class have an interface?**
+51. **What is the nested interface? Can a class have an interface?**
 
     A nested interface is an interface declared within another class or interface. Key points about nested interfaces:
 
@@ -1770,7 +1770,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-51. **Can an Interface have a class?**
+52. **Can an Interface have a class?**
 
     Yes, an interface can have a class. This is known as a member class or nested class within an interface. Key points:
 
@@ -1795,7 +1795,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-52. **Can we declare an interface as final?**
+53. **Can we declare an interface as final?**
 
     No, an interface cannot be declared as final. This is because:
 
@@ -1812,7 +1812,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-53. **What do you mean by abstraction and how it is achieved in Java?**
+54. **What do you mean by abstraction and how it is achieved in Java?**
 
     Abstraction is the process of hiding implementation details and showing only the functionality to the user. It helps reduce programming complexity and effort by focusing on what an object does rather than how it does it.
 
@@ -1871,7 +1871,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     The main benefit of abstraction is that it allows you to focus on what the object does instead of how it does it, reducing complexity and coupling in your code.
 
-54. **What is the difference between extends and implements?**
+55. **What is the difference between extends and implements?**
 
     | Aspect                   | extends                                                 | implements                                             |
     | ------------------------ | ------------------------------------------------------- | ------------------------------------------------------ |
@@ -1884,7 +1884,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     | Code Reuse               | Allows reuse of code from parent class                  | Only provides method contracts, no implementation      |
     | Usage Example            | `class Dog extends Animal`                              | `class Bird implements Flyable`                        |
 
-55. **What is the difference between loose coupling and tight coupling?**
+56. **What is the difference between loose coupling and tight coupling?**
 
     Loose coupling refers to a design principle in which components or classes are minimally dependent on each other, allowing for greater flexibility and easier maintenance. In a loosely coupled system, changes in one component have little to no impact on others, making it easier to modify or replace parts of the system without affecting the overall functionality.
 
@@ -1954,7 +1954,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     	```
     ````
 
-56. **What is the difference between cohesion and coupling?**
+57. **What is the difference between cohesion and coupling?**
 
     | Aspect     | Cohesion                                                                 | Coupling                                                                              |
     | ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
@@ -2007,7 +2007,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-57. **What is a Marker Interface?**
+58. **What is a Marker Interface?**
 
     A Marker Interface in Java is an interface that does not contain any methods. It is used to mark a class that implements it, indicating that the class has a specific property or behavior. Marker interfaces are often used to indicate that a class has a particular characteristic or capability, such as being serializable, cloneable, or thread-safe.
     Here are some examples of commonly used marker interfaces in Java:
@@ -2051,7 +2051,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - `Cloneable`: Marks classes that can be cloned
     - `Remote`: Marks classes that can be used for RMI (Remote Method Invocation)
 
-58. **What is an abstract class? Explain its purpose and when to use it.**
+59. **What is an abstract class? Explain its purpose and when to use it.**
 
     An abstract class in Java is a class that cannot be instantiated on its own and may contain both abstract and concrete methods. It serves as a blueprint for other classes and is designed to be extended by subclasses.
 
@@ -2098,7 +2098,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - You need to provide a template for a group of related classes
     - Some common behavior can be implemented in the abstract class, while other behavior must be implemented by each subclass
 
-59. **Can there be an abstract method without an abstract class?**
+60. **Can there be an abstract method without an abstract class?**
 
     Yes, abstract methods can exist without an abstract class when they are declared in an interface. In Java, interface methods are implicitly abstract (unless marked as default or static).
 
@@ -2116,7 +2116,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - The class must be declared abstract if it contains any abstract methods
     - Abstract methods in the class must be implemented by concrete subclasses
 
-60. **Can you use abstract and final both with a method?**
+61. **Can you use abstract and final both with a method?**
 
     No, you cannot use both abstract and final modifiers with a method. This is because:
 
@@ -2134,7 +2134,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-61. **Is it possible to instantiate the abstract class?**
+62. **Is it possible to instantiate the abstract class?**
 
     No, it is not possible to instantiate an abstract class directly. Abstract classes are incomplete by design and can only be used as superclasses.
 
@@ -2168,7 +2168,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     2. Implement all abstract methods in the subclass
     3. Instantiate the concrete subclass
 
-62. **Can we define a class Abstract even if it does not have any abstract methods?**
+63. **Can we define a class Abstract even if it does not have any abstract methods?**
 
     Yes, we can define a class as abstract even if it doesn't have any abstract methods. This is perfectly valid in Java. The abstract keyword simply prevents the class from being instantiated directly.
 
@@ -2194,7 +2194,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - The class is not complete enough to be instantiated meaningfully
     - You're designing a framework where the base class should never be used directly
 
-63. **Can you make abstract methods static in Java?**
+64. **Can you make abstract methods static in Java?**
 
     No, abstract methods cannot be static in Java. This is because:
 
@@ -2225,7 +2225,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-64. **Can we declare the static variables and methods in an abstract class?**
+65. **Can we declare the static variables and methods in an abstract class?**
 
     Yes, we can declare static variables and methods in an abstract class. This is because:
 
@@ -2256,7 +2256,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - The static method `convertToRadians()` can be called as `Shape.convertToRadians(90)`
     - Both can be used without creating an instance of Shape
 
-65. **Can you declare an interface method static?**
+66. **Can you declare an interface method static?**
 
     Yes, starting from Java 8, you can declare static methods in interfaces. Static interface methods:
 
@@ -2283,7 +2283,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     Static methods in interfaces are commonly used to provide utility methods that are related to the interface's purpose but don't require access to instance-specific data.
 
-66. **What are the differences between abstract class and interface?**
+67. **What are the differences between abstract class and interface?**
 
     | Aspect                | Abstract Class                                                                       | Interface                                                                                                               |
     | --------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
@@ -2294,7 +2294,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     | Access Modifiers      | Can have access modifiers (public, protected, private).                              | All methods are public by default; cannot have access modifiers.                                                        |
     | Use Case              | Used when classes share a common base and behavior.                                  | Used to define a contract that implementing classes must follow.                                                        |
 
-67. **What do you mean by association? What are the types of associations?**
+68. **What do you mean by association? What are the types of associations?**
 
     Association in object-oriented programming refers to a relationship between two classes that establishes a connection between them. It signifies that one class (the client) uses or interacts with another class (the supplier). Associations can be categorized into three main types:
 
@@ -2308,7 +2308,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     Understanding these associations helps in designing systems that accurately represent real-world relationships between entities.
 
-68. **What is aggregation?**
+69. **What is aggregation?**
 
     Aggregation is a special form of association that represents a "has-a" relationship between two classes, where one class (the whole) contains or is composed of other classes (the parts), but the parts can exist independently of the whole. It represents a weak ownership relationship between objects.
 
@@ -2343,7 +2343,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - If the Department is destroyed, the Teacher objects continue to exist
     - The same Teacher object could potentially belong to multiple Departments
 
-69. **What is composition?**
+70. **What is composition?**
 
     Composition is a strong form of association that represents a "part-of" relationship between classes, where one class (the whole) contains instances of other classes (the parts) and is responsible for their lifecycle. In composition, the child (part) cannot exist without the parent (whole).
 
@@ -2377,7 +2377,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     In this example, the Engine is composed within the Car. The Engine cannot exist without the Car, and when the Car object is destroyed, its Engine instance is also destroyed. This demonstrates the strong lifecycle dependency characteristic of composition.
 
-70. **Difference between Composition and Aggregation. How to use them?**
+71. **Difference between Composition and Aggregation. How to use them?**
 
     Composition and Aggregation are two types of object relationships in OOP, with key differences in how tightly coupled the objects are:
 
@@ -2487,7 +2487,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-71. **What is the difference between composition, aggregation, and association?**
+72. **What is the difference between composition, aggregation, and association?**
 
     | Aspect     | Composition                                                                     | Aggregation                                                                  | Association                                                                                 |
     | ---------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -2557,7 +2557,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-72. **What is the difference between aggregation and composition?**
+73. **What is the difference between aggregation and composition?**
 
     | Aspect       | Aggregation                   | Composition                          |
     | ------------ | ----------------------------- | ------------------------------------ |
@@ -2573,7 +2573,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     - Aggregation: The University class shows aggregation with Student. Students can exist independently of University, and the University simply maintains a collection of Student references. When University is destroyed, the Students continue to exist.
 
-73. **What is the difference between Inheritance and Composition?**
+74. **What is the difference between Inheritance and Composition?**
 
     | Aspect         | Inheritance                           | Composition                               |
     | -------------- | ------------------------------------- | ----------------------------------------- |
@@ -2611,7 +2611,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - Composition is generally preferred when possible ("favor composition over inheritance") as it provides more flexibility and looser coupling
     - Inheritance breaks encapsulation as child classes can access protected members of parent class
 
-74. **What are the differences between method overloading and overriding?**
+75. **What are the differences between method overloading and overriding?**
 
     | Aspect          | Method Overloading                                                                                                                                                                                                                                                                                                                              | Method Overriding                                                                                                                                                                                                                                                                                                               |
     | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2671,7 +2671,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     In the overloading example, the `Calculator` class has multiple `add` methods with different parameter types/counts.
     In the overriding example, `Dog` and `Cat` classes provide their own specific implementations of the `makeSound()` method inherited from `Animal`.
 
-75. **Why is method overloading not possible by changing the return type in java?**
+76. **Why is method overloading not possible by changing the return type in java?**
 
     Method overloading in Java cannot be achieved by only changing the return type because:
 
@@ -2703,7 +2703,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     public double getValue(double x) { return x; } // Valid overload
     ```
 
-76. **What is the difference between Java Dynamic Binding and Static Binding?**
+77. **What is the difference between Java Dynamic Binding and Static Binding?**
 
     - **Static Binding**: This occurs at compile time and is used for method calls that are resolved based on the reference type. It is typically used with private, static, and final methods. Since the method to be called is determined at compile time, it cannot be changed at runtime.
 
@@ -2736,7 +2736,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-77. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
+78. **What is an Instance Initializer Block? Characteristics of Instance Initializer Block?**
 
     An Instance Initializer Block is a block of code that is used to initialize instance variables of a class. It is executed when an instance of the class is created, before the constructor is called.
 
@@ -2765,7 +2765,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-78. **What is a static block in Java?**
+79. **What is a static block in Java?**
 
     A static block (also called static initialization block) is a block of code inside a class that is executed only once when the class is first loaded into memory. It is used to initialize static variables or perform one-time setup operations.
 
@@ -2797,7 +2797,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-79. **What is the purpose of static members in Java?**
+80. **What is the purpose of static members in Java?**
 
     Static members in Java (including methods, variables, and nested classes) belong to the class itself rather than any specific instance. They serve several important purposes:
 
@@ -2846,7 +2846,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-80. **Explain the use of final keyword in variable, method and class**
+81. **Explain the use of final keyword in variable, method and class**
 
     The `final` keyword in Java is used to impose restrictions on variables, methods, and classes:
 
@@ -2871,7 +2871,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     // class ChildClass extends FinalClass { } // Cannot extend final class
     ```
 
-81. **What is the difference between the final method and abstract method?**
+82. **What is the difference between the final method and abstract method?**
 
     | Feature            | Final Method                                     | Abstract Method                                                       |
     | ------------------ | ------------------------------------------------ | --------------------------------------------------------------------- |
@@ -2883,7 +2883,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     | **Method Body**    | Must have method body                            | Cannot have method body (except default methods in interfaces)        |
     | **Purpose**        | To preserve implementation across inheritance    | To achieve abstraction and polymorphism                               |
 
-82. **What is the difference between encapsulation and abstraction?**
+83. **What is the difference between encapsulation and abstraction?**
 
     | Feature            | Encapsulation                                                                                               | Abstraction                                                                                        |
     | ------------------ | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
@@ -2893,14 +2893,14 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     | **Example**        | A class with private fields and public methods to access and modify those fields                            | An interface defining methods without implementation, allowing different classes to implement them |
     | **Focus**          | Focuses on the internal state and behavior of an object                                                     | Focuses on the external interface and functionality of an object                                   |
 
-83. **Can we use both final & abstract keywords with a method?**
+84. **Can we use both final & abstract keywords with a method?**
 
     No, we cannot use both final and abstract keywords with a method. A method declared as abstract must be implemented by subclasses, while a final method cannot be overridden. Therefore, it is contradictory to declare a method as both final and abstract, as one implies that the method cannot change, while the other requires it to be defined in a subclass.
 
-84. **Can we declare a method as final in an interface?**  
+85. **Can we declare a method as final in an interface?**  
     No, we cannot declare a method as final in an interface. In Java, all methods in an interface are implicitly abstract (prior to Java 8) and cannot have a body. Since final methods cannot be overridden, it contradicts the purpose of an interface, which is to provide a contract for classes to implement. However, from Java 8 onwards, interfaces can have default and static methods, but these cannot be declared as final either, as they are meant to be overridden in implementing classes if desired.
 
-85. **Can an interface extend another interface?**  
+86. **Can an interface extend another interface?**  
     Yes, an interface can extend another interface in Java. When an interface extends another interface, it inherits all the abstract methods of the parent interface. A class that implements the child interface must provide implementations for all the methods declared in both the child and parent interfaces. This allows for a more flexible and modular design in object-oriented programming.
 
     Here's an example demonstrating interface extension:
@@ -2935,7 +2935,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-86. **Does Java work as a "pass by value" or "pass by reference" phenomenon?**
+87. **Does Java work as a "pass by value" or "pass by reference" phenomenon?**
     Java is strictly pass-by-value. However, this can be confusing because when passing objects, the value being passed is actually a reference to the object. This means:
 
     1. For primitive types (int, double, etc.): The actual value is passed
@@ -2977,7 +2977,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     This behavior occurs because when passing an object, Java creates a copy of the reference, but both references point to the same object in memory. If you modify the object through either reference, the changes are visible through both references. However, if you reassign the parameter to a new object, it only affects the local copy of the reference.
 
-87. **Which Java operator is right associative?**
+88. **Which Java operator is right associative?**
     In Java, several operators are right associative:
 
     1. Assignment operators (=, +=, -=, \*=, /=, %=, etc.)
@@ -2993,7 +2993,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     This is different from most binary operators which are left associative (grouped left to right).
 
-88. **What is the covariant return type?**
+89. **What is the covariant return type?**
     Covariant return type is a feature introduced in Java 5 that allows a method in a subclass to override a method in a superclass by returning a subtype of the original return type. This provides more type-specific return values while maintaining type safety.
 
     For example:
@@ -3015,7 +3015,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
 
     In this example, `Dog.getType()` returns a `Dog` object instead of an `Animal` object, even though it's overriding `Animal.getType()`. This is possible because `Dog` is a subtype of `Animal`.
 
-89. **Difference between static methods, static variables, and static classes in Java.**
+90. **Difference between static methods, static variables, and static classes in Java.**
 
     | Feature         | Static Methods                                         | Static Variables                                         | Static Classes                                   |
     | --------------- | ------------------------------------------------------ | -------------------------------------------------------- | ------------------------------------------------ |
@@ -3027,7 +3027,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     | Inheritance     | Cannot be overridden (but can be hidden)               | Inherited but shared across all subclasses               | Can be inherited if nested class is extended     |
     | Purpose         | Utility functions, factory methods                     | Constants, counters, utility values                      | Independent nested classes, helper classes       |
 
-90. **Explain the use of the final keyword in variable, method and class.**
+91. **Explain the use of the final keyword in variable, method and class.**
     The `final` keyword in Java has different implications depending on where it's used:
 
     1. **Final Variables:**
@@ -3061,7 +3061,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-91. **Dynamic Method Dispatch in Java**
+92. **Dynamic Method Dispatch in Java**
 
     - A mechanism where a method call is resolved at runtime rather than compile time
     - Enables runtime polymorphism through method overriding
@@ -3074,7 +3074,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     animal.makeSound();       // Calls Dog's makeSound() at runtime
     ```
 
-92. **Can we use private or protected member variables in an interface?**
+93. **Can we use private or protected member variables in an interface?**
 
     - No, interface fields are implicitly public, static and final
     - Prior to Java 9, interface members could only be public
@@ -3099,7 +3099,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     }
     ```
 
-93. **When can an object reference be cast to a Java interface reference?**
+94. **When can an object reference be cast to a Java interface reference?**
 
     An object reference can be cast to an interface reference when:
 
@@ -3139,7 +3139,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
     - An invalid cast will result in a ClassCastException
     - The cast may be implicit (no cast operator needed) when assigning to an interface reference
 
-94. **What are getters and setters in Java?**
+95. **What are getters and setters in Java?**
 
     Getters and setters are methods that allow controlled access to class fields/attributes:
 
@@ -3173,7 +3173,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
        - Enable debugging/logging when fields are accessed
     4. JavaBeans: Following these naming conventions makes classes compatible with JavaBeans specification
 
-95. **What is static in Java?**
+96. **What is static in Java?**
 
     The static keyword in Java is used to declare members (variables and methods) that belong to the class itself rather than instances of the class:
 
@@ -3225,7 +3225,7 @@ Each of these methods provides a way to obtain a `Class` object representing a s
        - Singleton pattern
        - Factory methods
 
-96. **What is the difference between abstract classes and interfaces?**
+97. **What is the difference between abstract classes and interfaces?**
 
     | Feature               | Abstract Class                                    | Interface                                                                                 |
     | --------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------- |

@@ -168,7 +168,7 @@
 
    Note: JavaEE has been renamed to Jakarta EE after Oracle transferred it to the Eclipse Foundation.
 
-9. **Explain JDK, JRE, and JVM**
+9. **What are the differences between JDK, JRE, and JVM?**
 
    | Component | Full Name                | Description                                                                                                                                                                                                                                          |
    | --------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

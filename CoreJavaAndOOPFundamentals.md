@@ -47,7 +47,6 @@
 | **Can run Java program?**  | ✅                         | ✅                               | ✅                                   |
 | **Can compile Java code?** | ❌                         | ❌                               | ✅                                   |
 
-
 👉 **Summary in one line:**
 
 - **JVM** → Runs Java bytecode.
@@ -392,11 +391,11 @@ class Example {
 Local variables → temporary, method-scoped.  
 Global variables → persist with object or class lifetime.
 
+---
+
 ### What is a compile-time constant in Java?
   
 A **compile-time constant** is a value that is **known and fixed at the time of compilation** and cannot be modified at runtime. The Java compiler can **replace references to the constant directly with its value**.  
-
----
 
 #### **Characteristics**
 
@@ -405,8 +404,6 @@ A **compile-time constant** is a value that is **known and fixed at the time of 
 - Usually **primitive types** or `String` literals.  
 - `static final` variables are typical examples of compile-time constants.  
 - Value **cannot be changed**, ensuring immutability.
-
----
 
 #### **Example**
 
@@ -420,8 +417,6 @@ public class Constants {
 - Compiler replaces `MAX_USERS` with `100` wherever it is used.  
 - Efficient because no memory lookup is needed at runtime.  
 
----
-
 #### **Key Points**
 
 - Must be **`final`** and **initialized immediately**.  
@@ -431,13 +426,13 @@ public class Constants {
 🔧 **Summary:**  
 Compile-time constants → **immutable, known at compile time, and optimized by the compiler**.  
 
+---
+
 ### What is coercion in Java?
 
 **Coercion** in Java refers to the **automatic or explicit conversion of a value from one data type to another** to make an expression compatible or evaluable.  
 
 There are two types of coercion:
-
----
 
 #### **1. Implicit Coercion (Type Casting / Type Promotion)**
 
@@ -457,8 +452,6 @@ double d = i;  // int → double (implicit coercion)
 **Rules for numeric types:**  
 `byte → short → int → long → float → double`
 
----
-
 #### **2. Explicit Coercion (Type Casting)**
 
 - Done **manually by the programmer** using parentheses.  
@@ -473,8 +466,6 @@ int i = (int) d;  // double → int (explicit coercion)
 
 - Fractional part is truncated.  
 
----
-
 #### **Key Points**
 
 - Ensures **type compatibility in expressions**.  
@@ -484,11 +475,11 @@ int i = (int) d;  // double → int (explicit coercion)
 🔧 **Summary:**  
 Coercion → **automatic or manual conversion between data types** to satisfy type requirements in operations or assignments.
 
+---
+
 ### What is ASCII Code?
 
 **ASCII (American Standard Code for Information Interchange)** is a **character encoding standard** that maps **characters to numeric values** so that computers can store and manipulate text.  
-
----
 
 #### **Key Points**
 
@@ -507,8 +498,6 @@ Coercion → **automatic or manual conversion between data types** to satisfy ty
 | `0`       | 48         |
 | `\n`      | 10         |
 
----
-
 #### **Usage in Java**
 
 - Characters can be implicitly converted to integers using **type casting**:
@@ -524,11 +513,11 @@ char character = (char) num; // character = 'B'
 🔧 **Summary:**  
 ASCII provides a **numerical representation of characters**, allowing text to be processed and stored efficiently in computers.  
 
+---
+
 ### What is Unicode?
 
 **Unicode** is a **universal character encoding standard** that assigns a **unique code point to every character** from virtually all writing systems, symbols, and emojis, enabling **cross-platform and multilingual text support**.  
-
----
 
 #### **Key Points**
 
@@ -545,8 +534,6 @@ int codePoint = (int) ch; // Unicode value: 2309
 char smiley = '\u263A'; // Unicode escape sequence for ☺
 ```
 
----
-
 #### **Comparison with ASCII**
 
 | Feature        | ASCII            | Unicode               |
@@ -558,6 +545,8 @@ char smiley = '\u263A'; // Unicode escape sequence for ☺
 
 🔧 **Summary:**  
 Unicode ensures **consistent, cross-platform representation of global text**, making Java capable of handling **multilingual and special characters seamlessly**.
+
+---
 
 ### Difference between Character Constant and String Constant in java?Differences**  
 
@@ -582,9 +571,7 @@ This distinction is crucial for **memory management, operations, and method comp
 
 ### What is a class?
 
-A **class** is a **blueprint or template** for creating objects in Java. It encapsulates **data (fields/attributes) and behavior (methods)** into a single unit, following **Object-Oriented Programming (OOP) principles**.  
-
----
+A **class** is a **blueprint or template** for creating objects in Java. It encapsulates **data (fields/attributes) and behavior (methods)** into a single unit, following **Object-Oriented Programming (OOP) principles**.
 
 #### **Key Points**
 
@@ -595,8 +582,6 @@ A **class** is a **blueprint or template** for creating objects in Java. It enca
   - **Methods/Functions** – to define behavior  
   - **Constructors** – to initialize objects  
   - **Nested classes, static blocks, and initializer blocks**  
-
----
 
 #### **Syntax Example**
 
@@ -619,8 +604,6 @@ public class Car {
 }
 ```
 
----
-
 #### **Usage**
 
 ```java
@@ -631,11 +614,11 @@ myCar.displayInfo();                // Method invocation
 🔧 **Summary:**  
 A **class** defines the **blueprint**; an **object** is the **instance**. It is the core building block of **Java’s OOP paradigm**, encapsulating **state and behavior**.
 
+---
+
 ### What is a Constructor in Java? Types of constructors?
 
 A **constructor** is a **special method** in Java used to **initialize objects** of a class. It has the **same name as the class** and **no return type**, not even `void`.  
-
----
 
 #### **Key Points**
 
@@ -643,8 +626,6 @@ A **constructor** is a **special method** in Java used to **initialize objects**
 - Can initialize **fields/attributes** or perform setup tasks.  
 - Supports **overloading** (multiple constructors with different parameters).  
 - Cannot be **abstract, static, final, or synchronized**.  
-
----
 
 #### **Types of Constructors**
 
@@ -694,8 +675,6 @@ A **constructor** is a **special method** in Java used to **initialize objects**
    }
    ```
 
----
-
 #### **Example Usage**
 
 ```java
@@ -713,19 +692,17 @@ Constructors **initialize objects**, ensuring proper setup of state.
 
 This is essential for **object-oriented design and safe object initialization** in Java.
 
+---
+
 ### How to call one constructor from the other constructor?  
 
 In Java, you can call one constructor from another **within the same class** using the keyword **`this()`**. This is known as **constructor chaining** and helps **avoid code duplication**.  
-
----
 
 #### **Key Rules**
 
 1. `this()` **must be the first statement** in the constructor.  
 2. Can be used to call **any constructor in the same class** (default, parameterized).  
 3. Helps maintain **centralized initialization logic**.  
-
----
 
 #### **Example**
 
@@ -760,8 +737,6 @@ public class Main {
 }
 ```
 
----
-
 #### **Summary**
 
 - Use **`this()`** for **constructor chaining within the same class**.  
@@ -770,7 +745,9 @@ public class Main {
 
 This pattern improves **maintainability** in complex classes with multiple constructors.
 
-### Will the compiler create a default constructor if I have a parameterized constructor in the class?Constructor in Java**  
+---
+
+### Will the compiler create a default constructor if I have a parameterized constructor in the class?
 
 **Rule:**  
 
@@ -814,14 +791,14 @@ class Car {
 }
 ```
 
----
-
 #### **Summary**
 
 - ✅ Compiler creates default constructor **only if no constructors exist**.  
 - ❌ If **any constructor is defined**, default constructor must be **explicitly declared** if required.  
 
 This ensures **controlled initialization** and avoids unintended object creation.
+
+---
 
 ### What is the difference between a constructor and a method in Java?
 
@@ -836,8 +813,6 @@ This ensures **controlled initialization** and avoids unintended object creation
 | **Static**               | Cannot be static                                | Can be static                                 |
 | **Example**              | `Car() { this.model = "Tesla"; }`              | `void display() { System.out.println(model); }` |
 
----
-
 #### **Summary**
 
 - **Constructor:** Special method for **object initialization**, no return type, name = class.  
@@ -846,12 +821,11 @@ This ensures **controlled initialization** and avoids unintended object creation
 🔧 **Key Point:**  
 Constructors **set up object state**, methods **act on object state or perform tasks**.
 
-### What is a static keyword? Static variables and methods?
-
-**Definition:**  
-The `static` keyword in Java is used to **define class-level members** that **belong to the class itself** rather than to any specific object.  
-
 ---
+
+### What is a static keyword? Static variables and methods?
+  
+The `static` keyword in Java is used to **define class-level members** that **belong to the class itself** rather than to any specific object.  
 
 #### **Static Variables (Class Variables)**
 
@@ -879,8 +853,6 @@ public class Main {
 }
 ```
 
----
-
 #### **Static Methods (Class Methods)**
 
 - Belong to the **class**, can be called **without creating an object**.  
@@ -903,8 +875,6 @@ public class Main {
     }
 }
 ```
-
----
 
 #### **Key Points**
 
@@ -1013,8 +983,6 @@ This allows **utility or common operations** to be performed during object initi
     }
     ```
 
----
-
 #### **Key Points**
 
 - Static method → belongs to class → cannot access **instance members** directly.  
@@ -1024,11 +992,11 @@ This allows **utility or common operations** to be performed during object initi
 🔧 **Summary:**  
 Static methods are **class-level**, instance variables are **object-level** → direct access is not allowed; object reference is required.
 
+---
+
 ### How do we access static members in java?
 
 Static members (variables or methods) belong to the **class**, not individual objects. They can be accessed **without creating an instance** of the class.  
-
----
 
 #### **Ways to Access Static Members**
 
@@ -1061,8 +1029,6 @@ Static members (variables or methods) belong to the **class**, not individual ob
 
 > ⚠️ Using objects for static members can confuse readers; always prefer **ClassName.memberName**.
 
----
-
 #### **Key Points**
 
 - Static members are **loaded when the class is loaded** → accessible before object creation.  
@@ -1075,6 +1041,8 @@ Static members (variables or methods) belong to the **class**, not individual ob
 - **Alternative:** `object.staticMember` (works but not recommended)  
 - Ensures **clarity and proper use of class-level members**.
 
+---
+
 ### Can we override static methods in java?
 
 **Rule:**  
@@ -1084,14 +1052,10 @@ Static members (variables or methods) belong to the **class**, not individual ob
   - Static methods belong to the **class**, not to an instance.  
   - Method overriding requires **runtime polymorphism**, which is based on **object instances**, so static methods are **resolved at compile-time** (early binding).  
 
----
-
 #### **What Happens Instead**
 
 - If a subclass defines a static method with the **same signature** as a static method in the superclass, it is called **method hiding**, not overriding.  
 - Compiler binds the method call based on the **reference type**, not the object type.  
-
----
 
 #### **Example**
 
@@ -1118,8 +1082,6 @@ public class Main {
 }
 ```
 
----
-
 #### **Key Points**
 
 - Static methods → **class-level**, resolved at **compile-time**.  
@@ -1132,12 +1094,12 @@ public class Main {
 - ✅ They can be **hidden** by a subclass method with the same signature.  
 - Access depends on **reference type**, not object type.
 
-### What are static blocks and static initializers in Java?Explanation**  
+---
+
+### What are static blocks and static initializers in Java?
 
 - A **static block** (or static initializer) is a block of code inside a class that is **executed when the class is loaded**, **before any object is created** or any static method is called.  
 - Used for **class-level initialization**, such as initializing static variables or performing setup tasks.  
-
----
 
 #### **Key Points**
 
@@ -1145,8 +1107,6 @@ public class Main {
 2. Useful for **complex initialization** that cannot be done in a single statement.  
 3. Can have **multiple static blocks**; executed in **order of appearance**.  
 4. Runs **before main()** if the class contains a main method.  
-
----
 
 #### **Syntax & Example**
 
@@ -1181,8 +1141,6 @@ Static block executed
 App: MyApplication, Max Users: 100
 ```
 
----
-
 #### **Key Notes**
 
 - Static blocks are executed **before any constructor or static method call**.  
@@ -1192,12 +1150,12 @@ App: MyApplication, Max Users: 100
 🔧 **Summary:**  
 Static blocks → **class-level initialization code executed once at class loading**, used for preparing static resources or configuration before object creation.
 
+---
+
 ### Explain about static imports in java?
 
 - **Static import** allows you to **access static members (fields and methods) of a class directly** without prefixing them with the class name.  
 - Introduced in **Java 5** to **improve code readability** and reduce verbosity.  
-
----
 
 ## **Syntax**
 
@@ -1205,8 +1163,6 @@ Static blocks → **class-level initialization code executed once at class loadi
 import static package.ClassName.staticMember;
 import static package.ClassName.*; // Import all static members
 ```
-
----
 
 #### **Example**
 
@@ -1229,8 +1185,6 @@ public class Main {
 double area = Math.PI * Math.sqrt(radius);
 ```
 
----
-
 #### **Key Points**
 
 1. Static import **does not import instance members**.  
@@ -1244,14 +1198,12 @@ double area = Math.PI * Math.sqrt(radius);
 - Use for **constants and utility methods** to make code cleaner.  
 - Avoid overuse to maintain **code readability**.
 
-#### What is this keyword in Java?
+---
 
-**Definition:**  
+#### What is this keyword in Java?
 
 - The `this` keyword is a **reference to the current object** whose method or constructor is being executed.  
 - It is used to **differentiate instance variables from local variables**, **invoke constructors**, and **pass the current object** as a parameter.  
-
----
 
 #### **Key Uses of `this`**
 
@@ -1310,8 +1262,6 @@ double area = Math.PI * Math.sqrt(radius);
     }
     ```
 
----
-
 #### **Key Points**
 
 - Cannot be used in **static context** (static methods/blocks).  
@@ -1321,12 +1271,12 @@ double area = Math.PI * Math.sqrt(radius);
 🔧 **Summary:**  
 `this` → reference to the current object; used for **resolving naming conflicts, constructor chaining, passing current object, and returning object for chaining**.
 
+---
+
 ### What is the usage of the super keyword in Java?
 
 - The `super` keyword is a **reference variable in a subclass** that refers to its **immediate parent class**.  
 - It is used to **access parent class members** (variables, methods, constructors) that are hidden or overridden in the subclass.  
-
----
 
 #### **Key Uses of `super`**
 
@@ -1381,8 +1331,6 @@ class Car extends Vehicle {
 }
 ```
 
----
-
 #### **Key Points**
 
 - `super` can be used to **resolve naming conflicts** between parent and child class members.  
@@ -1392,7 +1340,9 @@ class Car extends Vehicle {
 🔧 **Summary:**  
 `super` → allows **subclasses to access parent class variables, methods, and constructors**, enabling **inheritance-based member reuse and overriding resolution**.
 
-### Difference between this() and super() in java?Technical Comparison**  
+---
+
+### Difference between this() and super() in java?
 
 | Feature                  | **`this()`**                                        | **`super()`**                                      |
 |---------------------------|----------------------------------------------------|--------------------------------------------------|
@@ -1939,7 +1889,7 @@ Polymorphism → **“many forms of a single entity”**.
 - Runtime → **overriding**  
 💡 Provides **dynamic behavior and extensibility** in Java applications.
 
-### What is method overloading vs method overriding? 
+### What is method overloading vs method overriding?
 
 | Feature                        | **Method Overloading**                          | **Method Overriding**                           |
 |--------------------------------|------------------------------------------------|------------------------------------------------|
@@ -3356,7 +3306,6 @@ class DefaultClass {
 3. **Multiple Classes from Different Packages:**  
    - If you want classes in **different packages**, you must place them in **separate source files**, each with its own package declaration.  
 
-
 #### **Example**
 
 ✅ **Valid**
@@ -3672,7 +3621,6 @@ public class Main {
 - `password` was marked **transient**, so it **was not saved** during serialization.  
 - After deserialization, the `password` field defaults to `null`.  
 
-
 #### **Key Points**
 
 - Only applies to **instance variables** (not methods or class variables).  
@@ -3689,7 +3637,6 @@ public class Main {
 - The `volatile` keyword in Java is used to indicate that a **variable’s value will be modified by multiple threads**.  
 - It ensures that **reads and writes to that variable are always visible across threads**, providing a lightweight form of **thread-safety**.  
 
-
 #### **Key Characteristics**
 
 1. **Visibility Guarantee**  
@@ -3701,7 +3648,6 @@ public class Main {
 
 3. **Memory Barrier Effect**  
    - The compiler and CPU **cannot reorder reads/writes** of a `volatile` variable with respect to other reads/writes.  
-
 
 #### **Syntax**
 

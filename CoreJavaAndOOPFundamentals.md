@@ -2713,7 +2713,7 @@ Both interfaces and abstract classes provide **abstraction**, but they are used 
 
 ---
 
-### **1. Use an Interface When:**
+#### **1. Use an Interface When:**
 
 - You want to define a **capability or contract** that multiple classes can implement.  
 - Classes are from **different hierarchies** but share common behavior.  
@@ -2734,7 +2734,7 @@ class Bike implements Drivable { ... }
 
 ---
 
-### **2. Use an Abstract Class When:**
+#### **2. Use an Abstract Class When:**
 
 - You want to provide **common state (fields) or shared code** to subclasses.  
 - You need **partial implementation** (some methods implemented, some abstract).  
@@ -2763,7 +2763,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Key Decision Points**
+#### **Key Decision Points**
 
 | Scenario                                      | **Interface**                 | **Abstract Class**                |
 |-----------------------------------------------|-------------------------------|----------------------------------|
@@ -2781,7 +2781,7 @@ class Car extends Vehicle {
 - **Interface:** Use for **capabilities/behavior contracts**, multiple inheritance, unrelated classes.  
 - **Abstract Class:** Use for **shared state/code**, partial implementation, related classes with an “is-a” relationship.
 
-### What is the difference between an abstract class and an interface?Technical Comparison**  
+### What is the difference between an abstract class and an interface?
 
 | Feature                       | **Abstract Class**                                | **Interface**                                 |
 |-------------------------------|--------------------------------------------------|-----------------------------------------------|
@@ -2798,7 +2798,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Key Notes**
+#### **Key Notes**
 
 - **Abstract Class:** Focus on **“is-a” relationship**, shared state, and partial implementation.  
 - **Interface:** Focus on **“can-do” behavior**, multiple inheritance, and polymorphism.  
@@ -2819,7 +2819,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Key Purposes**
+#### **Key Purposes**
 
 1. **Provide Method Implementation in Interfaces**  
    - Interfaces traditionally could only have abstract methods.  
@@ -2833,7 +2833,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Syntax**
+#### **Syntax**
 
 ```java
 interface Drivable {
@@ -2845,7 +2845,7 @@ interface Drivable {
 }
 ```
 
-### **Example**
+#### **Example**
 
 ```java
 class Car implements Drivable {
@@ -2866,7 +2866,7 @@ public class Main {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Default methods **can be overridden** by implementing classes.  
 - Allows interfaces to evolve **without breaking existing code**.  
@@ -2884,7 +2884,7 @@ The **`default` keyword** in interfaces → **provides concrete method implement
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 1. **Called using the interface name**, not through an instance or implementing class.  
 2. **Cannot be overridden** by implementing classes.  
@@ -2892,7 +2892,7 @@ The **`default` keyword** in interfaces → **provides concrete method implement
 
 ---
 
-### **Syntax**
+#### **Syntax**
 
 ```java
 interface Drivable {
@@ -2902,7 +2902,7 @@ interface Drivable {
 }
 ```
 
-### **Example**
+#### **Example**
 
 ```java
 class Car implements Drivable {
@@ -2924,7 +2924,7 @@ All vehicles implement Drivable interface
 
 ---
 
-### **Key Notes**
+#### **Key Notes**
 
 - Static methods **cannot be accessed via object** or implementing class.  
 - Helps provide **utility functionality** tied to the interface.  
@@ -2939,14 +2939,12 @@ All vehicles implement Drivable interface
 
 ### What is a Marker Interface? Why use it?
 
-**Definition:**  
-
 - A **Marker Interface** is an interface **without any methods or fields**.  
 - It serves as a **tag or marker** to indicate that a class has a certain property or should be treated in a specific way by the JVM or frameworks.  
 
 ---
 
-### **Purpose / Why Use Marker Interfaces**
+#### **Purpose / Why Use Marker Interfaces**
 
 1. **Provide Metadata to Classes**  
    - Acts as a **signal** that a class possesses certain capabilities.  
@@ -2959,7 +2957,7 @@ All vehicles implement Drivable interface
 
 ---
 
-### **Common Examples**
+#### **Common Examples**
 
 | Marker Interface | Purpose |
 |-----------------|---------|
@@ -2969,7 +2967,7 @@ All vehicles implement Drivable interface
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 import java.io.Serializable;
@@ -2999,7 +2997,7 @@ public class Main {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Marker interfaces **do not contain methods or fields**.  
 - Used to **indicate metadata or special behavior**.  
@@ -3010,14 +3008,12 @@ public class Main {
 
 ### What is a package in Java?
 
-**Definition:**  
-
 - A **package** is a **namespace that organizes a set of related classes and interfaces** in Java.  
 - Packages help **avoid name conflicts** and **manage code modularly**.  
 
 ---
 
-### **Purpose of Packages**
+#### **Purpose of Packages**
 
 1. **Organize Classes and Interfaces**  
    - Groups related classes, interfaces, and sub-packages together.  
@@ -3033,7 +3029,7 @@ public class Main {
 
 ---
 
-### **Types of Packages**
+#### **Types of Packages**
 
 1. **Built-in Packages** – Provided by Java, e.g.,  
    - `java.util` → Collections, Date, etc.  
@@ -3043,7 +3039,7 @@ public class Main {
 
 ---
 
-### **Syntax to Create and Use Packages**
+#### **Syntax to Create and Use Packages**
 
 **Create a Package**
 
@@ -3072,7 +3068,7 @@ public class Main {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Declared at the **top of the Java file** using `package` keyword.  
 - Classes in the **same package** can access each other’s default (package-private) members.  
@@ -3083,14 +3079,12 @@ A **package** → a **namespace for organizing classes and interfaces**, helping
 
 ### What are access modifiers in Java (private, protected, public, default)?
 
-**Definition:**  
-
 - Access modifiers control the **visibility and accessibility** of classes, methods, and variables in Java.  
 - Java has **four types**: `private`, `default` (no keyword), `protected`, and `public`.  
 
 ---
 
-### **1. `private`**
+#### **1. `private`**
 
 - **Visibility:** Accessible **only within the same class**.  
 - **Use Case:** Data hiding, encapsulation.  
@@ -3106,7 +3100,7 @@ class Example {
 
 ---
 
-### **2. Default (no modifier)**
+#### **2. Default (no modifier)**
 
 - **Visibility:** Accessible **within the same package** only.  
 - **Use Case:** Package-level encapsulation for related classes.  
@@ -3120,7 +3114,7 @@ class Example {
 
 ---
 
-### **3. `protected`**
+#### **3. `protected`**
 
 - **Visibility:** Accessible **within the same package** and by **subclasses** (even in different packages).  
 - **Use Case:** Support inheritance while limiting general access.  
@@ -3136,7 +3130,7 @@ class SubExample extends Example {
 
 ---
 
-### **4. `public`**
+#### **4. `public`**
 
 - **Visibility:** Accessible **from anywhere** in the project.  
 - **Use Case:** API methods or classes intended for global access.  
@@ -3150,7 +3144,7 @@ public class Example {
 
 ---
 
-### **Access Levels Summary**
+#### **Access Levels Summary**
 
 | Modifier   | Same Class | Same Package | Subclass | World (any class) |
 |------------|------------|--------------|----------|------------------|
@@ -3170,7 +3164,7 @@ In Java, the terms **access specifier** and **access modifier** are often used i
 
 ---
 
-### **1. Access Modifiers**
+#### **1. Access Modifiers**
 
 - **Definition:** Keywords that **set the accessibility** of classes, methods, and variables.  
 - **Purpose:** Control **how a member or class can be accessed**.  
@@ -3185,7 +3179,7 @@ public class Example {  // 'public' is an access modifier
 
 ---
 
-### **2. Access Specifiers**
+#### **2. Access Specifiers**
 
 - **Definition:** Sometimes used to **describe the level of access** granted by an access modifier.  
 - **Purpose:** Explain **who can access a class, method, or variable**.  
@@ -3202,7 +3196,7 @@ Access Specifiers = levels of accessibility
 
 ---
 
-### **Key Difference**
+#### **Key Difference**
 
 | Feature                 | Access Modifier                            | Access Specifier                      |
 |-------------------------|--------------------------------------------|--------------------------------------|
@@ -3212,7 +3206,7 @@ Access Specifiers = levels of accessibility
 
 ---
 
-### **Summary**
+#### **Summary**
 
 - **Access Modifiers** → actual **Java keywords** used in code.  
 - **Access Specifiers** → **conceptual levels of access** defined by modifiers.  
@@ -3220,14 +3214,14 @@ Access Specifiers = levels of accessibility
 
 ### What all access modifiers are allowed for a top-level class?
 
-### **Key Points**
+#### **Key Points**
 
 1. A **top-level class** is a class **not nested** inside another class.  
 2. Java **restricts the access modifiers** that can be applied to top-level classes.  
 
 ---
 
-### **Allowed Modifiers**
+#### **Allowed Modifiers**
 
 | Modifier   | Description |
 |-----------|-------------|
@@ -3236,7 +3230,7 @@ Access Specifiers = levels of accessibility
 
 ---
 
-### **Not Allowed**
+#### **Not Allowed**
 
 - `private` → ❌ Cannot be applied to top-level classes.  
 - `protected` → ❌ Cannot be applied to top-level classes.  
@@ -3247,7 +3241,7 @@ Access Specifiers = levels of accessibility
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 // Public top-level class
@@ -3272,13 +3266,11 @@ class DefaultClass {
 
 ### Explain the importance of the import keyword?
 
-**Definition:**  
-
 - The `import` keyword in Java allows a class or package to **access classes, interfaces, or sub-packages from another package** without using their **fully qualified names**.  
 
 ---
 
-### **Key Purposes**
+#### **Key Purposes**
 
 1. **Simplifies Code**  
    - Without `import`, you must use the **fully qualified class name**:  
@@ -3305,7 +3297,7 @@ class DefaultClass {
 
 ---
 
-### **Types of Import**
+#### **Types of Import**
 
 1. **Single Type Import**  
    - Imports a specific class or interface.  
@@ -3334,7 +3326,7 @@ class DefaultClass {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - The `import` keyword **does not load classes**, it just provides **a shorthand reference**.  
 - Only **top-level public classes/interfaces** from other packages can be imported.  
@@ -3343,15 +3335,13 @@ class DefaultClass {
 🔧 **Summary:**  
 `import` → **simplifies access to external classes**, supports **modular, readable, and maintainable Java code**, and allows usage of **Java API or user-defined packages** without fully qualified names.
 
-### Can we have more than one package statement in a source file?Source File?**  
+---
 
-**Answer:**  
+### Can we have more than one package statement in a source file?Source File?**  
 
 - ❌ **No**, a Java source file **cannot have more than one package statement**.  
 
----
-
-### **Key Points**
+#### **Key Points**
 
 1. **Rule:**  
    - A Java source file can **declare at most one package** at the **very top** of the file.  
@@ -3368,9 +3358,8 @@ class DefaultClass {
 3. **Multiple Classes from Different Packages:**  
    - If you want classes in **different packages**, you must place them in **separate source files**, each with its own package declaration.  
 
----
 
-### **Example**
+#### **Example**
 
 ✅ **Valid**
 
@@ -3388,9 +3377,7 @@ package packageOne;
 package packageTwo; // ❌ Compilation error
 ```
 
----
-
-### **Key Notes**
+#### **Key Notes**
 
 - **All top-level classes** in a source file belong to the **same package**.  
 - Inner classes are still part of the same package.  
@@ -3400,13 +3387,9 @@ A Java source file **can have only one package statement** at the top; multiple 
 
 ### Can we define a package statement after an import statement?Statement in Java?**  
 
-**Answer:**  
+- ❌ **No**, the `package` statement **must always be the first statement** in a Java source file (except for comments and blank lines).
 
-- ❌ **No**, the `package` statement **must always be the first statement** in a Java source file (except for comments and blank lines).  
-
----
-
-### **Rules and Order in a Java Source File**
+#### **Rules and Order in a Java Source File**
 
 1. **Package Declaration (Optional)**  
    - If present, it **must be the first statement**.  
@@ -3426,9 +3409,7 @@ A Java source file **can have only one package statement** at the top; multiple 
 3. **Class or Interface Definitions**  
    - After package and imports, define your classes or interfaces.  
 
----
-
-### **Correct Order Example**
+#### **Correct Order Example**
 
 ```java
 package mypackage;      // package statement first
@@ -3440,16 +3421,14 @@ public class MyClass { // class definition
 }
 ```
 
-### **Incorrect Order Example**
+#### **Incorrect Order Example**
 
 ```java
 import java.util.*;    // ❌ Cannot import before package
 package mypackage;    // ❌ Compilation error
 ```
 
----
-
-### **Key Notes**
+#### **Key Notes**
 
 - Only **comments** and **blank lines** can appear before the package statement.  
 - Violating the order → **compilation error**: `illegal start of type`.  
@@ -3460,16 +3439,14 @@ package mypackage;    // ❌ Compilation error
 - `import` statements → **follow the package declaration**.  
 - Maintaining this order ensures **proper namespace resolution** and **compilation**.
 
-### Explain naming conventions for packages
+---
 
-**Definition:**  
+### Explain naming conventions for packages
 
 - Packages in Java are **namespaces** that organize classes and interfaces.  
 - Following **naming conventions** ensures **clarity, uniqueness, and maintainability**.  
 
----
-
-### **1. General Guidelines**
+#### **1. General Guidelines**
 
 1. **Lowercase letters**  
    - Package names should be **all lowercase** to avoid conflicts with class names.  
@@ -3501,9 +3478,7 @@ package mypackage;    // ❌ Compilation error
    package com.bankapp.utils;      // for utility/helper classes
    ```
 
----
-
-### **2. Examples**
+#### **2. Examples**
 
 ```java
 package com.example.app;           // top-level application package
@@ -3511,32 +3486,26 @@ package com.example.app.models;    // sub-package for models
 package com.example.app.controllers; // sub-package for controllers
 ```
 
----
-
-### **3. Key Points**
+#### **3. Key Points**
 
 - **Use lowercase** to avoid conflicts across operating systems (case-sensitive).  
 - **Use meaningful names** that reflect the package’s contents.  
 - **Avoid reserved keywords** (`int`, `class`, `package`).  
 - **Follow reverse domain naming** for globally unique packages (common in libraries and APIs).  
 
----
-
 🔧 **Summary:**  
 
 - Packages should have **lowercase, hierarchical, descriptive names**, often using **reverse domain notation**.  
 - This ensures **clarity, maintainability, and avoids naming conflicts** in large Java projects.
 
-### What do you mean by the final keyword? (final variable, method, class)
-
-**Definition:**  
-
-- The `final` keyword in Java is used to **restrict modification**.  
-- It can be applied to **variables, methods, and classes**, each with a specific meaning.  
-
 ---
 
-### **1. Final Variable**
+### What do you mean by the final keyword? (final variable, method, class)
+
+- The `final` keyword in Java is used to **restrict modification**.  
+- It can be applied to **variables, methods, and classes**, each with a specific meaning.
+
+#### **1. Final Variable**
 
 - A variable declared as `final` **cannot be reassigned** after initialization.  
 - If it’s an object reference, the **reference cannot change**, but the object’s state can.  
@@ -3550,9 +3519,7 @@ p = new Person(); // ❌ Reference cannot change
 p.name = "John"; // ✅ Object state can change
 ```
 
----
-
-### **2. Final Method**
+#### **2. Final Method**
 
 - A method declared as `final` **cannot be overridden** by subclasses.  
 - Useful to **prevent altering critical behavior**.  
@@ -3569,9 +3536,7 @@ class Car extends Vehicle {
 }
 ```
 
----
-
-### **3. Final Class**
+#### **3. Final Class**
 
 - A class declared as `final` **cannot be subclassed**.  
 - Useful for **security, immutability, or utility classes**.  
@@ -3584,17 +3549,13 @@ final class MathUtil {
 class AdvancedMath extends MathUtil { } // ❌ Compilation error
 ```
 
----
-
-### **Key Points**
+#### **Key Points**
 
 | Usage           | Meaning |
 |-----------------|---------|
 | `final variable` | Value/reference **cannot be changed** after initialization |
 | `final method`   | **Cannot be overridden** in subclasses |
 | `final class`    | **Cannot be extended** by other classes |
-
----
 
 🔧 **Summary:**  
 The `final` keyword → **prevents modification**:  
@@ -3604,6 +3565,8 @@ The `final` keyword → **prevents modification**:
 - Classes → cannot extend  
 
 It’s widely used for **immutability, security, and consistent behavior** in Java.
+
+---
 
 ### What is the difference between static and final keywords?Java**  
 
@@ -3618,9 +3581,7 @@ It’s widely used for **immutability, security, and consistent behavior** in Ja
 | **Access**               | Accessed via `ClassName.member`.              | Accessed normally, enforced immutability or restriction. |
 | **Typical Use Case**     | Shared resources/methods, utility classes.    | Constants, immutable objects, secure methods/classes. |
 
----
-
-### **Example**
+#### **Example**
 
 ```java
 class Example {
@@ -3649,16 +3610,14 @@ class Example {
 - **final** → **immutable or non-overridable** behavior.  
 - Together, `static final` → **constant values**.
 
-### What is the transient keyword in Java?
+---
 
-**Definition:**  
+### What is the transient keyword in Java?
 
 - The `transient` keyword in Java is used to **indicate that a field should not be serialized**.  
 - When an object is serialized, **transient fields are skipped** and not saved to the output stream.  
 
----
-
-### **Purpose**
+#### **Purpose**
 
 1. **Prevent Sensitive Data Serialization**  
    - Fields like passwords, security tokens, or temporary data should not be persisted.  
@@ -3669,9 +3628,7 @@ class Example {
 3. **Reduce Serialized Data Size**  
    - Skip unnecessary or large fields that don’t need persistence.  
 
----
-
-### **Syntax**
+#### **Syntax**
 
 ```java
 import java.io.Serializable;
@@ -3687,9 +3644,7 @@ class User implements Serializable {
 }
 ```
 
----
-
-### **Example Usage**
+#### **Example Usage**
 
 ```java
 import java.io.*;
@@ -3719,9 +3674,8 @@ public class Main {
 - `password` was marked **transient**, so it **was not saved** during serialization.  
 - After deserialization, the `password` field defaults to `null`.  
 
----
 
-### **Key Points**
+#### **Key Points**
 
 - Only applies to **instance variables** (not methods or class variables).  
 - Helps **control serialization** and **protect sensitive data**.  
@@ -3730,16 +3684,15 @@ public class Main {
 🔧 **Summary:**  
 `transient` → **prevents a field from being serialized**, useful for **security, reducing data size, and handling non-serializable fields** in Java.
 
-### What is the volatile keyword?
+---
 
-**Definition:**  
+### What is the volatile keyword?
 
 - The `volatile` keyword in Java is used to indicate that a **variable’s value will be modified by multiple threads**.  
 - It ensures that **reads and writes to that variable are always visible across threads**, providing a lightweight form of **thread-safety**.  
 
----
 
-### **Key Characteristics**
+#### **Key Characteristics**
 
 1. **Visibility Guarantee**  
    - Changes made by one thread to a `volatile` variable are **immediately visible** to other threads.  
@@ -3751,9 +3704,8 @@ public class Main {
 3. **Memory Barrier Effect**  
    - The compiler and CPU **cannot reorder reads/writes** of a `volatile` variable with respect to other reads/writes.  
 
----
 
-### **Syntax**
+#### **Syntax**
 
 ```java
 class SharedResource {
@@ -3761,9 +3713,7 @@ class SharedResource {
 }
 ```
 
----
-
-### **Example**
+#### **Example**
 
 ```java
 class FlagExample {
@@ -3786,9 +3736,7 @@ class FlagExample {
 - Without `volatile`, one thread might **cache the variable**, and changes made by another thread may not be visible.  
 - With `volatile`, all threads **see the latest value**.  
 
----
-
-### **Key Points**
+#### **Key Points**
 
 - Can be used only with **instance or static variables** (not local variables).  
 - Provides **visibility but not atomicity**.  
@@ -3797,22 +3745,14 @@ class FlagExample {
 🔧 **Summary:**  
 `volatile` → ensures **visibility of shared variables across threads**, prevents **caching issues**, and avoids **stale values**, making it crucial in **concurrent programming**.
 
-### What is the strictly keyword?
-
-There is **no `strictly` keyword in Java**.  
-
-You may be referring to **`strictfp`**, which is an actual Java keyword. Here's the explanation:
-
 ---
 
-**Definition:**  
+### What is the strictfp keyword?
 
 - `strictfp` stands for **“strict floating-point”**.  
 - It is used to **restrict floating-point calculations** to follow the **IEEE 754 standard** strictly, ensuring **platform-independent results** for `float` and `double` operations.  
 
----
-
-### **Key Points**
+#### **Key Points**
 
 1. **Applies To:**  
    - Classes, interfaces, and methods.  
@@ -3823,9 +3763,7 @@ You may be referring to **`strictfp`**, which is an actual Java keyword. Here's 
 3. **Usage:**  
    - Without `strictfp`, floating-point calculations may differ slightly depending on the hardware.  
 
----
-
-### **Syntax Example**
+#### **Syntax Example**
 
 ```java
 strictfp class Calculator {
@@ -3840,9 +3778,7 @@ strictfp class Calculator {
 - Both the `Calculator` class and `add` method are restricted to **strict IEEE 754 floating-point behavior**.  
 - Guarantees **same results on all platforms**.  
 
----
-
-### **Key Notes**
+#### **Key Notes**
 
 - Only affects **floating-point calculations** (`float` and `double`).  
 - `strictfp` does **not affect integer calculations**.  
@@ -3853,9 +3789,7 @@ strictfp class Calculator {
 
 ---
 
-If you want, I can also make a **quick table comparing all Java keywords like `final`, `static`, `volatile`, `transient`, `strictfp`** for reference. Do you want me to do that?
-
-### yes, sure
+### Table comparing all Java keywords like `final`, `static`, `volatile`, `transient`, `strictfp` for reference?
 
 | Keyword      | Applies To                | Purpose / Description                                                                 | Example |
 |-------------|---------------------------|-------------------------------------------------------------------------------------|---------|
@@ -3876,8 +3810,6 @@ If you want, I can also make a **quick table comparing all Java keywords like `f
 | **enum**     | Type                     | Defines a **set of constants**                                                      | `enum Day { MON, TUE }` |
 | **throw / throws** | Method / Statement  | Used for **exception handling**                                                      | `throw new IOException();` |
 
----
-
 ### ✅ **Summary**
 
 - **`final`** → immutability / restriction  
@@ -3887,7 +3819,3 @@ If you want, I can also make a **quick table comparing all Java keywords like `f
 - **`strictfp`** → consistent floating-point calculations  
 
 ---
-
-I can also create a **visual map showing which keywords apply to classes, methods, variables, or blocks** for easier memory recall.  
-
-Do you want me to make that visual map?

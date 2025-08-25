@@ -13,8 +13,6 @@
 
 👉 Think of **JVM** as the **engine** that actually runs your Java program.
 
----
-
 #### **2. JRE (Java Runtime Environment)**
 
 - **What it is:** A package that provides everything needed to run Java programs.
@@ -25,8 +23,6 @@
 - **What it doesn’t have:** Tools for development (like `javac`, debugger).
 
 👉 Think of **JRE** as the **car + engine**, where you can **drive/run** programs but can’t build a new car.
-
----
 
 #### **3. JDK (Java Development Kit)**
 
@@ -41,8 +37,6 @@
 
 👉 Think of **JDK** as the **car factory**: it has tools to **build** cars (Java programs), and it also contains the car (JRE) so you can test/run them.
 
----
-
 #### **Quick Comparison Table**
 
 | Feature                    | JVM                        | JRE                              | JDK                                  |
@@ -53,7 +47,6 @@
 | **Can run Java program?**  | ✅                         | ✅                               | ✅                                   |
 | **Can compile Java code?** | ❌                         | ❌                               | ✅                                   |
 
----
 
 👉 **Summary in one line:**
 
@@ -90,6 +83,8 @@ Java Source (.java) → javac → Bytecode (.class) → JVM → Native Machine C
 
 This separation allows enterprises to deploy the same Java application on multiple OSes **without recompilation**.
 
+---
+
 ### What is bytecode in java?
 
 Bytecode is the **intermediate, platform-independent representation** of a Java program, produced by the Java compiler (`javac`) from `.java` source files. It is stored in `.class` files.
@@ -123,6 +118,8 @@ Compiles to bytecode instruction like `iconst_5` → JVM interprets and executes
 
 Bytecode acts as the **bridge between Java source code and platform-specific execution**.
 
+---
+
 ### What is JIT compiler?
 
 The **Just-In-Time (JIT) compiler** is a component of the JVM that **dynamically translates Java bytecode into native machine code at runtime** to improve execution performance.  
@@ -152,6 +149,8 @@ A method invoked repeatedly will be JIT-compiled so subsequent calls execute **d
 
 The JIT compiler is **essential for balancing Java’s platform independence with high runtime performance**.
 
+---
+
 ## Data Types & Variables
 
 ### What are primitive and non-primitive data types in Java?
@@ -172,8 +171,6 @@ The JIT compiler is **essential for balancing Java’s platform independence wit
 | `double`  | 8 bytes    | Floating-point number       | 0.0d          |
 | `char`    | 2 bytes    | Single Unicode character    | '\u0000'     |
 | `boolean` | 1 bit      | `true` or `false`           | false         |
-
----
 
 #### **2. Non-Primitive Data Types**  
 
@@ -202,11 +199,10 @@ The JIT compiler is **essential for balancing Java’s platform independence wit
 Primitives → efficient, basic data.  
 Non-primitives → objects with methods and dynamic behavior.  
 
-If you want, I can also explain **autoboxing/unboxing**, which bridges primitives and non-primitives seamlessly.
+---
 
 ### What are wrapper classes?
 
-**Definition:**  
 Wrapper classes are **object representations of Java’s primitive data types**. They allow primitives to be treated as objects, enabling use in **collections, generics, and APIs** that require objects.  
 
 | Primitive Type | Wrapper Class |
@@ -241,9 +237,9 @@ int original = wrapperNum;
 🔧 **Summary:**  
 Wrapper classes bridge **primitives ↔ objects**, providing **method support, collection compatibility, and utility operations**.  
 
-### What is autoboxing and unboxing?**  
+---
 
-**Definition:**  
+### What is autoboxing and unboxing?**  
 
 - **Autoboxing:** Automatic conversion of a **primitive type → corresponding wrapper class object**.  
 - **Unboxing:** Automatic conversion of a **wrapper class object → corresponding primitive type**.  
@@ -283,6 +279,8 @@ int x = list.get(0); // Unboxing: Integer → int
 
 This ensures smooth interaction between **primitives** and **object-oriented features** like collections.
 
+---
+
 ### Difference b/w Autoboxing vs Unboxing
 
 | Feature                | **Autoboxing**                              | **Unboxing**                            |
@@ -301,11 +299,11 @@ This ensures smooth interaction between **primitives** and **object-oriented fea
 
 This mechanism provides **seamless interoperability** between **primitives and objects** in modern Java.
 
+---
+
 ### What are constants and how to create constants in java?
 
 A **constant** is a variable whose value **cannot be changed once initialized**. Constants improve **code readability, maintainability, and prevent accidental modification**.  
-
----
 
 #### **How to Create Constants in Java**
 
@@ -339,8 +337,6 @@ A **constant** is a variable whose value **cannot be changed once initialized**.
    }
    ```
 
----
-
 #### **Key Points**  
 
 - `final` → makes variable immutable.  
@@ -359,6 +355,8 @@ public static final List<String> DAYS = Collections.unmodifiableList(
 - Ensures the list cannot be modified.  
 
 Constants enforce **immutability** and help in **maintaining predictable, error-free code**.
+
+---
 
 ### What are local and global variables?**  
 

@@ -156,9 +156,7 @@ The JIT compiler is **essential for balancing Java’s platform independence wit
 
 ### What are primitive and non-primitive data types in Java?
 
-💻 **Java Data Types – Precise Breakdown**  
-
-### **1. Primitive Data Types**  
+#### **1. Primitive Data Types**  
 
 - **Definition:** Basic, predefined data types provided by Java.  
 - **Stored:** Directly in memory (stack).  
@@ -177,7 +175,7 @@ The JIT compiler is **essential for balancing Java’s platform independence wit
 
 ---
 
-### **2. Non-Primitive Data Types**  
+#### **2. Non-Primitive Data Types**  
 
 - **Definition:** Reference types; objects created from classes, interfaces, or arrays.  
 - **Stored:** Reference in stack → actual object in heap.  
@@ -207,8 +205,6 @@ Non-primitives → objects with methods and dynamic behavior.
 If you want, I can also explain **autoboxing/unboxing**, which bridges primitives and non-primitives seamlessly.
 
 ### What are wrapper classes?
-
-💻 **Wrapper Classes in Java – Technical Explanation**  
 
 **Definition:**  
 Wrapper classes are **object representations of Java’s primitive data types**. They allow primitives to be treated as objects, enabling use in **collections, generics, and APIs** that require objects.  
@@ -245,50 +241,7 @@ int original = wrapperNum;
 🔧 **Summary:**  
 Wrapper classes bridge **primitives ↔ objects**, providing **method support, collection compatibility, and utility operations**.  
 
-Do you want me to also explain the difference between **autoboxing and unboxing** next?
-
-### What are wrapper classes?
-
-💻 **Wrapper Classes in Java – Technical Explanation**  
-
-**Definition:**  
-Wrapper classes are **object representations of Java’s primitive data types**. They allow primitives to be treated as objects, enabling use in **collections, generics, and APIs** that require objects.  
-
-| Primitive Type | Wrapper Class |
-|----------------|---------------|
-| `byte`         | `Byte`        |
-| `short`        | `Short`       |
-| `int`          | `Integer`     |
-| `long`         | `Long`        |
-| `float`        | `Float`       |
-| `double`       | `Double`      |
-| `char`         | `Character`   |
-| `boolean`      | `Boolean`     |
-
-**Key Points:**  
-
-- All wrapper classes are **immutable**.  
-- Provide **utility methods** (e.g., `Integer.parseInt()`, `Double.valueOf()`).  
-- Enable **autoboxing/unboxing** between primitives and objects.  
-- Required in **collections** (`List<Integer>`, `Map<Character, String>`), as collections cannot store primitives directly.  
-
-**Example:**  
-
-```java
-int num = 100;
-// Autoboxing: primitive → wrapper
-Integer wrapperNum = num;
-
-// Unboxing: wrapper → primitive
-int original = wrapperNum;
-```
-
-🔧 **Summary:**  
-Wrapper classes bridge **primitives ↔ objects**, providing **method support, collection compatibility, and utility operations**.
-
-### What is autoboxing and unboxing?
-
-💻 **Autoboxing and Unboxing in Java – Technical Explanation**  
+### What is autoboxing and unboxing?**  
 
 **Definition:**  
 
@@ -316,7 +269,7 @@ int original = wrapperVal; // compiler converts to wrapperVal.intValue()
 
 **Flow:**  
 
-```
+```doc
 Primitive ↔ Wrapper (automatic by compiler)
 ```
 
@@ -331,8 +284,6 @@ int x = list.get(0); // Unboxing: Integer → int
 This ensures smooth interaction between **primitives** and **object-oriented features** like collections.
 
 ### Difference b/w Autoboxing vs Unboxing
-
-💻 **Autoboxing vs Unboxing – Key Differences**  
 
 | Feature                | **Autoboxing**                              | **Unboxing**                            |
 |------------------------|--------------------------------------------|----------------------------------------|
@@ -352,14 +303,11 @@ This mechanism provides **seamless interoperability** between **primitives and o
 
 ### What are constants and how to create constants in java?
 
-💻 **Constants in Java – Technical Explanation**  
-
-**Definition:**  
 A **constant** is a variable whose value **cannot be changed once initialized**. Constants improve **code readability, maintainability, and prevent accidental modification**.  
 
 ---
 
-### **How to Create Constants in Java**
+#### **How to Create Constants in Java**
 
 1. **Using `final` keyword**  
    - `final` makes a variable immutable after initialization.  
@@ -393,7 +341,7 @@ A **constant** is a variable whose value **cannot be changed once initialized**.
 
 ---
 
-### **Key Points**  
+#### **Key Points**  
 
 - `final` → makes variable immutable.  
 - `static final` → **compile-time constant**, shared across instances.  
@@ -412,9 +360,7 @@ public static final List<String> DAYS = Collections.unmodifiableList(
 
 Constants enforce **immutability** and help in **maintaining predictable, error-free code**.
 
-### What are local and global variables?
-
-💻 **Local vs Global Variables in Java – Technical Explanation**  
+### What are local and global variables?**  
 
 | Feature              | **Local Variable**                          | **Global Variable (Instance/Class Variable)**       |
 |----------------------|--------------------------------------------|---------------------------------------------------|
@@ -449,15 +395,12 @@ Local variables → temporary, method-scoped.
 Global variables → persist with object or class lifetime.
 
 ### What is a compile-time constant in Java?
-
-💻 **Compile-Time Constant in Java – Technical Explanation**  
-
-**Definition:**  
+  
 A **compile-time constant** is a value that is **known and fixed at the time of compilation** and cannot be modified at runtime. The Java compiler can **replace references to the constant directly with its value**.  
 
 ---
 
-### **Characteristics**
+#### **Characteristics**
 
 - Declared using **`final`** keyword.  
 - Must be **initialized at the point of declaration**.  
@@ -467,7 +410,7 @@ A **compile-time constant** is a value that is **known and fixed at the time of 
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 public class Constants {
@@ -481,7 +424,7 @@ public class Constants {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Must be **`final`** and **initialized immediately**.  
 - Can be **primitive types or `String` literals** only; cannot be objects initialized at runtime.  
@@ -492,16 +435,13 @@ Compile-time constants → **immutable, known at compile time, and optimized by 
 
 ### What is coercion in Java?
 
-💻 **Coercion in Java – Technical Explanation**  
-
-**Definition:**  
 **Coercion** in Java refers to the **automatic or explicit conversion of a value from one data type to another** to make an expression compatible or evaluable.  
 
 There are two types of coercion:
 
 ---
 
-### **1. Implicit Coercion (Type Casting / Type Promotion)**
+#### **1. Implicit Coercion (Type Casting / Type Promotion)**
 
 - Java **automatically converts smaller or compatible data types** to a larger type when needed.  
 - Also called **type promotion**.  
@@ -521,7 +461,7 @@ double d = i;  // int → double (implicit coercion)
 
 ---
 
-### **2. Explicit Coercion (Type Casting)**
+#### **2. Explicit Coercion (Type Casting)**
 
 - Done **manually by the programmer** using parentheses.  
 - Required when converting **larger type → smaller type** or incompatible types.  
@@ -537,7 +477,7 @@ int i = (int) d;  // double → int (explicit coercion)
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Ensures **type compatibility in expressions**.  
 - Implicit coercion is safe; explicit coercion may cause **data loss**.  
@@ -548,14 +488,11 @@ Coercion → **automatic or manual conversion between data types** to satisfy ty
 
 ### What is ASCII Code?
 
-💻 **ASCII Code in Java – Technical Explanation**  
-
-**Definition:**  
 **ASCII (American Standard Code for Information Interchange)** is a **character encoding standard** that maps **characters to numeric values** so that computers can store and manipulate text.  
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - **7-bit encoding** → represents **128 characters** (`0–127`).  
 - Includes:
@@ -574,7 +511,7 @@ Coercion → **automatic or manual conversion between data types** to satisfy ty
 
 ---
 
-### **Usage in Java**
+#### **Usage in Java**
 
 - Characters can be implicitly converted to integers using **type casting**:
 
@@ -591,14 +528,11 @@ ASCII provides a **numerical representation of characters**, allowing text to be
 
 ### What is Unicode?
 
-💻 **Unicode in Java – Technical Explanation**  
-
-**Definition:**  
 **Unicode** is a **universal character encoding standard** that assigns a **unique code point to every character** from virtually all writing systems, symbols, and emojis, enabling **cross-platform and multilingual text support**.  
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - **16-bit encoding** in Java (`char` type) → represents **0 to 65,535** code points.  
 - Supports **all major languages, symbols, and special characters**, unlike ASCII which supports only 128 characters.  
@@ -615,7 +549,7 @@ char smiley = '\u263A'; // Unicode escape sequence for ☺
 
 ---
 
-### **Comparison with ASCII**
+#### **Comparison with ASCII**
 
 | Feature        | ASCII            | Unicode               |
 |----------------|----------------|---------------------|
@@ -627,9 +561,7 @@ char smiley = '\u263A'; // Unicode escape sequence for ☺
 🔧 **Summary:**  
 Unicode ensures **consistent, cross-platform representation of global text**, making Java capable of handling **multilingual and special characters seamlessly**.
 
-### Difference between Character Constant and String Constant in java?
-
-💻 **Character Constant vs String Constant in Java – Technical Differences**  
+### Difference between Character Constant and String Constant in java?Differences**  
 
 | Feature                     | **Character Constant** (`char`)                     | **String Constant** (`String`)                     |
 |-------------------------------|---------------------------------------------------|--------------------------------------------------|
@@ -648,16 +580,15 @@ Unicode ensures **consistent, cross-platform representation of global text**, ma
 
 This distinction is crucial for **memory management, operations, and method compatibility** in Java.
 
+## Classes & Objects
+
 ### What is a class?
 
-💻 **Class in Java – Technical Explanation**  
-
-**Definition:**  
 A **class** is a **blueprint or template** for creating objects in Java. It encapsulates **data (fields/attributes) and behavior (methods)** into a single unit, following **Object-Oriented Programming (OOP) principles**.  
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Defines the **structure and behavior** of objects.  
 - Supports **encapsulation**, **inheritance**, and **polymorphism**.  
@@ -669,7 +600,7 @@ A **class** is a **blueprint or template** for creating objects in Java. It enca
 
 ---
 
-### **Syntax Example**
+#### **Syntax Example**
 
 ```java
 public class Car {
@@ -692,7 +623,7 @@ public class Car {
 
 ---
 
-### **Usage**
+#### **Usage**
 
 ```java
 Car myCar = new Car("Tesla", 2023); // Object creation
@@ -704,14 +635,11 @@ A **class** defines the **blueprint**; an **object** is the **instance**. It is 
 
 ### What is a Constructor in Java? Types of constructors?
 
-💻 **Constructor in Java – Technical Explanation**  
-
-**Definition:**  
 A **constructor** is a **special method** in Java used to **initialize objects** of a class. It has the **same name as the class** and **no return type**, not even `void`.  
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Invoked automatically when an object is created using `new`.  
 - Can initialize **fields/attributes** or perform setup tasks.  
@@ -720,7 +648,7 @@ A **constructor** is a **special method** in Java used to **initialize objects**
 
 ---
 
-### **Types of Constructors**
+#### **Types of Constructors**
 
 1. **Default Constructor (No-Arg Constructor)**  
    - Provided by Java if **no constructor is explicitly defined**.  
@@ -770,7 +698,7 @@ A **constructor** is a **special method** in Java used to **initialize objects**
 
 ---
 
-### **Example Usage**
+#### **Example Usage**
 
 ```java
 Car c1 = new Car();               // Default constructor
@@ -787,16 +715,13 @@ Constructors **initialize objects**, ensuring proper setup of state.
 
 This is essential for **object-oriented design and safe object initialization** in Java.
 
-### How to call one constructor from the other constructor?
+### How to call one constructor from the other constructor?  
 
-💻 **Calling One Constructor from Another in Java – Using `this()`**  
-
-**Definition:**  
 In Java, you can call one constructor from another **within the same class** using the keyword **`this()`**. This is known as **constructor chaining** and helps **avoid code duplication**.  
 
 ---
 
-### **Key Rules**
+#### **Key Rules**
 
 1. `this()` **must be the first statement** in the constructor.  
 2. Can be used to call **any constructor in the same class** (default, parameterized).  
@@ -804,7 +729,7 @@ In Java, you can call one constructor from another **within the same class** usi
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 class Car {
@@ -839,7 +764,7 @@ public class Main {
 
 ---
 
-### **Summary**
+#### **Summary**
 
 - Use **`this()`** for **constructor chaining within the same class**.  
 - Ensures **code reuse** and **consistent initialization**.  
@@ -847,9 +772,7 @@ public class Main {
 
 This pattern improves **maintainability** in complex classes with multiple constructors.
 
-### Will the compiler create a default constructor if I have a parameterized constructor in the class?
-
-💻 **Default Constructor Behavior with Parameterized Constructor in Java**  
+### Will the compiler create a default constructor if I have a parameterized constructor in the class?Constructor in Java**  
 
 **Rule:**  
 
@@ -858,7 +781,7 @@ This pattern improves **maintainability** in complex classes with multiple const
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 class Car {
@@ -895,7 +818,7 @@ class Car {
 
 ---
 
-### **Summary**
+#### **Summary**
 
 - ✅ Compiler creates default constructor **only if no constructors exist**.  
 - ❌ If **any constructor is defined**, default constructor must be **explicitly declared** if required.  
@@ -903,8 +826,6 @@ class Car {
 This ensures **controlled initialization** and avoids unintended object creation.
 
 ### What is the difference between a constructor and a method in Java?
-
-💻 **Constructor vs Method in Java – Key Differences**  
 
 | Feature                  | **Constructor**                                 | **Method**                                    |
 |---------------------------|------------------------------------------------|-----------------------------------------------|
@@ -919,7 +840,7 @@ This ensures **controlled initialization** and avoids unintended object creation
 
 ---
 
-### **Summary**
+#### **Summary**
 
 - **Constructor:** Special method for **object initialization**, no return type, name = class.  
 - **Method:** Defines **behavior/operations**, has a return type, can be called multiple times.  
@@ -929,14 +850,12 @@ Constructors **set up object state**, methods **act on object state or perform t
 
 ### What is a static keyword? Static variables and methods?
 
-💻 **`static` Keyword in Java – Technical Explanation**  
-
 **Definition:**  
 The `static` keyword in Java is used to **define class-level members** that **belong to the class itself** rather than to any specific object.  
 
 ---
 
-### **Static Variables (Class Variables)**
+#### **Static Variables (Class Variables)**
 
 - Shared by **all instances of a class**.  
 - Stored in **method area**, not in individual object memory.  
@@ -964,7 +883,7 @@ public class Main {
 
 ---
 
-### **Static Methods (Class Methods)**
+#### **Static Methods (Class Methods)**
 
 - Belong to the **class**, can be called **without creating an object**.  
 - Can **access only static variables/methods** directly.  
@@ -989,7 +908,7 @@ public class Main {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Static members → **class-level**, shared across objects.  
 - Useful for **constants, utility methods, counters**.  
@@ -1000,26 +919,22 @@ public class Main {
 - **Static variable:** Shared state among all objects.  
 - **Static method:** Class-level behavior that can operate on static variables without object instances.
 
-### Can we use static methods in a Constructor?
+---
 
-💻 **Using Static Methods in a Constructor – Explanation**  
+### Can we use static methods in a Constructor?
 
 **Rule:**  
 
 - **Yes**, you can call **static methods from a constructor** in Java.  
 - **Reason:** Static methods belong to the **class**, not the object, so they are already available when the constructor executes.  
 
----
-
-### **Key Points**
+#### **Key Points**
 
 1. **Direct call:** You can invoke a static method **directly** inside a constructor.  
 2. **No object needed:** Static methods do not require an object reference.  
 3. **Cannot access instance members** from a static method, but constructors **can access both static and instance members**.  
 
----
-
-### **Example**
+#### **Example**
 
 ```java
 class Car {
@@ -1043,9 +958,7 @@ public class Main {
 }
 ```
 
----
-
-### **Summary**
+#### **Summary**
 
 - ✅ Static methods **can be called** inside constructors.  
 - ✅ Constructors can access **both instance and static members**.  
@@ -1053,9 +966,9 @@ public class Main {
 
 This allows **utility or common operations** to be performed during object initialization without needing object references.
 
-### Can Static methods access instance variables in java?
+---
 
-💻 **Can Static Methods Access Instance Variables in Java?**  
+### Can Static methods access instance variables in java?
 
 **Rule:**  
 
@@ -1070,41 +983,41 @@ This allows **utility or common operations** to be performed during object initi
 
 1. **Using an object reference**:
 
-```java
-class Car {
-    String model;
+    ```java
+    class Car {
+        String model;
 
-    Car(String model) {
-        this.model = model;
+        Car(String model) {
+            this.model = model;
+        }
+
+        static void printModel(Car c) {
+            System.out.println(c.model); // Access via object
+        }
     }
 
-    static void printModel(Car c) {
-        System.out.println(c.model); // Access via object
+    public class Main {
+        public static void main(String[] args) {
+            Car car1 = new Car("Tesla");
+            Car.printModel(car1); // Output: Tesla
+        }
     }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Car car1 = new Car("Tesla");
-        Car.printModel(car1); // Output: Tesla
-    }
-}
-```
+    ```
 
 2. **Cannot do this directly:**  
 
-```java
-class Car {
-    String model;
-    static void display() {
-        System.out.println(model); // ❌ Compile-time error
+    ```java
+    class Car {
+        String model;
+        static void display() {
+            System.out.println(model); // ❌ Compile-time error
+        }
     }
-}
-```
+    ```
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Static method → belongs to class → cannot access **instance members** directly.  
 - Can only access **static variables or static methods** directly.  
@@ -1115,47 +1028,44 @@ Static methods are **class-level**, instance variables are **object-level** → 
 
 ### How do we access static members in java?
 
-💻 **Accessing Static Members in Java – Explanation**  
-
-**Definition:**  
 Static members (variables or methods) belong to the **class**, not individual objects. They can be accessed **without creating an instance** of the class.  
 
 ---
 
-### **Ways to Access Static Members**
+#### **Ways to Access Static Members**
 
 1. **Using Class Name (Recommended)**  
 
-```java
-class Car {
-    static int totalCars = 0;
+    ```java
+    class Car {
+        static int totalCars = 0;
 
-    static void displayTotalCars() {
-        System.out.println("Total Cars: " + totalCars);
+        static void displayTotalCars() {
+            System.out.println("Total Cars: " + totalCars);
+        }
     }
-}
 
-public class Main {
-    public static void main(String[] args) {
-        Car.totalCars = 5;          // Access static variable
-        Car.displayTotalCars();      // Access static method
+    public class Main {
+        public static void main(String[] args) {
+            Car.totalCars = 5;          // Access static variable
+            Car.displayTotalCars();      // Access static method
+        }
     }
-}
-```
+    ```
 
 2. **Using Object Reference (Not Recommended)**  
 
-```java
-Car car1 = new Car();
-car1.totalCars = 10;        // Works, but misleading
-car1.displayTotalCars();    // Works, but still refers to class-level member
-```
+    ```java
+    Car car1 = new Car();
+    car1.totalCars = 10;        // Works, but misleading
+    car1.displayTotalCars();    // Works, but still refers to class-level member
+    ```
 
 > ⚠️ Using objects for static members can confuse readers; always prefer **ClassName.memberName**.
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Static members are **loaded when the class is loaded** → accessible before object creation.  
 - Can be used for **utility methods, constants, counters, and shared resources**.  
@@ -1169,8 +1079,6 @@ car1.displayTotalCars();    // Works, but still refers to class-level member
 
 ### Can we override static methods in java?
 
-💻 **Overriding Static Methods in Java – Explanation**  
-
 **Rule:**  
 
 - **No**, static methods **cannot be overridden** in Java.  
@@ -1180,14 +1088,14 @@ car1.displayTotalCars();    // Works, but still refers to class-level member
 
 ---
 
-### **What Happens Instead**
+#### **What Happens Instead**
 
 - If a subclass defines a static method with the **same signature** as a static method in the superclass, it is called **method hiding**, not overriding.  
 - Compiler binds the method call based on the **reference type**, not the object type.  
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 class Parent {
@@ -1214,7 +1122,7 @@ public class Main {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Static methods → **class-level**, resolved at **compile-time**.  
 - Cannot participate in **runtime polymorphism**.  
@@ -1226,18 +1134,14 @@ public class Main {
 - ✅ They can be **hidden** by a subclass method with the same signature.  
 - Access depends on **reference type**, not object type.
 
-### What are static blocks and static initializers in Java?
-
-💻 **Static Blocks and Static Initializers in Java – Explanation**  
-
-**Definition:**  
+### What are static blocks and static initializers in Java?Explanation**  
 
 - A **static block** (or static initializer) is a block of code inside a class that is **executed when the class is loaded**, **before any object is created** or any static method is called.  
 - Used for **class-level initialization**, such as initializing static variables or performing setup tasks.  
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 1. **Executed only once** when the class is loaded by JVM.  
 2. Useful for **complex initialization** that cannot be done in a single statement.  
@@ -1246,7 +1150,7 @@ public class Main {
 
 ---
 
-### **Syntax & Example**
+#### **Syntax & Example**
 
 ```java
 class Config {
@@ -1274,14 +1178,14 @@ public class Main {
 
 **Output:**
 
-```
+```doc
 Static block executed
 App: MyApplication, Max Users: 100
 ```
 
 ---
 
-### **Key Notes**
+#### **Key Notes**
 
 - Static blocks are executed **before any constructor or static method call**.  
 - Primarily used for **initializing static variables, loading resources, or performing one-time setup**.  
@@ -1292,16 +1196,12 @@ Static blocks → **class-level initialization code executed once at class loadi
 
 ### Explain about static imports in java?
 
-💻 **Static Imports in Java – Technical Explanation**  
-
-**Definition:**  
-
 - **Static import** allows you to **access static members (fields and methods) of a class directly** without prefixing them with the class name.  
 - Introduced in **Java 5** to **improve code readability** and reduce verbosity.  
 
 ---
 
-### **Syntax**
+## **Syntax**
 
 ```java
 import static package.ClassName.staticMember;
@@ -1310,7 +1210,7 @@ import static package.ClassName.*; // Import all static members
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 import static java.lang.Math.PI;
@@ -1333,7 +1233,7 @@ double area = Math.PI * Math.sqrt(radius);
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 1. Static import **does not import instance members**.  
 2. Can be used with **fields, methods, and nested static classes**.  
@@ -1346,9 +1246,7 @@ double area = Math.PI * Math.sqrt(radius);
 - Use for **constants and utility methods** to make code cleaner.  
 - Avoid overuse to maintain **code readability**.
 
-### What is this keyword in Java?
-
-💻 **`this` Keyword in Java – Technical Explanation**  
+#### What is this keyword in Java?
 
 **Definition:**  
 
@@ -1357,66 +1255,66 @@ double area = Math.PI * Math.sqrt(radius);
 
 ---
 
-### **Key Uses of `this`**
+#### **Key Uses of `this`**
 
 1. **Distinguish Instance Variables from Local Variables**
 
-```java
-class Car {
-    String model;
+    ```java
+    class Car {
+        String model;
 
-    Car(String model) {
-        this.model = model; // 'this.model' refers to instance variable
+        Car(String model) {
+            this.model = model; // 'this.model' refers to instance variable
+        }
     }
-}
-```
+    ```
 
 2. **Invoke Another Constructor in the Same Class (Constructor Chaining)**
 
-```java
-class Car {
-    String model;
-    int year;
+    ```java
+    class Car {
+        String model;
+        int year;
 
-    Car() {
-        this("Unknown", 0); // Calls parameterized constructor
-    }
+        Car() {
+            this("Unknown", 0); // Calls parameterized constructor
+        }
 
-    Car(String model, int year) {
-        this.model = model;
-        this.year = year;
+        Car(String model, int year) {
+            this.model = model;
+            this.year = year;
+        }
     }
-}
-```
+    ```
 
 3. **Pass Current Object as a Parameter**
 
-```java
-class Car {
-    void print(Car c) {
-        System.out.println(c.model);
-    }
+    ```java
+    class Car {
+        void print(Car c) {
+            System.out.println(c.model);
+        }
 
-    void show() {
-        print(this); // Passing current object
+        void show() {
+            print(this); // Passing current object
+        }
     }
-}
-```
+    ```
 
 4. **Return Current Object from Method**
 
-```java
-class Car {
-    Car setModel(String model) {
-        this.model = model;
-        return this; // Enables method chaining
+    ```java
+    class Car {
+        Car setModel(String model) {
+            this.model = model;
+            return this; // Enables method chaining
+        }
     }
-}
-```
+    ```
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Cannot be used in **static context** (static methods/blocks).  
 - Helps in **clarity**, **constructor chaining**, and **method chaining**.  
@@ -1427,16 +1325,12 @@ class Car {
 
 ### What is the usage of the super keyword in Java?
 
-💻 **`super` Keyword in Java – Technical Explanation**  
-
-**Definition:**  
-
 - The `super` keyword is a **reference variable in a subclass** that refers to its **immediate parent class**.  
 - It is used to **access parent class members** (variables, methods, constructors) that are hidden or overridden in the subclass.  
 
 ---
 
-### **Key Uses of `super`**
+#### **Key Uses of `super`**
 
 1. **Access Parent Class Instance Variables**
 
@@ -1491,7 +1385,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - `super` can be used to **resolve naming conflicts** between parent and child class members.  
 - `super()` must be the **first statement** in a subclass constructor when calling a parent constructor.  
@@ -1500,9 +1394,7 @@ class Car extends Vehicle {
 🔧 **Summary:**  
 `super` → allows **subclasses to access parent class variables, methods, and constructors**, enabling **inheritance-based member reuse and overriding resolution**.
 
-### Difference between this() and super() in java?
-
-💻 **Difference Between `this()` and `super()` in Java – Technical Comparison**  
+### Difference between this() and super() in java?Technical Comparison**  
 
 | Feature                  | **`this()`**                                        | **`super()`**                                      |
 |---------------------------|----------------------------------------------------|--------------------------------------------------|
@@ -1516,7 +1408,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 class Vehicle {
@@ -1546,7 +1438,7 @@ public class Main {
 
 **Output:**
 
-```
+```doc
 Vehicle: Car
 Car model: Default Model
 Car no-arg constructor
@@ -1562,8 +1454,6 @@ Car no-arg constructor
 
 ### Can we have a method name same as class name in java?
 
-💻 **Method Name Same as Class Name in Java – Explanation**  
-
 **Rule:**  
 
 - **Yes**, in Java you **can have a method with the same name as the class**, but it **will not be a constructor**.  
@@ -1573,7 +1463,7 @@ Car no-arg constructor
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 class Car {
@@ -1596,14 +1486,14 @@ public class Main {
 
 **Output:**
 
-```
+```doc
 This is the constructor
 This is a method named Car
 ```
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 1. **Constructors** → no return type, automatically called on object creation.  
 2. **Methods with same name** → need a return type, called explicitly using object reference.  
@@ -1614,22 +1504,22 @@ This is a method named Car
 - ✅ Allowed, but **method ≠ constructor**  
 - Use a **return type** for the method to differentiate it from the constructor.
 
-### What are the main features of Java (OOP principles)?
+## OOP Principles
 
-💻 **Main Features of Java – Core OOP Principles**  
+### What are the main features of Java (OOP principles)?
 
 Java is an **object-oriented programming (OOP) language**, and its main features revolve around **OOP concepts** along with platform-independent and secure design.  
 
 ---
 
-### **1. Object-Oriented**
+#### **1. Object-Oriented**
 
 - **Everything is treated as objects** with state (fields) and behavior (methods).  
 - Supports **real-world modeling** and **modular programming**.  
 
 ---
 
-### **2. Encapsulation**
+#### **2. Encapsulation**
 
 - **Wrapping data (variables) and code (methods) together** in a class.  
 - Uses **access modifiers (`private`, `protected`, `public`)** to restrict access.  
@@ -1647,7 +1537,7 @@ class Car {
 
 ---
 
-### **3. Inheritance**
+#### **3. Inheritance**
 
 - Allows a **class to acquire properties and methods of another class**.  
 - Promotes **code reuse** and **hierarchical relationships**.  
@@ -1674,7 +1564,7 @@ class Car extends Vehicle { void start() {} } // Overriding
 
 ---
 
-### **5. Abstraction**
+#### **5. Abstraction**
 
 - **Hiding implementation details** and showing only essential features.  
 - Achieved using **abstract classes** and **interfaces**.  
@@ -1686,11 +1576,11 @@ interface Drivable { void drive(); }
 
 ---
 
-### **6. Platform Independence**
+#### **6. Platform Independence**
 
 - Java code → **compiled to bytecode** → runs on any system with JVM.  
 
-### **7. Additional Features**
+#### **7. Additional Features**
 
 - **Security:** Bytecode verification and no direct memory access.  
 - **Multithreading:** Built-in support for concurrent programming.  
@@ -1704,16 +1594,12 @@ Java’s OOP principles enable **modularity, code reuse, flexibility, and mainta
 
 ### What is inheritance? Types of inheritance in Java?
 
-💻 **Inheritance in Java – Technical Explanation**  
-
-**Definition:**  
-
 - **Inheritance** is an OOP concept where a **class acquires the properties (fields) and behaviors (methods) of another class**.  
 - Promotes **code reuse, modularity, and hierarchical relationships**.  
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - The class **which inherits** is called the **subclass/child class**.  
 - The class **being inherited from** is called the **superclass/parent class**.  
@@ -1732,7 +1618,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Types of Inheritance in Java**
+#### **Types of Inheritance in Java**
 
 1. **Single Inheritance**  
    - One subclass inherits from **one superclass**.  
@@ -1771,7 +1657,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Supports **code reuse and polymorphism**.  
 - Enables **method overriding** in subclasses.  
@@ -1782,17 +1668,13 @@ Inheritance → **establishes "is-a" relationships**, types: **Single, Multileve
 
 ### What is 'IS-A' relationship?
 
-💻 **'IS-A' Relationship in Java – Technical Explanation**  
-
-**Definition:**  
-
 - The **IS-A relationship** represents an **inheritance relationship** between classes in Java.  
 - It signifies that **one class is a type of another class**.  
 - Implemented using **`extends`** (class inheritance) or **`implements`** (interface implementation).  
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 1. Establishes **hierarchical relationships** between classes.  
 2. Enables **polymorphism** – a subclass object can be treated as a superclass type.  
@@ -1800,7 +1682,7 @@ Inheritance → **establishes "is-a" relationships**, types: **Single, Multileve
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 // Vehicle → Parent class
@@ -1829,7 +1711,7 @@ public class Main {
 
 ---
 
-### **Key Notes**
+#### **Key Notes**
 
 - **IS-A relationship** → Inheritance-based (`extends` / `implements`)  
 - Opposite concept: **HAS-A relationship** (composition/aggregation)  
@@ -1839,17 +1721,13 @@ public class Main {
 
 ### What is 'HAS-A' relationship?
 
-💻 **'HAS-A' Relationship in Java – Technical Explanation**  
-
-**Definition:**  
-
 - The **HAS-A relationship** represents **composition or aggregation** in Java, where a class **contains references to other classes** as its members.  
 - Indicates that an object **“has” another object** as a part of its state.  
 - Used to model **part-of relationships** rather than type hierarchies.  
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 1. **Composition:** Strong ownership; the contained object **cannot exist independently**.  
 2. **Aggregation:** Weak ownership; the contained object **can exist independently**.  
@@ -1857,7 +1735,7 @@ public class Main {
 
 ---
 
-### **Example – Composition**
+#### **Example – Composition**
 
 ```java
 class Engine {
@@ -1894,7 +1772,7 @@ Car is running
 
 ---
 
-### **Key Notes**
+#### **Key Notes**
 
 - **HAS-A relationship** → uses **instance variables** to include other classes.  
 - Does **not involve inheritance**; focuses on **object references**.  
@@ -1905,16 +1783,12 @@ Car is running
 
 ### Why is the main method static?
 
-💻 **Why the `main` Method is `static` in Java – Technical Explanation**  
-
-**Definition:**  
-
 - The `main` method is declared as **`public static void main(String[] args)`**.  
 - The `static` keyword allows the **JVM to invoke the method without creating an instance of the class**.  
 
 ---
 
-### **Key Reasons**
+#### **Key Reasons**
 
 1. **Object Not Required for Entry Point**  
    - When a Java program starts, **no objects exist yet**.  
@@ -1936,7 +1810,7 @@ class Demo {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Cannot use instance variables/methods directly inside `main` → need **object references**.  
 
@@ -1958,8 +1832,6 @@ The `main` method is **static** so that the JVM can **call it without creating a
 
 ### Why is the main method static in Java?
 
-💻 **Reason the `main` Method is `static` in Java**  
-
 **Definition:**  
 
 - The `main` method is declared as **`public static void main(String[] args)`**.  
@@ -1967,7 +1839,7 @@ The `main` method is **static** so that the JVM can **call it without creating a
 
 ---
 
-### **Key Reasons**
+#### **Key Reasons**
 
 1. **No Object Needed at Startup**  
    - When the program starts, **no objects exist**.  
@@ -1981,7 +1853,7 @@ The `main` method is **static** so that the JVM can **call it without creating a
 
 ---
 
-### **Important Note**
+#### **Important Note**
 
 - **Instance variables or methods cannot be accessed directly** in `main` without creating an object.  
 
@@ -2002,8 +1874,6 @@ The `main` method is **static** so the JVM can **call it directly at program sta
 
 ### What is polymorphism? Give examples
 
-💻 **Polymorphism in Java – Technical Explanation**  
-
 **Definition:**  
 
 - **Polymorphism** is an OOP concept meaning **“one interface, multiple forms”**.  
@@ -2011,7 +1881,7 @@ The `main` method is **static** so the JVM can **call it directly at program sta
 
 ---
 
-### **Types of Polymorphism in Java**
+#### **Types of Polymorphism in Java**
 
 1. **Compile-Time Polymorphism (Method Overloading)**
    - Same method name, **different parameter lists** (number or type).  
@@ -2058,7 +1928,7 @@ public class Main {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - **Compile-time polymorphism** → method overloading (early binding).  
 - **Runtime polymorphism** → method overriding (late binding).  
@@ -2071,9 +1941,7 @@ Polymorphism → **“many forms of a single entity”**.
 - Runtime → **overriding**  
 💡 Provides **dynamic behavior and extensibility** in Java applications.
 
-### What is method overloading vs method overriding?
-
-💻 **Method Overloading vs Method Overriding in Java – Technical Comparison**  
+### What is method overloading vs method overriding? 
 
 | Feature                        | **Method Overloading**                          | **Method Overriding**                           |
 |--------------------------------|------------------------------------------------|------------------------------------------------|
@@ -2089,7 +1957,7 @@ Polymorphism → **“many forms of a single entity”**.
 
 ---
 
-### **Examples**
+#### **Examples**
 
 **Overloading**
 
@@ -2123,8 +1991,6 @@ class Car extends Vehicle {
 
 ### Difference between overriding and overloading?
 
-💻 **Difference Between Method Overriding and Method Overloading in Java**  
-
 | Feature                        | **Method Overloading**                          | **Method Overriding**                           |
 |--------------------------------|------------------------------------------------|------------------------------------------------|
 | **Definition**                 | Same method name, **different parameter list** in the **same class**. | Subclass provides **specific implementation** of a method in the **superclass**. |
@@ -2139,24 +2005,20 @@ class Car extends Vehicle {
 
 ---
 
-### **Summary**
+#### **Summary**
 
 - **Overloading:** Same name, different parameters → **compile-time polymorphism**.  
 - **Overriding:** Same name & parameters, different implementation → **runtime polymorphism**.  
 - Both are essential for **flexible and maintainable OOP design** in Java.
 
-### What is a covariant return?
-
-💻 **Covariant Return Type in Java – Technical Explanation**  
-
-**Definition:**  
+### What is a covariant return?  
 
 - A **covariant return type** allows an **overridden method in a subclass** to return a **type that is a subclass of the return type declared in the parent class**.  
 - Introduced in **Java 5**, it improves **type safety** and **avoids explicit casting**.  
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 1. Applicable only in **method overriding** (runtime polymorphism).  
 2. Return type in the subclass must be a **subclass of the parent method’s return type**.  
@@ -2164,7 +2026,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 class Vehicle {}
@@ -2195,7 +2057,7 @@ public class Main {
 
 ---
 
-### **Key Notes**
+#### **Key Notes**
 
 - Enhances **type safety** in polymorphic code.  
 - Allows **subclass-specific return objects** while adhering to the **Liskov Substitution Principle**.  
@@ -2204,15 +2066,13 @@ public class Main {
 🔧 **Summary:**  
 Covariant return → **overridden method returns a subtype of the parent method’s return type**, enabling **flexible and type-safe overriding** in Java.
 
-### What is encapsulation and abstraction?
-
-💻 **Encapsulation vs Abstraction in Java – Technical Explanation**  
+### What is encapsulation and abstraction?  
 
 Both **encapsulation** and **abstraction** are core OOP principles but serve **different purposes** in Java.  
 
 ---
 
-### **1. Encapsulation**
+#### **1. Encapsulation**
 
 **Definition:**  
 
@@ -2250,7 +2110,7 @@ public class Main {
 
 ---
 
-### **2. Abstraction**
+#### **2. Abstraction**
 
 **Definition:**  
 
@@ -2279,7 +2139,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Key Differences**
+#### **Key Differences**
 
 | Feature             | **Encapsulation**                         | **Abstraction**                          |
 |--------------------|-------------------------------------------|-----------------------------------------|
@@ -2299,14 +2159,12 @@ class Car extends Vehicle {
 
 ### How to do encapsulation in Java?
 
-💻 **Encapsulation in Java – How to Implement**  
-
 **Definition:**  
 Encapsulation is the practice of **wrapping fields (variables) and methods together in a class** and **restricting direct access to the fields**. This ensures **data hiding** and controlled access.  
 
 ---
 
-### **Steps to Implement Encapsulation**
+#### **Steps to Implement Encapsulation**
 
 1. **Declare class variables as `private`**  
    - Prevents direct access from outside the class.  
@@ -2319,7 +2177,7 @@ Encapsulation is the practice of **wrapping fields (variables) and methods toget
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 class Employee {
@@ -2365,7 +2223,7 @@ John: $5000
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Use **private fields** to hide data.  
 - Use **public getters/setters** to control access and validation.  
@@ -2377,16 +2235,12 @@ Encapsulation = **private fields + public getter/setter methods**, ensures **dat
 
 ### What is data encapsulation?
 
-💻 **Data Encapsulation in Java – Technical Explanation**  
-
-**Definition:**  
-
 - **Data encapsulation** is the process of **wrapping data (variables) and the methods that operate on them into a single unit (class)** while **restricting direct access to the internal data**.  
 - Achieved using **access modifiers**, typically `private` for fields and `public` for getter/setter methods.  
 
 ---
 
-### **Purpose of Data Encapsulation**
+#### **Purpose of Data Encapsulation**
 
 1. **Data Hiding** – Protects internal object state from unauthorized access.  
 2. **Controlled Access** – Allows validation or logic in getter/setter methods.  
@@ -2395,7 +2249,7 @@ Encapsulation = **private fields + public getter/setter methods**, ensures **dat
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 class BankAccount {
@@ -2437,7 +2291,7 @@ Balance: $500.0
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - **Private fields** → hide data.  
 - **Public methods** → control access and enforce rules.  
@@ -2448,13 +2302,11 @@ Data encapsulation → **hide object data and expose controlled access via metho
 
 ### When to use Interface vs Abstract Class?
 
-💻 **Interface vs Abstract Class in Java – When to Use**  
-
 Both **interfaces** and **abstract classes** provide **abstraction**, but they serve different purposes. Choosing between them depends on the design requirement.  
 
 ---
 
-### **Key Guidelines for Usage**
+#### **Key Guidelines for Usage**
 
 | Feature / Scenario               | **Interface**                                  | **Abstract Class**                               |
 |---------------------------------|-----------------------------------------------|-------------------------------------------------|
@@ -2468,7 +2320,7 @@ Both **interfaces** and **abstract classes** provide **abstraction**, but they s
 
 ---
 
-### **Example**
+#### **Example**
 
 **Interface Example**
 
@@ -2508,7 +2360,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Key Decision Points**
+#### **Key Decision Points**
 
 1. **Use Interface**  
    - When you need **multiple inheritance** of behavior.  
@@ -2525,10 +2377,6 @@ class Car extends Vehicle {
 
 ### What is an abstract class?
 
-💻 **Abstract Class in Java – Technical Explanation**  
-
-**Definition:**  
-
 - An **abstract class** is a class that **cannot be instantiated directly** and is meant to be **subclassed**.  
 - It can contain:  
   - **Abstract methods** (methods without implementation)  
@@ -2537,7 +2385,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Key Features**
+#### **Key Features**
 
 1. Declared using the keyword **`abstract`**.  
 2. Can have **abstract and non-abstract methods**.  
@@ -2547,7 +2395,7 @@ class Car extends Vehicle {
 
 ---
 
-### **Syntax**
+#### **Syntax**
 
 ```java
 abstract class Vehicle {
@@ -2582,7 +2430,7 @@ public class Main {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Provides **partial abstraction**: can mix implemented and unimplemented methods.  
 - Supports **code reuse** via concrete methods and fields.  
@@ -2594,16 +2442,12 @@ Abstract class → **blueprint with partial implementation**, defines **common b
 
 ### What are abstract methods?
 
-💻 **Abstract Methods in Java – Technical Explanation**  
-
-**Definition:**  
-
 - An **abstract method** is a method **without a body** (no implementation) that is **declared in an abstract class or interface**.  
 - It specifies **what a subclass must implement**, enforcing a **contract**.  
 
 ---
 
-### **Key Features**
+#### **Key Features**
 
 1. Declared using the **`abstract`** keyword.  
 2. **No method body** – ends with a semicolon (`;`).  
@@ -2613,7 +2457,7 @@ Abstract class → **blueprint with partial implementation**, defines **common b
 
 ---
 
-### **Syntax**
+#### **Syntax**
 
 ```java
 abstract class Vehicle {
@@ -2622,7 +2466,7 @@ abstract class Vehicle {
 }
 ```
 
-### **Example**
+#### **Example**
 
 ```java
 abstract class Vehicle {
@@ -2646,7 +2490,7 @@ public class Main {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Abstract methods **define a contract**; subclasses provide the **specific behavior**.  
 - Helps achieve **abstraction** in OOP.  
@@ -2655,9 +2499,7 @@ public class Main {
 🔧 **Summary:**  
 Abstract method → **method signature without implementation**, forces **subclasses to define concrete behavior**, enabling **flexible and maintainable OOP design**.
 
-### Can we create a constructor in an abstract class?
-
-💻 **Constructors in Abstract Classes – Technical Explanation**  
+### Can we create a constructor in an abstract class?  
 
 **Rule:**  
 
@@ -2666,7 +2508,7 @@ Abstract method → **method signature without implementation**, forces **subcla
 
 ---
 
-### **Purpose of Constructor in Abstract Class**
+#### **Purpose of Constructor in Abstract Class**
 
 1. **Initialize fields** of the abstract class.  
 2. **Perform setup tasks** when a subclass object is created.  
@@ -2674,7 +2516,7 @@ Abstract method → **method signature without implementation**, forces **subcla
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 abstract class Vehicle {
@@ -2717,7 +2559,7 @@ Tesla started
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Abstract class constructor is **called when a subclass object is created**.  
 - Useful to **initialize fields shared across all subclasses**.  
@@ -2730,17 +2572,13 @@ Tesla started
 
 ### What is an interface in Java?
 
-💻 **Interface in Java – Technical Explanation**  
-
-**Definition:**  
-
 - An **interface** is a **reference type in Java** that defines a **contract of methods** without specifying their implementation.  
 - Classes that **implement the interface** must provide concrete implementations for all its abstract methods.  
 - Introduced in Java to achieve **abstraction and multiple inheritance**.  
 
 ---
 
-### **Key Features**
+#### **Key Features**
 
 1. Declared using the **`interface`** keyword.  
 2. Can contain:
@@ -2754,7 +2592,7 @@ Tesla started
 
 ---
 
-### **Syntax**
+#### **Syntax**
 
 ```java
 interface Drivable {
@@ -2771,7 +2609,7 @@ interface Drivable {
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 class Car implements Drivable {
@@ -2793,7 +2631,7 @@ public class Main {
 
 ---
 
-### **Key Points**
+#### **Key Points**
 
 - Interfaces **define a contract** → classes must implement the methods.  
 - Enable **multiple inheritance** in Java, which is **not possible with classes**.  
@@ -2804,16 +2642,12 @@ Interface → **abstract behavior specification**, supports **multiple inheritan
 
 ### What is the purpose of an interface?
 
-💻 **Purpose of an Interface in Java – Technical Explanation**  
-
-**Definition:**  
-
 - An **interface** defines a **contract or blueprint** of methods that a class must implement.  
 - It specifies **“what an object can do”** without detailing **how it does it**.  
 
 ---
 
-### **Key Purposes**
+#### **Key Purposes**
 
 1. **Achieve Abstraction**  
    - Hides implementation details and exposes only essential behavior.  
@@ -2836,7 +2670,7 @@ Interface → **abstract behavior specification**, supports **multiple inheritan
 
 ---
 
-### **Example**
+#### **Example**
 
 ```java
 interface Drivable {
@@ -2874,8 +2708,6 @@ public class Main {
 The **purpose of an interface** → **define a contract, achieve abstraction, enable multiple inheritance, support polymorphism, and promote loose coupling** in Java applications.
 
 ### When to use Interface vs Abstract Class?
-
-💻 **When to Use Interface vs Abstract Class in Java – Technical Guidelines**  
 
 Both interfaces and abstract classes provide **abstraction**, but they are used in **different scenarios** depending on design requirements.  
 
@@ -2949,9 +2781,7 @@ class Car extends Vehicle {
 - **Interface:** Use for **capabilities/behavior contracts**, multiple inheritance, unrelated classes.  
 - **Abstract Class:** Use for **shared state/code**, partial implementation, related classes with an “is-a” relationship.
 
-### What is the difference between an abstract class and an interface?
-
-💻 **Difference Between Abstract Class and Interface in Java – Technical Comparison**  
+### What is the difference between an abstract class and an interface?Technical Comparison**  
 
 | Feature                       | **Abstract Class**                                | **Interface**                                 |
 |-------------------------------|--------------------------------------------------|-----------------------------------------------|
@@ -2981,8 +2811,6 @@ class Car extends Vehicle {
 - **Main Difference:** Abstract classes can store **state** and have **constructors**; interfaces cannot.
 
 ### What is the purpose of the default keyword in interfaces?
-
-💻 **Purpose of the `default` Keyword in Java Interfaces**  
 
 **Definition:**  
 
@@ -3049,8 +2877,6 @@ The **`default` keyword** in interfaces → **provides concrete method implement
 
 ### Can we define static methods inside an interface?
 
-💻 **Static Methods in Java Interfaces – Explanation**  
-
 **Definition:**  
 
 - Yes, **interfaces can have static methods** since **Java 8**.  
@@ -3112,8 +2938,6 @@ All vehicles implement Drivable interface
 - ✅ Useful for **utility/helper methods**.
 
 ### What is a Marker Interface? Why use it?
-
-💻 **Marker Interface in Java – Explanation**  
 
 **Definition:**  
 
@@ -3185,8 +3009,6 @@ public class Main {
 **Marker Interface** → empty interface used to **tag classes for special behavior**, e.g., `Serializable`, `Cloneable`. It **enables type-checking and JVM-specific processing** without adding methods.
 
 ### What is a package in Java?
-
-💻 **Package in Java – Technical Explanation**  
 
 **Definition:**  
 
@@ -3260,8 +3082,6 @@ public class Main {
 A **package** → a **namespace for organizing classes and interfaces**, helping **modularity, reusability, access control, and avoiding name conflicts** in Java projects.
 
 ### What are access modifiers in Java (private, protected, public, default)?
-
-💻 **Access Modifiers in Java – Technical Explanation**  
 
 **Definition:**  
 
@@ -3344,9 +3164,7 @@ public class Example {
 🔧 **Summary:**  
 Access modifiers → **control visibility of classes, fields, and methods**, enabling **encapsulation, inheritance control, and modular design** in Java.
 
-### What is the difference between access specifiers and access modifiers?
-
-💻 **Difference Between Access Specifiers and Access Modifiers in Java**  
+### What is the difference between access specifiers and access modifiers?in Java**  
 
 In Java, the terms **access specifier** and **access modifier** are often used interchangeably, but there is a subtle distinction in terminology and context.  
 
@@ -3402,8 +3220,6 @@ Access Specifiers = levels of accessibility
 
 ### What all access modifiers are allowed for a top-level class?
 
-💻 **Access Modifiers Allowed for a Top-Level Class in Java**  
-
 ### **Key Points**
 
 1. A **top-level class** is a class **not nested** inside another class.  
@@ -3455,8 +3271,6 @@ class DefaultClass {
 - **`private`** and **`protected`** are only valid for **nested (inner) classes**, not top-level classes.
 
 ### Explain the importance of the import keyword?
-
-💻 **Importance of the `import` Keyword in Java**  
 
 **Definition:**  
 
@@ -3529,9 +3343,7 @@ class DefaultClass {
 🔧 **Summary:**  
 `import` → **simplifies access to external classes**, supports **modular, readable, and maintainable Java code**, and allows usage of **Java API or user-defined packages** without fully qualified names.
 
-### Can we have more than one package statement in a source file?
-
-💻 **Can We Have More Than One Package Statement in a Java Source File?**  
+### Can we have more than one package statement in a source file?Source File?**  
 
 **Answer:**  
 
@@ -3586,9 +3398,7 @@ package packageTwo; // ❌ Compilation error
 🔧 **Summary:**  
 A Java source file **can have only one package statement** at the top; multiple packages require **separate files**, ensuring clear **namespace management**.
 
-### Can we define a package statement after an import statement?
-
-💻 **Can a `package` Statement Appear After an `import` Statement in Java?**  
+### Can we define a package statement after an import statement?Statement in Java?**  
 
 **Answer:**  
 
@@ -3651,8 +3461,6 @@ package mypackage;    // ❌ Compilation error
 - Maintaining this order ensures **proper namespace resolution** and **compilation**.
 
 ### Explain naming conventions for packages
-
-💻 **Naming Conventions for Packages in Java**  
 
 **Definition:**  
 
@@ -3720,8 +3528,6 @@ package com.example.app.controllers; // sub-package for controllers
 - This ensures **clarity, maintainability, and avoids naming conflicts** in large Java projects.
 
 ### What do you mean by the final keyword? (final variable, method, class)
-
-💻 **The `final` Keyword in Java – Explanation**  
 
 **Definition:**  
 
@@ -3799,9 +3605,7 @@ The `final` keyword → **prevents modification**:
 
 It’s widely used for **immutability, security, and consistent behavior** in Java.
 
-### What is the difference between static and final keywords?
-
-💻 **Difference Between `static` and `final` Keywords in Java**  
+### What is the difference between static and final keywords?Java**  
 
 | Feature                  | **static**                                      | **final**                                   |
 |--------------------------|------------------------------------------------|--------------------------------------------|
@@ -3846,8 +3650,6 @@ class Example {
 - Together, `static final` → **constant values**.
 
 ### What is the transient keyword in Java?
-
-💻 **The `transient` Keyword in Java – Explanation**  
 
 **Definition:**  
 
@@ -3930,8 +3732,6 @@ public class Main {
 
 ### What is the volatile keyword?
 
-💻 **The `volatile` Keyword in Java – Explanation**  
-
 **Definition:**  
 
 - The `volatile` keyword in Java is used to indicate that a **variable’s value will be modified by multiple threads**.  
@@ -4005,8 +3805,6 @@ You may be referring to **`strictfp`**, which is an actual Java keyword. Here's 
 
 ---
 
-💻 **The `strictfp` Keyword in Java**
-
 **Definition:**  
 
 - `strictfp` stands for **“strict floating-point”**.  
@@ -4058,8 +3856,6 @@ strictfp class Calculator {
 If you want, I can also make a **quick table comparing all Java keywords like `final`, `static`, `volatile`, `transient`, `strictfp`** for reference. Do you want me to do that?
 
 ### yes, sure
-
-💻 **Java Keywords Overview – Quick Reference Table**  
 
 | Keyword      | Applies To                | Purpose / Description                                                                 | Example |
 |-------------|---------------------------|-------------------------------------------------------------------------------------|---------|

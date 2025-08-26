@@ -1354,8 +1354,6 @@ class Car extends Vehicle {
 | **Example**              | `this("value")`                                    | `super("value")`                                 |
 | **Access**               | Only accesses constructors in **same class**      | Only accesses constructors in **parent class**  |
 
----
-
 #### **Example**
 
 ```java
@@ -1392,13 +1390,13 @@ Car model: Default Model
 Car no-arg constructor
 ```
 
----
-
 🔧 **Summary:**  
 
 - `this()` → **same class constructor chaining**  
 - `super()` → **parent class constructor chaining**  
 - Both must be **first statement** in a constructor and cannot coexist in the same constructor simultaneously.
+
+---
 
 ### Can we have a method name same as class name in java?
 
@@ -1408,8 +1406,6 @@ Car no-arg constructor
 - **Difference from Constructor:**  
   - A constructor **has no return type**.  
   - A method **must have a return type** (even `void`).  
-
----
 
 #### **Example**
 
@@ -1439,8 +1435,6 @@ This is the constructor
 This is a method named Car
 ```
 
----
-
 #### **Key Points**
 
 1. **Constructors** → no return type, automatically called on object creation.  
@@ -1452,20 +1446,18 @@ This is a method named Car
 - ✅ Allowed, but **method ≠ constructor**  
 - Use a **return type** for the method to differentiate it from the constructor.
 
+---
+
 ## OOP Principles
 
 ### What are the main features of Java (OOP principles)?
 
 Java is an **object-oriented programming (OOP) language**, and its main features revolve around **OOP concepts** along with platform-independent and secure design.  
 
----
-
 #### **1. Object-Oriented**
 
 - **Everything is treated as objects** with state (fields) and behavior (methods).  
 - Supports **real-world modeling** and **modular programming**.  
-
----
 
 #### **2. Encapsulation**
 
@@ -1483,8 +1475,6 @@ class Car {
 }
 ```
 
----
-
 #### **3. Inheritance**
 
 - Allows a **class to acquire properties and methods of another class**.  
@@ -1495,8 +1485,6 @@ class Car {
 class Vehicle { void start() {} }
 class Car extends Vehicle { void drive() {} }
 ```
-
----
 
 ### **4. Polymorphism**
 
@@ -1510,8 +1498,6 @@ class Vehicle { void start() {} }
 class Car extends Vehicle { void start() {} } // Overriding
 ```
 
----
-
 #### **5. Abstraction**
 
 - **Hiding implementation details** and showing only essential features.  
@@ -1521,8 +1507,6 @@ class Car extends Vehicle { void start() {} } // Overriding
 abstract class Vehicle { abstract void start(); }
 interface Drivable { void drive(); }
 ```
-
----
 
 #### **6. Platform Independence**
 
@@ -1534,18 +1518,16 @@ interface Drivable { void drive(); }
 - **Multithreading:** Built-in support for concurrent programming.  
 - **Automatic Memory Management:** Garbage collection.  
 
----
-
 🔧 **Summary:**  
 Java’s OOP principles enable **modularity, code reuse, flexibility, and maintainability**:  
 **Object-Oriented → Encapsulation → Inheritance → Polymorphism → Abstraction**, plus **platform independence and security**.
+
+---
 
 ### What is inheritance? Types of inheritance in Java?
 
 - **Inheritance** is an OOP concept where a **class acquires the properties (fields) and behaviors (methods) of another class**.  
 - Promotes **code reuse, modularity, and hierarchical relationships**.  
-
----
 
 #### **Key Points**
 
@@ -1563,8 +1545,6 @@ class Car extends Vehicle {
     void drive() { System.out.println("Car is driving"); }
 }
 ```
-
----
 
 #### **Types of Inheritance in Java**
 
@@ -1603,8 +1583,6 @@ class Car extends Vehicle {
    class Tesla implements Drivable, Electric {}
    ```
 
----
-
 #### **Key Points**
 
 - Supports **code reuse and polymorphism**.  
@@ -1614,21 +1592,19 @@ class Car extends Vehicle {
 🔧 **Summary:**  
 Inheritance → **establishes "is-a" relationships**, types: **Single, Multilevel, Hierarchical, Multiple (via interfaces)**, enabling **modular, maintainable, and reusable code**.
 
+---
+
 ### What is 'IS-A' relationship?
 
 - The **IS-A relationship** represents an **inheritance relationship** between classes in Java.  
 - It signifies that **one class is a type of another class**.  
 - Implemented using **`extends`** (class inheritance) or **`implements`** (interface implementation).  
 
----
-
 #### **Key Points**
 
 1. Establishes **hierarchical relationships** between classes.  
 2. Enables **polymorphism** – a subclass object can be treated as a superclass type.  
 3. Promotes **code reuse** and **logical modeling**.  
-
----
 
 #### **Example**
 
@@ -1657,8 +1633,6 @@ public class Main {
 - `Car` **IS-A** `Vehicle` because it inherits properties and behavior of `Vehicle`.  
 - You can assign a `Car` object to a `Vehicle` reference – **polymorphic behavior**.  
 
----
-
 #### **Key Notes**
 
 - **IS-A relationship** → Inheritance-based (`extends` / `implements`)  
@@ -1667,21 +1641,19 @@ public class Main {
 🔧 **Summary:**  
 `IS-A` → **"subclass is a type of superclass"**, enables **inheritance, polymorphism, and code reuse** in Java OOP design.
 
+---
+
 ### What is 'HAS-A' relationship?
 
 - The **HAS-A relationship** represents **composition or aggregation** in Java, where a class **contains references to other classes** as its members.  
 - Indicates that an object **“has” another object** as a part of its state.  
 - Used to model **part-of relationships** rather than type hierarchies.  
 
----
-
 #### **Key Points**
 
 1. **Composition:** Strong ownership; the contained object **cannot exist independently**.  
 2. **Aggregation:** Weak ownership; the contained object **can exist independently**.  
 3. Supports **code reuse without inheritance**.  
-
----
 
 #### **Example – Composition**
 
@@ -1718,8 +1690,6 @@ Engine started
 Car is running
 ```
 
----
-
 #### **Key Notes**
 
 - **HAS-A relationship** → uses **instance variables** to include other classes.  
@@ -1729,12 +1699,12 @@ Car is running
 🔧 **Summary:**  
 `HAS-A` → **"class contains another class"**, models **composition/aggregation**, promotes **flexible design and code reuse** without inheritance.
 
+---
+
 ### Why is the main method static?
 
 - The `main` method is declared as **`public static void main(String[] args)`**.  
 - The `static` keyword allows the **JVM to invoke the method without creating an instance of the class**.  
-
----
 
 #### **Key Reasons**
 
@@ -1756,8 +1726,6 @@ class Demo {
 3. **Single Entry Point**  
    - Static ensures there is a **single accessible entry point** for the JVM to start execution.  
 
----
-
 #### **Key Points**
 
 - Cannot use instance variables/methods directly inside `main` → need **object references**.  
@@ -1774,32 +1742,6 @@ class Demo {
 ```
 
 - `static` ensures **predictable program startup**.  
-
-🔧 **Summary:**  
-The `main` method is **static** so that the JVM can **call it without creating an object**, providing a **well-defined entry point** for program execution.
-
-### Why is the main method static in Java?
-
-**Definition:**  
-
-- The `main` method is declared as **`public static void main(String[] args)`**.  
-- `static` allows the **JVM to invoke it without creating an instance of the class**.  
-
----
-
-#### **Key Reasons**
-
-1. **No Object Needed at Startup**  
-   - When the program starts, **no objects exist**.  
-   - JVM calls `main` using the **class name**, so it must be `static`.  
-
-2. **Single Entry Point**  
-   - Ensures a **single, consistent entry point** for program execution.  
-
-3. **Memory Efficiency**  
-   - Being static, the main method is loaded in the **method area**, not the heap.  
-
----
 
 #### **Important Note**
 
@@ -1818,16 +1760,14 @@ class Demo {
 ```
 
 🔧 **Summary:**  
-The `main` method is **static** so the JVM can **call it directly at program startup**, ensuring a **consistent, object-free entry point**.
+The `main` method is **static** so that the JVM can **call it without creating an object**, providing a **well-defined entry point** for program execution.
+
+---
 
 ### What is polymorphism? Give examples
 
-**Definition:**  
-
 - **Polymorphism** is an OOP concept meaning **“one interface, multiple forms”**.  
 - It allows objects to **behave differently based on their type or context**, enabling **flexible and reusable code**.  
-
----
 
 #### **Types of Polymorphism in Java**
 
@@ -1874,8 +1814,6 @@ public class Main {
 }
 ```
 
----
-
 #### **Key Points**
 
 - **Compile-time polymorphism** → method overloading (early binding).  
@@ -1888,6 +1826,8 @@ Polymorphism → **“many forms of a single entity”**.
 - Compile-time → **overloading**  
 - Runtime → **overriding**  
 💡 Provides **dynamic behavior and extensibility** in Java applications.
+
+---
 
 ### What is method overloading vs method overriding?
 
@@ -1902,8 +1842,6 @@ Polymorphism → **“many forms of a single entity”**.
 | **Static Methods**               | Can be overloaded.                             | Cannot be overridden; can be hidden (static method in subclass). |
 | **Final Methods**                | Can be overloaded.                             | Cannot be overridden.                         |
 | **Example**                      | `int add(int a, int b)` vs `double add(double a, double b)` | `Vehicle.start()` overridden by `Car.start()` |
-
----
 
 #### **Examples**
 
@@ -1929,50 +1867,24 @@ class Car extends Vehicle {
 }
 ```
 
----
-
 🔧 **Summary:**  
 
-- **Overloading** → same name, different parameters, compile-time polymorphism.  
-- **Overriding** → same name & parameters, different implementation in subclass, runtime polymorphism.  
+- **Overloading:** Same name, different parameters → **compile-time polymorphism**.  
+- **Overriding:** Same name & parameters, different implementation → **runtime polymorphism**.
 - Both enhance **flexibility, readability, and maintainability** in Java OOP design.
 
-### Difference between overriding and overloading?
-
-| Feature                        | **Method Overloading**                          | **Method Overriding**                           |
-|--------------------------------|------------------------------------------------|------------------------------------------------|
-| **Definition**                 | Same method name, **different parameter list** in the **same class**. | Subclass provides **specific implementation** of a method in the **superclass**. |
-| **Inheritance**                 | Not mandatory – can occur in the **same class**. | Mandatory – requires **inheritance**.       |
-| **Parameters**                  | Must be **different** (number, type, or order). | Must be **same** as the superclass method.  |
-| **Return Type**                  | Can be same or different (if parameters differ). | Must be same or **covariant** with superclass method. |
-| **Access Modifier**              | Can be any.                                    | Cannot be **more restrictive** than superclass method. |
-| **Polymorphism Type**            | **Compile-time** (early binding).            | **Runtime** (late binding).                  |
-| **Static Methods**               | Can be overloaded.                             | Cannot be overridden; can be hidden.         |
-| **Final Methods**                | Can be overloaded.                             | Cannot be overridden.                         |
-| **Example**                      | `int add(int a, int b)` vs `double add(double a, double b)` | `Vehicle.start()` overridden by `Car.start()` |
-
 ---
-
-#### **Summary**
-
-- **Overloading:** Same name, different parameters → **compile-time polymorphism**.  
-- **Overriding:** Same name & parameters, different implementation → **runtime polymorphism**.  
-- Both are essential for **flexible and maintainable OOP design** in Java.
 
 ### What is a covariant return?  
 
 - A **covariant return type** allows an **overridden method in a subclass** to return a **type that is a subclass of the return type declared in the parent class**.  
 - Introduced in **Java 5**, it improves **type safety** and **avoids explicit casting**.  
 
----
-
 #### **Key Points**
 
 1. Applicable only in **method overriding** (runtime polymorphism).  
 2. Return type in the subclass must be a **subclass of the parent method’s return type**.  
 3. Works with **reference types**, not primitives.  
-
----
 
 #### **Example**
 
@@ -2003,8 +1915,6 @@ public class Main {
 }
 ```
 
----
-
 #### **Key Notes**
 
 - Enhances **type safety** in polymorphic code.  
@@ -2014,11 +1924,11 @@ public class Main {
 🔧 **Summary:**  
 Covariant return → **overridden method returns a subtype of the parent method’s return type**, enabling **flexible and type-safe overriding** in Java.
 
+---
+
 ### What is encapsulation and abstraction?  
 
 Both **encapsulation** and **abstraction** are core OOP principles but serve **different purposes** in Java.  
-
----
 
 #### **1. Encapsulation**
 

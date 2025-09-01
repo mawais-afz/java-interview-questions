@@ -1,6 +1,6 @@
 # Java IO Streams
 
-1.  **What do you understand by an IO stream?**
+1. **What do you understand by an IO stream?**
 
     An I/O (Input/Output) stream represents a sequence of data flowing between a source and a destination. In Java, streams are used to read data from a source (input stream) or write data to a destination (output stream). The source or destination can be files, network connections, memory buffers, or other devices.
 
@@ -12,7 +12,7 @@
     - They can be buffered or unbuffered
     - They follow a consistent abstraction regardless of the underlying data source/destination
 
-2.  **Give the hierarchy of InputStream and OutputStream classes?**
+2. **Give the hierarchy of InputStream and OutputStream classes?**
 
     **InputStream Hierarchy:**
 
@@ -40,7 +40,7 @@
       - ObjectOutputStream
       - PipedOutputStream
 
-3.  **What is the difference between the Reader/Writer class hierarchy and the InputStream/OutputStream class hierarchy?**
+3. **What is the difference between the Reader/Writer class hierarchy and the InputStream/OutputStream class hierarchy?**
 
     | Aspect                 | Reader/Writer                                                                                        | InputStream/OutputStream                                                                                                                               |
     | ---------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -50,7 +50,7 @@
     | Base Classes           | Abstract base classes for character streams                                                          | Abstract base classes for byte streams                                                                                                                 |
     | Common Implementations | Reader: FileReader, BufferedReader, StringReader<br>Writer: FileWriter, BufferedWriter, StringWriter | InputStream: FileInputStream, BufferedInputStream, ByteArrayInputStream<br>OutputStream: FileOutputStream, BufferedOutputStream, ByteArrayOutputStream |
 
-4.  **What are the super most classes for all the streams?**
+4. **What are the super most classes for all the streams?**
 
     In Java IO, there are four abstract superclasses that form the foundation of all stream classes:
 
@@ -61,7 +61,7 @@
 
     These abstract classes define the basic functionality and common methods that all stream subclasses inherit. The byte stream classes (InputStream/OutputStream) handle raw binary data, while the character stream classes (Reader/Writer) handle text data with proper character encoding.
 
-5.  **What are the FileInputStream and FileOutputStream?**
+5. **What are the FileInputStream and FileOutputStream?**
 
     FileInputStream and FileOutputStream are byte stream classes used for reading from and writing to files respectively.
 
@@ -107,7 +107,7 @@
     - Use try-with-resources for automatic closing
     - For text files, FileReader/FileWriter are often better choices
 
-6.  **What is the purpose of using BufferedInputStream and BufferedOutputStream classes?**
+6. **What is the purpose of using BufferedInputStream and BufferedOutputStream classes?**
 
     BufferedInputStream and BufferedOutputStream are wrapper classes that add buffering functionality to byte streams for improved performance.
 
@@ -149,7 +149,7 @@
     - Particularly useful for large files or network streams
     - Can be wrapped around any InputStream/OutputStream
 
-7.  **What are FilterStreams?**
+7. **What are FilterStreams?**
 
     FilterInputStream and FilterOutputStream are abstract base classes that serve as wrappers for other input/output streams, allowing for additional functionality to be added.
 
@@ -181,7 +181,7 @@
     - Maintains consistency with stream interface
     - Facilitates creation of custom stream filters
 
-8.  **What is an I/O filter?**
+8. **What is an I/O filter?**
 
     An I/O filter is a class that wraps an existing input or output stream to add functionality without modifying the underlying stream. It implements the Decorator pattern.
 
@@ -217,7 +217,7 @@
     - Flexible stream processing
     - Clean separation of concerns
 
-9.  **How many ways you can take input from the console?**
+9. **How many ways you can take input from the console?**
 
     There are several ways to read input from the console in Java:
 

@@ -1,5 +1,183 @@
-# Complete Java/Spring Boot Interview Preparation Guide 2025
 
-## Table of Contents
+- Why java is platform independent?  
+- What is difference between C++ and Java?  
+- What is JIT compiler?  
+- What is bytecode in java?  
+- Why main() method is public, static and void in java?  
+- Explain about main() method in java?  
+- Explain the importance of import keyword in java?  
+- Explain naming conventions for packages?  
+- What is classpath?  
+- What is jar?  
 
-1. [Core Java & OOP Fundamentals](CoreJavaAndOOPFundamentals.md)
+---
+
+- What are static blocks and static initializers in Java?  
+- How to call one constructor from the other constructor?  
+- What is method overriding in java?  
+- What is super keyword in java?  
+- Difference between method overloading and method overriding in java?  
+- Difference between abstract class and interface?  
+- What is method overloading in java?  
+- Difference between this() and super() in java?  
+- What is a class?  
+- What is an object?  
+- What is method in java?  
+- What is encapsulation?  
+- What is constructor in java?  
+- Difference between overriding and overloading in java?  
+- What is ‘IS-A’ relationship in java?  
+- What is ‘HAS-A’ relationship in java?  
+- Difference between ‘IS-A’ and ‘HAS-A’ relationship in java?  
+- Explain about abstract classes in java?  
+- Can we create constructor in abstract class?  
+- What are abstract methods in java?  
+- How to do encapsulation in Java?  
+- Can we have a method name same as class name in java?  
+- Can we override constructors in java?  
+- Can we override static methods in java?  
+
+---
+
+- What is difference between length and length() method in java?  
+- What is ASCII Code?  
+- What is Unicode?  
+- Difference between Character Constant and String Constant in java?  
+- What are constants and how to create constants in java?  
+- Difference between ‘>>’ and ‘>>>’ operators in java?  
+- Explain Java Coding Standards for variables?  
+- Explain Java Coding Standards for Constants?  
+- Explain what access modifiers can be used for variables?  
+- What is final access modifier in java?  
+- What are reference variables in java?  
+- Difference between object and reference?  
+- Objects or references which of them gets garbage collected?  
+- How many times finalize method will be invoked? Who invokes finalize() method in java?  
+- Can we pass objects as arguments in java?  
+- Explain wrapper classes in java?  
+- Explain different types of wrapper classes in java?  
+- Explain about transient variables in java?  
+- Can we serialize static variables in java?  
+- What is type conversion in java?  
+- Explain about Automatic type conversion in java?  
+- Explain about narrowing conversion in java?  
+- What is the scope or life time of instance variables?  
+- Explain the scope or life time of class variables or static variables?  
+- Explain scope or life time of local variables in java?  
+
+---
+
+- What all access modifiers are allowed for top class?  
+- What are packages in java?  
+- Can we have more than one package statement in source file?  
+- Can we define package statement after import statement in java?  
+- What are identifiers in java?  
+- What are access modifiers in java?  
+- What is the difference between access specifiers and access modifiers in java?  
+- What access modifiers can be used for class?  
+- Explain what access modifiers can be used for methods?  
+
+---
+
+- What is an exception in java?  
+- State some situations where exceptions may arise in java?  
+- What is Exception handling in java?  
+- What is an error in Java?  
+- What are advantages of Exception handling in java?  
+- In how many ways we can do exception handling in java?  
+- List out five keywords related to Exception handling?  
+- Explain try and catch keywords in java?  
+- Can we have try block without catch block?  
+- Can we have multiple catch block for a try block?  
+- Explain importance of finally block in java?  
+- Can we have any code between try and catch blocks?  
+- Can we have any code between try and finally blocks?  
+- Can we catch more than one exception in single catch block?  
+- What are checked Exceptions?  
+- What are unchecked exceptions in java?  
+- Explain differences between checked and Unchecked exceptions in java?  
+- What is default Exception handling in java?  
+- Explain throw keyword in java?  
+- Can we write any code after throw statement?  
+- Explain importance of throws keyword in java?  
+- Explain the importance of finally over return statement?  
+- Explain a situation where finally block will not be executed?  
+- Can we use catch statement for checked exceptions?  
+- What are user defined exceptions?  
+- Can we rethrow the same exception from catch handler?  
+- Can we nested try statements in java?  
+- Explain the importance of throwable class and its methods?  
+- Explain when ClassNotFoundException will be raised?  
+- Explain when NoClassDefFoundError will be raised?  
+
+---
+
+- What is process?  
+- What is thread in java?  
+- Difference between process and thread?  
+- What is multitasking?  
+- What are different types of multitasking?  
+- What are the benefits of multithreaded programming?  
+- Explain thread in java?  
+- List Java API that supports threads?  
+- Explain about main thread in java?  
+- In how many ways we can create threads in java?  
+- Explain creating threads by implementing Runnable class?  
+- Explain creating threads by extending Thread class?  
+- Which is the best approach for creating thread?  
+- Explain the importance of thread scheduler in java?  
+- Explain the life cycle of thread?  
+- Can we restart a dead thread in java?  
+- Can one thread block the other thread?  
+- Can we restart a thread already started in java?  
+- What happens if we don’t override run method?  
+- Can we overload run() method in java?  
+- What is a lock or purpose of locks in java?  
+- In how many ways we can do synchronization in java?  
+- What are synchronized methods?  
+- When do we use synchronized methods in java?  
+- When a thread is executing synchronized methods, then is it possible to execute other synchronized methods simultaneously by other threads?  
+- When a thread is executing a synchronized method, then is it possible for the same thread to access other synchronized methods of an object?  
+- What are synchronized blocks in java?  
+- When do we use synchronized blocks and advantages of using synchronized blocks?  
+- What is class level lock?  
+- Can we synchronize static methods in java?  
+- Can we use synchronized block for primitives?  
+- What are thread priorities and importance of thread priorities in java?  
+- Explain different types of thread priorities?  
+- How to change the priority of thread or how to set priority of thread?  
+- If two threads have same priority which thread will be executed first?  
+- What all methods are used to prevent thread execution?  
+- Explain yield() method in thread class?  
+- Is it possible for yielded thread to get chance for its execution again?  
+- Explain the importance of join() method in thread class?  
+- Explain purpose of sleep() method in java?  
+- Assume a thread has lock on it, calling sleep() method on that thread will release the lock?  
+- Can sleep() method causes another thread to sleep?  
+- Explain about interrupt() method of thread class?  
+- Explain about interthread communication and how it takes place in java?  
+- Explain wait(), notify() and notifyAll() methods of object class?  
+- Explain why wait(), notify() and notifyAll() methods are in Object class rather than in thread class?  
+- Explain IllegalMonitorStateException and when it will be thrown?  
+- When wait(), notify(), notifyAll() methods are called does it release the lock or hold the acquired lock?  
+- Explain which of the following methods releases the lock when yield(), join(), sleep(), wait(), notify(), notifyAll() methods are executed?  
+- What are thread groups?  
+- What are thread local variables?  
+- What are daemon threads in java?  
+- How to make a non daemon thread as daemon?  
+- Can we make main() thread as daemon?  
+
+---
+
+- What are nested classes in java?  
+- What are inner classes or non static nested classes in java?  
+- Why to use nested classes in java?  
+- Explain about static nested classes in java?  
+- How to instantiate static nested classes in java?  
+- Explain about method local inner classes or local inner classes in java?  
+- Explain about features of local inner class?  
+- Explain about anonymous inner classes in java?  
+- Explain restrictions for using anonymous inner classes?  
+- Is this valid in java? Can we instantiate interface in java?  
+- Explain about member inner classes?  
+- How to instantiate member inner class?  

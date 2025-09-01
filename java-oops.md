@@ -1,6 +1,6 @@
 # Object-Oriented Programming (OOP) Concepts
 
-1.  **What is OOP?**
+1. **What is OOP?**
 
     Object-oriented programming (OOP) is a programming paradigm that organizes code into objects, which are instances of classes. A class serves as a blueprint that defines both the data (attributes/properties) and behaviors (methods) that its objects will have. OOP emphasizes concepts like encapsulation, inheritance, polymorphism, and abstraction to create modular, reusable, and maintainable code.
 
@@ -12,7 +12,7 @@
     - Data security through encapsulation
     - Reduced complexity through abstraction
 
-2.  **What is object-oriented paradigm?**
+2. **What is object-oriented paradigm?**
 
     The object-oriented paradigm is a programming approach that structures software design around data, or objects, rather than functions and logic. In this paradigm, objects are instances of classes that combine both data (attributes) and behaviors (methods) into a single entity.
 
@@ -33,11 +33,11 @@
     - Polymorphism: Allowing objects to be treated as instances of their parent class
     - Abstraction: Hiding complex implementation details
 
-3.  **Why is Java not considered to be purely object-oriented?**
+3. **Why is Java not considered to be purely object-oriented?**
 
     Java is not considered to be purely object-oriented because it supports primitive data types (such as int, char, boolean, byte, short, long, float, and double) that are not objects. In a purely object-oriented language, everything is treated as an object, and all data types would be defined as classes. While Java provides wrapper classes for these primitive types (e.g., Integer for int, Character for char, Boolean for boolean, Byte for byte, Short for short, Long for long, Float for float, and Double for double), the existence of primitives means that Java does not fully adhere to the principles of pure object-oriented programming. Additionally, Java allows for static methods and variables, which are not associated with any object instance, further distinguishing it from purely object-oriented languages.
 
-4.  **What are the pillars of OOP?**
+4. **What are the pillars of OOP?**
 
     The four pillars of Object-Oriented Programming (OOP) are:
 
@@ -48,7 +48,7 @@
     5. **Polymorphism**: The ability of different classes to be treated as instances of the same class through a common interface, allowing for the implementation of methods in different ways.
     6. **Abstraction**: The concept of hiding the complex implementation details and showing only the necessary features of an object, simplifying the interaction with the object.
 
-5.  **What are classes and objects? Why use them in applications?**
+5. **What are classes and objects? Why use them in applications?**
 
     Classes are blueprints or templates that define the structure and behavior of objects in object-oriented programming. They specify what properties (attributes/fields) and behaviors (methods) objects of that type will have. Objects are concrete instances of a class - when you create an object, you're creating a specific instance with its own set of data based on the class definition.
 
@@ -84,7 +84,7 @@
     Car anotherCar = new Car();  // Second car object
     ```
 
-6.  **What is the significant difference between object-oriented language and object-based language? Or What is the difference between object-oriented and object-based languages?**
+6. **What is the significant difference between object-oriented language and object-based language? Or What is the difference between object-oriented and object-based languages?**
 
     Object-oriented languages and object-based languages differ in several key aspects:
 
@@ -102,7 +102,7 @@
     - Object-based languages support objects but lack inheritance and some other OOP features
     - Object-based languages often use prototype-based programming instead of class-based inheritance
 
-7.  **What is a class?**
+7. **What is a class?**
 
     A class is a blueprint or template for creating objects in object-oriented programming. It defines the properties (attributes/fields) and behaviors (methods) that all objects of that type will have. A class encapsulates data for the object and methods to manipulate that data.
 
@@ -134,7 +134,7 @@
     }
     ```
 
-8.  **What is inner class? What are the advantages of Java inner classes?**
+8. **What is inner class? What are the advantages of Java inner classes?**
 
     An inner class is a class defined within another class. The inner class exists within the scope of another class (outer class) and has access to all its members, including private ones.
 
@@ -186,7 +186,7 @@
     5. **Event Handling**: Particularly useful for implementing event listeners
     6. **Memory Efficiency**: Non-static inner classes share the namespace with outer class
 
-9.  **What is a nested class?**
+9. **What is a nested class?**
 
     A nested class is a class defined within another class. In Java, nested classes can be categorized into two main types:
 
@@ -386,6 +386,7 @@
     6. **Using factory methods**:
        - Encapsulates object creation in factory class
        - Provides more flexibility in instantiation
+
        ```java
        MyClass obj = MyClassFactory.createInstance();
        ```
@@ -401,27 +402,27 @@
 
     In Java, the `Class` class cannot be instantiated directly using the `new` operator. Instead, instances of the `Class` class are created by the Java Virtual Machine (JVM) when classes are loaded. Here are some common ways to obtain a `Class` object:
 
-    1.  **Using `.class` syntax**:
+    1. **Using `.class` syntax**:
 
         ```java
         Class<MyClass> clazz = MyClass.class;
         ```
 
-    2.  **Using `Class.forName()` method**:
+    2. **Using `Class.forName()` method**:
 
         ```java
         Class<?> clazz = Class.forName("MyClass");
         ```
 
-    3.  **Using `getClass()` method on an object**:
+    3. **Using `getClass()` method on an object**:
 
         ```java
         MyClass obj = new MyClass();
         Class<?> clazz = obj.getClass();
         ```
 
-    4.  **Using `getComponentType()` for arrays**:
-        
+    4. **Using `getComponentType()` for arrays**:
+
         ```java
         int[] array = new int[10];
         Class<?> clazz = array.getClass().getComponentType();
@@ -1897,65 +1898,65 @@
     In summary, loose coupling promotes better modularity and reusability, while tight coupling can lead to increased complexity and reduced flexibility in software design.
 
     ````java
-    	// Example of Loose Coupling
-    	interface Animal {
-    			void makeSound();
-    	}
+     // Example of Loose Coupling
+     interface Animal {
+       void makeSound();
+     }
 
-    	class Dog implements Animal {
-    			public void makeSound() {
-    					System.out.println("Bark");
-    			}
-    	}
+     class Dog implements Animal {
+       public void makeSound() {
+         System.out.println("Bark");
+       }
+     }
 
-    	class Cat implements Animal {
-    			public void makeSound() {
-    					System.out.println("Meow");
-    			}
-    	}
+     class Cat implements Animal {
+       public void makeSound() {
+         System.out.println("Meow");
+       }
+     }
 
-    	class AnimalSound {
-    			public void playSound(Animal animal) {
-    					animal.makeSound();
-    			}
-    	}
+     class AnimalSound {
+       public void playSound(Animal animal) {
+         animal.makeSound();
+       }
+     }
 
-    	public class Main {
-    			public static void main(String[] args) {
-    					Animal dog = new Dog();
-    					Animal cat = new Cat();
-    					AnimalSound animalSound = new AnimalSound();
-    					animalSound.playSound(dog); // Outputs: Bark
-    					animalSound.playSound(cat); // Outputs: Meow
-    			}
-    	}
+     public class Main {
+       public static void main(String[] args) {
+         Animal dog = new Dog();
+         Animal cat = new Cat();
+         AnimalSound animalSound = new AnimalSound();
+         animalSound.playSound(dog); // Outputs: Bark
+         animalSound.playSound(cat); // Outputs: Meow
+       }
+     }
 
-    	// Example of Tight Coupling
-    	class Dog {
-    			public void makeSound() {
-    					System.out.println("Bark");
-    			}
-    	}
+     // Example of Tight Coupling
+     class Dog {
+       public void makeSound() {
+         System.out.println("Bark");
+       }
+     }
 
-    	class DogSound {
-    			private Dog dog;
+     class DogSound {
+       private Dog dog;
 
-    			public DogSound() {
-    					dog = new Dog();
-    			}
+       public DogSound() {
+         dog = new Dog();
+       }
 
-    			public void playSound() {
-    					dog.makeSound();
-    			}
-    	}
+       public void playSound() {
+         dog.makeSound();
+       }
+     }
 
-    	public class Main {
-    			public static void main(String[] args) {
-    					DogSound dogSound = new DogSound();
-    					dogSound.playSound(); // Outputs: Bark
-    			}
-    	}
-    	```
+     public class Main {
+       public static void main(String[] args) {
+         DogSound dogSound = new DogSound();
+         dogSound.playSound(); // Outputs: Bark
+       }
+     }
+     ```
     ````
 
 57. **What is the difference between cohesion and coupling?**
@@ -1969,45 +1970,45 @@
     ```java
     // Example of High Cohesion
     class UserAuthentication {
-    	public boolean login(String username, String password) {
-    		// Logic for user login
-    		return true; // Assume login is successful
-    	}
+     public boolean login(String username, String password) {
+      // Logic for user login
+      return true; // Assume login is successful
+     }
 
-    	public void logout() {
-    		// Logic for user logout
-    	}
+     public void logout() {
+      // Logic for user logout
+     }
 
-    	public boolean register(String username, String password) {
-    		// Logic for user registration
-    		return true; // Assume registration is successful
-    	}
+     public boolean register(String username, String password) {
+      // Logic for user registration
+      return true; // Assume registration is successful
+     }
     }
 
     // Example of Low Coupling
     class User {
-    	private String username;
-    	private String password;
+     private String username;
+     private String password;
 
-    	public User(String username, String password) {
-    		this.username = username;
-    		this.password = password;
-    	}
+     public User(String username, String password) {
+      this.username = username;
+      this.password = password;
+     }
 
-    	public String getUsername() {
-    		return username;
-    	}
+     public String getUsername() {
+      return username;
+     }
 
-    	public String getPassword() {
-    		return password;
-    	}
+     public String getPassword() {
+      return password;
+     }
     }
 
     class UserService {
-    	public void authenticate(User user) {
-    		// Logic to authenticate user
-    		System.out.println("Authenticating user: " + user.getUsername());
-    	}
+     public void authenticate(User user) {
+      // Logic to authenticate user
+      System.out.println("Authenticating user: " + user.getUsername());
+     }
     }
     ```
 
@@ -2902,11 +2903,11 @@
     No, we cannot use both final and abstract keywords with a method. A method declared as abstract must be implemented by subclasses, while a final method cannot be overridden. Therefore, it is contradictory to declare a method as both final and abstract, as one implies that the method cannot change, while the other requires it to be defined in a subclass.
 
 85. **Can we declare a method as final in an interface?**  
-    
+
     No, we cannot declare a method as final in an interface. In Java, all methods in an interface are implicitly abstract (prior to Java 8) and cannot have a body. Since final methods cannot be overridden, it contradicts the purpose of an interface, which is to provide a contract for classes to implement. However, from Java 8 onwards, interfaces can have default and static methods, but these cannot be declared as final either, as they are meant to be overridden in implementing classes if desired.
 
 86. **Can an interface extend another interface?**  
-    
+
     Yes, an interface can extend another interface in Java. When an interface extends another interface, it inherits all the abstract methods of the parent interface. A class that implements the child interface must provide implementations for all the methods declared in both the child and parent interfaces. This allows for a more flexible and modular design in object-oriented programming.
 
     Here's an example demonstrating interface extension:
@@ -2942,7 +2943,7 @@
     ```
 
 87. **Does Java work as a "pass by value" or "pass by reference" phenomenon?**
-    
+
     Java is strictly pass-by-value. However, this can be confusing because when passing objects, the value being passed is actually a reference to the object. This means:
 
     1. For primitive types (int, double, etc.): The actual value is passed
@@ -2985,7 +2986,7 @@
     This behavior occurs because when passing an object, Java creates a copy of the reference, but both references point to the same object in memory. If you modify the object through either reference, the changes are visible through both references. However, if you reassign the parameter to a new object, it only affects the local copy of the reference.
 
 88. **Which Java operator is right associative?**
-    
+
     In Java, several operators are right associative:
 
     1. Assignment operators (=, +=, -=, \*=, /=, %=, etc.)

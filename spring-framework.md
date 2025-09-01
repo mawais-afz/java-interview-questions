@@ -125,6 +125,7 @@
    4. **ResponseStatusException**
       - Built-in exception type in Spring 5
       - Allows throwing HTTP status codes programmatically
+
       ```java
       throw new ResponseStatusException(
           HttpStatus.NOT_FOUND, "Resource not found"
@@ -794,7 +795,6 @@
     | Risk on Failure   | Prevents access to system              | Prevents access to specific resources                             |
     | User Awareness    | User actively participates             | Happens in background                                             |
 
-
 21. **A user is login with a username and password now another user login with the same username and password now you have to show a session expiration notification to the first user. What will be the approach?**
 
     1. **Session Management**
@@ -835,7 +835,7 @@
        - Set maximumSessions=1 in Spring Security config
        - Notify terminated user via WebSocket/SSE
 
-    2. **Last-In-First-Out (LIFO) Strategy** 
+    2. **Last-In-First-Out (LIFO) Strategy**
        - Prevent new login attempts when session exists
        - Set maxSessionsPreventsLogin=true
        - Return error message to new login attempt

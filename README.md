@@ -577,3 +577,56 @@
 - What are the recommended Java coding standards for constants?  
 
 ---
+
+## More Java 8 Questions
+
+- Key features introduced in Java 8?
+- What a functional interface is in Java 8.
+- How do Lambda Expressions work in Java 8?
+- Stream API in Java 8, and why is it useful?
+- Create a stream in Java 8?
+- Difference between map() and flatMap() in streams?
+- How does filter() work in the Stream API?
+- What are default methods in Java 8?
+- What are the differences between a default method and a static method in an interface?
+- Can you override default methods in Java 8?
+- Method references in Java 8?
+- How do you sort a list using streams in Java 8?
+- What are Optional classes in Java 8, and how do you use them?
+- How does the forEach() method work in Java 8?
+- Purpose of the new Date and Time API in Java 8?
+- What is the difference between java.util.Date and the new java.time package?
+- Explain the purpose of Collectors in Java 8 streams.
+- How can you use the reduce() method in streams?
+- What are the benefits of using functional interfaces like Predicate, Function, and Consumer in Java 8?
+- What is the role of the CompletableFuture class in Java 8?
+- How does parallelStream() differ from stream() in Java 8?
+- Explain the difference between findFirst() and findAny() in streams.
+- What are the changes to the HashMap implementation in Java 8?
+- How does the Optional.orElse() method work?
+- Can you use Lambda Expressions with exceptions? How?
+- What are the limitations of Lambda Expressions?
+- How do you use Predicate chaining in Java 8?
+- What are the new methods added to java.util.Arrays in Java 8?
+- How does the Stream.sorted() method work?
+- Can a functional interface contain multiple abstract methods? Why or why not?
+- What is the difference between limit() and skip() in streams?
+- How does Java 8 handle backward compatibility with older versions?
+- Can you explain the BiFunction interface in Java 8?
+- How do you iterate over a map using Lambda Expressions in Java 8?
+- What is the difference between Collectors.toList() and Collectors.toSet()?
+- What are the benefits of using the Optional class over traditional null checks?
+- How does the peek() method work in streams?
+- What is the purpose of the toMap() collector in Java 8?
+- How does Java 8 handle functional programming?
+- What are the best practices for using Java 8 features?
+- What are parallel streams in Java 8?
+- How do parallel streams differ from sequential streams?
+- How can you create a parallel stream in Java 8?
+- What are the advantages of using parallel streams?
+- What are the potential drawbacks of using parallel streams?
+- How does the ForkJoinPool relate to parallel streams in Java 8?
+- How does reduce() work in parallel streams?
+- What is the role of Spliterator in parallel streams?
+- Difference between forEach() and forEachOrdered() in parallel streams?
+- Are there any scenarios where parallel streams can degrade performance?

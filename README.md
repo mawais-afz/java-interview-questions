@@ -1,336 +1,579 @@
-# Java Interview Questions by Category
+# Java Interview Questions
 
-## 1. Core Java Fundamentals
+## 📑 Table of Contents  
 
-### Object-Oriented Programming (OOP)
+- [Java Fundamentals](#-java-fundamentals)  
+- [Object-Oriented Programming (OOP)](#-object-oriented-programming-oop)  
+- [Classes, Objects, and Methods](#-classes-objects-and-methods)  
+- [Access Modifiers and Keywords](#-access-modifiers-and-keywords)  
+- [Exception Handling](#-exception-handling)  
+- [Multithreading and Concurrency](#-multithreading-and-concurrency)  
+- [Collections Framework](#-collections-framework)  
+- [Memory Management and JVM](#-memory-management-and-jvm)  
+- [String Handling](#-string-handling)  
+- [Java 8+ Features](#-java-8-features)  
+- [Advanced Topics](#-advanced-topics)  
+- [Performance and Optimization](#-performance-and-optimization)  
+- [Coding Standards and Best Practices](#-coding-standards-and-best-practices)  
 
-13) What is a class?
-14) What is an object?
-16) What is encapsulation?
-151) How to do encapsulation in Java?
-189) Explain about procedural programming language or structured programming language and its features?
-190) Explain about object oriented programming and its features?
-191) List out benefits of object oriented programming language?
-192) Differences between traditional programming language and object oriented programming language?
-193) Explain oops concepts in detail?
-194) Explain what is encapsulation?
-195) What is inheritance?
-196) Explain importance of inheritance in java?
-197) What is polymorphism in java?
-32) What is 'IS-A' relationship in java? (Inheritance)
-33) What is 'HAS A' relationship in java? (Composition/Aggregation)
-34) Difference between 'IS-A' and 'HAS-A' relationship in java?
+## 🔧 Java Fundamentals
 
-### Java Basics
+### Platform Independence and Compilation
 
-15) What is method in java?
-24) What are constants and how to create constants in java? (final keyword)
-26) Explain Java Coding Standards for classes or Java coding conventions for classes?
-27) Explain Java Coding standards for interfaces?
-28) Explain Java Coding standards for Methods?
-29) Explain Java Coding Standards for variables?
-30) Explain Java Coding Standards for Constants?
-42) What are identifiers in java?
-167) What is type conversion in java?
-168) Explain about Automatic type conversion in java?
-169) Explain about narrowing conversion in java?
-187) Can we use Switch statement with Strings?
+- Why is Java platform independent?  
+- What is bytecode in Java?  
+- What is JVM and how does it work?  
+- What is JIT compiler?  
+- What is the difference between JDK, JRE, and JVM?  
+- What are the main differences between C++ and Java?  
+
+### Data Types and Variables
+
+- What are the data types in Java?  
+- What are wrapper classes in Java?  
+- What are local, instance, and class variables?  
+- What is the scope/lifetime of different variables (local, instance, static)?  
+- Where are variables stored in memory in Java?  
+- What are constants and how to create them in Java?  
+- What are identifiers in Java?  
+- What is type conversion in Java?  
+- What is automatic type conversion (widening)?  
+- What is narrowing conversion in Java?  
+- What is coercion in Java?  
+
+### Basic Concepts
+
+- What is ASCII Code?  
+- What is Unicode?  
+- What is the difference between Character Constant and String Constant in Java?  
+
+### Operators
+
+- What is the purpose of the `instanceof` operator?  
+- Difference between `>>` and `>>>` operators in Java?  
+
+### Control Structures
+
+- Can we use String in switch-case statements?  
+
+---
+
+## 🏗️ Object-Oriented Programming (OOP)
+
+### OOP Concepts
+
+- What is object-oriented programming and its features?  
+- What are the benefits of OOP compared to procedural programming?  
+- Explain procedural programming and its features.  
+- Is Java a purely object-oriented language?  
+
+### Core OOP Principles
+
+- What is encapsulation and how is it achieved in Java?  
+- What is inheritance in Java?  
+- What is polymorphism in Java?  
+- What is abstraction in Java?  
+- What is the difference between abstraction and encapsulation?  
+
+### Relationships
+
+- What is 'IS-A' relationship in Java?  
+- What is 'HAS-A' relationship in Java?  
+- Difference between 'IS-A' and 'HAS-A' relationships?  
+- What is the difference between `implements` and `extends` in Java?  
+
+---
+
+## 🏛️ Classes, Objects, and Methods
+
+### Classes and Objects
+
+- What is a class in Java?  
+- What is an object in Java?  
+- What are reference variables in Java?  
+- What is the difference between an object and a reference?  
+- Which gets garbage collected: the object or the reference?  
+- Can we pass objects as arguments in Java?  
+- How do we copy or clone objects in Java?  
+
+### Methods
+
+- What is a method in Java?  
+- What is method overloading in Java?  
+- What is method overriding in Java?  
+- Difference between method overloading and overriding in Java?  
+- Can a private method be overridden in Java?  
+- Can we override or overload static methods in Java?  
+- Can static methods access instance variables in Java?  
+- How does the JVM handle method overloading and overriding internally?  
+
+### Constructors
+
+- What is a constructor in Java?  
+- What is the difference between a constructor and a method?  
+- Can we call one constructor from another?  
+- Does the compiler create a default constructor if a parameterized one exists?  
+- Can we override constructors in Java?  
+- What is a copy constructor in Java?  
+
+### Main Method
+
+- Why is the `main()` method public, static, and void in Java?  
+- What is the purpose of the `main()` method in Java?  
+
+---
+
+## 🔐 Access Modifiers and Keywords
 
 ### Access Modifiers
 
-43) What are access modifiers in java?
-44) What is the difference between access specifiers and access modifiers in java?
-45) What access modifiers can be used for class?
-46) Explain what access modifiers can be used for methods?
-47) Explain what access modifiers can be used for variables?
-48) What is final access modifier in java?
+- What are access modifiers in Java?  
+- What is the difference between access specifiers and access modifiers?  
+- What access modifiers can be used for classes in Java?  
+- What access modifiers can be used for methods in Java?  
+- What access modifiers can be used for variables in Java?  
+- What access modifiers are allowed for top-level classes?  
 
 ### Keywords
 
-4) What is super keyword in java?
-12) Difference between this() and super() in java?
-25) Difference between '>>' and '>>>' operators in java?
-35) Explain about instanceof operator in java?
-36) What does null mean in java?
-152) What are reference variables in java?
-153) Will the compiler creates a default constructor if I have a parameterized constructor in the class?
-154) Can we have a method name same as class name in java?
-156) Can Static methods access instance variables in java?
-157) How do we access static members in java?
-158) Can we override static methods in java?
-177) Explain about static imports in java?
-184) Explain about field hiding in java?
-185) Explain about Varargs in java?
+- What is the `super` keyword in Java?  
+- What is the `this` keyword in Java?  
+- What is the difference between `this()` and `super()` in Java?  
+- What is the `final` keyword in Java (variable, method, class)?  
+- What is the purpose of the `synchronized` keyword?  
+- What is the `transient` keyword in Java?  
+- What is the `volatile` keyword in Java?  
+- What is the purpose of the `strictfp` keyword?  
+- What is the difference between `static` and `final` keywords?  
+- What does `null` mean in Java?  
 
-## 2. Memory Management & JVM
+### Static Elements
 
-10) What is JIT compiler?
-11) What is bytecode in java?
-160) Objects or references which of them gets garbage collected?
-161) How many times finalize method will be invoked? who invokes finalize() method in java?
-186) Explain where variables are created in memory? (Stack vs Heap)
+- What are static blocks or static initializers in Java?  
+- What is static import in Java?  
+- What is a static method in Java?  
+- What is a class-level lock in Java?  
+- Can we synchronize static methods in Java?  
 
-## 3. Collections Framework
+---
 
-### Core Interfaces
+## ⚠️ Exception Handling
 
-198) What is collections framework?
-199) What is collection?
-200) Difference between collection, Collection and Collections in java?
-201) Explain about Collection interface in java?
-202) List the interfaces which extends collection interface?
-219) Explain about Map interface in java?
-221) What is SortedMap interface?
+### Basics
 
-### List Implementations
+- What is an exception in Java?  
+- What is an error in Java?  
+- What is exception handling in Java and what are its advantages?  
+- In how many ways can we do exception handling in Java?  
+- What are the types of exceptions in Java?  
+- What are the keywords used in exception handling?  
+- In which situations can exceptions arise in Java?  
 
-203) Explain List interface?
-204) Explain methods specific to List interface?
-205) List implementations of List Interface?
-206) Explain about ArrayList?
-207) Difference between Array and ArrayList?
-208) What is vector?
-209) Difference between arraylist and vector?
-210) Define Linked List and its features with signature?
-224) Difference between arraylist and linkedlist?
+### Try-Catch-Finally
 
-### Set Implementations
+- How do `try` and `catch` blocks work in Java?  
+- Can we have a `try` block without a `catch` block?  
+- Can we have multiple `catch` blocks for a single `try`?  
+- Can we catch multiple exceptions in a single `catch` block?  
+- What is the purpose of the `finally` block in Java?  
+- Can we have code between `try`, `catch`, and `finally`?  
+- When will a `finally` block not be executed?  
+- What is the importance of `finally` compared to a `return` statement?  
 
-213) Explain about Sets?
-214) Implementations of Set interface?
-215) Explain HashSet and its features?
-216) Explain Tree Set and its features?
-217) When do we use HashSet over TreeSet?
-82) When do we use TreeSet over HashSet?
-218) What is Linked HashSet and its features?
+### Checked and Unchecked
 
-### Map Implementations
+- What are checked exceptions in Java?  
+- What are unchecked exceptions in Java?  
+- What is the difference between checked and unchecked exceptions?  
+- Can we catch checked exceptions explicitly?  
 
-222) What is Hashtable and explain features of Hashtable?
-223) Difference between HashMap and Hashtable?
+### Throw/Throws
 
-### Iteration and Comparison
+- What is the difference between `throw` and `throws` in Java?  
+- What is the purpose of the `throw` keyword?  
+- What is the purpose of the `throws` keyword?  
+- Can we write code after a `throw` statement?  
 
-211) Define Iterator and methods in Iterator?
-212) In which order the Iterator iterates over collection?
-212) Explain ListIterator and methods in ListIterator?
-225) Difference between Comparator and Comparable in java?
-229) Explain about fail fast iterators in java?
-230) Explain about fail safe iterators in java?
+### Advanced
 
-### Concurrent Collections
+- What is default exception handling in Java?  
+- What are user-defined exceptions?  
+- Can we rethrow an exception from a catch block?  
+- Can we use nested `try` statements in Java?  
+- What is the `Throwable` class and its role?  
+- What is the difference between `ClassNotFoundException` and `NoClassDefFoundError`?  
+- What is `OutOfMemoryError` in Java and how can it be handled?  
+- What is `IllegalMonitorStateException` and when is it thrown?  
 
-226) What is concurrent hashmap and its features?
-227) Difference between Concurrent HashMap and Hashtable and collections.synchronizedHashMap?
-228) Explain copyOnWriteArrayList and when do we use copyOnWriteArrayList?
+---
 
-## 4. Exception Handling
-
-### Exception Hierarchy
-
-52) What is an exception in java?
-55) What is an error in Java?
-
-### Exception Types
-
-66) What are checked Exceptions?
-67) What are unchecked exceptions in java?
-68) Explain differences between checked and Unchecked exceptions in java?
-76) What are user defined exceptions?
-
-### Exception Handling Blocks
-
-54) What is Exception handling in java?
-56) What are advantages of Exception handling in java?
-57) In how many ways we can do exception handling in java?
-58) List out five keywords related to Exception handling?
-59) Explain try and catch keywords in java?
-60) Can we have try block without catch block?
-61) Can we have multiple catch block for a try block?
-62) Explain importance of finally block in java?
-63) Can we have any code between try and catch blocks?
-64) Can we have any code between try and finally blocks?
-65) Can we catch more than one exception in single catch block?
-69) What is default Exception handling in java?
-73) Explain the importance of finally over return statement?
-74) Explain a situation where finally block will not be executed?
-78) Can we nested try statements in java?
-
-### throw & throws
-
-70) Explain throw keyword in java?
-71) Can we write any code after throw statement?
-72) Explain importance of throws keyword in java?
-75) Can we use catch statement for checked exceptions?
-77) Can we rethrow the same exception from catch handler?
-
-### Specific Exceptions
-
-53) State some situations where exceptions may arise in java?
-79) Explain the importance of throwable class and its methods?
-80) Explain when ClassNotFoundException will be raised?
-81) Explain when NoClassDefFoundError will be raised?
-131) Explain IllegalMonitorStateException and when it will be thrown?
-
-## 5. Multithreading & Concurrency
+## 🧵 Multithreading and Concurrency
 
 ### Thread Fundamentals
 
-83) What is process?
-84) What is thread in java?
-85) Difference between process and thread?
-86) What is multitasking?
-87) What are different types of multitasking?
-88) What are the benefits of multithreaded programming?
-89) Explain thread in java?
-90) List Java API that supports threads?
-91) Explain about main thread in java?
-92) In how many ways we can create threads in java?
-93) Explain creating threads by implementing Runnable class?
-94) Explain creating threads by extending Thread class?
-95) Which is the best approach for creating thread?
-96) Explain the importance of thread scheduler in java?
-97) Explain the life cycle of thread?
-98) Can we restart a dead thread in java?
-99) Can one thread block the other thread?
-100) Can we restart a thread already started in java?
-101) What happens if we don't override run method?
-102) Can we overload run() method in java?
+- What is a process?  
+- What is a thread in Java?  
+- What is the difference between a process and a thread?  
+- What is multitasking, and what are its types?  
+- What are the benefits of multithreaded programming?  
+- What is multithreading in Java?  
+
+### Thread Creation and Management
+
+- What Java APIs support thread creation and management?  
+- What is the main thread in Java?  
+- How many ways can we create threads in Java?  
+- How do we create a thread by extending the `Thread` class?  
+- How do we create a thread by implementing `Runnable`?  
+- Which approach is better: extending `Thread` vs implementing `Runnable`?  
+- What is the difference between `Runnable` and `Callable`?  
+
+### Thread Lifecycle
+
+- What is the role of the thread scheduler in Java?  
+- What is the life cycle of a thread in Java?  
+- What are the different thread states?  
+- Can we restart a dead thread in Java?  
+- What happens if we don’t override the `run()` method?  
+- Can we overload the `run()` method in Java?  
+
+### Thread Control
+
+- What methods can be used to control thread execution?  
+- What is the purpose of the `yield()` method?  
+- Can a yielded thread regain execution immediately?  
+- What is the purpose of the `join()` method in Java?  
+- What is the purpose of the `sleep()` method in Java?  
+- Does calling `sleep()` release the lock on an object?  
+- What is the difference between `sleep()` and `wait()`?  
+- What is the `interrupt()` method and how is it used?  
 
 ### Synchronization
 
-105) What is a lock or purpose of locks in java?
-106) In how many ways we can do synchronization in java?
-107) What are synchronized methods?
-108) When do we use synchronized methods in java?
-109) When a thread is executing synchronized methods, then is it possible to execute other synchronized methods simultaneously by other threads?
-110) When a thread is executing a synchronized method, then is it possible for the same thread to access other synchronized methods of an object?
-111) What are synchronized blocks in java?
-112) When do we use synchronized blocks and advantages of using synchronized blocks?
-113) What is class level lock?
-114) Can we synchronize static methods in java?
-115) Can we use synchronized block for primitives?
+- What is synchronization in Java?  
+- What are locks and their purpose in Java?  
+- What are synchronized methods, and when should we use them?  
+- What are synchronized blocks, and what are their advantages?  
+- Can we use synchronized blocks for primitives?  
 
-### Thread Priorities and Control
+### Thread Communication
 
-116) What are thread priorities and importance of thread priorities in java?
-117) Explain different types of thread priorities?
-118) How to change the priority of thread or how to set priority of thread?
-119) If two threads have same priority which thread will be executed first?
-120) What all methods are used to prevent thread execution?
-121) Explain yield() method in thread class?
-122) Is it possible for yielded thread to get chance for its execution again?
-123) Explain the importance of join() method in thread class?
-124) Explain purpose of sleep() method in java?
-125) Assume a thread has lock on it, calling sleep() method on that thread will release the lock?
-126) Can sleep() method causes another thread to sleep?
-127) Explain about interrupt() method of thread class?
-133) Explain which of the following methods releases the lock when yield(), join(), sleep(), wait(), notify(), notifyAll() methods are executed?
+- What is inter-thread communication in Java?  
+- How do `wait()`, `notify()`, and `notifyAll()` methods work?  
+- Why are `wait()`, `notify()`, and `notifyAll()` defined in `Object` class, not `Thread`?  
+- What is the difference between `wait()` and `notify()`?  
+- What is the difference between `notify()` and `notifyAll()`?  
+- Do `wait()`, `notify()`, and `notifyAll()` release locks?  
+- Which of these methods release a lock: `yield()`, `join()`, `sleep()`, `wait()`, `notify()`, `notifyAll()`?  
 
-### Inter-thread Communication
+### Thread Priorities
 
-128) Explain about interthread communication and how it takes place in java?
-129) Explain wait(), notify() and notifyAll() methods of object class?
-130) Explain why wait(), notify() and notifyAll() methods are in Object class rather than in thread class?
-132) When wait(), notify(), notifyAll() methods are called does it releases the lock or holds the acquired lock?
+- What are thread priorities in Java?  
+- How do we change a thread’s priority?  
+- If two threads have the same priority, which one executes first?  
 
-### Thread Groups and Types
+### Advanced Threading
 
-134) What are thread groups?
-135) What are thread local variables?
-136) What are daemon threads in java?
-137) How to make a non daemon thread as daemon?
-138) Can we make main() thread as daemon?
+- What are thread groups in Java?  
+- What are thread-local variables?  
+- What are daemon threads in Java?  
+- How can we make a thread a daemon thread?  
+- Can the `main()` thread be made a daemon?  
+- What is context switching in Java threads?  
+- What is a deadlock in Java?  
+- What is thread starvation, and how can it be prevented?  
 
-## 6. String Handling
+### Concurrency Utilities
 
-20) What is difference between length and length() method in java?
-21) What is ASCII Code?
-22) What is Unicode?
-23) Difference between Character Constant and String Constant in java?
+- What is the difference between `Executor` and `ExecutorService`?  
+- What is a `ForkJoinPool` and how is it different from a regular thread pool?  
+- How does the Fork/Join framework work?  
+- What is a `CyclicBarrier` in Java?  
+- What is a `BlockingQueue` in Java?  
+- What is the difference between `ReentrantLock` and `synchronized`?  
+- What is the difference between `StampedLock` and `ReentrantLock`?  
+- What is the difference between pessimistic and optimistic locking?  
+- What is lock-free programming in Java?  
+- What is “busy spin” in multithreading?  
 
-## 8. Java 8+ Features
+---
 
-178) Can we define static methods inside interface? (Java 8+)
-182) Explain enumeration in java? (Enums)
-183) Explain restrictions on using enum?
+## 📦 Collections Framework
 
-## 9. Input/Output (I/O) & Serialization
+### Collection Framework Basics
 
-231) What is serialization in java?
-232) What is the main purpose of serialization in java?
-233) What are alternatives to java serialization?
-234) Explain about serializable interface in java?
-235) How to make object serializable in java?
-236) What is serial version UID and its importance in java?
-237) What happens if we don't define serial version UID?
-238) Can we serialize static variables in java? (Also 166)
-239) When we serialize an object does the serialization mechanism saves its references too?
-240) If we don't want some of the fields not to serialize How to do that? (transient)
-165) Explain about transient variables in java?
+- What is the Java Collections Framework?  
+- What is a Collection in Java?  
+- What is the difference between `collection`, `Collection`, and `Collections` in Java?  
+- What are the differences between `Collection` and `Collections`?  
+- What is the `Collection` interface in Java?  
+- Which interfaces extend the `Collection` interface?  
+- What are the main differences between arrays and collections in Java?  
+- What is the difference between `List`, `Set`, and `Map` in Java?  
 
-## 10. Design Patterns & SOLID Principles
+### List Interface
 
-6) Difference between abstract class and interface? (Strategy, Factory patterns)
-49) Explain about abstract classes in java?
-50) Can we create constructor in abstract class?
-51) What are abstract methods in java?
-179) Define interface in java?
-180) What is the purpose of interface?
-181) Explain features of interfaces in java?
+- What is the `List` interface in Java?  
+- Explain the `ArrayList` class in Java.  
+- What is the difference between an array and an `ArrayList`?  
+- Are dynamic arrays supported in Java?  
+- Explain the `LinkedList` class in Java.  
+- What is the difference between `ArrayList` and `LinkedList`?  
+- What is the difference between `ArrayList` and `Vector`?  
 
-## 12. Advanced Topics
+### Set Interface
 
-### Nested Classes
+- What is the `Set` interface in Java?  
+- What is the difference between `List` and `Set`?  
+- Explain the `HashSet` class in Java.  
+- Explain the `LinkedHashSet` class in Java.  
+- Explain the `TreeSet` class in Java.  
+- What is the difference between `HashSet` and `TreeSet`?  
+- What is the difference between `HashSet` and `LinkedHashSet`?  
+- What is the difference between `LinkedHashSet` and `TreeSet`?  
 
-139) What are nested classes in java?
-140) What are inner classes or non static nested classes in java?
-141) Why to use nested classes in java? (or) What is the purpose of nested class in java?
-142) Explain about static nested classes in java?
-143) How to instantiate static nested classes in java?
-144) Explain about method local inner classes or local inner classes in java?
-145) Explain about features of local inner class?
-146) Explain about anonymous inner classes in java?
-147) Explain restrictions for using anonymous inner classes?
-148) Is this valid in java? can we instantiate interface in java? (Anonymous class)
-149) Explain about member inner classes?
-150) How to instantiate member inner class?
+### Map Interface
 
-### Packages
+- What is the `Map` interface in Java?  
+- What is the difference between `Map` and `Set`?  
+- What is the difference between `Map` and `Queue`?  
+- Explain the `HashMap` class in Java.  
+- Explain the `LinkedHashMap` class in Java.  
+- Explain the `TreeMap` class in Java.  
+- What is the difference between `HashMap` and `Hashtable`?  
+- What is the difference between `HashMap` and `TreeMap`?  
+- What is the difference between `HashMap` and `LinkedHashMap`?  
+- What is the difference between `HashMap` and `ConcurrentHashMap`?  
+- How does `ConcurrentHashMap` work internally?  
+- What is the difference between `LinkedHashMap` and `PriorityQueue`?  
 
-39) What are packages in java?
-40) Can we have more than one package statement in source file?
-41) Can we define package statement after import statement in java?
-170) Explain the importance of import keyword in java?
-171) Explain naming conventions for packages?
-172) What is classpath?
-173) What is jar?
+### Queue Interface
 
-### Miscellaneous
+- What is the `Queue` interface in Java?  
+- Explain the `PriorityQueue` class in Java.  
+- What is the difference between `Queue` and `Deque`?  
+- What is the `Deque` interface in Java?  
+- Explain the `ArrayDeque` class in Java.  
+- What is the difference between `ArrayDeque` and `ArrayList`?  
 
-2) How to call one constructor from the other constructor? (Constructor chaining)
-17) Why main() method is public, static and void in java?
-18) Explain about main() method in java?
-19) What is constructor in java?
-37) Can we have multiple classes in single file?
-38) What all access modifiers are allowed for top class?
-59) What is covariant return? (Note: This appears to be misnumbered)
-155) Can we override constructors in java?
-159) Difference between object and reference?
-162) Can we able to pass objects as an arguments in java?
-188) In java how do we copy objects?
+### Iterators
 
-## Platform Independence & Compilation (Cross-Category)
+- What is the `Iterator` interface in Java?  
+- What is the `ListIterator` interface in Java?  
+- What is the difference between `Iterator` and `ListIterator`?  
+- What is the `Enumeration` interface in Java?  
+- What is the difference between `Enumeration` and `Iterator`?  
+- What is the difference between `Iterator` and `Spliterator`?  
+- What is the difference between fail-fast and fail-safe iterators?  
 
-7) Why java is platform independent?
-8) What is method overloading in java?
-9) What is difference between c++ and Java?
-1) What are static blocks and static initializers in Java?
-3) What is method overriding in java?
-5) Difference between method overloading and method overriding in java?
-31) Difference between overriding and overloading in java?
-174) What is the scope or life time of instance variables?
-175) Explain the scope or life time of class variables or static variables?
-176) Explain scope or life time of local variables in java?
-163) Explain wrapper classes in java?
-164) Explain different types of wrapper classes in java?
+### Comparison
+
+- What is the `Comparable` interface in Java?  
+- What is the `Comparator` interface in Java?  
+- What is the difference between `Comparable` and `Comparator`?  
+
+---
+
+## 🧠 Memory Management and JVM
+
+### Memory Areas
+
+- What is the Java Memory Model (JMM)?  
+- What is the difference between Heap and Stack memory?  
+- What is the difference between Path and Classpath in Java?  
+- What is classpath in Java?  
+- How does the Java Memory Model handle out-of-order execution and memory visibility?  
+- What is a memory leak in Java?  
+- What is a memory-mapped buffer in Java?  
+
+### Garbage Collection
+
+- What is garbage collection in Java?  
+- How many times is the `finalize()` method invoked, and who invokes it?  
+- What is the use of the `finalize()` method?  
+- How does the G1 Garbage Collector work?  
+- What are the challenges in implementing Distributed Garbage Collection (DGC)?  
+
+### Class Loading
+
+- What are the different types of ClassLoaders in Java?  
+- How can you implement a custom ClassLoader?  
+- How does Class Data Sharing (CDS) work in JVM?  
+
+### Memory References
+
+- What is `PhantomReference` in Java?  
+- What is the difference between `WeakReference` and `SoftReference`?  
+
+### Performance and JVM Internals
+
+- What is Escape Analysis in Java optimizations?  
+- What are Thread-Local Allocation Buffers (TLAB) in Java?  
+- How do JVM flags impact performance tuning?  
+- What is the Principle of Locality, and how does it apply to Java?  
+
+---
+
+## 🔤 String Handling
+
+### String Basics  
+
+- What is the Java String Pool?  
+- What is the difference between `length` and `length()` in Java?  
+- How can you concatenate multiple strings in Java?  
+- What is the purpose of the `toString()` method in Java?  
+
+### String Classes Comparison  
+
+- What is the difference between `String`, `StringBuilder`, and `StringBuffer` in Java?  
+- Why is `String` immutable in Java, and what are the benefits of immutability?  
+
+---
+
+## 🚀 Java 8+ Features
+
+### Functional Programming  
+
+- What are functional interfaces in Java 8?  
+- What are lambda expressions in Java?  
+- What are method references in Java?  
+
+### Streams API  
+
+- What are Java 8 Streams?  
+- What is the difference between `stream()` and `parallelStream()`?  
+
+### Default Methods  
+
+- What is the purpose of the `default` keyword in interfaces?  
+- What are default methods in Java 8 interfaces?  
+
+### Optional Class  
+
+- What is the `Optional` class in Java 8 and why is it used?  
+
+### CompletableFuture  
+
+- What is `CompletableFuture` in Java 8?  
+- What are the advanced features of `CompletableFuture`?  
+
+---
+
+## 🔬 Advanced Topics
+
+### Inner Classes  
+
+- What are nested classes in Java?  
+- What are inner classes (non-static nested classes) in Java?  
+- Why do we use nested classes in Java?  
+- What are static nested classes in Java, and how do we instantiate them?  
+- What are method-local inner classes in Java, and what are their features?  
+- What are anonymous inner classes in Java, and what restrictions apply?  
+- What are member inner classes, and how do we instantiate them?  
+- Can we instantiate an interface in Java?  
+
+### Interfaces and Abstract Classes  
+
+- What is an interface in Java?  
+- What is an abstract class in Java?  
+- What is the difference between an abstract class and an interface?  
+- Can we create a constructor in an abstract class?  
+- What are abstract methods in Java?  
+- What is a marker interface in Java, and why is it used?  
+
+### Generics  
+
+- What are Java Generics?  
+- What is type inference in Generics?  
+
+### Annotations  
+
+- What are annotations in Java?  
+
+### Reflection  
+
+- Why is reflection used in Java?  
+- What is `java.lang.reflect.Proxy` used for?  
+- What is the role of `java.lang.instrument`?  
+
+### Serialization  
+
+- How can objects in a Java class be prevented from serialization?  
+- Can we serialize static variables in Java?  
+
+### Packages and Imports  
+
+- What is a package in Java?  
+- Can we have multiple classes in a single file in Java?  
+- Can we have more than one package statement in a source file?  
+- Can we define a package statement after an import statement?  
+- What is the importance of the `import` keyword in Java?  
+- What are the naming conventions for packages in Java?  
+- Can we import the same class or package twice in a program?  
+
+### Advanced Language Features  
+
+- What is field hiding in Java?  
+- What are varargs in Java?  
+- What is a singleton class in Java?  
+- What is the difference between `new` and `newInstance()` in Java?  
+- What is a compile-time constant in Java?  
+
+### Java Modules  
+
+- What are Java Modules, and how do they enhance security and maintainability?  
+
+---
+
+## ⚡ Performance and Optimization
+
+### JVM Optimizations  
+
+- What are Java’s non-blocking algorithms, and how do they differ from traditional blocking algorithms?  
+- What are some JIT compiler optimizations (e.g., loop unrolling, vectorization)?  
+- What is Polymorphic Inline Caching (PIC) in JVM?  
+
+### Memory and Performance  
+
+- What is false sharing in Java, and why does it hurt performance?  
+- What is a Java memory fence, and why is it important?  
+
+### Advanced Concurrency  
+
+- What is the `Unsafe` class in Java, and what are its use cases?  
+- What is a `MethodHandle` in Java, and how does it differ from reflection?  
+
+### Tools and Debugging  
+
+- What is the `jstack` tool, and how is it used?  
+- What is a Java Decompiler, and how can it be used securely?  
+
+### Emerging Technologies  
+
+- What is Project Loom in Java, and how does it impact concurrency?  
+
+### Specialized APIs  
+
+- What is the `BitSet` class in Java, and when is it useful?  
+- What is Java NIO, and how does it differ from traditional IO?  
+- What are the types of JDBC statements in Java?  
+
+### Contracts and Best Practices  
+
+- How can you create an immutable class in Java?  
+- What is the contract between `hashCode()` and `equals()` methods?  
+- What is the purpose of the `hashCode()` method in Java?  
+- What is the difference between `==` and `equals()` in Java?  
+- What is the purpose of the `assert` statement in Java?  
+
+---
+
+### 📝 Coding Standards and Best Practices
+
+- What are the recommended Java coding standards for classes?  
+- What are the recommended Java coding standards for interfaces?  
+- What are the recommended Java coding standards for methods?  
+- What are the recommended Java coding standards for variables?  
+- What are the recommended Java coding standards for constants?  
+
+---

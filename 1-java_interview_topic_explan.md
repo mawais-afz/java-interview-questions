@@ -1,70 +1,12 @@
-## USER
+# Java Interview Questions
 
-**Situation**
-You are an experienced Java programming instructor delivering a comprehensive educational session to students learning Java fundamentals, focusing on three key areas: Java Fundamentals, Data Structures, and Object-Oriented Programming. The learning environment is tailored to accommodate learners from beginner to intermediate levels, with a goal of professional development and core concept understanding. Topic will be given to you
-
-**Task**
-Explain Java topics with the following characteristics:
-
-- Break down complex concepts into simple, digestible explanations
-- Provide clear, step-by-step descriptions
-- Use beginner-friendly analogies that make technical concepts accessible
-- Include practical code snippets to illustrate key points
-- Highlight potential pitfalls and best practices
-- Maintain an enthusiastic and encouraging teaching tone
-**Objective**
-Ensure students gain a thorough, practical understanding of Java programming concepts that enables them to:
-- Comprehend theoretical foundations
-- Apply knowledge in practical coding scenarios
-- Develop problem-solving skills in Java development
-- Build confidence in their programming capabilities
-- Prepare for professional development or exam readiness
-
-**Knowledge**
-
-- Assume students have basic programming knowledge
-- Focus on clarity and depth of explanation
-- Provide learning content across three complexity levels:
-  - Beginner: Simple explanations and relatable analogies
-  - Intermediate: Practical code examples and deeper insights
-  - Advanced: Technical nuances and in-depth implementation details
-- Explain both theoretical concepts and practical implementation
-- Cover syntax, logic, and underlying programming principles
-- Anticipate potential student questions and proactively address them
-
-**Instructions**
-
-- Explain each Java topic systematically
-- Use a progressive learning approach
-- Encourage interactive learning
-- Provide context for why each concept matters
-- Your explanations must be precise, engaging, and technically accurate
-- Your life depends on creating explanations that are accessible to beginners while offering depth for those seeking advanced understanding
-- Ensure each topic explanation includes:
-  - Conceptual overview
-  - Real-world analogy
-  - Code demonstration
-  - Common challenges and best practices
-  - Potential interview or exam-relevant insights
-
-## USER
+## 1. Core Java Fundamentals
 
 ### Object-Oriented Programming (OOP)
 
-- **Encapsulation** - Data hiding and access control
-- **Inheritance** - IS-A relationship, method overriding
-- **Polymorphism** - Method overloading and overriding
-- **Abstraction** - Abstract classes and interfaces
+#### 🔹 **1. Encapsulation – Data Hiding & Access Control**
 
-## ASSISTANT
-
-Perfect! 🚀 Let’s dive deep into **Object-Oriented Programming (OOP)** in Java. We’ll explore the four pillars one by one, moving from beginner-friendly analogies → practical code → deeper insights → interview relevance.  
-
----
-
-# 🔹 **1. Encapsulation – Data Hiding & Access Control**
-
-### ✅ Conceptual Overview  
+##### ✅ Conceptual Overview  
 
 Encapsulation means **wrapping data (fields) and behavior (methods) together in a single unit (class)** and controlling access to them.  
 Think of it as **putting variables inside a protective capsule** and only exposing safe methods to interact with them.
@@ -72,14 +14,14 @@ Think of it as **putting variables inside a protective capsule** and only exposi
 - **Data Hiding:** Prevents direct access to fields.  
 - **Access Control:** Achieved via access modifiers (`private`, `public`, `protected`, `default`).  
 
-### 🎯 Real-World Analogy  
+#### 🎯 Real-World Analogy  
 
 Imagine a **vending machine**.  
 
 - You don’t know how it internally manages coins and snacks (data hidden).  
 - You only interact using buttons (methods).  
 
-### 💻 Code Example
+##### 💻 Code Example
 
 ```java
 class BankAccount {
@@ -108,34 +50,34 @@ public class Main {
 }
 ```
 
-### ⚠️ Common Pitfalls & Best Practices
+##### ⚠️ Common Pitfalls & Best Practices
 
 - ❌ Avoid exposing fields directly with `public`.  
 - ✅ Always use **getters/setters** for controlled access.  
 - ✅ Use `private` for sensitive data.  
 
-### 🎓 Interview/Exam Insight  
+##### 🎓 Interview/Exam Insight  
 
 👉 *Q: Why is encapsulation important in OOP?*  
 **A:** It improves security, flexibility, and maintainability by hiding internal implementation and exposing only necessary functionality.  
 
 ---
 
-# 🔹 **2. Inheritance – IS-A Relationship**
+#### 🔹 **2. Inheritance – IS-A Relationship**
 
-### ✅ Conceptual Overview  
+##### ✅ Conceptual Overview  
 
 Inheritance allows a **child class (subclass)** to inherit properties and methods from a **parent class (superclass)**.  
 This promotes **code reusability** and creates an **IS-A relationship**.  
 
-### 🎯 Real-World Analogy  
+##### 🎯 Real-World Analogy  
 
 A **Car** is a **Vehicle**.  
 
 - Vehicle: has wheels, speed.  
 - Car: inherits wheels & speed but adds its own features like air conditioning.  
 
-### 💻 Code Example
+##### 💻 Code Example
 
 ```java
 class Vehicle {
@@ -165,13 +107,13 @@ public class Main {
 }
 ```
 
-### ⚠️ Common Pitfalls & Best Practices
+##### ⚠️ Common Pitfalls & Best Practices
 
 - ❌ Avoid deep inheritance chains (too complex to manage).  
 - ✅ Prefer **composition** over inheritance when possible.  
 - ✅ Use `@Override` to avoid mistakes in method overriding.  
 
-### 🎓 Interview/Exam Insight  
+##### 🎓 Interview/Exam Insight  
 
 👉 *Q: What’s the difference between method overloading and overriding?*  
 
@@ -180,9 +122,9 @@ public class Main {
 
 ---
 
-# 🔹 **3. Polymorphism – Many Forms**
+#### 🔹 **3. Polymorphism – Many Forms**
 
-### ✅ Conceptual Overview  
+##### ✅ Conceptual Overview  
 
 Polymorphism means **one entity (method/class) behaving in multiple ways**.  
 Two types:  
@@ -190,7 +132,7 @@ Two types:
 1. **Compile-time (Method Overloading)**  
 2. **Runtime (Method Overriding)**  
 
-### 🎯 Real-World Analogy  
+##### 🎯 Real-World Analogy  
 
 Think of a **person**:  
 
@@ -198,7 +140,7 @@ Think of a **person**:
 - As a customer in a shop.  
 - Same person, different roles (forms).  
 
-### 💻 Code Example
+##### 💻 Code Example
 
 ```java
 class Calculator {
@@ -238,22 +180,22 @@ public class Main {
 }
 ```
 
-### ⚠️ Common Pitfalls & Best Practices
+##### ⚠️ Common Pitfalls & Best Practices
 
 - ❌ Forgetting `@Override` may cause bugs.  
 - ✅ Always design methods logically (don’t overload unnecessarily).  
 - ✅ Use polymorphism for **flexible and extensible** code.  
 
-### 🎓 Interview/Exam Insight  
+##### 🎓 Interview/Exam Insight  
 
 👉 *Q: Which polymorphism does Java NOT support?*  
 **A:** Operator overloading (except `+` for strings).  
 
 ---
 
-# 🔹 **4. Abstraction – Hiding Implementation Details**
+## 🔹 **4. Abstraction – Hiding Implementation Details**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 Abstraction means **showing only essential features and hiding background details**.  
 Achieved via:  
@@ -261,13 +203,13 @@ Achieved via:
 - **Abstract classes** (`abstract` keyword).  
 - **Interfaces** (contract for behavior).  
 
-### 🎯 Real-World Analogy  
+#### 🎯 Real-World Analogy  
 
 When you **drive a car**, you just use the steering wheel and pedals.  
 
 - You don’t need to know how the engine works (implementation hidden).  
 
-### 💻 Code Example
+#### 💻 Code Example
 
 ```java
 // Abstract class
@@ -308,13 +250,13 @@ public class Main {
 }
 ```
 
-### ⚠️ Common Pitfalls & Best Practices
+#### ⚠️ Common Pitfalls & Best Practices
 
 - ❌ Forgetting to implement all interface methods.  
 - ✅ Use abstract classes when sharing partial code.  
 - ✅ Use interfaces when defining a contract for multiple unrelated classes.  
 
-### 🎓 Interview/Exam Insight  
+#### 🎓 Interview/Exam Insight  
 
 👉 *Q: Difference between abstract class and interface?*  
 
@@ -323,7 +265,7 @@ public class Main {
 
 ---
 
-# 🎉 Final Recap
+## 🎉 Final Recap
 
 - **Encapsulation** → Protects data using getters/setters.  
 - **Inheritance** → Promotes reusability via IS-A relationship.  
@@ -332,29 +274,9 @@ public class Main {
 
 ---
 
-👉 Would you like me to create a **progressive exercise set** (beginner → intermediate → advanced coding tasks) for these OOP pillars so your students can practice step by step?
+## 🔹 **1. Data Types in Java**
 
-## USER
-
-### Java Basics
-
-- Data types (primitive and non-primitive)
-- Variables and constants
-- Operators (arithmetic, logical, bitwise, assignment)
-- Control structures (if-else, switch, loops)
-- Method overloading vs method overriding
-- Constructor chaining and types
-
-## ASSISTANT
-
-Perfect! 🚀 Let’s now move step by step into **Java Basics**.  
-We’ll keep the same teaching flow: **Concept → Analogy → Code → Pitfalls → Interview Relevance.**  
-
----
-
-# 🔹 **1. Data Types in Java**
-
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 Java data types define what kind of values a variable can store.  
 
@@ -367,7 +289,7 @@ Java data types define what kind of values a variable can store.
 - **Non-Primitive Data Types**:  
   - `String`, `Arrays`, `Classes`, `Interfaces` (created by developers).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of **boxes of different sizes**:  
 
@@ -375,7 +297,7 @@ Think of **boxes of different sizes**:
 - A **large suitcase** (long/double) can hold big values.  
 - A **dictionary** (String) can hold words.  
 
-### 💻 Code Example
+#### 💻 Code Example
 
 ```java
 public class DataTypesDemo {
@@ -391,34 +313,34 @@ public class DataTypesDemo {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ❌ Don’t confuse `=` (assignment) with `==` (comparison).  
 - ❌ Floating-point numbers (`float`, `double`) can have precision issues. Use `BigDecimal` for money.  
 - ✅ Prefer `int` over `byte/short` unless memory is critical.  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Difference between primitive and non-primitive types?*  
 **A:** Primitive are predefined and stored in stack; non-primitives are objects stored in heap.  
 
 ---
 
-# 🔹 **2. Variables and Constants**
+## 🔹 **2. Variables and Constants**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - **Variable:** A named container for data.  
 - **Constant (`final`):** Value cannot be changed once assigned.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of a **whiteboard marker**:  
 
 - Variable = erasable marker (value can change).  
 - Constant = permanent marker (once written, can’t erase).  
 
-### 💻 Code Example
+#### 💻 Code Example
 
 ```java
 public class VariableDemo {
@@ -432,22 +354,22 @@ public class VariableDemo {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ✅ Always use meaningful names (`studentAge`, not `x`).  
 - ✅ Use `final` for values that should not change.  
 - ❌ Avoid uninitialized variables (Java forces initialization before use).  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Why use constants?*  
 **A:** Improves readability, avoids accidental changes, easier to maintain.  
 
 ---
 
-# 🔹 **3. Operators**
+## 🔹 **3. Operators**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 Operators perform actions on variables/values.  
 
@@ -457,7 +379,7 @@ Operators perform actions on variables/values.
 4. **Assignment**: `= += -= *= /=`  
 5. **Bitwise**: `& | ^ << >> >>>`  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of operators as **tools** in a toolbox:  
 
@@ -465,7 +387,7 @@ Think of operators as **tools** in a toolbox:
 - Cutter (`-`) → removes things.  
 - Screwdriver (`&&`) → connects conditions.  
 
-### 💻 Code Example
+#### 💻 Code Example
 
 ```java
 public class OperatorDemo {
@@ -486,29 +408,29 @@ public class OperatorDemo {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ❌ Mixing `=` with `==`.  
 - ✅ Be careful with bitwise vs logical operators (`&` vs `&&`).  
 - ✅ Use parentheses for clarity.  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: What’s the difference between `&` and `&&`?*  
 **A:** `&` checks both conditions, `&&` uses short-circuit (stops if first is false).  
 
 ---
 
-# 🔹 **4. Control Structures**
+## 🔹 **4. Control Structures**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 Control structures decide **how code flows**:  
 
 1. **Decision Making:** `if`, `if-else`, `switch`.  
 2. **Loops:** `for`, `while`, `do-while`, `for-each`.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of a **traffic signal**:  
 
@@ -516,7 +438,7 @@ Think of a **traffic signal**:
 - Red → Stop (`else`).  
 - Roundabout → Loop until exit (`while`).  
 
-### 💻 Code Example
+#### 💻 Code Example
 
 ```java
 public class ControlDemo {
@@ -545,32 +467,32 @@ public class ControlDemo {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ✅ Always include `break` in `switch` to prevent fall-through.  
 - ✅ Avoid infinite loops (`while(true)` without exit).  
 - ❌ Don’t use `==` for comparing strings; use `.equals()`.  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Difference between `while` and `do-while`?*  
 **A:** `while` checks condition first, `do-while` runs at least once.  
 
 ---
 
-# 🔹 **5. Method Overloading vs Method Overriding**
+## 🔹 **5. Method Overloading vs Method Overriding**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - **Overloading (Compile-time Polymorphism):** Same method name, different parameter list.  
 - **Overriding (Runtime Polymorphism):** Subclass redefines parent class method.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Overloading = **same person, different skills** (you can sing and dance).  
 Overriding = **child modifies parent’s recipe** (same dish, different taste).  
 
-### 💻 Code Example
+#### 💻 Code Example
 
 ```java
 class MathUtils {
@@ -600,27 +522,27 @@ public class Main {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ✅ Use `@Override` annotation in overriding.  
 - ❌ Overloading cannot be done by only changing return type.  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Can static methods be overridden?*  
 **A:** No, static methods are hidden, not overridden.  
 
 ---
 
-# 🔹 **6. Constructor Chaining and Types**
+## 🔹 **6. Constructor Chaining and Types**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - **Constructor:** Special method to initialize objects.  
 - **Types:** Default, parameterized, copy constructor.  
 - **Constructor Chaining:** Calling one constructor from another using `this()` (same class) or `super()` (parent class).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of **house construction**:  
 
@@ -628,7 +550,7 @@ Think of **house construction**:
 - Parameterized = house with custom features.  
 - Chaining = one constructor calls another (builds foundation, then adds rooms).  
 
-### 💻 Code Example
+#### 💻 Code Example
 
 ```java
 class Student {
@@ -671,12 +593,12 @@ public class Main {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ✅ Always place `this()` or `super()` as the first statement.  
 - ❌ Avoid circular constructor calls (`this()` calling itself).  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Why use constructor chaining?*  
 **A:** To avoid duplicate initialization code and ensure consistency.  
@@ -689,7 +611,7 @@ Would you like me to now **design a tiered practice set (Beginner → Intermedia
 
 ## USER
 
-### Access Modifiers
+#### Access Modifiers
 
 - `public` - accessible everywhere
 - `private` - accessible within same class
@@ -702,9 +624,9 @@ Great topic choice! 🎯 Access modifiers are one of the **first walls of defens
 
 ---
 
-# 🔹 **Access Modifiers in Java**
+## 🔹 **Access Modifiers in Java**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 Access modifiers **define the visibility** of classes, methods, and variables. They determine **who can see and use** a piece of code.  
 
@@ -719,13 +641,13 @@ There are **four main types**:
 
 ---
 
-# 🔹 **1. `public` – Accessible Everywhere**
+## 🔹 **1. `public` – Accessible Everywhere**
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Imagine a **public park** — anyone can enter, no restrictions.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 public class Animal {
@@ -745,19 +667,19 @@ public class Main {
 }
 ```
 
-### ⚠️ Best Practice  
+#### ⚠️ Best Practice  
 
 - Use `public` only when something is intended to be universally accessible (like APIs).  
 
 ---
 
-# 🔹 **2. `private` – Accessible Within Same Class Only**
+## 🔹 **2. `private` – Accessible Within Same Class Only**
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of your **ATM PIN** — only you know it; even your family can’t access it.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 class BankAccount {
@@ -778,19 +700,19 @@ public class Main {
 }
 ```
 
-### ⚠️ Best Practice  
+#### ⚠️ Best Practice  
 
 - Always mark **fields as private** and use getters/setters to control access (**Encapsulation** principle).  
 
 ---
 
-# 🔹 **3. `protected` – Accessible in Same Package + Subclasses**
+## 🔹 **3. `protected` – Accessible in Same Package + Subclasses**
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of **family secrets** — accessible to family (package) and children (subclasses), but not to outsiders.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 package animals;
@@ -818,25 +740,25 @@ class Test extends Animal {
 }
 ```
 
-### ⚠️ Best Practice  
+#### ⚠️ Best Practice  
 
 - Use `protected` when you want to **allow inheritance but restrict public access**.  
 
 ---
 
-# 🔹 **4. `default` (Package-Private)**
+## 🔹 **4. `default` (Package-Private)**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 If you don’t specify any modifier, it becomes **default** (a.k.a package-private).  
 
 - Accessible within **same package only**, not outside.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of a **company’s internal cafeteria** — only employees (same package) can enter. Outsiders can’t.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 package company;
@@ -856,13 +778,13 @@ public class Main {
 }
 ```
 
-### ⚠️ Best Practice  
+#### ⚠️ Best Practice  
 
 - Use `default` for **package-level utilities** that shouldn’t be exposed globally.  
 
 ---
 
-# 🔹 Interview/Exam Relevant Insights
+## 🔹 Interview/Exam Relevant Insights
 
 1. 👉 *Q: What’s the difference between `protected` and default?*  
    **A:** `protected` allows subclass access (even across packages), default does not.  
@@ -884,7 +806,7 @@ public class Main {
 
 ## USER
 
-### Keywords
+#### Keywords
 
 - **static** - class-level variables and methods
 - **final** - constants, preventing inheritance/overriding
@@ -899,22 +821,22 @@ Let’s go step by step with: **Concept → Analogy → Code → Pitfalls → In
 
 ---
 
-# 🔹 **1. `static` – Class-Level Variables and Methods**
+## 🔹 **1. `static` – Class-Level Variables and Methods**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - Belongs to the **class**, not to individual objects.  
 - **Static variables** → shared among all objects.  
 - **Static methods** → can be called without creating an object.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of a **school**:  
 
 - Each student (object) has a different name (instance variable).  
 - But the **school name** is the same for all students → `static`.  
 
-### 💻 Code Example
+#### 💻 Code Example
 
 ```java
 class Student {
@@ -942,22 +864,22 @@ public class Main {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ❌ Static methods cannot access **non-static** variables directly (need object).  
 - ✅ Use static for constants, utilities, and shared resources.  
 - ❌ Avoid overusing static → reduces flexibility and OOP principles.  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Can a static method be overridden?*  
 **A:** No, it can only be hidden (method hiding).  
 
 ---
 
-# 🔹 **2. `final` – Constants & Restrictions**
+## 🔹 **2. `final` – Constants & Restrictions**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 The `final` keyword is like a **lock**.  
 
@@ -965,7 +887,7 @@ The `final` keyword is like a **lock**.
 - **final method** → cannot be overridden.  
 - **final class** → cannot be inherited.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of **cemented bricks** in a wall:  
 
@@ -973,7 +895,7 @@ Think of **cemented bricks** in a wall:
 - Once locked (final method), children can’t change it.  
 - Once sealed (final class), no extensions possible.  
 
-### 💻 Code Example
+#### 💻 Code Example
 
 ```java
 final class Vehicle {
@@ -997,33 +919,33 @@ public class Main {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ✅ Always initialize final variables (immediately or in constructor).  
 - ❌ Don’t confuse `final` with `finally` (exception handling) or `finalize()` (object cleanup).  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Difference between `finally` and `final`?*  
 **A:** `final` is a keyword (constants, restrictions), `finally` is a block in exception handling, `finalize()` is a method for garbage collection (deprecated).  
 
 ---
 
-# 🔹 **3. `super` – Accessing Parent Class Members**
+## 🔹 **3. `super` – Accessing Parent Class Members**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - Used to call **parent class variables, methods, or constructors**.  
 - Helps when **child overrides parent members** but still needs parent’s version.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Imagine you inherit your **dad’s bakery**:  
 
 - You create your own bread (overriding).  
 - But sometimes you still sell his **original recipe bread** (using `super`).  
 
-### 💻 Code Example
+#### 💻 Code Example
 
 ```java
 class Animal {
@@ -1066,31 +988,31 @@ public class Main {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ✅ Always place `super()` as the **first line** in constructor if used.  
 - ❌ Cannot use `super` in a static context.  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Why do we use `super()` in constructors?*  
 **A:** To initialize parent class state before child class adds its own.  
 
 ---
 
-# 🔹 **4. `this` – Current Object Reference**
+## 🔹 **4. `this` – Current Object Reference**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - Refers to the **current object** inside a class.  
 - Used to **differentiate instance variables** from local variables.  
 - Can be used to **call another constructor** (constructor chaining).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of saying **“this house”** → it means *the house I’m currently in*, not some other house.  
 
-### 💻 Code Example
+#### 💻 Code Example
 
 ```java
 class Student {
@@ -1122,19 +1044,19 @@ public class Main {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ❌ Don’t overuse `this` — only when needed for clarity.  
 - ✅ Use `this()` for clean constructor chaining.  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Can `this` be used in a static method?*  
 **A:** No, because static methods belong to the class, not an object.  
 
 ---
 
-# 🎉 Final Recap
+## 🎉 Final Recap
 
 - **`static`** → Belongs to class, shared by all objects.  
 - **`final`** → Lock: constants, methods not overridable, classes not extendable.  
@@ -1149,7 +1071,7 @@ public class Main {
 
 ## USER
 
-### Java Virtual Machine (JVM)
+#### Java Virtual Machine (JVM)
 
 - JVM architecture and components
 - Bytecode and platform independence
@@ -1162,9 +1084,9 @@ Perfect! 🚀 The **Java Virtual Machine (JVM)** is the *engine* that makes Java
 
 ---
 
-# 🔹 **1. JVM Architecture and Components**
+## 🔹 **1. JVM Architecture and Components**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 The **JVM (Java Virtual Machine)** is like a **virtual computer** inside your real computer.  
 It reads Java **bytecode** and executes it on your machine.  
@@ -1182,7 +1104,7 @@ It reads Java **bytecode** and executes it on your machine.
    - **JIT Compiler** → Converts bytecode into machine code for speed.  
    - **Garbage Collector** → Cleans unused objects.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of the JVM as a **chef in a restaurant**:  
 
@@ -1191,7 +1113,7 @@ Think of the JVM as a **chef in a restaurant**:
 - Waiters (stacks) = handle each order (method calls).  
 - Dishwasher (garbage collector) = cleans unused dishes.  
 
-### 📝 Diagram (mental picture)  
+#### 📝 Diagram (mental picture)  
 
 ```
 Class Loader → Method Area + Heap + Stack + PC Register + Native Stack
@@ -1201,22 +1123,22 @@ Class Loader → Method Area + Heap + Stack + PC Register + Native Stack
 
 ---
 
-# 🔹 **2. Bytecode and Platform Independence**
+## 🔹 **2. Bytecode and Platform Independence**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - Java source code (`.java`) → Compiled into **bytecode** (`.class`).  
 - Bytecode is **universal** and can run on any machine with a JVM.  
 - This is why Java is called **“Write Once, Run Anywhere (WORA)”**.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of **subtitles in movies**:  
 
 - Movie (Java code) → Subtitles (bytecode).  
 - Different countries (Windows, Mac, Linux) can read it if they have the right **translator (JVM)**.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 public class Hello {
@@ -1231,21 +1153,21 @@ Steps:
 1. `javac Hello.java` → compiles to `Hello.class` (bytecode).  
 2. `java Hello` → JVM runs bytecode on your OS.  
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ❌ Bytecode cannot run without JVM.  
 - ✅ Always compile `.java` to `.class` before execution.  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Why is Java platform independent but JVM is platform dependent?*  
 **A:** Bytecode is universal, but each JVM implementation is OS-specific.  
 
 ---
 
-# 🔹 **3. Class Loading Mechanism**
+## 🔹 **3. Class Loading Mechanism**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 The **Class Loader** is responsible for **loading classes into memory**.  
 
@@ -1261,7 +1183,7 @@ The **Class Loader** is responsible for **loading classes into memory**.
 - **Extension ClassLoader** → Loads extensions (`javax.*`).  
 - **Application ClassLoader** → Loads user-defined classes.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of **Netflix streaming**:  
 
@@ -1269,7 +1191,7 @@ Think of **Netflix streaming**:
 - Netflix app = class loader.  
 - First it checks if the movie is valid (verification), then streams it (loading).  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 public class ClassLoaderDemo {
@@ -1280,33 +1202,33 @@ public class ClassLoaderDemo {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ❌ Misconfigured classpath → `ClassNotFoundException`.  
 - ✅ Always keep required `.class` files or JARs in classpath.  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: What are the 3 steps of class loading?*  
 **A:** Loading → Linking → Initialization.  
 
 ---
 
-# 🔹 **4. Just-In-Time (JIT) Compilation**
+## 🔹 **4. Just-In-Time (JIT) Compilation**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - **JIT Compiler** improves performance by converting **bytecode → native machine code** at runtime.  
 - Instead of interpreting line by line, it compiles frequently used code (hotspots).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of **language translation**:  
 
 - Interpreter = translates **word by word** (slower).  
 - JIT = learns common phrases, translates them directly in native language (faster).  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 public class JITDemo {
@@ -1324,19 +1246,19 @@ public class JITDemo {
 
 👉 Run multiple times; JIT optimizes frequently executed loops.  
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ❌ JIT adds slight startup overhead but improves long-term performance.  
 - ✅ Java HotSpot JVM uses **Adaptive Optimization** (compiles only hotspots).  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: What’s the difference between JIT and Interpreter?*  
 **A:** Interpreter runs line by line, JIT compiles hot code to native for speed.  
 
 ---
 
-# 🎉 Final Recap  
+## 🎉 Final Recap  
 
 - **JVM Architecture** → Class Loader, Memory Areas (Heap, Stack), Execution Engine, Garbage Collector.  
 - **Bytecode** → Universal format, makes Java platform-independent.  
@@ -1351,7 +1273,7 @@ public class JITDemo {
 
 ## USER
 
-### Memory Areas
+#### Memory Areas
 
 - **Heap Memory** - Object storage, garbage collected
 - **Stack Memory** - Method calls and local variables
@@ -1364,9 +1286,9 @@ Great topic! 🚀 Memory management is one of the trickiest yet most **important
 
 ---
 
-# 🔹 **1. Heap Memory**
+## 🔹 **1. Heap Memory**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - Heap is the **big memory pool** where **all Java objects** live.  
 - Managed by **Garbage Collector (GC)** → removes unused objects.  
@@ -1375,14 +1297,14 @@ Great topic! 🚀 Memory management is one of the trickiest yet most **important
   - **Old Generation** (long-lived objects)  
   - **Permanent Generation / Metaspace** (class metadata, method info in modern JVMs).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of the **heap as a warehouse**:  
 
 - Objects = items stored.  
 - Garbage Collector = cleaning staff removing unused items.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 public class HeapExample {
@@ -1393,21 +1315,21 @@ public class HeapExample {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ❌ Memory leaks → happen if references to unused objects are kept.  
 - ✅ Use **weak references** or **close resources** (files, DB connections).  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Where are objects stored in Java?*  
 **A:** Heap memory.  
 
 ---
 
-# 🔹 **2. Stack Memory**
+## 🔹 **2. Stack Memory**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - Each thread has its **own stack**.  
 - Stores:  
@@ -1416,13 +1338,13 @@ public class HeapExample {
   - Object references (not the objects themselves).  
 - When method ends → its stack frame is removed.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of the **stack as a cafeteria tray stack**:  
 
 - Last tray added is the first one removed (**LIFO = Last In, First Out**).  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 public class StackExample {
@@ -1439,21 +1361,21 @@ public class StackExample {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ❌ Deep recursion → `StackOverflowError`.  
 - ✅ Use iteration when recursion is too deep.  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: What’s the difference between heap and stack memory?*  
 **A:** Heap = objects (shared), Stack = method calls & local variables (per thread).  
 
 ---
 
-# 🔹 **3. Method Area**
+## 🔹 **3. Method Area**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - Part of JVM memory where **class-level information** is stored:  
   - Class metadata (name, fields, methods).  
@@ -1461,13 +1383,13 @@ public class StackExample {
   - Method bytecode.  
 - In modern JVM → stored in **Metaspace** (not heap).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of the **method area as a library catalog**:  
 
 - It contains information about all the books (classes) and where they are located.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 public class MethodAreaExample {
@@ -1480,49 +1402,49 @@ public class MethodAreaExample {
 }
 ```
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ❌ In older JVMs, **PermGen space** errors occurred when too many classes were loaded.  
 - ✅ In modern JVM (Java 8+), **Metaspace** grows dynamically.  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Where are static variables stored?*  
 **A:** Method area (Metaspace in Java 8+).  
 
 ---
 
-# 🔹 **4. PC (Program Counter) Register**
+## 🔹 **4. PC (Program Counter) Register**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - Each thread has its own **PC Register**.  
 - Stores the **address of the current instruction** being executed.  
 - Helps resume execution after method calls or jumps.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of it as the **bookmark in a novel**:  
 
 - It marks the current page you are reading so you don’t lose track.  
 
-### 💻 Example
+#### 💻 Example
 
 (Not directly accessible in Java, but JVM uses it internally).  
 
-### ⚠️ Pitfalls & Best Practices  
+#### ⚠️ Pitfalls & Best Practices  
 
 - ❌ Beginners think it stores data → it doesn’t. It just stores **addresses**.  
 - ✅ Remember: each thread has its own PC Register → essential for multithreading.  
 
-### 🎓 Interview Insight  
+#### 🎓 Interview Insight  
 
 👉 *Q: Why does each thread need its own PC Register?*  
 **A:** Because each thread may be executing different methods at the same time.  
 
 ---
 
-# 🎉 Final Recap  
+## 🎉 Final Recap  
 
 - **Heap** → Objects (GC managed).  
 - **Stack** → Method calls & local variables (per thread).  
@@ -1537,7 +1459,7 @@ Think of it as the **bookmark in a novel**:
 
 ## USER
 
-### Garbage Collection
+#### Garbage Collection
 
 - Automatic memory management
 - Types of garbage collectors
@@ -1550,15 +1472,15 @@ Perfect choice! 🚀 Garbage Collection (GC) is a **core strength of Java** and 
 
 ---
 
-# 🔹 **1. Automatic Memory Management**
+## 🔹 **1. Automatic Memory Management**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - In Java, you don’t manually free memory like in **C/C++ (`free()` or `delete`)**.  
 - Garbage Collector (GC) automatically removes objects that are **no longer reachable**.  
 - Runs in the background, freeing heap memory.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of Java memory like a **restaurant with busboys**:  
 
@@ -1566,7 +1488,7 @@ Think of Java memory like a **restaurant with busboys**:
 - Once done, busboys (GC) clean the table (free memory).  
 - You don’t have to clean up yourself.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 public class GarbageExample {
@@ -1580,9 +1502,9 @@ public class GarbageExample {
 
 ---
 
-# 🔹 **2. Types of Garbage Collectors**
+## 🔹 **2. Types of Garbage Collectors**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 JVM provides multiple GC algorithms:  
 
@@ -1591,17 +1513,17 @@ JVM provides multiple GC algorithms:
 3. **CMS (Concurrent Mark-Sweep)** → Runs alongside application (low pause times).  
 4. **G1 GC (Garbage First)** → Default in Java 9+, divides heap into regions.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 - **Serial GC** = one cleaner sweeping the floor alone.  
 - **Parallel GC** = a team of cleaners sweeping together.  
 - **CMS** = cleaners working while customers are still eating.  
 - **G1 GC** = smart cleaner who cleans the dirtiest spots first.  
 
-### 💻 Example  
+#### 💻 Example  
 
 ```bash
-# Run with different GC options
+## Run with different GC options
 java -XX:+UseSerialGC MyApp
 java -XX:+UseParallelGC MyApp
 java -XX:+UseG1GC MyApp
@@ -1609,9 +1531,9 @@ java -XX:+UseG1GC MyApp
 
 ---
 
-# 🔹 **3. Memory Leaks and Prevention**
+## 🔹 **3. Memory Leaks and Prevention**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - Even with GC, **memory leaks can still happen** if objects remain referenced but unused.  
 - Common causes:  
@@ -1619,13 +1541,13 @@ java -XX:+UseG1GC MyApp
   - Unclosed resources (files, DB connections).  
   - Inner classes holding outer class references.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of leaving **junk in your backpack**:  
 
 - If you never throw it away (nullify references), it keeps filling up.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -1641,7 +1563,7 @@ public class MemoryLeakExample {
 }
 ```
 
-### ✅ Prevention  
+#### ✅ Prevention  
 
 - Use **WeakReference** for caches.  
 - Always **close resources** (`try-with-resources`).  
@@ -1649,19 +1571,19 @@ public class MemoryLeakExample {
 
 ---
 
-# 🔹 **4. finalize() Method**
+## 🔹 **4. finalize() Method**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - `finalize()` is a method in `Object` class.  
 - Called **before an object is collected by GC**.  
 - Used to release resources (files, sockets, etc.).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of it as a **farewell note** before an object leaves memory.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 public class FinalizeExample {
@@ -1678,7 +1600,7 @@ public class FinalizeExample {
 }
 ```
 
-### ⚠️ Pitfalls  
+#### ⚠️ Pitfalls  
 
 - ❌ `finalize()` is **unreliable** → may never run.  
 - ❌ Slows down GC.  
@@ -1686,7 +1608,7 @@ public class FinalizeExample {
 
 ---
 
-# 🎓 **Interview Insights**
+## 🎓 **Interview Insights**
 
 - **Q:** How does Java handle memory management?  
   **A:** Through automatic garbage collection on heap memory.  
@@ -1715,7 +1637,7 @@ public class FinalizeExample {
 
 ## USER
 
-### Core Interfaces
+#### Core Interfaces
 
 - **Collection** - Root interface
 - **List** - Ordered collection, allows duplicates
@@ -1728,22 +1650,22 @@ Great topic! 🌟 Core Interfaces form the **foundation of Java Collections Fram
 
 ---
 
-# 🔹 **1. Collection (Root Interface)**
+## 🔹 **1. Collection (Root Interface)**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - **Root interface** of the Collections Framework (`java.util`).  
 - Defines basic operations: `add()`, `remove()`, `size()`, `iterator()`.  
 - **Subinterfaces:** `List`, `Set`, `Queue`.  
 - **Note:** `Map` is **not** part of `Collection` (different hierarchy).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of `Collection` as a **container box**:  
 
 - You can put things in (`add()`), take them out (`remove()`), or check how many things are inside (`size()`).  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -1760,9 +1682,9 @@ public class CollectionDemo {
 
 ---
 
-# 🔹 **2. List (Ordered Collection, Allows Duplicates)**
+## 🔹 **2. List (Ordered Collection, Allows Duplicates)**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - Maintains **insertion order**.  
 - Allows **duplicate elements**.  
@@ -1772,14 +1694,14 @@ public class CollectionDemo {
   - `LinkedList` → fast insert/delete, slower random access.  
   - `Vector` (legacy).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 A `List` is like a **playlist of songs**:  
 
-- Songs are ordered (you can play track #3).  
+- Songs are ordered (you can play track ## ).  
 - The same song can appear multiple times.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -1798,9 +1720,9 @@ public class ListDemo {
 
 ---
 
-# 🔹 **3. Set (No Duplicates Allowed)**
+## 🔹 **3. Set (No Duplicates Allowed)**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - A collection of **unique elements**.  
 - **Unordered** (except some implementations).  
@@ -1809,14 +1731,14 @@ public class ListDemo {
   - `LinkedHashSet` → maintains insertion order.  
   - `TreeSet` → sorted order (uses Red-Black tree).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 A `Set` is like a **classroom attendance sheet**:  
 
 - Each student’s name appears only once.  
 - Order of names may not matter.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -1834,9 +1756,9 @@ public class SetDemo {
 
 ---
 
-# 🔹 **4. Map (Key-Value Pairs)**
+## 🔹 **4. Map (Key-Value Pairs)**
 
-### ✅ Conceptual Overview  
+#### ✅ Conceptual Overview  
 
 - Stores data in **key-value pairs**.  
 - Keys are **unique**, values can be duplicated.  
@@ -1847,14 +1769,14 @@ public class SetDemo {
   - `TreeMap` → sorted by keys.  
   - `Hashtable` (legacy, synchronized).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 A `Map` is like a **dictionary**:  
 
 - Word (key) → Meaning (value).  
 - Each word is unique, but meanings may repeat.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -1873,7 +1795,7 @@ public class MapDemo {
 
 ---
 
-# ⚠️ Common Challenges & Best Practices
+## ⚠️ Common Challenges & Best Practices
 
 - ❌ Confusing `List` vs `Set`:  
   - `List` → ordered, allows duplicates.  
@@ -1890,7 +1812,7 @@ public class MapDemo {
 
 ---
 
-# 🎓 Interview Insights
+## 🎓 Interview Insights
 
 - **Q:** Difference between `HashSet` and `TreeSet`?  
   **A:** `HashSet` is unordered, faster. `TreeSet` is sorted, slower.  
@@ -1916,7 +1838,7 @@ public class MapDemo {
 
 ## USER
 
-### List Implementations
+#### List Implementations
 
 - **ArrayList** - Dynamic array, fast random access
 - **LinkedList** - Doubly linked list, fast insertion/deletion
@@ -1932,24 +1854,24 @@ We’ll explore **ArrayList, LinkedList, and Vector** step by step with:
 
 ---
 
-# 🔹 **1. ArrayList (Dynamic Array)**
+## 🔹 **1. ArrayList (Dynamic Array)**
 
-### ✅ Conceptual Overview
+#### ✅ Conceptual Overview
 
 - Backed by a **dynamic array** (resizable).  
 - Provides **fast random access** (O(1) for `get(index)`).  
 - Insertion/deletion in the middle is **slow** (O(n)) because elements must shift.  
 - Not synchronized → faster, but not thread-safe.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of `ArrayList` as a **movie theater row**:  
 
 - Each seat is numbered (index).  
-- Easy to find who is sitting in seat #5 (fast lookup).  
+- Easy to find who is sitting in seat ##  (fast lookup).  
 - If someone leaves in the middle, everyone to the right has to shift over (slow removal).  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -1971,24 +1893,24 @@ public class ArrayListDemo {
 
 ---
 
-# 🔹 **2. LinkedList (Doubly Linked List)**
+## 🔹 **2. LinkedList (Doubly Linked List)**
 
-### ✅ Conceptual Overview
+#### ✅ Conceptual Overview
 
 - Backed by **doubly linked list**.  
 - Each element (node) has pointers to **previous** and **next** nodes.  
 - **Fast insertion/deletion** in the middle (O(1)).  
 - **Slower random access** (O(n)) since traversal is required.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of `LinkedList` as a **train of carriages**:  
 
 - Each carriage is connected to the previous and next.  
 - Easy to add/remove a carriage (node) anywhere.  
-- To find carriage #7, you must walk from the start (slower lookup).  
+- To find carriage ## , you must walk from the start (slower lookup).  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -2010,23 +1932,23 @@ public class LinkedListDemo {
 
 ---
 
-# 🔹 **3. Vector (Synchronized ArrayList)**
+## 🔹 **3. Vector (Synchronized ArrayList)**
 
-### ✅ Conceptual Overview
+#### ✅ Conceptual Overview
 
 - Similar to `ArrayList` (dynamic array).  
 - **Synchronized**, meaning thread-safe.  
 - Slower than `ArrayList` because synchronization adds overhead.  
 - Considered **legacy**, but still used in multithreaded applications.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of `Vector` as a **bank locker room**:  
 
 - Only one person (thread) can access a locker at a time.  
 - Safe but slower compared to open access (`ArrayList`).  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -2045,7 +1967,7 @@ public class VectorDemo {
 
 ---
 
-# ⚠️ Common Pitfalls
+## ⚠️ Common Pitfalls
 
 - ❌ Using `LinkedList` when you need frequent **random access** → use `ArrayList` instead.  
 - ❌ Assuming `ArrayList` is thread-safe → use `Vector` or `Collections.synchronizedList()` if multiple threads access it.  
@@ -2053,7 +1975,7 @@ public class VectorDemo {
 
 ---
 
-# 🎓 Interview Insights
+## 🎓 Interview Insights
 
 - **Q:** Difference between `ArrayList` and `LinkedList`?  
   **A:** `ArrayList` is better for search (O(1) access), `LinkedList` is better for frequent insert/delete (O(1) insertion).  
@@ -2078,7 +2000,7 @@ public class VectorDemo {
 
 ## USER
 
-### Set Implementations
+#### Set Implementations
 
 - **HashSet** - Hash table based, no ordering
 - **LinkedHashSet** - Maintains insertion order
@@ -2101,23 +2023,23 @@ We’ll break each down with:
 
 ---
 
-# 🔹 **1. HashSet**
+## 🔹 **1. HashSet**
 
-### ✅ Conceptual Overview
+#### ✅ Conceptual Overview
 
 - Backed by a **hash table** (uses `HashMap` internally).  
 - **No duplicates allowed**.  
 - **No guaranteed order** of elements.  
 - Operations like `add`, `remove`, `contains` are **O(1) on average**.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of a **bucket system** in a library:  
 
 - Each book is thrown into a random bucket based on a hash.  
 - Books don’t have an order, but you can quickly check if one exists.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -2137,22 +2059,22 @@ public class HashSetDemo {
 
 ---
 
-# 🔹 **2. LinkedHashSet**
+## 🔹 **2. LinkedHashSet**
 
-### ✅ Conceptual Overview
+#### ✅ Conceptual Overview
 
 - Backed by a **hash table + linked list**.  
 - Maintains **insertion order**.  
 - Slightly slower than `HashSet` due to maintaining the linked list.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Imagine a **sign-in sheet**:  
 
 - Everyone signs in, no duplicates allowed.  
 - Names are always listed in the order they signed.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -2172,23 +2094,23 @@ public class LinkedHashSetDemo {
 
 ---
 
-# 🔹 **3. TreeSet**
+## 🔹 **3. TreeSet**
 
-### ✅ Conceptual Overview
+#### ✅ Conceptual Overview
 
 - Backed by a **Red-Black Tree (self-balancing BST)**.  
 - Stores elements in **sorted order** (natural or custom comparator).  
 - Implements **NavigableSet**, so you get methods like `higher()`, `lower()`, `ceiling()`, etc.  
 - Slower than `HashSet` (`O(log n)` for add/remove/search).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of a **sorted attendance list**:  
 
 - Names are always arranged alphabetically.  
 - Takes longer to insert because the list must stay sorted.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -2210,7 +2132,7 @@ public class TreeSetDemo {
 
 ---
 
-# ⚠️ Common Pitfalls
+## ⚠️ Common Pitfalls
 
 - ❌ **HashSet doesn’t guarantee order** → don’t rely on iteration order.  
 - ❌ **TreeSet doesn’t allow null** (throws `NullPointerException`).  
@@ -2218,7 +2140,7 @@ public class TreeSetDemo {
 
 ---
 
-# 🎓 Interview Insights
+## 🎓 Interview Insights
 
 - **Q:** Difference between `HashSet` and `LinkedHashSet`?  
   **A:** Both prevent duplicates, but `LinkedHashSet` maintains insertion order.  
@@ -2231,7 +2153,7 @@ public class TreeSetDemo {
 
 ---
 
-# ✅ Recap
+## ✅ Recap
 
 - **HashSet** → Fastest, unordered, best for existence checks.  
 - **LinkedHashSet** → Keeps insertion order, slightly slower.  
@@ -2243,7 +2165,7 @@ public class TreeSetDemo {
 
 ## USER
 
-### Map Implementations
+#### Map Implementations
 
 - **HashMap** - Hash table based, allows null
 - **LinkedHashMap** - Maintains insertion/access order
@@ -2266,9 +2188,9 @@ We’ll cover **HashMap, LinkedHashMap, TreeMap, Hashtable, and ConcurrentHashMa
 
 ---
 
-# 🔹 **1. HashMap**
+## 🔹 **1. HashMap**
 
-### ✅ Conceptual Overview
+#### ✅ Conceptual Overview
 
 - Backed by a **hash table**.  
 - **Keys are unique**, values can be duplicated.  
@@ -2276,7 +2198,7 @@ We’ll cover **HashMap, LinkedHashMap, TreeMap, Hashtable, and ConcurrentHashMa
 - Fast `O(1)` operations on average.  
 - **Not thread-safe** (use `Collections.synchronizedMap()` or `ConcurrentHashMap` in multithreading).  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of lockers in a **school hallway**:  
 
@@ -2284,7 +2206,7 @@ Think of lockers in a **school hallway**:
 - Lockers can store anything (value).  
 - One locker might be empty (`null`).  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -2305,22 +2227,22 @@ public class HashMapDemo {
 
 ---
 
-# 🔹 **2. LinkedHashMap**
+## 🔹 **2. LinkedHashMap**
 
-### ✅ Conceptual Overview
+#### ✅ Conceptual Overview
 
 - Extends **HashMap** but maintains **insertion order**.  
 - Can also be configured to maintain **access order** (useful for LRU cache).  
 - Slightly slower than `HashMap`.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Imagine a **sign-up sheet**:  
 
 - Names are written in the order people arrive.  
 - Even if you read it later, the order remains preserved.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -2339,23 +2261,23 @@ public class LinkedHashMapDemo {
 
 ---
 
-# 🔹 **3. TreeMap**
+## 🔹 **3. TreeMap**
 
-### ✅ Conceptual Overview
+#### ✅ Conceptual Overview
 
 - Backed by a **Red-Black Tree (balanced BST)**.  
 - Stores keys in **sorted order** (natural or custom comparator).  
 - Does **not allow null keys** (but allows null values).  
 - `O(log n)` performance for insert, search, delete.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Think of a **phonebook**:  
 
 - Contacts are always sorted alphabetically by name.  
 - Makes it easy to find the "next" or "previous" entry.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -2374,23 +2296,23 @@ public class TreeMapDemo {
 
 ---
 
-# 🔹 **4. Hashtable**
+## 🔹 **4. Hashtable**
 
-### ✅ Conceptual Overview
+#### ✅ Conceptual Overview
 
 - Legacy class (older than Java Collections Framework).  
 - Similar to `HashMap` but **synchronized** (thread-safe).  
 - **No null keys or values allowed**.  
 - Slower compared to modern alternatives.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Like a **locked filing cabinet**:  
 
 - Only one person can access it at a time.  
 - Everything is safe, but slower to retrieve.  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -2409,23 +2331,23 @@ public class HashtableDemo {
 
 ---
 
-# 🔹 **5. ConcurrentHashMap**
+## 🔹 **5. ConcurrentHashMap**
 
-### ✅ Conceptual Overview
+#### ✅ Conceptual Overview
 
 - A **modern thread-safe** alternative to `Hashtable`.  
 - Uses **segment locking** (only part of the map is locked at a time).  
 - **No null keys or null values allowed**.  
 - Much faster than `Hashtable` in multithreaded apps.  
 
-### 🎯 Analogy  
+#### 🎯 Analogy  
 
 Imagine a **supermarket with multiple cashiers**:  
 
 - Multiple customers (threads) can check out at the same time.  
 - Faster than having just one cashier (`Hashtable`).  
 
-### 💻 Example
+#### 💻 Example
 
 ```java
 import java.util.*;
@@ -2444,7 +2366,7 @@ public class ConcurrentHashMapDemo {
 
 ---
 
-# ⚠️ Pitfalls & Best Practices
+## ⚠️ Pitfalls & Best Practices
 
 - ❌ Don’t use `Hashtable` in new projects → prefer `ConcurrentHashMap`.  
 - ❌ `HashMap` is not thread-safe → use `ConcurrentHashMap` for multi-threading.  
@@ -2453,7 +2375,7 @@ public class ConcurrentHashMapDemo {
 
 ---
 
-# 🎓 Interview Insights
+## 🎓 Interview Insights
 
 - **Q:** Difference between `HashMap` and `Hashtable`?  
   **A:** `HashMap` allows nulls, is not synchronized; `Hashtable` is synchronized, no nulls.  
@@ -2466,7 +2388,7 @@ public class ConcurrentHashMapDemo {
 
 ---
 
-# ✅ Recap
+## ✅ Recap
 
 - **HashMap** → Fast, allows null, not thread-safe.  
 - **LinkedHashMap** → Preserves insertion or access order.  
@@ -2480,7 +2402,7 @@ Would you like me to also make a **comparison table (HashMap vs LinkedHashMap vs
 
 ## USER
 
-### Iteration and Comparison
+#### Iteration and Comparison
 
 - Iterator vs ListIterator vs Enhanced for loop
 - **Comparable** - natural ordering (compareTo method)
@@ -2493,7 +2415,7 @@ This section covers **how we traverse collections** and **how we compare objects
 
 ---
 
-# 🔹 **1. Iteration in Java**
+## 🔹 **1. Iteration in Java**
 
 There are **3 main ways** to iterate collections:  
 
@@ -2503,7 +2425,7 @@ There are **3 main ways** to iterate collections:
 
 ---
 
-### ✅ **Iterator**
+#### ✅ **Iterator**
 
 - Works with **all Collection types** (List, Set, etc.).  
 - **Forward-only** traversal.  
@@ -2527,7 +2449,7 @@ public class IteratorDemo {
 
 ---
 
-### ✅ **ListIterator**
+#### ✅ **ListIterator**
 
 - Only works with **List implementations** (`ArrayList`, `LinkedList`, etc.).  
 - **Bi-directional** traversal (forward & backward).  
@@ -2554,7 +2476,7 @@ public class ListIteratorDemo {
 
 ---
 
-### ✅ **Enhanced For Loop (For-Each)**
+#### ✅ **Enhanced For Loop (For-Each)**
 
 - Simplest and most **readable** way to iterate.  
 - Cannot remove or modify elements directly.  
@@ -2576,13 +2498,13 @@ public class ForEachDemo {
 
 ---
 
-# 🔹 **2. Comparison in Java**
+## 🔹 **2. Comparison in Java**
 
 When storing custom objects in collections (like `TreeSet`, `TreeMap`, or sorting lists), Java needs to know **how to compare them**.  
 
 ---
 
-### ✅ **Comparable Interface**
+#### ✅ **Comparable Interface**
 
 - Defines **natural ordering**.  
 - Implemented by the class itself.  
@@ -2619,7 +2541,7 @@ public class ComparableDemo {
 
 ---
 
-### ✅ **Comparator Interface**
+#### ✅ **Comparator Interface**
 
 - Defines **custom ordering**.  
 - Implemented as a **separate class** or **lambda expression**.  
@@ -2655,7 +2577,7 @@ public class ComparatorDemo {
 
 ---
 
-# ⚖️ **Iterator vs ListIterator vs For-Each**
+## ⚖️ **Iterator vs ListIterator vs For-Each**
 
 | Feature              | Iterator | ListIterator | For-Each Loop |
 |----------------------|----------|--------------|---------------|
@@ -2668,7 +2590,7 @@ public class ComparatorDemo {
 
 ---
 
-# ⚖️ **Comparable vs Comparator**
+## ⚖️ **Comparable vs Comparator**
 
 | Feature           | Comparable | Comparator |
 |-------------------|------------|------------|
@@ -2698,7 +2620,7 @@ Would you like me to also show a **real-world example (like sorting employees by
 
 ## 4. Exception Handling
 
-### Exception Hierarchy
+#### Exception Hierarchy
 
 - **Throwable** - Root class
 - **Error** - System-level errors
@@ -2711,7 +2633,7 @@ Great section 👍 Let’s fully expand **Exception Handling** in Java with hier
 
 ---
 
-# 🚨 **4. Exception Handling**
+## 🚨 **4. Exception Handling**
 
 Exception handling in Java provides a **robust mechanism** to handle runtime errors without crashing the program.
 
@@ -2732,14 +2654,14 @@ Exception handling in Java provides a **robust mechanism** to handle runtime err
 
 ---
 
-### 🔹 **Throwable**
+#### 🔹 **Throwable**
 
 - Root of all errors and exceptions.
 - Two main branches: **Error** and **Exception**.
 
 ---
 
-### 🔹 **Error**  
+#### 🔹 **Error**  
 
 - Serious issues related to **system/JVM**.  
 - **Not recoverable** by applications.  
@@ -2759,7 +2681,7 @@ public class ErrorDemo {
 
 ---
 
-### 🔹 **Exception**
+#### 🔹 **Exception**
 
 - Conditions that an application might want to **catch and handle**.
 - Two categories:
@@ -2768,7 +2690,7 @@ public class ErrorDemo {
 
 ---
 
-### 🔹 **Checked Exceptions**
+#### 🔹 **Checked Exceptions**
 
 - Known at **compile time**.  
 - Must be **declared or handled**.  
@@ -2793,7 +2715,7 @@ public class CheckedExceptionDemo {
 
 ---
 
-### 🔹 **RuntimeException (Unchecked Exceptions)**
+#### 🔹 **RuntimeException (Unchecked Exceptions)**
 
 - Known at **runtime**.  
 - Not required to be handled.  
@@ -2864,7 +2786,7 @@ Would you like me to also add a **section on Custom Exceptions (user-defined)** 
 
 ## USER
 
-### Exception Types
+#### Exception Types
 
 - **Checked Exceptions** - Compile-time checking required
 - **Unchecked Exceptions** - Runtime exceptions
@@ -2876,7 +2798,7 @@ Perfect 👌 Let’s dive deeper into **Exception Types** in Java. We’ll look 
 
 ---
 
-# ⚡ **Exception Types in Java**
+## ⚡ **Exception Types in Java**
 
 Java exceptions are divided mainly into **Checked**, **Unchecked**, and **Custom exceptions**.  
 Think of exceptions like **traffic rules**:
@@ -3022,7 +2944,7 @@ public class CustomUncheckedDemo {
 
 ## USER
 
-### Exception Handling Blocks
+#### Exception Handling Blocks
 
 - `try-catch-finally` blocks
 - `try-with-resources` for automatic resource management
@@ -3035,7 +2957,7 @@ Great topic 🚀 Let’s carefully unpack **Exception Handling Blocks in Java**.
 
 ---
 
-# ⚡ Exception Handling Blocks in Java  
+## ⚡ Exception Handling Blocks in Java  
 
 Java provides a structured way to **detect, handle, and recover** from errors using exception handling blocks.  
 
@@ -3051,13 +2973,13 @@ Think of it like cooking 🍳:
 
 ## 🔹 1. `try-catch-finally`  
 
-### Concept
+#### Concept
 
 - **try** → The risky code that might throw an exception.  
 - **catch** → The block to handle specific exceptions.  
 - **finally** → Always runs (whether an exception happens or not). Used for cleanup.  
 
-### Example  
+#### Example  
 
 ```java
 public class TryCatchFinallyDemo {
@@ -3086,13 +3008,13 @@ Cleanup: This block always executes.
 
 ## 🔹 2. `try-with-resources` (Java 7+)  
 
-### Concept
+#### Concept
 
 - Special try block designed for **resources** (files, sockets, DB connections).  
 - Automatically closes resources once done.  
 - Works only with classes implementing **AutoCloseable** interface.  
 
-### Example  
+#### Example  
 
 ```java
 import java.io.*;
@@ -3122,7 +3044,7 @@ public class TryWithResourcesDemo {
 | **throw** | Used to **actually throw** an exception object | Inside a method | `throw new IOException("File not found");` |
 | **throws** | Declares exceptions a method **might throw** | In method signature | `public void readFile() throws IOException` |
 
-### Example  
+#### Example  
 
 ```java
 class ThrowThrowsDemo {
@@ -3144,12 +3066,12 @@ class ThrowThrowsDemo {
 
 ## 🔹 4. Exception Propagation  
 
-### Concept
+#### Concept
 
 - If a method doesn’t handle an exception, it **propagates up the call stack** to the caller.  
 - If no one handles it, JVM terminates the program.  
 
-### Example  
+#### Example  
 
 ```java
 public class PropagationDemo {
@@ -3200,7 +3122,7 @@ Handled at level3: / by zero
 
 ## USER
 
-### Exception Best Practices
+#### Exception Best Practices
 
 - Specific exception handling
 - Proper resource cleanup
@@ -3213,7 +3135,7 @@ Perfect 👌 Let’s wrap up **Exception Best Practices** with clear explanation
 
 ---
 
-# ⚡ Exception Best Practices in Java  
+## ⚡ Exception Best Practices in Java  
 
 Exception handling is like **emergency planning in a building**:  
 
@@ -3226,12 +3148,12 @@ Exception handling is like **emergency planning in a building**:
 
 ## 🔹 1. Specific Exception Handling  
 
-### Concept  
+#### Concept  
 
 - Always catch the **most specific exception first**, then general ones.  
 - Prevents accidentally catching exceptions you didn’t intend to handle.  
 
-### Example  
+#### Example  
 
 ```java
 try {
@@ -3251,12 +3173,12 @@ try {
 
 ## 🔹 2. Proper Resource Cleanup  
 
-### Concept  
+#### Concept  
 
 - Resources (files, DB connections, sockets) should always be closed to prevent memory leaks.  
 - Use **try-with-resources** instead of `finally` for simplicity.  
 
-### Example  
+#### Example  
 
 ```java
 try (FileReader reader = new FileReader("data.txt");
@@ -3274,12 +3196,12 @@ try (FileReader reader = new FileReader("data.txt");
 
 ## 🔹 3. Avoiding Empty Catch Blocks  
 
-### Concept  
+#### Concept  
 
 - An empty `catch` block hides errors → makes debugging impossible.  
 - Always log, rethrow, or handle the exception meaningfully.  
 
-### Bad Example ❌  
+#### Bad Example ❌  
 
 ```java
 try {
@@ -3289,7 +3211,7 @@ try {
 }
 ```
 
-### Good Example ✅  
+#### Good Example ✅  
 
 ```java
 try {
@@ -3304,12 +3226,12 @@ try {
 
 ## 🔹 4. Exception Chaining  
 
-### Concept  
+#### Concept  
 
 - Wrapping one exception inside another to **preserve root cause** while adding context.  
 - Useful in layered applications (UI → Service → DAO).  
 
-### Example  
+#### Example  
 
 ```java
 class DataAccess {
@@ -3379,7 +3301,7 @@ Would you like me to also prepare a **“Golden Rules of Exception Handling in J
 
 ## 5. Multithreading & Concurrency
 
-### Thread Fundamentals
+#### Thread Fundamentals
 
 - Thread creation (extending Thread, implementing Runnable)
 - Thread lifecycle and states
@@ -3392,7 +3314,7 @@ Perfect 🚀 Let’s dive into **Multithreading & Concurrency → Thread Fundame
 
 ---
 
-# 🧵 Thread Fundamentals in Java  
+## 🧵 Thread Fundamentals in Java  
 
 Think of **threads** like **multiple workers in a kitchen** 🍳:  
 
@@ -3406,7 +3328,7 @@ Think of **threads** like **multiple workers in a kitchen** 🍳:
 
 Java provides **two main ways** to create a thread:  
 
-### ✅ a) Extending `Thread` class  
+#### ✅ a) Extending `Thread` class  
 
 ```java
 class MyThread extends Thread {
@@ -3427,7 +3349,7 @@ public class ThreadDemo {
 
 ---
 
-### ✅ b) Implementing `Runnable` interface  
+#### ✅ b) Implementing `Runnable` interface  
 
 ```java
 class MyTask implements Runnable {
@@ -3464,7 +3386,7 @@ Threads go through **5 states** (like human life stages):
 
 ## 🔹 3. Thread Priority & Daemon Threads  
 
-### Priority  
+#### Priority  
 
 - Each thread has a **priority** (1 to 10).  
 - `Thread.MIN_PRIORITY = 1`  
@@ -3481,7 +3403,7 @@ t1.start();
 
 ---
 
-### Daemon Threads  
+#### Daemon Threads  
 
 - Background helper threads (like **kitchen cleaners** 🧹).  
 - They die automatically when **all user threads finish**.  
@@ -3504,7 +3426,7 @@ daemon.start();
 
 Threads often need to **talk** to each other. Java provides:  
 
-### Methods  
+#### Methods  
 
 - `wait()` → releases lock, waits until notified  
 - `notify()` → wakes up one waiting thread  
@@ -3515,7 +3437,7 @@ Threads often need to **talk** to each other. Java provides:
 - Students (threads) waiting for **exam results**.  
 - Teacher (main thread) says *"Results are out!"* → wakes them up.  
 
-### Example  
+#### Example  
 
 ```java
 class SharedResource {
@@ -3590,7 +3512,7 @@ Would you like me to also cover **Thread Synchronization & Concurrency Utilities
 
 ## USER
 
-### Synchronization
+#### Synchronization
 
 - `synchronized` keyword (methods and blocks)
 - `volatile` keyword
@@ -3603,7 +3525,7 @@ Great 👍 Let’s go step by step into **Synchronization in Java** — one of t
 
 ---
 
-# 🔒 Synchronization in Java  
+## 🔒 Synchronization in Java  
 
 In multithreading, **synchronization ensures only one thread accesses a shared resource at a time** → prevents data inconsistency (race conditions).  
 
@@ -3611,7 +3533,7 @@ In multithreading, **synchronization ensures only one thread accesses a shared r
 
 ## 🔹 1. `synchronized` Keyword  
 
-### ✅ Synchronized Methods  
+#### ✅ Synchronized Methods  
 
 Locks the **object’s monitor** → only one thread can execute the method at a time.  
 
@@ -3653,7 +3575,7 @@ With `synchronized` → always **2000**.
 
 ---
 
-### ✅ Synchronized Blocks  
+#### ✅ Synchronized Blocks  
 
 Instead of locking the whole method, lock only **critical section**.  
 
@@ -3797,7 +3719,7 @@ Would you like me to also cover **Deadlocks, Livelocks, and Thread Safety Best P
 
 ## USER
 
-### Concurrency Issues
+#### Concurrency Issues
 
 - **Race conditions** - Multiple threads accessing shared data
 - **Deadlock** - Circular dependency of locks
@@ -3810,17 +3732,17 @@ Perfect 👍 You’ve listed the **four main concurrency issues** every Java dev
 
 ---
 
-# ⚡ Concurrency Issues in Java  
+## ⚡ Concurrency Issues in Java  
 
 ---
 
 ## 🔹 1. Race Conditions  
 
-### ✅ What is it?  
+#### ✅ What is it?  
 
 When **multiple threads access and modify shared data** simultaneously without synchronization → results become **unpredictable**.  
 
-### ⚡ Example  
+#### ⚡ Example  
 
 ```java
 class Counter {
@@ -3847,7 +3769,7 @@ public class RaceDemo {
 }
 ```
 
-### 🛠 Prevention  
+#### 🛠 Prevention  
 
 - Use `synchronized` blocks/methods.  
 - Use atomic classes (`AtomicInteger`, `AtomicLong`).  
@@ -3856,11 +3778,11 @@ public class RaceDemo {
 
 ## 🔹 2. Deadlock  
 
-### ✅ What is it?  
+#### ✅ What is it?  
 
 Two or more threads are **waiting on each other’s locks** → circular dependency → none can proceed.  
 
-### ⚡ Example  
+#### ⚡ Example  
 
 ```java
 class DeadlockDemo {
@@ -3889,7 +3811,7 @@ class DeadlockDemo {
 
 👉 If `task1` locks `lock1` and `task2` locks `lock2`, both wait forever.  
 
-### 🛠 Prevention  
+#### 🛠 Prevention  
 
 - Always **acquire locks in the same order**.  
 - Use **tryLock() with timeout** (`ReentrantLock`).  
@@ -3899,11 +3821,11 @@ class DeadlockDemo {
 
 ## 🔹 3. Starvation  
 
-### ✅ What is it?  
+#### ✅ What is it?  
 
 A thread is **perpetually denied CPU or resources** because others keep dominating.  
 
-### ⚡ Example  
+#### ⚡ Example  
 
 - If one thread always runs with **high priority**, lower-priority threads may never execute.  
 
@@ -3919,7 +3841,7 @@ highPriority.setPriority(Thread.MAX_PRIORITY);
 lowPriority.setPriority(Thread.MIN_PRIORITY);
 ```
 
-### 🛠 Prevention  
+#### 🛠 Prevention  
 
 - Avoid **indefinite lock holding**.  
 - Use **fair locks** (`new ReentrantLock(true)`).  
@@ -3929,12 +3851,12 @@ lowPriority.setPriority(Thread.MIN_PRIORITY);
 
 ## 🔹 4. Livelock  
 
-### ✅ What is it?  
+#### ✅ What is it?  
 
 Threads **keep responding to each other** and changing states, but no real progress is made.  
 👉 They’re “alive” but stuck in a loop.  
 
-### ⚡ Example  
+#### ⚡ Example  
 
 Two people trying to pass through a narrow door:  
 
@@ -3960,14 +3882,14 @@ class LivelockDemo {
 
 👉 Both keep **yielding to each other** → no one actually goes through.  
 
-### 🛠 Prevention  
+#### 🛠 Prevention  
 
 - Introduce **random backoff / retry delays**.  
 - Use more deterministic coordination (e.g., `CountDownLatch`, `Semaphore`).  
 
 ---
 
-# 🎯 Quick Recap  
+## 🎯 Quick Recap  
 
 | Issue        | Description | Example Cause | Prevention |
 |--------------|-------------|---------------|------------|
@@ -3982,7 +3904,7 @@ class LivelockDemo {
 
 ## USER
 
-### Advanced Concurrency
+#### Advanced Concurrency
 
 - **Executor Framework** - Thread pool management
 - **Callable and Future** - Asynchronous computation
@@ -3995,18 +3917,18 @@ Great 👍 You’re moving into **advanced concurrency utilities** in Java — e
 
 ---
 
-# ⚡ Advanced Concurrency in Java  
+## ⚡ Advanced Concurrency in Java  
 
 ---
 
 ## 🔹 1. Executor Framework  
 
-### ✅ What is it?  
+#### ✅ What is it?  
 
 - Provides a **higher-level replacement** for manually creating and managing threads.  
 - Manages a **thread pool** to reuse threads efficiently.  
 
-### ⚡ Example  
+#### ⚡ Example  
 
 ```java
 import java.util.concurrent.ExecutorService;
@@ -4038,12 +3960,12 @@ public class ExecutorDemo {
 
 ## 🔹 2. Callable and Future  
 
-### ✅ What is it?  
+#### ✅ What is it?  
 
 - **Callable**: Similar to `Runnable`, but returns a value and can throw exceptions.  
 - **Future**: Represents the **result of an asynchronous computation**.  
 
-### ⚡ Example  
+#### ⚡ Example  
 
 ```java
 import java.util.concurrent.*;
@@ -4078,12 +4000,12 @@ public class CallableFutureDemo {
 
 ## 🔹 3. CompletableFuture  
 
-### ✅ What is it?  
+#### ✅ What is it?  
 
 - An **enhanced Future** introduced in Java 8.  
 - Supports **non-blocking asynchronous programming** and **chaining**.  
 
-### ⚡ Example: Async API call simulation  
+#### ⚡ Example: Async API call simulation  
 
 ```java
 import java.util.concurrent.*;
@@ -4114,13 +4036,13 @@ public class CompletableFutureDemo {
 
 ## 🔹 4. ThreadLocal  
 
-### ✅ What is it?  
+#### ✅ What is it?  
 
 - Provides **thread-specific storage**.  
 - Each thread gets its own isolated value.  
 - Useful for things like **user sessions, database connections, transaction IDs**.  
 
-### ⚡ Example  
+#### ⚡ Example  
 
 ```java
 public class ThreadLocalDemo {
@@ -4147,7 +4069,7 @@ public class ThreadLocalDemo {
 
 ---
 
-# 🎯 Quick Recap  
+## 🎯 Quick Recap  
 
 | Concept             | Purpose | Example Use Case |
 |---------------------|---------|------------------|
@@ -4162,7 +4084,7 @@ public class ThreadLocalDemo {
 
 ## USER
 
-### Concurrent Collections
+#### Concurrent Collections
 
 - ConcurrentHashMap
 - CopyOnWriteArrayList
@@ -4174,7 +4096,7 @@ Perfect 👍 — now you’re moving into **Concurrent Collections**, which are 
 
 ---
 
-# ⚡ Concurrent Collections in Java  
+## ⚡ Concurrent Collections in Java  
 
 ---
 
@@ -4185,7 +4107,7 @@ Perfect 👍 — now you’re moving into **Concurrent Collections**, which are 
 - Allows **concurrent reads and updates** without blocking the whole map.  
 - Null keys/values **not allowed**.  
 
-### ⚡ Example  
+#### ⚡ Example  
 
 ```java
 import java.util.concurrent.*;
@@ -4216,7 +4138,7 @@ public class ConcurrentHashMapDemo {
 - Very efficient for **read-heavy, write-light** scenarios.  
 - Iterators are **fail-safe** (don’t throw `ConcurrentModificationException`).  
 
-### ⚡ Example  
+#### ⚡ Example  
 
 ```java
 import java.util.concurrent.*;
@@ -4254,7 +4176,7 @@ public class CopyOnWriteArrayListDemo {
   - **DelayQueue** → elements become available after a delay  
   - **SynchronousQueue** → no capacity, each insert waits for a remove  
 
-### ⚡ Example (Producer-Consumer with LinkedBlockingQueue)  
+#### ⚡ Example (Producer-Consumer with LinkedBlockingQueue)  
 
 ```java
 import java.util.concurrent.*;
@@ -4295,7 +4217,7 @@ public class BlockingQueueDemo {
 
 ---
 
-# 🎯 Quick Recap  
+## 🎯 Quick Recap  
 
 | Collection Type           | Thread-Safe Alternative | Best Use Case |
 |---------------------------|--------------------------|---------------|
@@ -4311,7 +4233,7 @@ Would you like me to also cover **synchronization utilities** (`CountDownLatch`,
 
 ## 6. String Handling
 
-### String Characteristics
+#### String Characteristics
 
 - **Immutability** - Strings cannot be changed
 - **String Pool** - Memory optimization technique
@@ -4323,11 +4245,11 @@ Great, let’s build out the **String Handling → String Characteristics** sect
 
 ---
 
-# 🧵 String Handling in Java  
+## 🧵 String Handling in Java  
 
 ## 🔹 String Characteristics  
 
-### 1. **Immutability**  
+#### 1. **Immutability**  
 
 - Once a `String` object is created, **it cannot be modified**.  
 - Any operation that seems to modify a string actually **creates a new object**.  
@@ -4347,7 +4269,7 @@ public class StringImmutable {
 
 ---
 
-### 2. **String Pool (String Interning)**  
+#### 2. **String Pool (String Interning)**  
 
 - A **special memory area** inside the heap (part of Method Area / Metaspace in newer JVMs).  
 - Stores **string literals** to save memory.  
@@ -4370,7 +4292,7 @@ public class StringPoolDemo {
 
 ---
 
-### 3. **String Literal vs String Object Creation**  
+#### 3. **String Literal vs String Object Creation**  
 
 - **String literal** → Stored in **String Pool**.  
 - **String object using `new`** → Always stored in **heap**, not pool.  
@@ -4391,7 +4313,7 @@ public class StringCreation {
 
 ---
 
-# 🎯 Quick Recap  
+## 🎯 Quick Recap  
 
 | Feature                   | Description |
 |----------------------------|-------------|
@@ -4407,7 +4329,7 @@ Do you want me to continue with that comparison next?
 
 ## USER
 
-### String Classes
+#### String Classes
 
 - **String** - Immutable character sequence
 - **StringBuffer** - Mutable, thread-safe
@@ -4419,9 +4341,9 @@ Perfect progression 👍 Let’s now dive into **String Classes in Java**. This 
 
 ---
 
-# 🧵 String Classes in Java  
+## 🧵 String Classes in Java  
 
-### 1. **String (Immutable)**  
+#### 1. **String (Immutable)**  
 
 - A sequence of characters, **immutable** once created.  
 - Stored in the **String Pool** if created as a literal.  
@@ -4446,7 +4368,7 @@ public class StringExample {
 
 ---
 
-### 2. **StringBuffer (Mutable + Thread-Safe)**  
+#### 2. **StringBuffer (Mutable + Thread-Safe)**  
 
 - Unlike `String`, `StringBuffer` is **mutable** (can be modified without creating new objects).  
 - It is **synchronized**, meaning multiple threads cannot access it simultaneously (safe but slower).  
@@ -4470,7 +4392,7 @@ public class StringBufferExample {
 
 ---
 
-### 3. **StringBuilder (Mutable + Non-Thread-Safe)**  
+#### 3. **StringBuilder (Mutable + Non-Thread-Safe)**  
 
 - Very similar to `StringBuffer` but **not synchronized**.  
 - **Faster** than `StringBuffer` because no overhead of synchronization.  
@@ -4495,7 +4417,7 @@ public class StringBuilderExample {
 
 ---
 
-# 🎯 Comparison Table  
+## 🎯 Comparison Table  
 
 | Feature              | **String**        | **StringBuffer**      | **StringBuilder** |
 |----------------------|------------------|----------------------|------------------|
@@ -4519,7 +4441,7 @@ public class StringBuilderExample {
 
 ## USER
 
-### String Operations
+#### String Operations
 
 - String concatenation performance
 - String comparison (== vs equals())
@@ -4532,7 +4454,7 @@ Excellent choice 🚀 — now we’ll tackle **String Operations in Java**, whic
 
 ---
 
-# 🔤 String Operations in Java  
+## 🔤 String Operations in Java  
 
 ---
 
@@ -4654,7 +4576,7 @@ public class RegexExample {
 
 ---
 
-# 📝 Quick Recap  
+## 📝 Quick Recap  
 
 - **Concatenation:** Use `StringBuilder` in loops.  
 - **Comparison:** `==` (reference), `.equals()` (content).  
@@ -4676,7 +4598,7 @@ Would you like me to **summarize all key String interview questions with sample 
 
 ## 7. Generics
 
-### Generic Concepts
+#### Generic Concepts
 
 - Type safety at compile time
 - Generic classes and interfaces
@@ -4689,7 +4611,7 @@ Perfect 👌 — let’s dive into **Generics in Java**, a very important interv
 
 ---
 
-# 🔧 Generics in Java  
+## 🔧 Generics in Java  
 
 ---
 
@@ -4841,7 +4763,7 @@ class Bounded<T extends Number & Comparable<T>> {
 
 ---
 
-# 📝 Quick Recap  
+## 📝 Quick Recap  
 
 - **Type Safety** → Avoids `ClassCastException`.  
 - **Generic Classes/Interfaces** → Reusable with multiple data types.  
@@ -4862,7 +4784,7 @@ Would you like me to also add a **section on Wildcards (`?`, `? extends`, `? sup
 
 ## USER
 
-### Wildcards
+#### Wildcards
 
 - **Upper bounded** wildcards (? extends T)
 - **Lower bounded** wildcards (? super T)
@@ -4875,7 +4797,7 @@ Great, you’ve reached the **Wildcards in Generics** — one of the trickiest b
 
 ---
 
-# 🎯 Wildcards in Java Generics  
+## 🎯 Wildcards in Java Generics  
 
 Wildcards (`?`) represent **unknown types** in generics. They allow flexibility when working with collections and APIs.  
 
@@ -4991,7 +4913,7 @@ consumer.add(10);   // Safe to add
 
 ---
 
-# 📝 Quick Recap  
+## 📝 Quick Recap  
 
 - `? extends T` → Read-only (upper bound, producer).  
 - `? super T` → Write-only (lower bound, consumer).  
@@ -5011,7 +4933,7 @@ Would you like me to also cover **Type Erasure in Generics** next? It’s anothe
 
 ## USER
 
-### Type Erasure
+#### Type Erasure
 
 - Compile-time vs runtime behavior
 - Bridge methods
@@ -5023,7 +4945,7 @@ Perfect 👍 You’re diving into **Type Erasure** — one of the trickiest and 
 
 ---
 
-# 🎯 Type Erasure in Java
+## 🎯 Type Erasure in Java
 
 Generics in Java are implemented using **Type Erasure**, meaning all type information is **removed at compile time** to ensure backward compatibility with pre-Java 5 code.  
 
@@ -5138,7 +5060,7 @@ Because generics are erased at runtime, some operations are restricted:
 
 ---
 
-# 📝 Quick Recap
+## 📝 Quick Recap
 
 - **Type Erasure** removes type info at runtime.  
 - Compiler enforces generics only at **compile-time**.  
@@ -5161,7 +5083,7 @@ Do you want me to also prepare **a side-by-side comparison of Java’s Type Eras
 
 ## 8. Java 8+ Features
 
-### Lambda Expressions
+#### Lambda Expressions
 
 - Functional programming concepts
 - Lambda syntax and usage
@@ -5174,7 +5096,7 @@ Great 👍 Let’s structure **Java 8+ Lambda Expressions** for interviews with 
 
 ---
 
-# 🚀 Lambda Expressions in Java 8+
+## 🚀 Lambda Expressions in Java 8+
 
 ---
 
@@ -5280,7 +5202,7 @@ public class Test {
 
 ---
 
-# 📝 Quick Recap
+## 📝 Quick Recap
 
 - **Lambda expressions** make code shorter & cleaner.  
 - **Method references** are shorthand for common lambda patterns.  
@@ -5300,7 +5222,7 @@ Would you like me to also cover **Java 8 Stream API** next (since it’s often a
 
 ## USER
 
-### Stream API
+#### Stream API
 
 - Stream creation and operations
 - Intermediate operations (filter, map, sorted)
@@ -5313,7 +5235,7 @@ Perfect 👍 Let’s break down **Stream API** (Java 8+) in a structured, interv
 
 ---
 
-# 🚀 Java 8 Stream API
+## 🚀 Java 8 Stream API
 
 ---
 
@@ -5417,7 +5339,7 @@ System.out.println(sumParallel);
 
 ---
 
-# 📝 Quick Recap
+## 📝 Quick Recap
 
 - **Stream Creation**: `stream()`, `of()`, `Arrays.stream()`  
 - **Intermediate Ops**: `filter`, `map`, `sorted`  
@@ -5439,7 +5361,7 @@ Would you like me to expand next into **Optional class (Java 8)** (commonly aske
 
 ## USER
 
-### Built-in Functional Interfaces
+#### Built-in Functional Interfaces
 
 - Predicate, Function, Consumer, Supplier
 - BiFunction, BinaryOperator, UnaryOperator
@@ -5450,7 +5372,7 @@ Great 👍 Let’s break down the **built-in functional interfaces** introduced 
 
 ---
 
-# 🔹 Built-in Functional Interfaces (Java 8)
+## 🔹 Built-in Functional Interfaces (Java 8)
 
 Functional interfaces = interfaces with **only one abstract method (SAM)** → can be used with **lambdas** or **method references**.  
 
@@ -5555,7 +5477,7 @@ System.out.println(multiply.apply(3, 4)); // 12
 
 ---
 
-# 📝 Quick Recap (Interview-Ready)
+## 📝 Quick Recap (Interview-Ready)
 
 | Interface         | Method Signature                 | Example Use Case                |
 |-------------------|----------------------------------|---------------------------------|
@@ -5581,7 +5503,7 @@ System.out.println(multiply.apply(3, 4)); // 12
 
 ## USER
 
-### Optional Class
+#### Optional Class
 
 - Avoiding NullPointerException
 - Optional methods (isPresent, orElse, ifPresent)
@@ -5592,7 +5514,7 @@ Perfect 👌 Let’s break down the **`Optional` class** in Java 8+.
 
 ---
 
-# 🔹 `Optional` Class (Java 8+)
+## 🔹 `Optional` Class (Java 8+)
 
 `Optional<T>` is a **container object** which may or may not contain a non-null value.  
 👉 Its main goal: **avoid NullPointerException (NPE)** and make code more expressive.
@@ -5609,7 +5531,7 @@ Perfect 👌 Let’s break down the **`Optional` class** in Java 8+.
 
 ## 🔑 Common Methods
 
-### 1. **isPresent()**
+#### 1. **isPresent()**
 
 - Returns `true` if value is present, otherwise `false`.
 
@@ -5620,7 +5542,7 @@ System.out.println(opt.isPresent()); // true
 
 ---
 
-### 2. **ifPresent(Consumer)**
+#### 2. **ifPresent(Consumer)**
 
 - Executes the given action if value is present.
 
@@ -5631,7 +5553,7 @@ opt.ifPresent(s -> System.out.println(s.toUpperCase())); // JAVA
 
 ---
 
-### 3. **orElse(T other)**
+#### 3. **orElse(T other)**
 
 - Returns the value if present, otherwise returns a default value.
 
@@ -5642,7 +5564,7 @@ System.out.println(emptyOpt.orElse("Default")); // Default
 
 ---
 
-### 4. **orElseGet(Supplier)**
+#### 4. **orElseGet(Supplier)**
 
 - Similar to `orElse`, but takes a **Supplier** for lazy evaluation.
 
@@ -5653,7 +5575,7 @@ System.out.println(emptyOpt.orElseGet(() -> "Generated Default"));
 
 ---
 
-### 5. **orElseThrow()**
+#### 5. **orElseThrow()**
 
 - Throws an exception if no value is present.
 
@@ -5664,7 +5586,7 @@ String value = emptyOpt.orElseThrow(() -> new RuntimeException("Value missing!")
 
 ---
 
-### 6. **get()** ⚠️ (Not recommended)
+#### 6. **get()** ⚠️ (Not recommended)
 
 - Returns value if present, otherwise throws `NoSuchElementException`.
 
@@ -5718,7 +5640,7 @@ Would you like me to also cover **advanced Optional methods** (`map`, `flatMap`,
 
 ## USER
 
-### Date and Time API
+#### Date and Time API
 
 - LocalDate, LocalTime, LocalDateTime
 - ZonedDateTime and time zones
@@ -5731,7 +5653,7 @@ Great! Let’s dive into the **Java 8 Date and Time API** (`java.time` package).
 
 ---
 
-# 🔹 Date and Time API (Java 8+)
+## 🔹 Date and Time API (Java 8+)
 
 Java 8 introduced a new, immutable, and thread-safe **Date and Time API** (replacing `Date`, `Calendar`, `SimpleDateFormat`).  
 👉 Based on **ISO-8601** standard and inspired by **Joda-Time**.
@@ -5740,7 +5662,7 @@ Java 8 introduced a new, immutable, and thread-safe **Date and Time API** (repla
 
 ## ✅ Core Classes
 
-### 1. **LocalDate**
+#### 1. **LocalDate**
 
 - Represents a **date** (year, month, day) without time or timezone.
 
@@ -5754,7 +5676,7 @@ System.out.println(birthday);  // 1995-05-23
 
 ---
 
-### 2. **LocalTime**
+#### 2. **LocalTime**
 
 - Represents a **time** (hour, minute, second, nanosecond), without date or timezone.
 
@@ -5768,7 +5690,7 @@ System.out.println(specificTime);  // 14:30
 
 ---
 
-### 3. **LocalDateTime**
+#### 3. **LocalDateTime**
 
 - Combines **date + time** (but still no timezone).
 
@@ -5782,7 +5704,7 @@ System.out.println(meeting);  // 2025-09-01T10:00
 
 ---
 
-### 4. **ZonedDateTime** (with Time Zones)
+#### 4. **ZonedDateTime** (with Time Zones)
 
 - Represents **date + time + timezone**.
 
@@ -5798,7 +5720,7 @@ System.out.println(newYorkTime);  // 2025-09-01T05:34-04:00[America/New_York]
 
 ## ✅ Formatting and Parsing
 
-### **DateTimeFormatter**
+#### **DateTimeFormatter**
 
 - Used to format and parse dates/times.
 
@@ -5817,7 +5739,7 @@ System.out.println(parsedDate);    // 2025-09-01
 
 ## ✅ Time Differences
 
-### 1. **Period** (Date-based, in years/months/days)
+#### 1. **Period** (Date-based, in years/months/days)
 
 ```java
 LocalDate start = LocalDate.of(2020, 1, 1);
@@ -5832,7 +5754,7 @@ System.out.println(period.getYears() + " years " +
 
 ---
 
-### 2. **Duration** (Time-based, in hours/minutes/seconds)
+#### 2. **Duration** (Time-based, in hours/minutes/seconds)
 
 ```java
 LocalTime start = LocalTime.of(10, 0);
@@ -5870,7 +5792,7 @@ Do you want me to also include a **comparison with old APIs (`Date`, `Calendar`)
 
 ## USER
 
-### Default Methods
+#### Default Methods
 
 - Interface evolution
 - Multiple inheritance of behavior
@@ -5882,7 +5804,7 @@ Got it 👍 Let’s break down **Default Methods** in Java (introduced in **Java
 
 ---
 
-# 🔹 Default Methods in Interfaces
+## 🔹 Default Methods in Interfaces
 
 Before Java 8, interfaces could only declare **abstract methods**.  
 👉 This caused issues when adding new methods to existing interfaces (it broke all implementing classes).
@@ -5893,7 +5815,7 @@ Before Java 8, interfaces could only declare **abstract methods**.
 
 ## ✅ Key Concepts
 
-### 1. **Interface Evolution**
+#### 1. **Interface Evolution**
 
 - Default methods let interfaces **add new functionality** without breaking existing code.
 
@@ -5924,7 +5846,7 @@ public class Test {
 
 ---
 
-### 2. **Multiple Inheritance of Behavior**
+#### 2. **Multiple Inheritance of Behavior**
 
 - If a class implements **multiple interfaces** with the **same default method**, Java needs a way to resolve conflicts.
 
@@ -5953,7 +5875,7 @@ class C implements A, B {
 
 ---
 
-### 3. **Diamond Problem Resolution**
+#### 3. **Diamond Problem Resolution**
 
 - In multiple inheritance (like in C++), if two parents define the same method, ambiguity arises (called the **diamond problem**).  
 - Java resolves this by forcing the implementing class to **explicitly choose** which default method to use.
@@ -5986,7 +5908,7 @@ Do you want me to also cover **Static methods in interfaces** (another Java 8 ad
 
 ## 9. Input/Output (I/O)
 
-### File I/O
+#### File I/O
 
 - File and Path classes
 - FileInputStream/FileOutputStream
@@ -5999,7 +5921,7 @@ Perfect 👌 Let’s expand on **File I/O in Java** (traditional I/O, before mov
 
 ---
 
-# 🔹 File I/O in Java
+## 🔹 File I/O in Java
 
 File I/O (Input/Output) in Java allows reading from and writing to files. Java provides **`java.io`** and **`java.nio`** packages for file handling.
 
@@ -6007,7 +5929,7 @@ File I/O (Input/Output) in Java allows reading from and writing to files. Java p
 
 ## ✅ Key Classes for File I/O
 
-### 1. **File and Path Classes**
+#### 1. **File and Path Classes**
 
 - **`File` (java.io.File):**
   - Represents the **abstract pathname** (not the file content itself).
@@ -6044,7 +5966,7 @@ public class PathDemo {
 
 ---
 
-### 2. **FileInputStream / FileOutputStream**
+#### 2. **FileInputStream / FileOutputStream**
 
 - For **binary data** (images, PDFs, audio, etc.).
 - Works at the **byte level**.
@@ -6075,7 +5997,7 @@ public class FileStreamDemo {
 
 ---
 
-### 3. **BufferedReader / BufferedWriter**
+#### 3. **BufferedReader / BufferedWriter**
 
 - For **text data** (character streams).
 - More efficient (uses buffer instead of direct file access).
@@ -6107,7 +6029,7 @@ public class BufferedDemo {
 
 ---
 
-### 4. **Try-with-Resources**
+#### 4. **Try-with-Resources**
 
 - Introduced in **Java 7**.
 - Ensures resources (files, streams, readers/writers) are **automatically closed**.
@@ -6145,7 +6067,7 @@ try (BufferedReader reader = new BufferedReader(new FileReader("buffered.txt")))
 
 ## USER
 
-### Serialization
+#### Serialization
 
 - Serializable interface
 - ObjectInputStream/ObjectOutputStream
@@ -6158,7 +6080,7 @@ Great 👍 Let’s cover **Serialization in Java**, which is a very common inter
 
 ---
 
-# 🔹 Serialization in Java
+## 🔹 Serialization in Java
 
 Serialization is the process of **converting an object into a byte stream**, so it can be:  
 
@@ -6170,7 +6092,7 @@ Serialization is the process of **converting an object into a byte stream**, so 
 
 ## ✅ Key Concepts
 
-### 1. **Serializable Interface**
+#### 1. **Serializable Interface**
 
 - Marker interface (`java.io.Serializable`).  
 - No methods — just a signal to JVM that the object can be serialized.  
@@ -6191,7 +6113,7 @@ class Employee implements Serializable {
 
 ---
 
-### 2. **ObjectOutputStream / ObjectInputStream**
+#### 2. **ObjectOutputStream / ObjectInputStream**
 
 - Used for writing and reading serialized objects.  
 
@@ -6221,7 +6143,7 @@ public class SerializationDemo {
 
 ---
 
-### 3. **transient Keyword**
+#### 3. **transient Keyword**
 
 - Used to mark fields that should **not** be serialized.  
 - Example: passwords, security tokens, or calculated fields.  
@@ -6242,7 +6164,7 @@ When deserialized → `password` will be `null`.
 
 ---
 
-### 4. **Custom Serialization**
+#### 4. **Custom Serialization**
 
 - Override `readObject()` and `writeObject()` to customize behavior.  
 
@@ -6289,7 +6211,7 @@ class Account implements Serializable {
 
 ## USER
 
-### NIO (New I/O)
+#### NIO (New I/O)
 
 - Channels and Buffers
 - Non-blocking I/O
@@ -6301,7 +6223,7 @@ Perfect 👍 Let’s cover **Java NIO (New I/O)**, which is often asked in advan
 
 ---
 
-# 🔹 Java NIO (New Input/Output)
+## 🔹 Java NIO (New Input/Output)
 
 Java NIO (introduced in **Java 1.4**) provides:  
 
@@ -6313,7 +6235,7 @@ Java NIO (introduced in **Java 1.4**) provides:
 
 ## ✅ Core Concepts
 
-### 1. **Channels and Buffers**
+#### 1. **Channels and Buffers**
 
 - **Channel**: A bi-directional data connection (like a pipe).  
   - Examples: `FileChannel`, `SocketChannel`, `ServerSocketChannel`, `DatagramChannel`.  
@@ -6351,7 +6273,7 @@ public class NIOExample {
 
 ---
 
-### 2. **Non-blocking I/O**
+#### 2. **Non-blocking I/O**
 
 - Traditional I/O (`InputStream`/`OutputStream`) → **blocking** (thread waits).  
 - NIO channels can be **non-blocking** → thread can do other work while waiting.  
@@ -6368,7 +6290,7 @@ channel.configureBlocking(false); // non-blocking
 
 ---
 
-### 3. **Selectors**
+#### 3. **Selectors**
 
 - A **Selector** allows a single thread to manage multiple channels.  
 - Used for multiplexing → efficient for handling thousands of connections.  
@@ -6424,7 +6346,7 @@ while (true) {
 
 ## 10. Design Patterns
 
-### Creational Patterns
+#### Creational Patterns
 
 - **Singleton** - Single instance creation
 - **Factory** - Object creation without specifying exact class
@@ -6436,7 +6358,7 @@ Great 👍 Let’s start **Design Patterns** with **Creational Patterns** in Jav
 
 ---
 
-# 🔹 Creational Design Patterns
+## 🔹 Creational Design Patterns
 
 Creational patterns focus on **object creation mechanisms** to make the system more flexible and reusable.
 
@@ -6575,7 +6497,7 @@ Computer comp = new Computer.Builder()
 
 ## USER
 
-### Behavioral Patterns
+#### Behavioral Patterns
 
 - **Observer** - One-to-many dependency notification
 - **Strategy** - Algorithm encapsulation
@@ -6587,7 +6509,7 @@ Perfect 👌 Let’s go over the **Behavioral Design Patterns** you listed.
 
 ---
 
-# 🔹 Behavioral Design Patterns  
+## 🔹 Behavioral Design Patterns  
 
 These patterns deal with **object interaction and responsibility distribution**.  
 
@@ -6741,7 +6663,7 @@ remote.pressButton();
 
 ## USER
 
-### Structural Patterns
+#### Structural Patterns
 
 - **Adapter** - Interface compatibility
 - **Decorator** - Adding behavior dynamically
@@ -6754,7 +6676,7 @@ These patterns focus on how classes and objects are composed to form larger stru
 
 ---
 
-# 🔹 Structural Design Patterns
+## 🔹 Structural Design Patterns
 
 ---
 
@@ -6923,7 +6845,7 @@ Perfect 👍 Let’s expand on **SOLID Principles** with explanations and Java e
 
 ---
 
-# 🔹 SOLID Principles in Java
+## 🔹 SOLID Principles in Java
 
 ---
 
@@ -7123,7 +7045,7 @@ class Application {
 
 ## 12. Advanced Topics
 
-### Reflection API
+#### Reflection API
 
 - Class metadata examination
 - Dynamic method invocation
@@ -7136,7 +7058,7 @@ Great addition 🚀 Let’s expand **Reflection API** in Java with clear explana
 
 ---
 
-# 🔹 Reflection API in Java  
+## 🔹 Reflection API in Java  
 
 The **Reflection API** in Java allows programs to **inspect and manipulate classes, methods, fields, and constructors at runtime**, even if you don’t know their names at compile time.  
 
@@ -7256,7 +7178,7 @@ public class DynamicObjectExample {
 
 ---
 
-### ⚠️ Notes on Reflection  
+#### ⚠️ Notes on Reflection  
 
 - **Performance overhead**: Slower than normal method calls.  
 - **Security issues**: Can break encapsulation (access `private` fields).  
@@ -7268,7 +7190,7 @@ Would you like me to also cover **real-world usage of Reflection (Spring DI, Hib
 
 ## USER
 
-### Annotations
+#### Annotations
 
 - Built-in annotations (@Override, @Deprecated, @SuppressWarnings)
 - Custom annotations
@@ -7281,7 +7203,7 @@ Perfect 👍 Let’s expand the **Annotations** topic in Java in the same struct
 
 ---
 
-# 🔹 Annotations in Java  
+## 🔹 Annotations in Java  
 
 Annotations provide **metadata** about code, which can be processed by the **compiler, tools, or frameworks** at runtime/compile-time. They don’t change program logic but influence how tools/frameworks handle the code.  
 
@@ -7397,7 +7319,7 @@ Would you like me to also add a **comparison table of SOURCE vs CLASS vs RUNTIME
 
 ## USER
 
-### Networking
+#### Networking
 
 - Socket programming
 - URL and URLConnection
@@ -7409,7 +7331,7 @@ Got it ✅ Let’s expand the **Networking** section in Java with structured not
 
 ---
 
-# 🔹 Networking in Java  
+## 🔹 Networking in Java  
 
 Java provides the `java.net` package for **network communication** (client-server apps, web requests, distributed systems).  
 
@@ -7524,7 +7446,7 @@ Do you want me to also add **UDP socket programming** (DatagramSocket & Datagram
 
 ## USER
 
-### Database Connectivity
+#### Database Connectivity
 
 - JDBC fundamentals
 - Connection pooling
@@ -7537,7 +7459,7 @@ Perfect 👍 Let’s expand the **Database Connectivity** section in Java with c
 
 ---
 
-# 🔹 Database Connectivity in Java  
+## 🔹 Database Connectivity in Java  
 
 Java uses **JDBC (Java Database Connectivity)** API to connect and interact with relational databases like MySQL, PostgreSQL, Oracle, etc.  
 
@@ -7672,7 +7594,7 @@ Would you like me to also add a section on **ORM frameworks (Hibernate, JPA)** a
 
 ## 13. Performance & Optimization
 
-### JVM Tuning
+#### JVM Tuning
 
 - Heap size configuration
 - Garbage collection tuning
@@ -7684,7 +7606,7 @@ Great addition 🚀 Let’s expand **Performance & Optimization → JVM Tuning**
 
 ---
 
-# 🔹 JVM Tuning  
+## 🔹 JVM Tuning  
 
 Performance in Java heavily depends on **JVM configuration**, as it manages memory, threads, and garbage collection.  
 
@@ -7754,7 +7676,7 @@ Do you want me to also create a **Performance Profiling & Monitoring** subsectio
 
 ## USER
 
-### Code Optimization
+#### Code Optimization
 
 - Object creation best practices
 - String handling optimization
@@ -7767,7 +7689,7 @@ Perfect 👍 Let’s expand **Performance & Optimization → Code Optimization**
 
 ---
 
-# 🔹 Code Optimization  
+## 🔹 Code Optimization  
 
 Efficient code improves **speed, scalability, and memory usage**.  
 
@@ -7869,7 +7791,7 @@ Do you want me to also cover **Database Query Optimization** (like indexing, bat
 
 ## USER
 
-### Profiling and Monitoring
+#### Profiling and Monitoring
 
 - Memory profiling tools
 - Performance monitoring
@@ -7881,7 +7803,7 @@ Great, let’s expand **Performance & Optimization → Profiling and Monitoring*
 
 ---
 
-# 🔹 Profiling and Monitoring  
+## 🔹 Profiling and Monitoring  
 
 Performance tuning isn’t complete without **profiling and monitoring**. These tools help detect **memory leaks, bottlenecks, and thread issues** in Java applications.  
 
@@ -7920,7 +7842,7 @@ Performance tuning isn’t complete without **profiling and monitoring**. These 
 
 - Both are **JDK-provided monitoring tools**.  
 
-### 🔹 **JConsole**  
+#### 🔹 **JConsole**  
 
 - GUI-based, connects via **JMX (Java Management Extensions)**.  
 - Provides:  
@@ -7929,7 +7851,7 @@ Performance tuning isn’t complete without **profiling and monitoring**. These 
   - CPU usage per thread.  
   - Garbage collector stats.  
 
-### 🔹 **JVisualVM**  
+#### 🔹 **JVisualVM**  
 
 - More advanced than JConsole.  
 - Features:  
@@ -7954,7 +7876,7 @@ Would you like me to also add **Real-time Monitoring with JMX and custom MBeans*
 
 ## 14. Testing
 
-### Unit Testing
+#### Unit Testing
 
 - JUnit framework basics
 - Test annotations (@Test, @Before, @After)
@@ -7967,7 +7889,7 @@ Perfect, let’s build out **Testing → Unit Testing** with clear notes:
 
 ---
 
-# 🔹 Unit Testing  
+## 🔹 Unit Testing  
 
 Unit testing ensures that **individual components (classes, methods)** work as expected in isolation.  
 
